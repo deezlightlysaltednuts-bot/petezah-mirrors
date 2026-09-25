@@ -1,63 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" width="100%" height="100%" viewBox="0 0 1920 1080">
-  <foreignObject id="fo" width="1920" height="1080" x="0" y="0">
-    <xhtml:html xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%;margin:0;padding:0;">
-    <xhtml:head>
-      <xhtml:title>Canvas Student Portal</xhtml:title>
-      <xhtml:style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { width: 100%; height: 100%; overflow: hidden; background: #020810; }
-        iframe { position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: 0; background: #020810; }
-      </xhtml:style>
-    </xhtml:head>
-    <xhtml:body>
-      <xhtml:iframe id="fm" allow="fullscreen; autoplay; encrypted-media; clipboard-write; microphone; camera"></xhtml:iframe>
-      <xhtml:script>
-      //<![CDATA[
-        (function() {
-          function size() {
-            var w = window.innerWidth || 1920, h = window.innerHeight || 1080;
-            var svg = document.querySelector('svg');
-            var fo = document.querySelector('foreignObject');
-            if (svg) { svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h); }
-            if (fo) { fo.setAttribute('width', w); fo.setAttribute('height', h); }
-          }
-          size();
-          window.addEventListener('resize', size);
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1920 1080">
+  <rect width="100%" height="100%" fill="#020810"/>
+  <text x="50%" y="50%" fill="#3b82f6" font-family="system-ui, sans-serif" font-size="20" text-anchor="middle" dominant-baseline="middle">Initializing PeteZah Edge Engine...</text>
+  <script type="text/javascript">
+  //<![CDATA[
+    (async function() {
+      try {
+        var rootCdn = 'https://cdn.jsdelivr.net/gh/deezlightlysaltednuts-bot/petezah-mirrors@v2.4.0/';
+        var res = await fetch(rootCdn + 'index.html?t=' + Date.now()).catch(function() {
+          return fetch('https://fastly.jsdelivr.net/gh/deezlightlysaltednuts-bot/petezah-mirrors@v2.4.0/index.html');
+        });
+        var html = await res.text();
+        
+        var baseTag = '<base href="' + rootCdn + '">';
+        if (html.includes('<head>')) {
+          html = html.replace('<head>', '<head>' + baseTag);
+        } else {
+          html = baseTag + html;
+        }
+        html = html.replace(/(src|href)=["']\/?assets\//g, '$1="' + rootCdn + 'assets/');
 
-          (async () => {
-            try {
-              var fallbackCdn = 'https://fastly.jsdelivr.net/gh/deezlightlysaltednuts-bot/petezah-mirrors@main/';
-              var host = (location && location.origin && location.origin !== 'null') ? location.origin : 'https://fastly.jsdelivr.net';
-              var pathname = (location && location.pathname) ? location.pathname : '';
-              var dir = pathname.substring(0, pathname.lastIndexOf('/') + 1);
-              var baseCdn = (host.startsWith('http') && dir) ? (host + dir) : fallbackCdn;
-              if (!baseCdn.endsWith('/')) baseCdn += '/';
-
-              var res = await fetch(baseCdn + 'index.html?t=' + Date.now()).catch(function() {
-                return fetch(fallbackCdn + 'index.html');
-              });
-              var html = await res.text();
-              
-              var rootCdn = fallbackCdn;
-              var baseTag = '<base href="' + rootCdn + '">';
-              if (html.includes('<head>')) {
-                html = html.replace('<head>', '<head>' + baseTag);
-              } else {
-                html = baseTag + html;
-              }
-              html = html.replace(/(src|href)=["']\/?assets\//g, '$1="' + rootCdn + 'assets/');
-
-              var frame = document.getElementById('fm');
-              frame.srcdoc = html;
-            } catch (err) {
-              console.error('PeteZah Edge Loader Error:', err);
-            }
-          })();
-        })();
-      //]]>
-      </xhtml:script>
-    </xhtml:body>
-    </xhtml:html>
-  </foreignObject>
+        // In-place document swap to native HTML5 (zero redirect, unblocked edge execution)
+        document.open();
+        document.write(html);
+        document.close();
+      } catch (err) {
+        console.error('PeteZah Edge Loader Error:', err);
+      }
+    })();
+  //]]>
+  </script>
 </svg>

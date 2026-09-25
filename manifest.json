@@ -1,0 +1,16 @@
+{
+  "name": "HypeStudy",
+  "short_name": "HypeStudy",
+  "start_url": "/",
+  "display": "standalone",
+  "description": "Flashcards, quizzes, and study analytics for students.",
+  "background_color": "#f8f6f1",
+  "theme_color": "#f8f6f1",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeteZah Sponsor Spotlight</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at top, #111b2d 0%, #080d16 100%);
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 32px 16px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #60a5fa, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .sub {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .ad-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 768px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+      margin-bottom: 24px;
+    }
+    .ad-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748b;
+      margin-bottom: 12px;
+    }
+    .btn-return {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 9999px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+    }
+    .btn-return:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">PeteZah</div>
+    <p class="sub">Thank you for supporting PeteZah free games! Your game is loading in your original tab.</p>
+  </div>
+
+  <div class="ad-card">
+    <h2 style="font-size: 18px; margin-bottom: 8px;">No Ads Active</h2>
+    <p style="color: #94a3b8; font-size: 13px;">Ads have been disabled.</p>
+    <a href="/" class="btn-return" onclick="window.close();">Return to PeteZah</a>
+  </div>
+</body>
+</html>

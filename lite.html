@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeteZah Lite · Free Unblocked Games Portal</title>
+  <link rel="icon" href="/logo.png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #090e17;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .brand-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .brand-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #93c5fd;
+    }
+    .discord-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #5865f2;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, background 0.15s;
+    }
+    .discord-btn:hover {
+      background: #4752c4;
+      transform: translateY(-1px);
+    }
+    .about-blank-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .about-blank-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+    }
+
+    /* Promo Banner */
+    .promo-banner {
+      background: linear-gradient(90deg, rgba(88, 101, 242, 0.15), rgba(139, 92, 246, 0.15));
+      border-bottom: 1px solid rgba(88, 101, 242, 0.25);
+      padding: 10px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .promo-banner a {
+      color: #60a5fa;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-left: 6px;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+    .search-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .search-input {
+      flex: 1;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px 18px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-input:focus {
+      border-color: #3b82f6;
+    }
+
+    /* Grid */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .game-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+      text-align: left;
+    }
+    .game-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.5);
+    }
+    .game-thumb-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #020617;
+      overflow: hidden;
+      position: relative;
+    }
+    .game-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .game-info {
+      padding: 10px 12px;
+    }
+    .game-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f8fafc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 3px;
+    }
+    .game-cat {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Player View */
+    #player-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #020617;
+      z-index: 100;
+      flex-direction: column;
+    }
+    .player-header {
+      background: #0f172a;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .player-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .player-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-icon:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+    .player-frame-wrap {
+      flex: 1;
+      position: relative;
+    }
+    .player-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Takedown Red Screen */
+    #takedown-screen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #7f1d1d;
+      color: #ffffff;
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+    }
+    #takedown-screen h1 {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    #takedown-screen p {
+      font-size: 16px;
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      color: #fecaca;
+    }
+    #takedown-screen a {
+      background: #ffffff;
+      color: #991b1b;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    /* EULA Modal */
+    #eula-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .eula-card {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 28px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    }
+    .eula-card h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 12px;
+    }
+    .eula-card p {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .eula-card ul {
+      margin-left: 18px;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .btn-agree {
+      width: 100%;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+    }
+    footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Takedown Screen (Triggered if developer revokes contact with this connector) -->
+  <div id="takedown-screen">
+    <h1>⚠️ THIS SITE IS TAKEN DOWN BY DEVELOPERS</h1>
+    <p id="takedown-message">This unblocked games instance has had its central license revoked. Please play on the official PeteZah network.</p>
+    <a id="takedown-link" href="https://discord.gg/cYjHFDguxS" target="_blank">Play Official Version on Discord</a>
+  </div>
+
+  <!-- EULA Modal -->
+  <div id="eula-modal">
+    <div class="eula-card">
+      <h2>PeteZah Lite · User Agreement</h2>
+      <p>Welcome to PeteZah Lite! Before playing, please review and accept the community usage terms:</p>
+      <ul>
+        <li>PeteZah Lite is an official community starter portal maintained by the PeteZah team.</li>
+        <li>Games are provided for educational and recreational non-commercial use.</li>
+        <li>Do not remove developer attributions or copyright headers.</li>
+        <li>Full unblocked proxy browsing, AI chat, and movies are available on the full PeteZah platform.</li>
+      </ul>
+      <button class="btn-agree" onclick="acceptEula()">I Agree & Enter PeteZah Lite</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <a href="/lite.html" class="brand">
+      <div class="brand-logo">P</div>
+      <div class="brand-title">PeteZah</div>
+      <span class="brand-tag">Lite</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="about-blank-btn" onclick="launchAboutBlank()">
+        🕶️ Open in about:blank
+      </button>
+      <a href="https://discord.gg/cYjHFDguxS" target="_blank" class="discord-btn">
+        <span>💬 Discord Community</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Promo Banner -->
+  <div class="promo-banner">
+    🚀 Want Full PeteZah with AI Chat, 100+ Games, Movies, Music, and Unblocked Browser?
+    <a href="https://discord.gg/cYjHFDguxS" target="_blank">Join our Discord Community &gt;</a>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <div class="search-bar-wrap">
+      <input type="text" id="search-input" class="search-input" placeholder="Search games (e.g. Drive Mad, Geometry Dash, 60 Seconds)..." oninput="filterGames()">
+    </div>
+
+    <div id="games-grid" class="games-grid">
+      <div style="color:#94a3b8;font-size:13px;">Connecting to PeteZah feed...</div>
+    </div>
+  </main>
+
+  <!-- Player Modal -->
+  <div id="player-view">
+    <div class="player-header">
+      <div class="player-title" id="player-title">Playing Game</div>
+      <div class="player-actions">
+        <button class="btn-icon" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+        <button class="btn-icon" onclick="closePlayer()">✕ Close Game</button>
+      </div>
+    </div>
+    <div class="player-frame-wrap">
+      <iframe id="player-frame" class="player-frame" allow="fullscreen; autoplay; gamepad"></iframe>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>PeteZah Lite Portal &copy; 2026. Powered by <a href="https://discord.gg/cYjHFDguxS" target="_blank">PeteZah Community</a>.</p>
+  </footer>
+
+  <script>
+    let gamesList = [];
+    const DEFAULT_KEY = 'pzl_sec_8f93e18a94bc721';
+
+    // Derive AES-256-GCM CryptoKey from seed
+    async function getDecryptionKey() {
+      const seed = 'petezah-lite-v2-secure-seed-98124912401';
+      const enc = new TextEncoder();
+      const hash = await crypto.subtle.digest('SHA-256', enc.encode(seed));
+      return crypto.subtle.importKey('raw', hash, { name: 'AES-GCM' }, false, ['decrypt']);
+    }
+
+    // Decrypt AES-GCM base64 package from backend
+    async function decryptFeed(encObj) {
+      if (!encObj || !encObj.enc) return encObj;
+      const key = await getDecryptionKey();
+      const iv = Uint8Array.from(atob(encObj.iv), c => c.charCodeAt(0));
+      const ciphertext = Uint8Array.from(atob(encObj.data), c => c.charCodeAt(0));
+      const tag = Uint8Array.from(atob(encObj.tag), c => c.charCodeAt(0));
+      
+      // Combine ciphertext + tag for WebCrypto
+      const combined = new Uint8Array(ciphertext.length + tag.length);
+      combined.set(ciphertext);
+      combined.set(tag, ciphertext.length);
+
+      const decryptedBuf = await crypto.subtle.decrypt(
+        { name: 'AES-GCM', iv, tagLength: 128 },
+        key,
+        combined
+      );
+
+      const decStr = new TextDecoder().decode(decryptedBuf);
+      return JSON.parse(decStr);
+    }
+
+    // Check EULA acceptance
+    function checkEula() {
+      if (!localStorage.getItem('pz_lite_eula')) {
+        document.getElementById('eula-modal').style.display = 'flex';
+      }
+    }
+
+    function acceptEula() {
+      localStorage.setItem('pz_lite_eula', '1');
+      document.getElementById('eula-modal').style.display = 'none';
+    }
+
+    // Launch Lite in about:blank
+    function launchAboutBlank() {
+      const title = 'Home - Classroom';
+      const icon = window.location.origin + '/logo.png';
+      const appUrl = window.location.href;
+      const html = `<!doctype html><html><head><title>${title}</title><link rel="icon" href="${icon}"></head><body style="margin:0;overflow:hidden"><iframe style="height:100%;width:100%;border:0;position:fixed;inset:0" src="${appUrl}" allow="fullscreen; autoplay; gamepad"></iframe></body></html>`;
+      const blobUrl = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+      const w = window.open(blobUrl, '_blank');
+      if (w) {
+        window.location.href = 'https://classroom.google.com';
+      } else {
+        alert('Please allow popups to launch about:blank cloaking.');
+      }
+    }
+
+    function getApiKey() {
+      return localStorage.getItem('pz_lite_api_key') || DEFAULT_KEY;
+    }
+
+    function changeApiKey() {
+      const current = getApiKey();
+      const next = prompt('Enter your PeteZah Lite API Key:', current);
+      if (next && next.trim()) {
+        localStorage.setItem('pz_lite_api_key', next.trim());
+        loadFeed();
+      }
+    }
+
+    // Fetch dynamic encrypted feed
+    async function loadFeed() {
+      const grid = document.getElementById('games-grid');
+      grid.innerHTML = '<div style="color:#94a3b8;font-size:13px;">Decrypting PeteZah secure game feed...</div>';
+
+      const apiKey = getApiKey();
+      try {
+        const res = await fetch(`/api/lite/feed?key=${encodeURIComponent(apiKey)}`, {
+          headers: { 'X-PeteZah-Key': apiKey }
+        });
+        const encData = await res.json();
+        const data = await decryptFeed(encData);
+
+        // Check if takedown status active
+        if (data.status === 'blocked' || data.error === 'SITE_TAKEN_DOWN') {
+          showTakedown(data.message, data.officialUrl);
+          return;
+        }
+
+        if (data.status === 'error') {
+          grid.innerHTML = `<div style="color:#ef4444;font-size:13px;padding:16px;background:rgba(239,68,68,0.1);border-radius:10px;border:1px solid rgba(239,68,68,0.2);">
+            <strong>API Key Authentication Failed</strong><br>${data.message || 'Invalid API Key'}<br>
+            <button onclick="changeApiKey()" style="margin-top:10px;padding:6px 14px;background:#ef4444;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Update API Key</button>
+          </div>`;
+          return;
+        }
+
+        gamesList = data.games || [];
+        renderGames(gamesList);
+
+        // Display throttle warning if > 20 users
+        if (data.throttled) {
+          const banner = document.querySelector('.promo-banner');
+          if (banner) {
+            banner.innerHTML = `⚠️ <strong>High Concurrency Detected:</strong> Over 20 users are active on this API key (Server response slowed to preserve bandwidth). Upgrade or join <a href="https://discord.gg/cYjHFDguxS" target="_blank">Discord</a> for dedicated keys.`;
+          }
+        }
+      } catch (err) {
+        console.warn('Decryption or network error', err);
+        grid.innerHTML = `<div style="color:#ef4444;font-size:13px;padding:16px;background:rgba(239,68,68,0.1);border-radius:10px;border:1px solid rgba(239,68,68,0.2);">
+          <strong>Could not decrypt game feed.</strong><br>Check your network connection or API Key.<br>
+          <button onclick="changeApiKey()" style="margin-top:10px;padding:6px 14px;background:#3b82f6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600;">Change API Key</button>
+        </div>`;
+      }
+    }
+
+    function showTakedown(msg, link) {
+      const el = document.getElementById('takedown-screen');
+      if (msg) document.getElementById('takedown-message').innerText = msg;
+      if (link) document.getElementById('takedown-link').href = link;
+      el.style.display = 'flex';
+    }
+
+    function renderGames(list) {
+      const grid = document.getElementById('games-grid');
+      if (!list.length) {
+        grid.innerHTML = '<div style="color:#94a3b8;font-size:13px;">No games found matching your search.</div>';
+        return;
+      }
+      grid.innerHTML = list.map(g => `
+        <div class="game-card" onclick="playGame('${g.id}')">
+          <div class="game-thumb-wrap">
+            <img class="game-thumb" src="${g.thumbnail}" alt="${g.title}" loading="lazy" onerror="this.src='/logo.png'">
+          </div>
+          <div class="game-info">
+            <div class="game-name">${g.title}</div>
+            <div class="game-cat">${g.category || 'Game'}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterGames() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const filtered = gamesList.filter(g => g.title.toLowerCase().includes(query) || (g.category && g.category.toLowerCase().includes(query)));
+      renderGames(filtered);
+    }
+
+    function playGame(id) {
+      const game = gamesList.find(g => g.id === id);
+      if (!game) return;
+      document.getElementById('player-title').innerText = game.title;
+      document.getElementById('player-frame').src = game.url;
+      document.getElementById('player-view').style.display = 'flex';
+    }
+
+    function closePlayer() {
+      document.getElementById('player-frame').src = 'about:blank';
+      document.getElementById('player-view').style.display = 'none';
+    }
+
+    function toggleFullscreen() {
+      const frame = document.getElementById('player-frame');
+      if (frame.requestFullscreen) frame.requestFullscreen();
+      else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      checkEula();
+      loadFeed();
+    });
+  </script>
+</body>
+</html>
+

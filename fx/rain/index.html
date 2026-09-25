@@ -47,7 +47,7 @@
         s = new URLSearchParams(location.search).get("s") || "harbor";
       } catch (e) {}
       if (!allowed[s]) s = "harbor";
-      var base = "/fx/rain/img/scenes/" + s + "/";
+      var base = "./img/scenes/" + s + "/";
       window.__PZ_RAIN_FG__ = base + "fg.jpg";
       window.__PZ_RAIN_BG__ = base + "bg.jpg";
     })();
@@ -59,8 +59,8 @@
     <div class="slide slide--current" id="slide-1" data-weather="rain"></div>
     <a class="nav-item nav-item--current" href="#slide-1" aria-hidden="true"></a>
   </div>
-  <script src="/fx/rain/js/index.min.js"></script>
-  <script src="/fx/rain/js/viewport-sync.js"></script>
+  <script src="./js/index.min.js"></script>
+  <script src="./js/viewport-sync.js"></script>
   <script>
     (function () {
       function setPaused(p) {

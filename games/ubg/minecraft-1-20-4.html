@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html style="width:100%;height:100%;background-color:black;">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="EaglercraftZ 1.20 test directory HTML page" />
+    <meta name="keywords" content="eaglercraft, eaglercraftz, minecraft, 1.20, 1.20.4" />
+    <base href="https://cdn.jsdelivr.net/gh/martinmmcyt/minecraft@main/1.20.4/">
+    <title>EaglercraftZ 1.20</title>
+    <meta property="og:locale" content="en-US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="EaglercraftZ 1.20" />
+    <meta property="og:description" content="test directory HTML page" />
+    <link type="image/png" rel="shortcut icon" href="favicon.png" />
+    <script type="text/javascript" src="classes.js"></script>
+    <script type="text/javascript">
+        "use strict";
+        window.addEventListener("load", function() {
+            if (window.location.href.indexOf("file:") === 0) {
+                alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+            } else {
+                var relayId = Math.floor(Math.random() * 3);
+                window.eaglercraftXOpts = {
+                    demoMode: false,
+                    container: "game_frame",
+                    assetsURI: "https://raw.githubusercontent.com/MartinMMCyt/minecraft/main/1.20.4/assets.epk",
+                    localesURI: "lang/",
+                    worldsDB: "worlds",
+                    logInvalidCerts: true,
+                    crashOnUncaughtExceptions: true,
+                    servers: [{
+                            addr: "wss://marty-games.github.io",
+                            name: "§c§lMARTY-GAMES.GITHUB.IO"
+                        },
+                        {
+                            addr: "wss://example.com",
+                            name: "§mSUBSCRIBE TO MMC GAMING"
+                        },
+                        {
+                            addr: "wss://xenamc.com",
+                            name: "XenaMC"
+                        },
+                        {
+                            addr: "ws://localhost:8081/",
+                            name: "Local test server"
+                        },
+                        {
+                            addr: "mc.arch.lol",
+                            name: "ArchMC"
+                        },
+                        {
+                            addr: "wss://web.thanatos-network.xyz",
+                            name: "Thanatos Network"
+                        },
+                        {
+                            addr: "wss://clever-teaching.com",
+                            name: "Clever Teaching"
+                        },
+
+                        {
+                            addr: "wss://mc.nullsworld.net",
+                            name: "null's World"
+                        },
+                        {
+                            addr: "wss://play.monacoeducation.info",
+                            name: "Dylanmc Lifesteal Anarchy+Skyblock+Bedwars"
+                        },
+                        {
+                            addr: "wss:/eagler.velara.cc",
+                            name: "VelaraCraft"
+                        },
+                        {
+                            addr: "wss://prysm.lol",
+                            name: "Prysm"
+                        },
+                        {
+                            addr: "wss://arch.mc",
+                            name: "ArchMC"
+                        },
+                        {
+                            addr: "wss://tuff.ws",
+                            name: "TuffNET"
+                        },
+                        {
+                            addr: "wss://play.heartsmp.net",
+                            name: "Lifesteal & Creative & Anarchy"
+                        },
+                        {
+                            addr: "wss://tuff.tf",
+                            name: "TuffNET"
+                        },
+                        {
+                            addr: "wss://clever-teaching.com",
+                            name: "Clever Teaching"
+                        },
+                        {
+                            addr: "wss://adderall.ir",
+                            name: "AdderallMC"
+                        },
+                        {
+                            addr: "wss://mc.lamplifesteal.xyz",
+                            name: "LampLifesteal"
+                        },
+                        {
+                            addr: "wss://mc.zyth.me",
+                            name: "ZythMC"
+                        },
+                        {
+                            addr: "wss://vanillamc.org",
+                            name: "VanillaMC"
+                        },
+                        {
+                            addr: "wss://communistmc.xyz",
+                            name: "Communist MC"
+                        },
+                        {
+                            addr: "wss://mc.ricenetwork.xyz",
+                            name: "Rice Network X BallCraft"
+                        },
+                        {
+                            addr: "wss://mc.voidsent.net",
+                            name: "Voidsent MC"
+                        },
+                        {
+                            addr: "wss://ethereal.mov",
+                            name: "Ethereal"
+                        },
+                        {
+                            addr: "wss://startmyeducation.net/server",
+                            name: "SME MC"
+                        },
+                        {
+                            addr: "wss://play.ggsmp.net",
+                            name: "GG SMP"
+                        },
+                        {
+                            addr: "wss://play.cactusmc.org",
+                            name: "CactusMC"
+                        },
+                        {
+                            addr: "wss://wanderwood.thatonebot.site",
+                            name: "WanderwoodSMP"
+                        },
+                        {
+                            addr: "wss://play.alphrixnetwork.site",
+                            name: "AlphrixNetwork"
+                        },
+                        {
+                            addr: "wss://bedwetr.bytommy.uk",
+                            name: "BedWetr [Speed bridging and stuf]"
+                        },
+                        {
+                            addr: "wss://30070.ddnod.es",
+                            name: "Skyblock"
+                        },
+                        {
+                            addr: "wss://eagler.galacticnet.cfd",
+                            name: "Radiant Network "
+                        },
+                        {
+                            addr: "wss://30070.ddnod.es",
+                            name: "Skyblock"
+                        },
+                        {
+                            addr: "wss://mc.novanetwork.lol",
+                            name: "NovaNetwork"
+                        },
+                        {
+                            addr: "wss://pixelclient.xyz/mc",
+                            name: "Asspixel"
+                        },
+                        {
+                            addr: "wss://mc.sealcentral.co",
+                            name: "SealCraft + NootServer"
+                        },
+                        {
+                            addr: "wss://blobcraft.club",
+                            name: "BlobCraft"
+                        },
+                        {
+                            addr: "wss://play.shadownetwork.shop",
+                            name: "Shadow Network"
+                        },
+                        {
+                            addr: "wss://velcroftsmp.xyz",
+                            name: "VelcroftSMP"
+                        },
+                        {
+                            addr: "wss://server.dhyrk.com",
+                            name: "Yeag MC"
+                        },
+                        {
+                            addr: "wss://8b4t.org",
+                            name: "Jonarchy"
+                        },
+                        {
+                            addr: "wss://web.strawberrysmp.org/",
+                            name: "StrawberrySMP"
+                        },
+                        {
+                            addr: "wss://velcroftsmp.xyz",
+                            name: "VelcroftSMP"
+                        },
+                        {
+                            addr: "wss://pxy.mcst.host/auroranetwork",
+                            name: "Aurora Network"
+                        },
+                        {
+                            addr: "wss://hellsmp.snubby.top/server",
+                            name: "Hell SMP"
+                        },
+                        {
+                            addr: "wss://bendie.tuff.tf",
+                            name: "Bendies Cool Server"
+                        },
+                        {
+                            addr: "wss://mc.cubecraft.org",
+                            name: "Cubecraft smp "
+                        },
+                        {
+                            addr: "wss://eagler.plebmc.top",
+                            name: "PlebMc"
+                        },
+                        {
+                            addr: "wss://x.mess.eu.org",
+                            name: "MessCraftX"
+                        },
+                        {
+                            addr: "wss://play.avernusmc.net",
+                            name: "AvernusMC"
+                        },
+                        {
+                            addr: "wss://eagler.imcalledfyre.com",
+                            name: "Fyrecraft: Season 4 [BEDWARS] 1.8-1.12"
+                        },
+                        {
+                            addr: "wss://x.mess.eu.org",
+                            name: "MessCraftX"
+                        },
+                        {
+                            addr: "wss://eagler.plebmc.top",
+                            name: "PlebMc"
+                        },
+                        {
+                            addr: "wss://web.thanatos-network.xyz",
+                            name: "Thanatos-Network"
+                        },
+                        {
+                            addr: "wss://smp.zelimmc.com",
+                            name: "ZelimSMP"
+                        },
+                        {
+                            addr: "wss://craft.huntools-bot.xyz",
+                            name: "Huntools"
+                        },
+                        {
+                            addr: "wss://eagler.suckmycraft.online/",
+                            name: "SuckMyCraft"
+                        },
+                        {
+                            addr: "wss://play.citri.xyz",
+                            name: "Citri | 1.21 WORLD GEN"
+                        },
+                        {
+                            addr: "wss://galacticnet.cfd",
+                            name: "Galactic Network"
+                        },
+                        {
+                            addr: "wss://eag.xapktech.xyz/",
+                            name: "NullCraft FACTIONS"
+                        },
+                        {
+                            addr: "wss://hollow.network",
+                            name: "HollowNet"
+                        }
+                    ],
+                    relays: [{
+                            addr: "wss://relay.deev.is/",
+                            comment: "lax1dude relay #1",
+                            primary: relayId === 0
+                        },
+                        {
+                            addr: "wss://relay.lax1dude.net/",
+                            comment: "lax1dude relay #2",
+                            primary: relayId === 1
+                        },
+                        {
+                            addr: "wss://relay.shhnowisnottheti.me/",
+                            comment: "ayunami relay #1",
+                            primary: relayId === 2
+                        }
+                    ]
+                };
+
+                var q = window.location.search;
+                if ((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {
+                    q = new window.URLSearchParams(q);
+                    var s = q.get("server");
+                    if (s) window.eaglercraftXOpts.joinServer = s;
+                }
+
+                main();
+            }
+        });
+    </script>
+</head>
+
+<body style="margin:0px;width:100%;height:100%;overflow:hidden;background-color:black;" id="game_frame">
+</body>
+
+</html>

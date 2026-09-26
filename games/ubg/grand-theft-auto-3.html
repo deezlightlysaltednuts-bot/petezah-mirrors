@@ -1,0 +1,363 @@
+<!-- This is an Ultimate game stash file -->
+<!doctype html>
+<html lang="en">
+<head>
+<base href="https://cdn.jsdelivr.net/gh/larpinguser/HelloWorldScriptBasicFunctionCSharpIsCool@main/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Theft Auto III</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  canvas.emscripten {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+  }
+  #loading-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(10, 15, 29, 0.94);
+    backdrop-filter: blur(20px);
+    padding: 28px 36px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
+    z-index: 50;
+    min-width: 320px;
+    max-width: 90vw;
+  }
+  .loading-title {
+    color: #ff9900;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .loading-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  .progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff7700, #ffbb00);
+    border-radius: 5px;
+    transition: width 0.15s ease;
+  }
+  .loading-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+</head>
+<body>
+<div id="loading-modal">
+  <div class="loading-title">Grand Theft Auto III</div>
+  <div class="loading-subtitle" id="loading-status">Connecting to high-speed CDN shards...</div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progress-fill"></div>
+  </div>
+  <div class="loading-stats">
+    <span id="loading-mb">0 MB / 733 MB</span>
+    <span id="loading-pct">0%</span>
+  </div>
+</div>
+
+<canvas id="canvas" class="emscripten" tabindex="-1"></canvas>
+
+<script>
+  (function() {
+    var _rpl = Element.prototype.requestPointerLock;
+    if (_rpl) {
+      Element.prototype.requestPointerLock = function() {
+        try {
+          var p = _rpl.call(this);
+          if (p && p.catch) p.catch(function(){});
+          return p;
+        } catch(e) {}
+      };
+    }
+  })();
+</script>
+
+<script>
+  var Module = {
+    preRun: [],
+    postRun: [],
+    canvas: document.getElementById('canvas'),
+    setStatus: function(text) {
+      var modal = document.getElementById('loading-modal');
+      var statusEl = document.getElementById('loading-status');
+      if (!text) {
+        if (modal) modal.style.display = 'none';
+      } else {
+        if (statusEl) statusEl.textContent = text;
+      }
+    },
+    totalDependencies: 0,
+    monitorRunDependencies: function(left) {
+      this.totalDependencies = Math.max(this.totalDependencies, left);
+      Module.setStatus(left ? 'Starting Game... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : '');
+    },
+    onRuntimeInitialized: function() {
+      var modal = document.getElementById('loading-modal');
+      if (modal) modal.style.display = 'none';
+    }
+  };
+
+  (function() {
+    var ORIG_FETCH = window.fetch;
+    var CDN_BASES = [
+      "https://cdn.jsdelivr.net/gh/larpinguser/HelloWorldScriptBasicFunctionCSharpIsCool@main/",
+      "https://raw.githubusercontent.com/larpinguser/HelloWorldScriptBasicFunctionCSharpIsCool/main/"
+    ];
+    var CACHE_NAME = "petezah_gta3_v3";
+    var TOTAL_BYTES = 768521611;
+    var CHUNK_SIZE = 19922944;
+    var TOTAL_CHUNKS = 39;
+
+    var statusEl = document.getElementById('loading-status');
+    var fillEl = document.getElementById('progress-fill');
+    var mbEl = document.getElementById('loading-mb');
+    var pctEl = document.getElementById('loading-pct');
+
+    function updateProgress(loadedBytes, stageText) {
+      var pct = Math.min(Math.round((loadedBytes / TOTAL_BYTES) * 100), 100);
+      var mb = (loadedBytes / (1024 * 1024)).toFixed(1);
+      if (fillEl) fillEl.style.width = pct + "%";
+      if (mbEl) mbEl.textContent = mb + " MB / 733 MB";
+      if (pctEl) pctEl.textContent = pct + "%";
+      if (statusEl && stageText) statusEl.textContent = stageText;
+    }
+
+    async function getCachedPackage() {
+      try {
+        if ('caches' in window) {
+          var cache = await caches.open(CACHE_NAME);
+          var match = await cache.match('https://local-petezah/re3.data');
+          if (match) {
+            var ab = await match.arrayBuffer();
+            if (ab.byteLength === TOTAL_BYTES) return ab;
+          }
+        }
+      } catch(e) {}
+      return null;
+    }
+
+    async function setCachedPackage(arrayBuffer) {
+      try {
+        if ('caches' in window) {
+          var cache = await caches.open(CACHE_NAME);
+          var resp = new Response(new Blob([arrayBuffer]), {
+            status: 200,
+            headers: { 'Content-Type': 'application/octet-stream' }
+          });
+          await cache.put('https://local-petezah/re3.data', resp);
+        }
+      } catch(e) {}
+    }
+
+    async function downloadWasmBinary() {
+      for (var b = 0; b < CDN_BASES.length; b++) {
+        try {
+          var res = await ORIG_FETCH.call(window, CDN_BASES[b] + 're3.wasm');
+          if (res.ok) {
+            return await res.arrayBuffer();
+          }
+        } catch(e) {}
+      }
+      return null;
+    }
+
+    async function downloadChunkWithRetry(index, onBytes) {
+      var rawUrl = CDN_BASES[0] + 're3.chunk.' + index;
+      var candidates = [
+        rawUrl,
+        CDN_BASES[1] + 're3.chunk.' + index,
+        "/api/asset-proxy?url=" + encodeURIComponent(rawUrl),
+        "https://api.allorigins.win/raw?url=" + encodeURIComponent(rawUrl),
+        "https://corsproxy.io/?url=" + encodeURIComponent(rawUrl)
+      ];
+
+      for (var b = 0; b < candidates.length; b++) {
+        var url = candidates[b];
+        try {
+          var res = await ORIG_FETCH.call(window, url);
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          var ab = await res.arrayBuffer();
+          if (ab.byteLength < 10000) throw new Error("Incomplete chunk data");
+          onBytes(ab.byteLength);
+          return new Uint8Array(ab);
+        } catch(e) {
+          if (b === candidates.length - 1) throw e;
+        }
+      }
+    }
+
+    async function startAssembly() {
+      var cached = await getCachedPackage();
+      if (cached) {
+        updateProgress(TOTAL_BYTES, "Loading instant cache...");
+        return cached;
+      }
+
+      var combinedBuffer = new ArrayBuffer(TOTAL_BYTES);
+      var combinedU8 = new Uint8Array(combinedBuffer);
+      var loadedBytes = 0;
+
+      updateProgress(0, "Downloading 39 chunks via parallel CDN streams...");
+
+      function onBytes(n) {
+        loadedBytes += n;
+        updateProgress(loadedBytes, "Downloading game engine data (" + Math.round((loadedBytes / TOTAL_BYTES) * 100) + "%)...");
+      }
+
+      var activeJobs = 12;
+      var nextIndex = 0;
+
+      async function worker() {
+        while (nextIndex < TOTAL_CHUNKS) {
+          var idx = nextIndex++;
+          var u8 = await downloadChunkWithRetry(idx, onBytes);
+          var startOffset = idx * CHUNK_SIZE;
+          combinedU8.set(u8, startOffset);
+        }
+      }
+
+      var workers = [];
+      for (var w = 0; w < activeJobs; w++) {
+        workers.push(worker());
+      }
+      await Promise.all(workers);
+
+      updateProgress(TOTAL_BYTES, "Finalizing game package...");
+      setCachedPackage(combinedBuffer);
+      return combinedBuffer;
+    }
+
+    (async function launchGTA3() {
+      try {
+        var wasmPromise = downloadWasmBinary();
+        var dataPromise = startAssembly();
+
+        var [wasmBuffer, packageArrayBuffer] = await Promise.all([wasmPromise, dataPromise]);
+
+        if (wasmBuffer) {
+          Module["wasmBinary"] = wasmBuffer;
+        }
+
+        Module["locateFile"] = function(path, prefix) {
+          if (path.indexOf("http") === 0) return path;
+          return CDN_BASES[0] + path;
+        };
+
+        // Feed direct ArrayBuffer to Emscripten
+        Module["getPreloadedPackage"] = function(name, size) {
+          if (name === "re3.data" || name.indexOf("re3.data") !== -1) {
+            return packageArrayBuffer;
+          }
+          return null;
+        };
+
+        if (!Module["preloadResults"]) Module["preloadResults"] = {};
+        Module["preloadResults"]["re3.data"] = { fromCache: true };
+
+        window.fetch = function(url, opts) {
+          if (typeof url === 'string') {
+            if (/re3\.data$/i.test(url) && !/\.(chunk|part)/.test(url)) {
+              return Promise.resolve(new Response(new Blob([packageArrayBuffer]), {
+                status: 200,
+                headers: { 'Content-Type': 'application/octet-stream' }
+              }));
+            }
+            if (!url.startsWith('http') && !url.startsWith('blob:') && !url.startsWith('data:')) {
+              url = CDN_BASES[0] + url;
+            }
+          }
+          return ORIG_FETCH.call(this, url, opts);
+        };
+
+        if (statusEl) statusEl.textContent = "Booting Grand Theft Auto III...";
+
+        var s = document.createElement("script");
+        s.src = CDN_BASES[0] + "re3.js";
+        s.crossOrigin = "anonymous";
+        s.onload = function() {
+          console.log("re3.js loaded successfully");
+        };
+        s.onerror = function(err) {
+          console.error("Failed to load re3.js:", err);
+          if (statusEl) statusEl.textContent = "Error loading re3.js engine script.";
+        };
+        document.body.appendChild(s);
+      } catch(err) {
+        console.error("GTA 3 Loading Error:", err);
+        if (statusEl) statusEl.textContent = "Failed to load: " + (err.message || err);
+      }
+    })();
+
+    var origGetContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function(type, attrs) {
+      if (type && (type.indexOf('webgl') === 0 || type.indexOf('experimental-webgl') === 0)) {
+        attrs = Object.assign({}, attrs || {}, { preserveDrawingBuffer: true, alpha: false });
+      }
+      return origGetContext.call(this, type, attrs);
+    };
+  })();
+
+  (function() {
+    var RealAC = window.AudioContext || window.webkitAudioContext;
+    if (!RealAC) return;
+    var contexts = [];
+    function resumeAll() {
+      for (var i = 0; i < contexts.length; i++) {
+        var ctx = contexts[i];
+        if (ctx.state === 'suspended') ctx.resume().catch(function(){});
+      }
+    }
+    document.addEventListener('click', resumeAll);
+    document.addEventListener('touchstart', resumeAll);
+    document.addEventListener('keydown', resumeAll);
+    var Wrapper = function(options) {
+      var ctx = new RealAC(options);
+      contexts.push(ctx);
+      if (ctx.state === 'suspended') ctx.resume().catch(function(){});
+      return ctx;
+    };
+    Wrapper.prototype = RealAC.prototype;
+    window.AudioContext = Wrapper;
+    if (window.webkitAudioContext) window.webkitAudioContext = Wrapper;
+  })();
+</script>
+</body>
+</html>

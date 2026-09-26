@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balls? | PeteZah</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #unity-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+    #pete-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 24px 32px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      z-index: 100;
+      min-width: 300px;
+      backdrop-filter: blur(16px);
+    }
+    .pete-title {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .pete-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+    .pete-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .pete-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ec4899, #be185d);
+      border-radius: 4px;
+      transition: width 0.2s ease;
+    }
+    .pete-pct {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div id="pete-loader">
+    <div class="pete-title">Balls?</div>
+    <div class="pete-sub" id="pete-status">Connecting to Game Servers...</div>
+    <div class="pete-bar-bg">
+      <div class="pete-bar-fill" id="pete-bar"></div>
+    </div>
+    <div class="pete-pct" id="pete-pct">0%</div>
+  </div>
+
+  <div id="unity-container">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+  </div>
+
+  <script>
+    // Stub YouTube Games API
+    window.ytgame = {
+      gameReady: function() {},
+      gameLoaded: function() {},
+      sdk: {
+        init: function() { return Promise.resolve(); }
+      }
+    };
+
+    (async function() {
+      const CACHE_NAME = 'petezah-goingballs-v2';
+      const statusEl = document.getElementById('pete-status');
+      const barEl = document.getElementById('pete-bar');
+      const pctEl = document.getElementById('pete-pct');
+      const loaderModal = document.getElementById('pete-loader');
+
+      function updateUI(pct, text) {
+        if (barEl) barEl.style.width = pct + '%';
+        if (pctEl) pctEl.textContent = Math.round(pct) + '%';
+        if (statusEl && text) statusEl.textContent = text;
+      }
+
+      const CDN_EDGES = [
+        "https://cdn.jsdelivr.net/gh/bubbls/youtube-playables@main/going-balls/",
+        "https://fastly.jsdelivr.net/gh/bubbls/youtube-playables@main/going-balls/",
+        "https://gcore.jsdelivr.net/gh/bubbls/youtube-playables@main/going-balls/",
+        "https://testingcf.jsdelivr.net/gh/bubbls/youtube-playables@main/going-balls/"
+      ];
+
+      const RAW_BUNDLE = "https://raw.githubusercontent.com/bubbls/youtube-playables/refs/heads/main/going-balls/StreamingAssets/aa/WebGL/levels_assets_all_c0fee66fd4e827f8587343bcdcc13f1f.bundle";
+
+      const originalFetch = window.fetch;
+      window.fetch = async function(resource, options) {
+        let url = typeof resource === 'string' ? resource : (resource ? resource.url : '');
+        
+        // Intercept 21.8MB levels bundle
+        if (url.includes('levels_assets_all_c0fee66fd4e827f8587343bcdcc13f1f.bundle')) {
+          try {
+            const cache = await caches.open(CACHE_NAME);
+            const cached = await cache.match('levels_bundle');
+            if (cached) return cached;
+          } catch(e) {}
+
+          const targets = [
+            "/api/asset-proxy?url=" + encodeURIComponent(RAW_BUNDLE),
+            "https://api.allorigins.win/raw?url=" + encodeURIComponent(RAW_BUNDLE),
+            "https://rawcdn.githack.com/bubbls/youtube-playables/96562534604b2517a192e4fa3638b246adde7bc9/going-balls/StreamingAssets/aa/WebGL/levels_assets_all_c0fee66fd4e827f8587343bcdcc13f1f.bundle"
+          ];
+
+          for (const target of targets) {
+            try {
+              const res = await originalFetch(target);
+              if (res.ok) {
+                const clone = res.clone();
+                try {
+                  const cache = await caches.open(CACHE_NAME);
+                  await cache.put('levels_bundle', clone);
+                } catch(e) {}
+                return res;
+              }
+            } catch(e) {}
+          }
+        }
+
+        // Intercept relative asset paths
+        if (typeof resource === 'string' && !resource.startsWith('http') && !resource.startsWith('blob:') && !resource.startsWith('data:')) {
+          const clean = resource.replace(/^\.?\//, '');
+          for (let i = 0; i < CDN_EDGES.length; i++) {
+            try {
+              const res = await originalFetch(CDN_EDGES[i] + clean, options);
+              if (res.ok) return res;
+            } catch(e) {}
+          }
+          // Proxy failover
+          return originalFetch("/api/asset-proxy?url=" + encodeURIComponent(CDN_EDGES[0] + clean), options);
+        }
+
+        return originalFetch(resource, options);
+      };
+
+      updateUI(15, "Loading WebGL Engine...");
+
+      // Load loader script with mirror fallbacks
+      async function loadUnityLoader() {
+        const loaderCandidates = [
+          CDN_EDGES[0] + "Build/WebGL_16.loader.js",
+          CDN_EDGES[1] + "Build/WebGL_16.loader.js",
+          CDN_EDGES[2] + "Build/WebGL_16.loader.js",
+          "/api/asset-proxy?url=" + encodeURIComponent(CDN_EDGES[0] + "Build/WebGL_16.loader.js")
+        ];
+
+        for (const src of loaderCandidates) {
+          try {
+            const res = await originalFetch(src);
+            if (res.ok) {
+              const code = await res.text();
+              const script = document.createElement("script");
+              script.text = code;
+              document.head.appendChild(script);
+              if (typeof createUnityInstance === "function") {
+                return true;
+              }
+            }
+          } catch(e) {}
+        }
+        return false;
+      }
+
+      const success = await loadUnityLoader();
+      if (!success || typeof createUnityInstance !== "function") {
+        if (statusEl) statusEl.textContent = "Failed to load WebGL engine.";
+        return;
+      }
+
+      updateUI(30, "Initializing 3D Canvas...");
+
+      const canvas = document.querySelector("#unity-canvas");
+      const config = {
+        dataUrl: CDN_EDGES[0] + "Build/WebGL_16.data.unityweb",
+        frameworkUrl: CDN_EDGES[0] + "Build/WebGL_16.framework.js.unityweb",
+        codeUrl: CDN_EDGES[0] + "Build/WebGL_16.wasm.unityweb",
+        streamingAssetsUrl: CDN_EDGES[0] + "StreamingAssets",
+        companyName: "Pronetis",
+        productName: "Going Balls",
+        productVersion: "16",
+      };
+
+      createUnityInstance(canvas, config, (progress) => {
+        updateUI(30 + (progress * 65), "Loading Levels (" + Math.round(progress * 100) + "%)...");
+      }).then(() => {
+        updateUI(100, "Starting Game!");
+        if (loaderModal) loaderModal.style.display = "none";
+      }).catch((err) => {
+        console.error("Unity Instance Error:", err);
+        if (statusEl) statusEl.textContent = "Engine Error: " + (err?.message || err);
+      });
+    })();
+  </script>
+</body>
+</html>

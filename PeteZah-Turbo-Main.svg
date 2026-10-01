@@ -35,10 +35,23 @@
       : originalCreateElement(tagName, options);
   };
 })();
-var l=document.createElement('link');l.rel='stylesheet';l.crossOrigin='';l.href="./assets/index-CRfXiAgr.css?v=01-10-2026";document.head.appendChild(l);
-var s=document.createElement('script');s.type='module';s.crossOrigin='';s.src="./assets/index-U_2yaLxZ.js?v=01-10-2026";document.body.appendChild(s);
-var m=document.createElement('script');m.src="m4thx/index.js?v=01-10-2026";document.body.appendChild(m);
-var c=document.createElement('script');c.src="q9vx/sj.all.js?v=01-10-2026";document.body.appendChild(c);
+var cdnBase = (function() {
+    var h = location.href;
+    var m = h.match(/(https?:\/\/[^\/]+\/(?:gh|npm)\/[^\/]+\/[^\/@]+@[^\/]+\/)/);
+    if (m) return m[1];
+    var m2 = h.match(/(https?:\/\/[^\/]+\/gh\/[^\/]+\/[^\/]+\/[^\/]+\/)/);
+    if (m2) return m2[1];
+    var idx = h.lastIndexOf('/mirrors/');
+    if (idx !== -1) return h.substring(0, idx + 1);
+    return h.substring(0, h.lastIndexOf('/') + 1);
+  })();
+  var b = document.createElement('base');
+  b.href = cdnBase;
+  document.head.appendChild(b);
+var l=document.createElement('link');l.rel='stylesheet';l.crossOrigin='';l.href=cdnBase + "assets/index-CRfXiAgr.css?v=01-10-2026";document.head.appendChild(l);
+var s=document.createElement('script');s.type='module';s.crossOrigin='';s.src=cdnBase + "assets/index-U_2yaLxZ.js?v=01-10-2026";document.body.appendChild(s);
+var m=document.createElement('script');m.src=cdnBase + "m4thx/index.js?v=01-10-2026";document.body.appendChild(m);
+var c=document.createElement('script');c.src=cdnBase + "q9vx/sj.all.js?v=01-10-2026";document.body.appendChild(c);
       ]]></script>
     </body>
   </foreignObject>

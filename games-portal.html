@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeteZah Games Portal - Official Games Library </title>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #060913;
+      color: #f3f4f6;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: #fbbf24;
+      font-weight: 600;
+    }
+
+    /* SEARCH & FILTER */
+    .search-box {
+      flex: 1;
+      max-width: 460px;
+      min-width: 240px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 10px 18px 10px 40px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: #f59e0b;
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    /* AD BANNER SECTION */
+    .ad-banner-container {
+      width: 100%;
+      max-width: 980px;
+      margin: 16px auto 0;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ad-wrapper {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* CATEGORIES BAR */
+    .categories {
+      display: flex;
+      gap: 8px;
+      padding: 16px 24px 0;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .categories::-webkit-scrollbar { display: none; }
+
+    .cat-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #9ca3af;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .cat-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .cat-btn.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+    }
+
+    /* MAIN CONTAINER & GRID */
+    main {
+      flex: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 24px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .game-count {
+      font-size: 12px;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .game-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.2);
+    }
+
+    .thumb-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #020617;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .game-card:hover .thumb-img {
+      transform: scale(1.05);
+    }
+
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .game-card:hover .play-overlay {
+      opacity: 1;
+    }
+
+    .play-badge {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    }
+
+    .card-info {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .game-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tags {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 600;
+      color: #9ca3af;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* EMBED MODAL POPUP */
+    #modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    #modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 1100px;
+      height: 90vh;
+      background: #0b0f19;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.15);
+    }
+
+    .modal-header {
+      padding: 12px 18px;
+      background: #070a12;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #d1d5db;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .modal-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .modal-btn.close {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+
+    .modal-btn.close:hover {
+      background: rgba(239, 68, 68, 0.35);
+    }
+
+    .player-iframe {
+      width: 100%;
+      flex: 1;
+      border: none;
+      background: #000;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #fbbf24;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="brand">
+      <div class="logo-badge">🎮</div>
+      <div>
+        <div class="brand-title">PeteZah Games Portal</div>
+        <div class="brand-sub">⚡ Powered by Official PeteZah Games API</div>
+      </div>
+    </a>
+
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input" placeholder="Search PeteZah games..." oninput="handleSearch()">
+    </div>
+  </header>
+
+  
+
+  <!-- CATEGORIES -->
+  <div class="categories" id="category-bar">
+    <button class="cat-btn active" onclick="setCategory('All')">All PeteZah Games</button>
+    <button class="cat-btn" onclick="setCategory('Action')">⚔️ Action</button>
+    <button class="cat-btn" onclick="setCategory('Strategy')">🧠 Strategy</button>
+    <button class="cat-btn" onclick="setCategory('Shooting')">🔫 Shooting</button>
+    <button class="cat-btn" onclick="setCategory('Sports')">⚽ Sports</button>
+    <button class="cat-btn" onclick="setCategory('Skill')">🎯 Skill</button>
+    <button class="cat-btn" onclick="setCategory('Racing')">🏎️ Racing</button>
+    <button class="cat-btn" onclick="setCategory('2 Player')">👥 2 Player</button>
+    <button class="cat-btn" onclick="setCategory('Multiplayer')">🌐 Multiplayer</button>
+  </div>
+
+  <!-- MAIN CATALOG -->
+  <main>
+    <div class="section-header">
+      <div class="section-title">
+        <span>Official PeteZah Games</span>
+        <span id="game-counter" class="game-count">Loading...</span>
+      </div>
+    </div>
+
+    <div class="game-grid" id="game-grid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </main>
+
+  <!-- MODAL GAME PLAYER -->
+  <div id="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span style="font-size: 20px;">🕹️</span>
+          <span id="modal-game-title" class="modal-title">Game Title</span>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-btn" onclick="copyEmbedCode()">📋 Copy Embed Code</button>
+          <button class="modal-btn" onclick="toggleModalFullscreen()">⛶ Fullscreen</button>
+          <button class="modal-btn close" onclick="closeModal()">✕ Close</button>
+        </div>
+      </div>
+      <iframe id="modal-iframe" class="player-iframe" allow="autoplay; fullscreen; gamepad; clipboard-read; clipboard-write" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Official PeteZah Unblocked Games API • Full HTML5 catalog with multi-ad monetization.</p>
+    <p style="margin-top: 6px;"><a href="/" target="_blank">Official PeteZah Live Mirror</a></p>
+  </footer>
+
+  <script>
+    // PeteZah Official Games Collection
+    const PETEZAH_GAMES = [
+  {
+    "id": "60-seconds-reatomized",
+    "title": "60 Seconds! Reatomized",
+    "categories": [
+      "Strategy",
+      "Action"
+    ],
+    "url": "/games/ubg/60-seconds-reatomized.html",
+    "relativeUrl": "/games/ubg/60-seconds-reatomized.html",
+    "thumbnail": "/storage/images/games/60-seconds-reatomized.svg",
+    "embedUrl": "/embed.html?game=60-seconds-reatomized",
+    "iframeHtml": "<iframe src=\"/embed.html?game=60-seconds-reatomized\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "baby-sniper-in-vietnam",
+    "title": "Baby Sniper In Vietnam",
+    "categories": [
+      "Shooting",
+      "Action"
+    ],
+    "url": "/games/ubg/baby-sniper-in-vietnam.html",
+    "relativeUrl": "/games/ubg/baby-sniper-in-vietnam.html",
+    "thumbnail": "/storage/images/games/baby-sniper-in-vietnam.svg",
+    "embedUrl": "/embed.html?game=baby-sniper-in-vietnam",
+    "iframeHtml": "<iframe src=\"/embed.html?game=baby-sniper-in-vietnam\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "basket-random",
+    "title": "Basket Random",
+    "categories": [
+      "Sports",
+      "2 Player"
+    ],
+    "url": "/games/ubg/basket-random.html",
+    "relativeUrl": "/games/ubg/basket-random.html",
+    "thumbnail": "/storage/images/games/basket-random.svg",
+    "embedUrl": "/embed.html?game=basket-random",
+    "iframeHtml": "<iframe src=\"/embed.html?game=basket-random\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "clustertruck",
+    "title": "ClusterTruck",
+    "categories": [
+      "Action",
+      "Skill"
+    ],
+    "url": "/games/ubg/clustertruck.html",
+    "relativeUrl": "/games/ubg/clustertruck.html",
+    "thumbnail": "/storage/images/games/clustertruck.svg",
+    "embedUrl": "/embed.html?game=clustertruck",
+    "iframeHtml": "<iframe src=\"/embed.html?game=clustertruck\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "drive-mad",
+    "title": "Drive Mad",
+    "categories": [
+      "Racing",
+      "Skill"
+    ],
+    "url": "/games/ubg/drive-mad.html",
+    "relativeUrl": "/games/ubg/drive-mad.html",
+    "thumbnail": "/storage/images/games/drive-mad.png",
+    "embedUrl": "/embed.html?game=drive-mad",
+    "iframeHtml": "<iframe src=\"/embed.html?game=drive-mad\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "garten-of-banban",
+    "title": "Garten of Banban",
+    "categories": [
+      "Action",
+      "Strategy"
+    ],
+    "url": "/games/ubg/garten-of-banban.html",
+    "relativeUrl": "/games/ubg/garten-of-banban.html",
+    "thumbnail": "/storage/images/games/garten-of-banban.svg",
+    "embedUrl": "/embed.html?game=garten-of-banban",
+    "iframeHtml": "<iframe src=\"/embed.html?game=garten-of-banban\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "getaway-shootout",
+    "title": "Getaway Shootout",
+    "categories": [
+      "Action",
+      "2 Player"
+    ],
+    "url": "/games/ubg/getaway-shootout.html",
+    "relativeUrl": "/games/ubg/getaway-shootout.html",
+    "thumbnail": "/storage/images/games/getaway-shootout.svg",
+    "embedUrl": "/embed.html?game=getaway-shootout",
+    "iframeHtml": "<iframe src=\"/embed.html?game=getaway-shootout\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "google",
+    "title": "Google Classic",
+    "categories": [
+      "Tools"
+    ],
+    "url": "/games/ubg/google.html",
+    "relativeUrl": "/games/ubg/google.html",
+    "thumbnail": "/storage/images/games/google.svg",
+    "embedUrl": "/embed.html?game=google",
+    "iframeHtml": "<iframe src=\"/embed.html?game=google\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "grand-theft-auto-3",
+    "title": "Grand Theft Auto 3",
+    "categories": [
+      "Action",
+      "Racing"
+    ],
+    "url": "/games/ubg/grand-theft-auto-3.html",
+    "relativeUrl": "/games/ubg/grand-theft-auto-3.html",
+    "thumbnail": "/storage/images/games/grand-theft-auto-3.svg",
+    "embedUrl": "/embed.html?game=grand-theft-auto-3",
+    "iframeHtml": "<iframe src=\"/embed.html?game=grand-theft-auto-3\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "hollow-knight-silksong",
+    "title": "Hollow Knight: Silksong",
+    "categories": [
+      "Action",
+      "Skill"
+    ],
+    "url": "/games/ubg/hollow-knight-silksong.html",
+    "relativeUrl": "/games/ubg/hollow-knight-silksong.html",
+    "thumbnail": "/storage/images/games/hollow-knight-silksong.svg",
+    "embedUrl": "/embed.html?game=hollow-knight-silksong",
+    "iframeHtml": "<iframe src=\"/embed.html?game=hollow-knight-silksong\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "live-tv",
+    "title": "Live TV",
+    "categories": [
+      "Tools"
+    ],
+    "url": "/games/ubg/live-tv.html",
+    "relativeUrl": "/games/ubg/live-tv.html",
+    "thumbnail": "/storage/images/games/live-tv.svg",
+    "embedUrl": "/embed.html?game=live-tv",
+    "iframeHtml": "<iframe src=\"/embed.html?game=live-tv\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "minecraft-1-12-2",
+    "title": "Minecraft 1.12.2",
+    "categories": [
+      "Action",
+      "Strategy"
+    ],
+    "url": "/games/ubg/minecraft-1-12-2.html",
+    "relativeUrl": "/games/ubg/minecraft-1-12-2.html",
+    "thumbnail": "/storage/images/games/minecraft-1-12-2.svg",
+    "embedUrl": "/embed.html?game=minecraft-1-12-2",
+    "iframeHtml": "<iframe src=\"/embed.html?game=minecraft-1-12-2\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "minecraft-1-20-4",
+    "title": "Minecraft 1.20.4",
+    "categories": [
+      "Action",
+      "Strategy"
+    ],
+    "url": "/games/ubg/minecraft-1-20-4.html",
+    "relativeUrl": "/games/ubg/minecraft-1-20-4.html",
+    "thumbnail": "/storage/images/games/minecraft-1-20-4.svg",
+    "embedUrl": "/embed.html?game=minecraft-1-20-4",
+    "iframeHtml": "<iframe src=\"/embed.html?game=minecraft-1-20-4\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "monkey-mart",
+    "title": "Monkey Mart",
+    "categories": [
+      "Strategy",
+      "Skill"
+    ],
+    "url": "/games/ubg/monkey-mart.html",
+    "relativeUrl": "/games/ubg/monkey-mart.html",
+    "thumbnail": "/storage/images/games/monkey-mart.svg",
+    "embedUrl": "/embed.html?game=monkey-mart",
+    "iframeHtml": "<iframe src=\"/embed.html?game=monkey-mart\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "rooftop-run",
+    "title": "Rooftop Run",
+    "categories": [
+      "Action",
+      "Skill"
+    ],
+    "url": "/games/ubg/rooftop-run.html",
+    "relativeUrl": "/games/ubg/rooftop-run.html",
+    "thumbnail": "/storage/images/games/rooftop-run.svg",
+    "embedUrl": "/embed.html?game=rooftop-run",
+    "iframeHtml": "<iframe src=\"/embed.html?game=rooftop-run\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "thats-not-my-neighbor",
+    "title": "That's Not My Neighbor",
+    "categories": [
+      "Strategy",
+      "Action"
+    ],
+    "url": "/games/ubg/thats-not-my-neighbor.html",
+    "relativeUrl": "/games/ubg/thats-not-my-neighbor.html",
+    "thumbnail": "/storage/images/games/thats-not-my-neighbor.svg",
+    "embedUrl": "/embed.html?game=thats-not-my-neighbor",
+    "iframeHtml": "<iframe src=\"/embed.html?game=thats-not-my-neighbor\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "youtube-embed-viewer",
+    "title": "YouTube Embed Viewer",
+    "categories": [
+      "Tools"
+    ],
+    "url": "/games/ubg/youtube-embed-viewer.html",
+    "relativeUrl": "/games/ubg/youtube-embed-viewer.html",
+    "thumbnail": "/storage/images/games/youtube-embed-viewer.svg",
+    "embedUrl": "/embed.html?game=youtube-embed-viewer",
+    "iframeHtml": "<iframe src=\"/embed.html?game=youtube-embed-viewer\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "1v1-lol",
+    "title": "1v1.LOL",
+    "categories": [
+      "Shooting",
+      "Multiplayer",
+      "Action"
+    ],
+    "url": "/games/ubg/1v1-lol.html",
+    "relativeUrl": "/games/ubg/1v1-lol.html",
+    "thumbnail": "/storage/images/games/1v1-lol.svg",
+    "embedUrl": "/embed.html?game=1v1-lol",
+    "iframeHtml": "<iframe src=\"/embed.html?game=1v1-lol\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "balls",
+    "title": "Balls?",
+    "categories": [
+      "Arcade",
+      "Skill"
+    ],
+    "url": "/games/ubg/balls.html",
+    "relativeUrl": "/games/ubg/balls.html",
+    "thumbnail": "/storage/images/games/balls.svg",
+    "embedUrl": "/embed.html?game=balls",
+    "iframeHtml": "<iframe src=\"/embed.html?game=balls\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "eaglercraft-wurst",
+    "title": "Eaglercraft (Wurst Client)",
+    "categories": [
+      "Sandbox",
+      "Multiplayer"
+    ],
+    "url": "/games/ubg/eaglercraft-wurst.html",
+    "relativeUrl": "/games/ubg/eaglercraft-wurst.html",
+    "thumbnail": "/storage/images/games/eaglercraft-wurst.svg",
+    "embedUrl": "/embed.html?game=eaglercraft-wurst",
+    "iframeHtml": "<iframe src=\"/embed.html?game=eaglercraft-wurst\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "counter-strike-psp",
+    "title": "Counter-Strike Portable",
+    "categories": [
+      "Shooting",
+      "Action",
+      "Retro"
+    ],
+    "url": "/games/ubg/counter-strike-psp.html",
+    "relativeUrl": "/games/ubg/counter-strike-psp.html",
+    "thumbnail": "/storage/images/games/counter-strike-psp.svg",
+    "embedUrl": "/embed.html?game=counter-strike-psp",
+    "iframeHtml": "<iframe src=\"/embed.html?game=counter-strike-psp\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "idle-breakout",
+    "title": "Idle Breakout",
+    "categories": [
+      "Idle",
+      "Strategy",
+      "Casual"
+    ],
+    "url": "/games/ubg/idle-breakout.html",
+    "relativeUrl": "/games/ubg/idle-breakout.html",
+    "thumbnail": "/storage/images/games/idle-breakout.svg",
+    "embedUrl": "/embed.html?game=idle-breakout",
+    "iframeHtml": "<iframe src=\"/embed.html?game=idle-breakout\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "hollow-knight",
+    "title": "Hollow Knight",
+    "categories": [
+      "Action",
+      "Adventure",
+      "Platformer"
+    ],
+    "url": "/games/ubg/hollow-knight.html",
+    "relativeUrl": "/games/ubg/hollow-knight.html",
+    "thumbnail": "/storage/images/games/hollow-knight.svg",
+    "embedUrl": "/embed.html?game=hollow-knight",
+    "iframeHtml": "<iframe src=\"/embed.html?game=hollow-knight\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "slow-roads",
+    "title": "Slow Roads",
+    "categories": [
+      "Driving",
+      "Simulation",
+      "Relaxing"
+    ],
+    "url": "/games/ubg/slow-roads.html",
+    "relativeUrl": "/games/ubg/slow-roads.html",
+    "thumbnail": "/storage/images/games/slow-roads.svg",
+    "embedUrl": "/embed.html?game=slow-roads",
+    "iframeHtml": "<iframe src=\"/embed.html?game=slow-roads\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "tiny-fishing",
+    "title": "Tiny Fishing",
+    "categories": [
+      "Casual",
+      "Upgrade",
+      "Skill"
+    ],
+    "url": "/games/ubg/tiny-fishing.html",
+    "relativeUrl": "/games/ubg/tiny-fishing.html",
+    "thumbnail": "/storage/images/games/tiny-fishing.svg",
+    "embedUrl": "/embed.html?game=tiny-fishing",
+    "iframeHtml": "<iframe src=\"/embed.html?game=tiny-fishing\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "grand-theft-auto-vice-city",
+    "title": "Grand Theft Auto: Vice City",
+    "categories": [
+      "Action",
+      "Open World",
+      "Retro"
+    ],
+    "url": "/games/ubg/grand-theft-auto-vice-city.html",
+    "relativeUrl": "/games/ubg/grand-theft-auto-vice-city.html",
+    "thumbnail": "/storage/images/games/grand-theft-auto-vice-city.svg",
+    "embedUrl": "/embed.html?game=grand-theft-auto-vice-city",
+    "iframeHtml": "<iframe src=\"/embed.html?game=grand-theft-auto-vice-city\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  },
+  {
+    "id": "madden-nfl-24",
+    "title": "Madden NFL 24 Mobile",
+    "categories": [
+      "Sports",
+      "Simulation"
+    ],
+    "url": "/games/ubg/madden-nfl-24.html",
+    "relativeUrl": "/games/ubg/madden-nfl-24.html",
+    "thumbnail": "/storage/images/games/madden-nfl-24.svg",
+    "embedUrl": "/embed.html?game=madden-nfl-24",
+    "iframeHtml": "<iframe src=\"/embed.html?game=madden-nfl-24\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+  }
+];
+
+    let allGames = PETEZAH_GAMES;
+    let currentCategory = 'All';
+    let searchQuery = '';
+    let activeGame = null;
+
+    const basePath = window.location.pathname.includes('/petezah-mirrors') ? '/petezah-mirrors' : '';
+
+    async function loadGames() {
+      try {
+        const res = await fetch(basePath + '/api/v1/games/list.json');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.games && data.games.length > 0) {
+            allGames = data.games;
+          }
+        }
+      } catch (e) {
+        console.log('Using integrated PeteZah catalog', e);
+      }
+      renderGames();
+    }
+
+    function renderGames() {
+      const grid = document.getElementById('game-grid');
+      const filtered = allGames.filter(g => {
+        const matchesCat = currentCategory === 'All' || (g.categories && g.categories.includes(currentCategory));
+        const matchesQuery = !searchQuery || g.title.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCat && matchesQuery;
+      });
+
+      document.getElementById('game-counter').textContent = filtered.length + ' Games';
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #9ca3af;">No games found matching your search.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(game => `
+        <div class="game-card" onclick="openGame('${game.id}', '${game.title}')">
+          <div class="thumb-wrap">
+            <img class="thumb-img" src="${game.thumbnail}" alt="${game.title}" onerror="this.src='${basePath}/logo.png'">
+            <div class="play-overlay">
+              <span class="play-badge">▶ PLAY NOW</span>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="game-title">${game.title}</div>
+            <div class="tags">
+              ${(game.categories || ['Games']).map(cat => `<span class="tag">${cat}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(cat) || (cat === 'All' && btn.textContent.includes('All')));
+      });
+      renderGames();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('search-input').value.trim();
+      renderGames();
+    }
+
+    function openGame(gameId, title) {
+      activeGame = { id: gameId, title };
+      const modal = document.getElementById('modal');
+      const iframe = document.getElementById('modal-iframe');
+      document.getElementById('modal-game-title').textContent = title;
+      
+      iframe.src = basePath + '/embed.html?game=' + encodeURIComponent(gameId);
+      modal.classList.add('open');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      const iframe = document.getElementById('modal-iframe');
+      modal.classList.remove('open');
+      iframe.src = '';
+      activeGame = null;
+    }
+
+    function copyEmbedCode() {
+      if (!activeGame) return;
+      const embedUrl = '/embed.html?game=' + encodeURIComponent(activeGame.id);
+      const snippet = '<iframe src="' + embedUrl + '" width="100%" height="640" frameborder="0" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe>';
+      navigator.clipboard.writeText(snippet);
+      alert('PeteZah Embed HTML snippet copied to clipboard!\n\n' + snippet);
+    }
+
+    function toggleModalFullscreen() {
+      const modalContent = document.querySelector('.modal-content');
+      if (!document.fullscreenElement) {
+        modalContent.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    // Initialize
+    loadGames();
+  </script>
+</body>
+</html>

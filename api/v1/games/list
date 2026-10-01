@@ -1,0 +1,369 @@
+{
+  "status": "success",
+  "source": "PeteZah Official Games Library",
+  "total": 27,
+  "monetization": {
+    "adUnits": [
+      "2456542"
+    ],
+    "prerollCountdownSeconds": 5,
+    "interstitialEnabled": true
+  },
+  "games": [
+    {
+      "id": "60-seconds-reatomized",
+      "title": "60 Seconds! Reatomized",
+      "categories": [
+        "Strategy",
+        "Action"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/60-seconds-reatomized.html",
+      "relativeUrl": "/games/ubg/60-seconds-reatomized.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/60-seconds-reatomized.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=60-seconds-reatomized",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=60-seconds-reatomized\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "baby-sniper-in-vietnam",
+      "title": "Baby Sniper In Vietnam",
+      "categories": [
+        "Shooting",
+        "Action"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/baby-sniper-in-vietnam.html",
+      "relativeUrl": "/games/ubg/baby-sniper-in-vietnam.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/baby-sniper-in-vietnam.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=baby-sniper-in-vietnam",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=baby-sniper-in-vietnam\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "basket-random",
+      "title": "Basket Random",
+      "categories": [
+        "Sports",
+        "2 Player"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/basket-random.html",
+      "relativeUrl": "/games/ubg/basket-random.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/basket-random.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=basket-random",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=basket-random\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "clustertruck",
+      "title": "ClusterTruck",
+      "categories": [
+        "Action",
+        "Skill"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/clustertruck.html",
+      "relativeUrl": "/games/ubg/clustertruck.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/clustertruck.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=clustertruck",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=clustertruck\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "drive-mad",
+      "title": "Drive Mad",
+      "categories": [
+        "Racing",
+        "Skill"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/drive-mad.html",
+      "relativeUrl": "/games/ubg/drive-mad.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/drive-mad.png",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=drive-mad",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=drive-mad\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "garten-of-banban",
+      "title": "Garten of Banban",
+      "categories": [
+        "Action",
+        "Strategy"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/garten-of-banban.html",
+      "relativeUrl": "/games/ubg/garten-of-banban.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/garten-of-banban.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=garten-of-banban",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=garten-of-banban\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "getaway-shootout",
+      "title": "Getaway Shootout",
+      "categories": [
+        "Action",
+        "2 Player"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/getaway-shootout.html",
+      "relativeUrl": "/games/ubg/getaway-shootout.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/getaway-shootout.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=getaway-shootout",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=getaway-shootout\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "google",
+      "title": "Google Classic",
+      "categories": [
+        "Tools"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/google.html",
+      "relativeUrl": "/games/ubg/google.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/google.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=google",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=google\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "grand-theft-auto-3",
+      "title": "Grand Theft Auto 3",
+      "categories": [
+        "Action",
+        "Racing"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/grand-theft-auto-3.html",
+      "relativeUrl": "/games/ubg/grand-theft-auto-3.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/grand-theft-auto-3.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=grand-theft-auto-3",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=grand-theft-auto-3\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "hollow-knight-silksong",
+      "title": "Hollow Knight: Silksong",
+      "categories": [
+        "Action",
+        "Skill"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/hollow-knight-silksong.html",
+      "relativeUrl": "/games/ubg/hollow-knight-silksong.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/hollow-knight-silksong.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=hollow-knight-silksong",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=hollow-knight-silksong\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "live-tv",
+      "title": "Live TV",
+      "categories": [
+        "Tools"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/live-tv.html",
+      "relativeUrl": "/games/ubg/live-tv.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/live-tv.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=live-tv",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=live-tv\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "minecraft-1-12-2",
+      "title": "Minecraft 1.12.2",
+      "categories": [
+        "Action",
+        "Strategy"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/minecraft-1-12-2.html",
+      "relativeUrl": "/games/ubg/minecraft-1-12-2.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/minecraft-1-12-2.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=minecraft-1-12-2",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=minecraft-1-12-2\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "minecraft-1-20-4",
+      "title": "Minecraft 1.20.4",
+      "categories": [
+        "Action",
+        "Strategy"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/minecraft-1-20-4.html",
+      "relativeUrl": "/games/ubg/minecraft-1-20-4.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/minecraft-1-20-4.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=minecraft-1-20-4",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=minecraft-1-20-4\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "monkey-mart",
+      "title": "Monkey Mart",
+      "categories": [
+        "Strategy",
+        "Skill"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/monkey-mart.html",
+      "relativeUrl": "/games/ubg/monkey-mart.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/monkey-mart.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=monkey-mart",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=monkey-mart\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "rooftop-run",
+      "title": "Rooftop Run",
+      "categories": [
+        "Action",
+        "Skill"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/rooftop-run.html",
+      "relativeUrl": "/games/ubg/rooftop-run.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/rooftop-run.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=rooftop-run",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=rooftop-run\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "thats-not-my-neighbor",
+      "title": "That's Not My Neighbor",
+      "categories": [
+        "Strategy",
+        "Action"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/thats-not-my-neighbor.html",
+      "relativeUrl": "/games/ubg/thats-not-my-neighbor.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/thats-not-my-neighbor.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=thats-not-my-neighbor",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=thats-not-my-neighbor\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "youtube-embed-viewer",
+      "title": "YouTube Embed Viewer",
+      "categories": [
+        "Tools"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/youtube-embed-viewer.html",
+      "relativeUrl": "/games/ubg/youtube-embed-viewer.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/youtube-embed-viewer.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=youtube-embed-viewer",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=youtube-embed-viewer\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "1v1-lol",
+      "title": "1v1.LOL",
+      "categories": [
+        "Shooting",
+        "Multiplayer",
+        "Action"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/1v1-lol.html",
+      "relativeUrl": "/games/ubg/1v1-lol.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/1v1-lol.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=1v1-lol",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=1v1-lol\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "balls",
+      "title": "Balls?",
+      "categories": [
+        "Arcade",
+        "Skill"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/balls.html",
+      "relativeUrl": "/games/ubg/balls.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/balls.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=balls",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=balls\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "eaglercraft-wurst",
+      "title": "Eaglercraft (Wurst Client)",
+      "categories": [
+        "Sandbox",
+        "Multiplayer"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/eaglercraft-wurst.html",
+      "relativeUrl": "/games/ubg/eaglercraft-wurst.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/eaglercraft-wurst.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=eaglercraft-wurst",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=eaglercraft-wurst\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "counter-strike-psp",
+      "title": "Counter-Strike Portable",
+      "categories": [
+        "Shooting",
+        "Action",
+        "Retro"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/counter-strike-psp.html",
+      "relativeUrl": "/games/ubg/counter-strike-psp.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/counter-strike-psp.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=counter-strike-psp",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=counter-strike-psp\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "idle-breakout",
+      "title": "Idle Breakout",
+      "categories": [
+        "Idle",
+        "Strategy",
+        "Casual"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/idle-breakout.html",
+      "relativeUrl": "/games/ubg/idle-breakout.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/idle-breakout.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=idle-breakout",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=idle-breakout\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "hollow-knight",
+      "title": "Hollow Knight",
+      "categories": [
+        "Action",
+        "Adventure",
+        "Platformer"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/hollow-knight.html",
+      "relativeUrl": "/games/ubg/hollow-knight.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/hollow-knight.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=hollow-knight",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=hollow-knight\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "slow-roads",
+      "title": "Slow Roads",
+      "categories": [
+        "Driving",
+        "Simulation",
+        "Relaxing"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/slow-roads.html",
+      "relativeUrl": "/games/ubg/slow-roads.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/slow-roads.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=slow-roads",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=slow-roads\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "tiny-fishing",
+      "title": "Tiny Fishing",
+      "categories": [
+        "Casual",
+        "Upgrade",
+        "Skill"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/tiny-fishing.html",
+      "relativeUrl": "/games/ubg/tiny-fishing.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/tiny-fishing.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=tiny-fishing",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=tiny-fishing\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "grand-theft-auto-vice-city",
+      "title": "Grand Theft Auto: Vice City",
+      "categories": [
+        "Action",
+        "Open World",
+        "Retro"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/grand-theft-auto-vice-city.html",
+      "relativeUrl": "/games/ubg/grand-theft-auto-vice-city.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/grand-theft-auto-vice-city.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=grand-theft-auto-vice-city",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=grand-theft-auto-vice-city\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    },
+    {
+      "id": "madden-nfl-24",
+      "title": "Madden NFL 24 Mobile",
+      "categories": [
+        "Sports",
+        "Simulation"
+      ],
+      "url": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/games/ubg/madden-nfl-24.html",
+      "relativeUrl": "/games/ubg/madden-nfl-24.html",
+      "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/games/madden-nfl-24.svg",
+      "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=madden-nfl-24",
+      "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=madden-nfl-24\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad; clipboard-read; clipboard-write\" allowfullscreen></iframe>"
+    }
+  ]
+}

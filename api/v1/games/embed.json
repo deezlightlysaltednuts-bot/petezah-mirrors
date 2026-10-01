@@ -1,0 +1,11 @@
+{
+  "id": "drivemad",
+  "title": "Drive Mad",
+  "categories": [
+    "Racing",
+    "Skill"
+  ],
+  "thumbnail": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/storage/images/main3/drivemad.png",
+  "embedUrl": "https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=drivemad",
+  "iframeHtml": "<iframe src=\"https://deezlightlysaltednuts-bot.github.io/petezah-mirrors/embed.html?game=drivemad\" width=\"100%\" height=\"640\" frameborder=\"0\" allow=\"autoplay; fullscreen; gamepad\" allowfullscreen></iframe>"
+}

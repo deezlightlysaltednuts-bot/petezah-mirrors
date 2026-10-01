@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PeteZah Embed Player</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body, html {
+      width: 100%; height: 100%; overflow: hidden;
+      background-color: #000; color: #f3f4f6;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    #player-container {
+      position: relative; width: 100%; height: 100%;
+      display: flex; flex-direction: column; background: #000;
+    }
+    #game-iframe {
+      width: 100%; height: 100%; border: none; outline: none;
+      background: #000; display: block; flex: 1;
+    }
+    #bottom-bar {
+      width: 100%; height: 36px; background: #090d16;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 12px; font-size: 12px; z-index: 50;
+    }
+    .brand-link {
+      display: flex; align-items: center; gap: 6px;
+      color: #fbbf24; text-decoration: none; font-weight: 700; font-size: 12px;
+    }
+    .ctrl-group { display: flex; align-items: center; gap: 8px; }
+    .ctrl-btn {
+      background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #d1d5db; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+      font-size: 11px; font-weight: 600; display: flex; align-items: center;
+      gap: 4px; transition: all 0.15s;
+    }
+    .ctrl-btn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+  </style>
+</head>
+<body>
+  <div id="player-container">
+    <iframe id="game-iframe" allow="autoplay; fullscreen; gamepad; focus-without-user-activation; clipboard-read; clipboard-write" allowfullscreen></iframe>
+    <div id="bottom-bar">
+      <a href="/" target="_blank" class="brand-link">
+        ⚡ PeteZah
+      </a>
+      <div class="ctrl-group">
+        <button class="ctrl-btn" onclick="reloadGame()">🔄 Reload</button>
+        <button class="ctrl-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const collectionUrl = '/storage/data/collection.json';
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedGame = (urlParams.get('game') || urlParams.get('id') || 'drive-mad').toLowerCase().trim();
+    const customUrl = urlParams.get('url');
+    const iframe = document.getElementById('game-iframe');
+    const basePath = window.location.pathname.includes('/petezah-mirrors') ? '/petezah-mirrors' : '';
+
+    if (customUrl) {
+      iframe.src = customUrl;
+    } else {
+      fetch(collectionUrl)
+        .then(r => r.json())
+        .then(data => {
+          const matched = data.games.find(g => g.id.toLowerCase() === requestedGame || g.id.toLowerCase().replace(/-/g, '') === requestedGame.replace(/-/g, '')) || data.games[0];
+          iframe.src = matched.url.startsWith('/') ? (basePath + matched.url) : matched.url;
+        })
+        .catch(() => {
+          iframe.src = basePath + '/games/ubg/drive-mad.html';
+        });
+    }
+
+    function reloadGame() { iframe.src = iframe.src; }
+    function toggleFullscreen() {
+      const el = document.getElementById('player-container');
+      if (!document.fullscreenElement) { el.requestFullscreen().catch(() => {}); }
+      else { document.exitFullscreen().catch(() => {}); }
+    }
+  </script>
+</body>
+</html>

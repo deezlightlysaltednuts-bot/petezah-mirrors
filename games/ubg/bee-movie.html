@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="https://bait.hbmc.net/games/beemovie/">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#000000"/>
+  <title>Bee Movie Game | PeteZah</title>
+  <script defer="defer" src="static/js/main.fb6e8aea.js"></script>
+  <link href="static/css/main.5a525eca.css" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .global-row, .global-column { display: contents; }
+    .global-column:last-child { display: none; }
+    #outputCanvas {
+      position: fixed !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      width: min(100vw, calc(100vh * 4 / 3)) !important;
+      height: min(100vh, calc(100vw * 3 / 4)) !important;
+      z-index: 1;
+      image-rendering: auto;
+    }
+    #root, #root * {
+      position: fixed !important;
+      overflow: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    #pete-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10, 15, 29, 0.96);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .pete-card {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 32px 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      min-width: 340px;
+      max-width: 90vw;
+    }
+    .pete-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      color: #facc15;
+    }
+    .pete-status {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 18px;
+    }
+    .pete-bar-track {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .pete-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #eab308, #ca8a04);
+      border-radius: 5px;
+      width: 0%;
+      transition: width 0.15s ease;
+    }
+    .pete-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+  <div id="pete-overlay">
+    <div class="pete-card">
+      <div class="pete-title">Bee Movie Game (PS2)</div>
+      <div class="pete-status" id="pete-status">Connecting to high-speed stream...</div>
+      <div class="pete-bar-track">
+        <div class="pete-bar-fill" id="pete-bar"></div>
+      </div>
+      <div class="pete-stats">
+        <span id="pete-mb">0 MB / 1595.7 MB</span>
+        <span id="pete-pct">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="global-row">
+    <div class="global-column">
+      <div>
+        <canvas id="outputCanvas" width="640" height="480" tabindex="-1"></canvas>
+      </div>
+      <div id="root"></div>
+    </div>
+    <div class="global-column"></div>
+  </div>
+
+  <script>
+    (function() {
+      const CACHE_NAME = 'petezah-beemovie-ps2-v2';
+      const ISO_NAME = 'DreamWorks Bee Movie Game (USA).iso';
+      const ISO_SIZE = 1673232384; // 1,595.72 MB
+      const overlay = document.getElementById('pete-overlay');
+      const statusEl = document.getElementById('pete-status');
+      const barEl = document.getElementById('pete-bar');
+      const mbEl = document.getElementById('pete-mb');
+      const pctEl = document.getElementById('pete-pct');
+
+      function updateProgress(loaded, total, speedStr) {
+        const pct = Math.min(Math.round((loaded / total) * 100), 100);
+        const mbDone = (loaded / (1024 * 1024)).toFixed(1);
+        const mbTotal = (total / (1024 * 1024)).toFixed(1);
+        if (barEl) barEl.style.width = pct + '%';
+        if (pctEl) pctEl.textContent = pct + '%';
+        if (mbEl) mbEl.textContent = mbDone + ' MB / ' + mbTotal + ' MB';
+        if (statusEl && speedStr) statusEl.textContent = speedStr;
+      }
+
+      async function downloadParallelRange(targetUrl, totalBytes, concurrency = 16) {
+        const chunkSize = Math.ceil(totalBytes / 32);
+        const chunks = [];
+        for (let start = 0; start < totalBytes; start += chunkSize) {
+          const end = Math.min(start + chunkSize - 1, totalBytes - 1);
+          chunks.push({ start, end });
+        }
+
+        let loadedBytes = 0;
+        const results = new Array(chunks.length);
+        let nextIdx = 0;
+        const startTime = performance.now();
+
+        async function fetchChunkWithRetry(chunk, maxRetries = 3) {
+          const proxyUrl = "/api/asset-proxy?url=" + encodeURIComponent(targetUrl);
+          for (let attempt = 1; attempt <= maxRetries; attempt++) {
+            try {
+              const res = await fetch(proxyUrl, {
+                headers: { 'Range': `bytes=${chunk.start}-${chunk.end}` }
+              });
+              if (res.status === 206 || res.status === 200) {
+                const ab = await res.arrayBuffer();
+                if (ab.byteLength > 0) return ab;
+              }
+            } catch(e) {}
+            await new Promise(r => setTimeout(r, 500 * attempt));
+          }
+          throw new Error(`Failed to download range ${chunk.start}-${chunk.end}`);
+        }
+
+        async function worker() {
+          while (nextIdx < chunks.length) {
+            const idx = nextIdx++;
+            const chunk = chunks[idx];
+            const ab = await fetchChunkWithRetry(chunk);
+            results[idx] = ab;
+            loadedBytes += ab.byteLength;
+            const elapsed = (performance.now() - startTime) / 1000;
+            const speed = elapsed > 0 ? ((loadedBytes / (1024 * 1024)) / elapsed).toFixed(1) : '0';
+            updateProgress(loadedBytes, totalBytes, `Turbo Downloading (${speed} MB/s)...`);
+          }
+        }
+
+        const workers = [];
+        for (let i = 0; i < Math.min(concurrency, chunks.length); i++) {
+          workers.push(worker());
+        }
+        await Promise.all(workers);
+        return new Blob(results, { type: 'application/octet-stream' });
+      }
+
+      async function getIsoBlob() {
+        // Check local CacheStorage first for instant second launch
+        try {
+          const cache = await caches.open(CACHE_NAME);
+          const cached = await cache.match(ISO_NAME);
+          if (cached) {
+            updateProgress(ISO_SIZE, ISO_SIZE, 'Instant Cache Loaded!');
+            return await cached.blob();
+          }
+        } catch(e) {}
+
+        const absoluteIsoUrl = "https://bait.hbmc.net/games/beemovie/DreamWorks%20Bee%20Movie%20Game%20(USA).iso";
+        const blob = await downloadParallelRange(absoluteIsoUrl, ISO_SIZE, 16);
+
+        // Store into cache for instant subsequent launches
+        try {
+          const cache = await caches.open(CACHE_NAME);
+          await cache.put(ISO_NAME, new Response(blob));
+        } catch(e) {}
+
+        return blob;
+      }
+
+      function waitForInput() {
+        return new Promise(resolve => {
+          const check = setInterval(() => {
+            const input = document.querySelector('input[type="file"]');
+            if (input) {
+              clearInterval(check);
+              resolve(input);
+            }
+          }, 100);
+        });
+      }
+
+      async function boot() {
+        try {
+          const blob = await getIsoBlob();
+          const file = new File([blob], ISO_NAME, { type: 'application/octet-stream' });
+
+          if (statusEl) statusEl.textContent = 'Booting PlayStation 2 Engine...';
+          if (barEl) barEl.style.width = '100%';
+
+          const input = await waitForInput();
+          const dt = new DataTransfer();
+          dt.items.add(file);
+          input.files = dt.files;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+
+          overlay.style.opacity = '0';
+          overlay.style.transition = 'opacity 0.5s ease';
+          setTimeout(() => overlay.remove(), 500);
+        } catch(err) {
+          console.error(err);
+          if (statusEl) statusEl.textContent = 'Launch Error: ' + (err?.message || err);
+        }
+      }
+
+      boot();
+    })();
+  </script>
+</body>
+</html>

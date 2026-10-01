@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+<title>Clustertruck</title>
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/wasmdotrip/Clustertruck-Port@main/TemplateData/favicon.ico">
+<style>
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+}
+#unity-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+#unity-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  outline: none;
+}
+#unity-footer { display: none; }
+#unity-loading-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  width: 280px;
+}
+#unity-progress-bar-empty {
+  width: 100%;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  overflow: hidden;
+}
+#unity-progress-bar-full {
+  width: 0%;
+  height: 100%;
+  background: #fff;
+}
+#unity-status {
+  margin-top: 10px;
+  text-align: center;
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#unity-warning {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  color: #d9a441;
+}
+#unity-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  max-width: 80%;
+  text-align: center;
+  font-family: arial, sans-serif;
+  font-size: 13px;
+  color: #d97070;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div id="unity-container">
+<canvas id="unity-canvas" tabindex="-1"></canvas>
+<div id="unity-loading-bar">
+<div id="unity-progress-bar-empty">
+<div id="unity-progress-bar-full"></div>
+</div>
+<div id="unity-status"></div>
+</div>
+<div id="unity-warning"> </div>
+<div id="unity-error"></div>
+</div>
+<script>
+var container = document.querySelector("#unity-container");
+var canvas = document.querySelector("#unity-canvas");
+var loadingBar = document.querySelector("#unity-loading-bar");
+var progressBarFull = document.querySelector("#unity-progress-bar-full");
+var statusText = document.querySelector("#unity-status");
+var warningBanner = document.querySelector("#unity-warning");
+var errorBox = document.querySelector("#unity-error");
+
+function showError(msg) {
+  loadingBar.style.display = "none";
+  errorBox.style.display = "block";
+  errorBox.innerHTML = msg;
+}
+
+function unityShowBanner(msg, type) {
+  function updateBannerVisibility() {
+    warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+  }
+  var div = document.createElement('div');
+  div.innerHTML = msg;
+  warningBanner.appendChild(div);
+  if (type != 'error') {
+    setTimeout(function() {
+      warningBanner.removeChild(div);
+      updateBannerVisibility();
+    }, 5000);
+  }
+  updateBannerVisibility();
+}
+
+var repoBase = "https://cdn.jsdelivr.net/gh/wasmdotrip/Clustertruck-Port@main/";
+var buildUrl = repoBase + "Build";
+var loaderUrl = buildUrl + "/ClusterTruckWEB.loader.js";
+var dataUrl = buildUrl + "/ClusterTruckWEB.data";
+var wasmUrl = buildUrl + "/ClusterTruckWEB.wasm";
+
+var objectUrls = [];
+var DB_NAME = "petezah_games_cache";
+var STORE_NAME = "game_blobs";
+
+function openCacheDB() {
+  return new Promise(function(resolve) {
+    try {
+      var req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = function() { req.result.createObjectStore(STORE_NAME); };
+      req.onsuccess = function() { resolve(req.result); };
+      req.onerror = function() { resolve(null); };
+    } catch(e) {
+      resolve(null);
+    }
+  });
+}
+
+async function getCachedBlob(key) {
+  var db = await openCacheDB();
+  if (!db) return null;
+  return new Promise(function(resolve) {
+    try {
+      var tx = db.transaction(STORE_NAME, "readonly");
+      var req = tx.objectStore(STORE_NAME).get(key);
+      req.onsuccess = function() { resolve(req.result || null); };
+      req.onerror = function() { resolve(null); };
+    } catch(e) {
+      resolve(null);
+    }
+  });
+}
+
+async function setCachedBlob(key, blob) {
+  var db = await openCacheDB();
+  if (!db) return;
+  try {
+    var tx = db.transaction(STORE_NAME, "readwrite");
+    tx.objectStore(STORE_NAME).put(blob, key);
+  } catch(e) {}
+}
+
+async function fetchParallelParts(baseFile, count, mimeType, cacheKey, onBytes) {
+  if (cacheKey) {
+    var cached = await getCachedBlob(cacheKey);
+    if (cached) {
+      var obj = URL.createObjectURL(cached);
+      objectUrls.push(obj);
+      return obj;
+    }
+  }
+
+  var partUrls = [];
+  for (var i = 1; i <= count; i++) {
+    partUrls.push(baseFile + ".part" + i);
+  }
+
+  var buffers = await Promise.all(partUrls.map(async function(url) {
+    var res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to fetch " + url + " (HTTP " + res.status + ")");
+    var buf = await res.arrayBuffer();
+    onBytes(buf.byteLength);
+    return buf;
+  }));
+
+  var blob = new Blob(buffers, { type: mimeType });
+  if (cacheKey) setCachedBlob(cacheKey, blob);
+  var objUrl = URL.createObjectURL(blob);
+  objectUrls.push(objUrl);
+  return objUrl;
+}
+
+async function fetchAsScriptBlob(url, cacheKey) {
+  if (cacheKey) {
+    var cached = await getCachedBlob(cacheKey);
+    if (cached) {
+      var obj = URL.createObjectURL(cached);
+      objectUrls.push(obj);
+      return obj;
+    }
+  }
+  var res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to fetch " + url + " (HTTP " + res.status + ")");
+  var text = await res.text();
+  var blob = new Blob([text], { type: "text/javascript" });
+  if (cacheKey) setCachedBlob(cacheKey, blob);
+  var objUrl = URL.createObjectURL(blob);
+  objectUrls.push(objUrl);
+  return objUrl;
+}
+
+async function boot() {
+  loadingBar.style.display = "block";
+  statusText.textContent = "Loading ClusterTruck (High-Speed Parallel)...";
+
+  var loadedBytes = 0;
+  function onBytes(n) {
+    loadedBytes += n;
+    var mb = (loadedBytes / (1024 * 1024)).toFixed(1);
+    progressBarFull.style.width = Math.min((loadedBytes / (110 * 1024 * 1024)) * 90, 90) + "%";
+    statusText.textContent = "Downloading assets... " + mb + " MB";
+  }
+
+  // Launch all asset downloads simultaneously in parallel!
+  var [resolvedData, resolvedWasm, resolvedLoader, resolvedFramework] = await Promise.all([
+    fetchParallelParts(dataUrl, 6, "application/octet-stream", "clustertruck-data-v1", onBytes),
+    fetchParallelParts(wasmUrl, 5, "application/wasm", "clustertruck-wasm-v1", onBytes),
+    fetchAsScriptBlob(loaderUrl, "clustertruck-loader-v1"),
+    fetchAsScriptBlob(buildUrl + "/ClusterTruckWEB.framework.js", "clustertruck-framework-v1")
+  ]);
+
+  statusText.textContent = "Initializing game engine...";
+  progressBarFull.style.width = "92%";
+
+  var config = {
+    dataUrl: resolvedData,
+    frameworkUrl: resolvedFramework,
+    codeUrl: resolvedWasm,
+    streamingAssetsUrl: repoBase + "StreamingAssets",
+    companyName: "Landfall",
+    productName: "Clustertruck",
+    productVersion: "1.0",
+    showBanner: unityShowBanner,
+  };
+
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    container.className = "unity-mobile";
+    canvas.className = "unity-mobile";
+  }
+
+  await new Promise(function (resolve, reject) {
+    var script = document.createElement("script");
+    script.src = resolvedLoader;
+    script.onload = resolve;
+    script.onerror = function () { reject(new Error("Failed to load " + loaderUrl)); };
+    document.body.appendChild(script);
+  });
+
+  var unityInstance = await createUnityInstance(canvas, config, function (progress) {
+    progressBarFull.style.width = (90 + progress * 10) + "%";
+    statusText.textContent = "Starting... " + Math.round(progress * 100) + "%";
+  });
+
+  loadingBar.style.display = "none";
+
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "F" || e.key === "f") {
+      if (e.target === document.body || e.target === canvas) {
+        unityInstance.SetFullscreen(1);
+      }
+    }
+  });
+}
+
+boot().catch(function (err) {
+  showError("<b>Failed to start.</b><br>" + (err && err.message ? err.message : err));
+  console.error(err);
+});
+</script>
+</body>
+</html>

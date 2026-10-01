@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/">
+    <meta charset="UTF-8">
+    <title>Basket Random</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="generator" content="Scirra Construct">
+    <meta name="author" content="RHM Interactive">
+    <meta name="description" content="Basket Random - RHM Interactive">
+    <link rel="manifest" href="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/appmanifest.json">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        canvas {
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="fb-root"></div>
+    <div id="responsive-banner-container" class="banner-container" style="display:none;"></div>
+
+    <script>
+        // Prevent scrolling on arrow keys & space
+        window.addEventListener("keydown", function(e) {
+            if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+
+        // Safe Mock for CrazyGames SDK
+        window.CrazyGames = {
+            SDK: {
+                init: function() { return Promise.resolve(); },
+                game: {
+                    gameplayStart: function() {},
+                    gameplayStop: function() {},
+                    sdkGameLoadingStart: function() {},
+                    sdkGameLoadingStop: function() {}
+                },
+                ad: {
+                    requestAd: function(type, callbacks) {
+                        if (callbacks && typeof callbacks.adFinished === 'function') callbacks.adFinished();
+                    }
+                },
+                banner: {
+                    requestResponsiveBanner: function(containerId, callback) {
+                        if (typeof callback === 'function') callback(null, {});
+                    },
+                    clearAllBanners: function() {}
+                }
+            }
+        };
+
+        function CallRewardedAdsFromC3() { if (typeof rewardedAdFinished === 'function') rewardedAdFinished(); }
+        function CallAdsFromC3() { if (typeof adFinished === 'function') adFinished(); }
+        function adStarted() {}
+        function adError() {}
+        function adFinished() {}
+        function rewardedAdStarted() {}
+        function rewardedAdFinished() {}
+        function rewardedAdError() {}
+        function GameStartEvent() {}
+        function GameStopEvent() {}
+        function requestBanner() {}
+        function hideAllBanners() {}
+        function requestResponsiveBanner() {}
+        function refreshBanner() {}
+
+        // Global Asset Routing Interceptor
+        (function() {
+            var CDN_BASE = "https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/";
+
+            function fixUrl(url) {
+                if (!url || typeof url !== 'string') return url;
+                if (url.startsWith('blob:') || url.startsWith('data:')) return url;
+                if (url.startsWith('http://') || url.startsWith('https://')) {
+                    if (url.indexOf(location.host) !== -1 && url.indexOf('/games/ubg/') !== -1) {
+                        var parts = url.split('/games/ubg/');
+                        var rel = parts[1] || '';
+                        if (rel && !rel.endsWith('.html')) {
+                            return CDN_BASE + rel;
+                        }
+                    }
+                    return url;
+                }
+                return CDN_BASE + url.replace(/^(\.\/|\/)/, '');
+            }
+
+            // 1. Intercept Fetch
+            var origFetch = window.fetch;
+            window.fetch = function(input, init) {
+                if (typeof input === 'string') {
+                    input = fixUrl(input);
+                } else if (input && input.url) {
+                    input = new Request(fixUrl(input.url), input);
+                }
+                return origFetch.call(this, input, init);
+            };
+
+            // 2. Intercept Script Insertion
+            var scriptSrcDesc = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
+            if (scriptSrcDesc && scriptSrcDesc.set) {
+                Object.defineProperty(HTMLScriptElement.prototype, 'src', {
+                    set: function(val) {
+                        return scriptSrcDesc.set.call(this, fixUrl(val));
+                    },
+                    get: function() {
+                        return scriptSrcDesc.get.call(this);
+                    },
+                    configurable: true
+                });
+            }
+
+            // 3. Intercept Image Loading
+            var imgSrcDesc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+            if (imgSrcDesc && imgSrcDesc.set) {
+                Object.defineProperty(HTMLImageElement.prototype, 'src', {
+                    set: function(val) {
+                        return imgSrcDesc.set.call(this, fixUrl(val));
+                    },
+                    get: function() {
+                        return imgSrcDesc.get.call(this);
+                    },
+                    configurable: true
+                });
+            }
+
+            // 4. Intercept Audio Loading
+            var audioSrcDesc = Object.getOwnPropertyDescriptor(HTMLAudioElement.prototype, 'src');
+            if (audioSrcDesc && audioSrcDesc.set) {
+                Object.defineProperty(HTMLAudioElement.prototype, 'src', {
+                    set: function(val) {
+                        return audioSrcDesc.set.call(this, fixUrl(val));
+                    },
+                    get: function() {
+                        return audioSrcDesc.get.call(this);
+                    },
+                    configurable: true
+                });
+            }
+
+            // Ensure Construct 3 support flag is forced on
+            window["C3_ModernJSSupport_OK"] = true;
+            window["C3_Is_Supported"] = true;
+        })();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/box2d.wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/scripts/modernjscheck.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/scripts/supportcheck.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/scripts/offlineclient.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/gh/SnakierdoorCode/GAMES@main/RIPS/Basketballrandom/scripts/main.js" type="module"></script>
+</body>
+</html>

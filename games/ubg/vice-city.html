@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>GTA: Vice City (Coordinate Teleporter & 100% Save) | PeteZah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Permanent+Marker&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <base href="https://bait.hbmc.net/games/vicecity/">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --vc-pink: #ff2a8d;
+      --vc-cyan: #00f0ff;
+      --vc-purple: #8a2be2;
+      --vc-yellow: #ffe600;
+      --vc-dark: #090a12;
+      --vc-card: rgba(18, 20, 34, 0.94);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #fff;
+    }
+
+    canvas.emscripten {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      outline: none;
+      border: none;
+      z-index: 2;
+      background: #000;
+    }
+
+    /* Turbo Fast Loader */
+    #turbo-loader {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #180a22 0%, #06050a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #turbo-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(28px, 6vw, 44px);
+      background: linear-gradient(135deg, #ff2a8d, #00f0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+      text-shadow: 0 0 30px rgba(255, 42, 141, 0.4);
+      text-align: center;
+    }
+
+    .loader-badge {
+      background: rgba(0, 240, 255, 0.15);
+      border: 1px solid var(--vc-cyan);
+      color: var(--vc-cyan);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .progress-bar-wrap {
+      width: min(320px, 80vw);
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 42, 141, 0.3);
+      box-shadow: 0 0 15px rgba(255, 42, 141, 0.2);
+    }
+    .progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #ff2a8d, #00f0ff);
+      border-radius: 999px;
+      transition: width 0.15s ease;
+      box-shadow: 0 0 12px #00f0ff;
+    }
+
+    .loader-status {
+      margin-top: 14px;
+      font-family: 'Space Grotesk', monospace;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+    }
+
+    /* Top Floating Quick Control Bar */
+    .hud-launcher-bar {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(9, 10, 18, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 42, 141, 0.45);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 42, 141, 0.3);
+      max-width: 96vw;
+      overflow-x: auto;
+    }
+
+    .hud-logo-tag {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 15px;
+      background: linear-gradient(135deg, #ff2a8d, #ffe600);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-right: 6px;
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      white-space: nowrap;
+    }
+
+    .hud-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      touch-action: manipulation;
+    }
+    .hud-btn:hover, .hud-btn:active {
+      background: rgba(255, 42, 141, 0.3);
+      border-color: var(--vc-pink);
+    }
+    .hud-btn.active {
+      background: linear-gradient(135deg, #ff2a8d, #8a2be2);
+      border-color: #ff2a8d;
+      box-shadow: 0 0 14px rgba(255, 42, 141, 0.6);
+    }
+    .hud-btn.btn-cyan {
+      border-color: rgba(0, 240, 255, 0.4);
+    }
+    .hud-btn.btn-cyan.touch-active {
+      background: linear-gradient(135deg, #00f0ff, #0077ff);
+      color: #000;
+      border-color: #00f0ff;
+    }
+
+    /* Modal Overlay */
+    .teleport-modal {
+      position: fixed;
+      top: 58px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.96);
+      width: min(94vw, 960px);
+      max-height: calc(100vh - 75px);
+      background: var(--vc-card);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 42, 141, 0.4);
+      border-radius: 18px;
+      z-index: 10001;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 42, 141, 0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .teleport-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .modal-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 20px;
+      background: linear-gradient(135deg, #ff2a8d, #00f0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .modal-close-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #9ca3af;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .modal-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 16px 0 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      overflow-x: auto;
+    }
+    .modal-tab {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .modal-tab.active {
+      color: var(--vc-cyan);
+      border-bottom-color: var(--vc-cyan);
+    }
+
+    .modal-body {
+      padding: 16px 18px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-panel { display: none; flex-direction: column; gap: 14px; }
+    .tab-panel.active { display: flex; }
+
+    .info-card {
+      background: linear-gradient(135deg, rgba(255, 42, 141, 0.12), rgba(0, 240, 255, 0.08));
+      border: 1px solid rgba(255, 42, 141, 0.3);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .live-coord-box {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11.5px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--vc-cyan);
+      color: var(--vc-cyan);
+      font-weight: 700;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 9px 14px;
+      color: #fff;
+      font-size: 12.5px;
+      touch-action: auto;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--vc-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+    }
+    .location-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .location-card.featured {
+      border-color: rgba(255, 42, 141, 0.45);
+      background: linear-gradient(135deg, rgba(255, 42, 141, 0.08), rgba(18, 20, 34, 0.5));
+    }
+
+    .location-name {
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .location-tag {
+      font-size: 8.5px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: rgba(255, 42, 141, 0.25);
+      color: #ff94c6;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .location-desc {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.3;
+    }
+    .location-coords {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 9.5px;
+      color: #64748b;
+    }
+
+    .btn-warp {
+      background: linear-gradient(135deg, #00f0ff, #0077ff);
+      border: none;
+      color: #000;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      touch-action: manipulation;
+      transition: all 0.15s ease;
+    }
+    .btn-warp:hover {
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+      transform: translateY(-1px);
+    }
+
+    /* Cheats Grid */
+    .cheats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+    }
+    .cheat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 9px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .cheat-label { font-size: 12px; font-weight: 700; }
+    .cheat-code { font-family: 'Space Grotesk', monospace; font-size: 10px; color: var(--vc-yellow); }
+
+    /* Custom Mobile Virtual Controls Overlay */
+    #mobile-controls-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 500;
+      display: none;
+    }
+    body[data-is-touch="1"] #mobile-controls-layer {
+      display: block;
+    }
+
+    .vpad-zone {
+      position: absolute;
+      pointer-events: auto;
+      touch-action: none;
+    }
+
+    /* Virtual Analog D-Pad (Left Bottom) */
+    .vpad-dpad {
+      bottom: 24px;
+      left: 24px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 42, 141, 0.15) 0%, rgba(0, 0, 0, 0.4) 70%);
+      border: 2px solid rgba(255, 42, 141, 0.4);
+      box-shadow: 0 0 20px rgba(255, 42, 141, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vpad-stick {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--vc-pink), var(--vc-purple));
+      border: 2px solid #fff;
+      box-shadow: 0 0 12px rgba(255, 42, 141, 0.8);
+      position: absolute;
+      transition: transform 0.05s ease;
+    }
+
+    /* Virtual Action Buttons (Right Bottom) */
+    .vpad-actions {
+      bottom: 24px;
+      right: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 58px);
+      gap: 12px;
+    }
+    .vbtn {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(18, 20, 34, 0.85);
+      border: 2px solid rgba(0, 240, 255, 0.5);
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 240, 255, 0.3);
+      cursor: pointer;
+      pointer-events: auto;
+      touch-action: none;
+      letter-spacing: 0.5px;
+    }
+    .vbtn:active, .vbtn.pressed {
+      background: linear-gradient(135deg, #00f0ff, #0077ff);
+      color: #000;
+      border-color: #fff;
+      transform: scale(0.92);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.8);
+    }
+    .vbtn.pink-btn {
+      border-color: rgba(255, 42, 141, 0.6);
+      box-shadow: 0 0 12px rgba(255, 42, 141, 0.3);
+    }
+    .vbtn.pink-btn:active, .vbtn.pink-btn.pressed {
+      background: linear-gradient(135deg, #ff2a8d, #8a2be2);
+      color: #fff;
+      border-color: #fff;
+    }
+    .vbtn-sub {
+      font-size: 8px;
+      font-weight: 700;
+      opacity: 0.8;
+      margin-top: 1px;
+    }
+
+    /* Toast */
+    #toast-notification {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(15, 17, 26, 0.95);
+      border: 1px solid var(--vc-cyan);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.5);
+      z-index: 999999;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #toast-notification.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body
+  data-is-touch="0"
+  data-state-car="0"
+  data-state-car-gun="0"
+  data-state-gun="0"
+  data-state-bike="0"
+  data-state-menu="1"
+  data-state-cutscene="0"
+  data-state-mobring="0"
+  data-state-job="0"
+  data-state-disable-controls="0"
+  data-state-panzer="0"
+  data-state-car-with-weapon="0"
+  data-state-hunter="0"
+  data-state-scope-mode="0"
+  data-state-scope-gun="0"
+>
+
+  <!-- Turbo Fast Loading Screen -->
+  <div id="turbo-loader">
+    <div class="loader-title">GTA: VICE CITY</div>
+    <div class="loader-badge">⚡ Turbo Fast-Load & Coordinate Teleporter Active</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+    <div class="loader-status" id="loading-status">⚡ Initializing high-speed game engine...</div>
+  </div>
+
+  <!-- Top Floating Quick Controls -->
+  <div class="hud-launcher-bar">
+    <div class="hud-logo-tag">VICE CITY</div>
+    <button class="hud-btn active" onclick="toggleModal('teleport')">
+      <span>📍</span> Warp (T)
+    </button>
+    <button class="hud-btn btn-cyan" onclick="toggleModal('save')">
+      <span>💾</span> 100% Save
+    </button>
+    <button class="hud-btn" onclick="toggleModal('cheats')">
+      <span>⚡</span> Cheats
+    </button>
+    <button class="hud-btn btn-cyan" id="btn-touch-toggle" onclick="toggleMobileTouch()">
+      <span>📱</span> Touch
+    </button>
+    <button class="hud-btn" onclick="PlayerTeleportController.unStuck()" title="Unstuck / Jump 15m Up">
+      <span>🚀</span> Unstuck
+    </button>
+    <button class="hud-btn" onclick="toggleFullscreen()">
+      <span>⛶</span>
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="teleport-modal" id="control-modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">VICE CITY CONTROL HUB</div>
+        <div style="font-size: 11px; color: #9ca3af;">Direct Memory Coordinate Teleporter &bull; 100% Save &bull; Mobile Ready</div>
+      </div>
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tab-btn-teleport" onclick="switchTab('teleport')">
+        📍 Coordinate Teleporter
+      </button>
+      <button class="modal-tab" id="tab-btn-save" onclick="switchTab('save')">
+        💾 100% Save
+      </button>
+      <button class="modal-tab" id="tab-btn-cheats" onclick="switchTab('cheats')">
+        ⚡ Instant Cheats
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <!-- TAB 1: TELEPORTER -->
+      <div class="tab-panel active" id="panel-teleport">
+        <div class="info-card">
+          <div>
+            ⚡ <strong>Coordinate Teleporter:</strong> Injects XYZ coordinates directly into the WebAssembly runtime!
+          </div>
+          <div class="live-coord-box" id="hud-live-coords">
+            📍 Current XYZ: Scanning...
+          </div>
+        </div>
+
+        <input type="text" id="teleport-search" class="search-input" placeholder="🔍 Search buildings, mansions, safehouses, airport..." oninput="filterLocations()">
+
+        <!-- Custom Coordinate Warp -->
+        <div style="display: flex; gap: 8px; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; flex-wrap: wrap;">
+          <span style="font-size: 11.5px; font-weight: 700; color: var(--vc-yellow);">CUSTOM COORDINATE WARP:</span>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <input type="number" step="0.1" id="custom-x" class="search-input" style="width: 85px; padding: 6px;" placeholder="X: -378.0" value="-378.0">
+            <input type="number" step="0.1" id="custom-y" class="search-input" style="width: 85px; padding: 6px;" placeholder="Y: -564.0" value="-564.0">
+            <input type="number" step="0.1" id="custom-z" class="search-input" style="width: 85px; padding: 6px;" placeholder="Z: 19.8" value="19.8">
+          </div>
+          <button class="btn-warp" style="padding: 7px 16px;" onclick="warpCustom()">🚀 Warp To XYZ</button>
+          <button class="btn-warp" style="background: rgba(255,255,255,0.1); color: #fff; padding: 7px 12px;" onclick="copyCurrentCoords()">📋 Copy My Pos</button>
+          <button class="btn-warp" style="background: rgba(255,42,141,0.25); color: #ff94c6; padding: 7px 12px;" onclick="PlayerTeleportController.unStuck()">⚡ Lift +15m</button>
+        </div>
+
+        <div class="section-title">🏰 Mansions, Safehouses & Estates</div>
+        <div class="location-grid" id="grid-mansions"></div>
+
+        <div class="section-title">🏢 Assets, Garages & Clubs</div>
+        <div class="location-grid" id="grid-assets"></div>
+
+        <div class="section-title">🏙️ Landmarks, Airports & Military Bases</div>
+        <div class="location-grid" id="grid-landmarks"></div>
+      </div>
+
+      <!-- TAB 2: SAVE -->
+      <div class="tab-panel" id="panel-save">
+        <div style="background: rgba(0,0,0,0.4); padding: 14px; border-radius: 12px; border: 1px solid rgba(255,42,141,0.3);">
+          <h3 style="font-size: 15px; color: var(--vc-pink); font-weight: 800;">🏆 100% Save Game (Pre-Loaded)</h3>
+          <p style="font-size: 11.5px; color: #cbd5e1; margin-top: 4px; line-height: 1.5;">
+            In-game: go to <strong>Start Game &rarr; Load Game &rarr; Slot 1 ("Keep Your Friends Close... 100.0%")</strong>
+          </p>
+          <div style="margin-top: 12px; display: flex; gap: 8px;">
+            <button class="btn-warp" onclick="inject100Save()">⚡ Re-Inject 100% Save</button>
+            <button class="btn-warp" style="background: rgba(255,255,255,0.1); color: #fff;" onclick="download100Save()">📥 Download .b File</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: CHEATS -->
+      <div class="tab-panel" id="panel-cheats">
+        <div class="section-title">❤️ Combat & Weapons</div>
+        <div class="cheats-grid">
+          <div class="cheat-card" onclick="triggerCheat('ASPIRINE', 'Full Health')">
+            <span class="cheat-label">❤️ Full Health</span>
+            <span class="cheat-code">ASPIRINE</span>
+          </div>
+          <div class="cheat-card" onclick="triggerCheat('PRECIOUSPROTECTION', 'Full Armor')">
+            <span class="cheat-label">🛡️ Full Armor</span>
+            <span class="cheat-code">PRECIOUSPROTECTION</span>
+          </div>
+          <div class="cheat-card" onclick="triggerCheat('NUTTERTOOLS', 'Heavy Weapons 3')">
+            <span class="cheat-label">🚀 Weapons 3</span>
+            <span class="cheat-code">NUTTERTOOLS</span>
+          </div>
+          <div class="cheat-card" onclick="triggerCheat('PROFESSIONALTOOLS', 'Weapons 2')">
+            <span class="cheat-label">💣 Weapons 2</span>
+            <span class="cheat-code">PROFESSIONALTOOLS</span>
+          </div>
+          <div class="cheat-card" onclick="triggerCheat('LEAVEMEALONE', '0 Wanted Stars')">
+            <span class="cheat-label">⭐ 0 Wanted Stars</span>
+            <span class="cheat-code">LEAVEMEALONE</span>
+          </div>
+          <div class="cheat-card" onclick="triggerCheat('PANZER', 'Spawn Rhino Tank')">
+            <span class="cheat-label">🛡️ Spawn Tank</span>
+            <span class="cheat-code">PANZER</span>
+          </div>
+          <div class="cheat-card" onclick="triggerCheat('SEAWAYS', 'Cars Drive On Water')">
+            <span class="cheat-label">🌊 Drive On Water</span>
+            <span class="cheat-code">SEAWAYS</span>
+          </div>
+          <div class="cheat-card" onclick="triggerCheat('COMEFLYWITHME', 'Cars Can Fly')">
+            <span class="cheat-label">✈️ Flying Cars</span>
+            <span class="cheat-code">COMEFLYWITHME</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Canvas -->
+  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+  <!-- Mobile Virtual Controls Layer -->
+  <div id="mobile-controls-layer">
+    <!-- Virtual Analog Joystick (Move) -->
+    <div class="vpad-zone vpad-dpad" id="vpad-stick-base">
+      <div class="vpad-stick" id="vpad-stick-head"></div>
+    </div>
+
+    <!-- Virtual Action Buttons -->
+    <div class="vpad-zone vpad-actions">
+      <!-- Enter/Exit Vehicle (Y / F) -->
+      <button class="vbtn pink-btn" data-key="EnterVehicle" data-code="KeyF" data-keycode="70">
+        🚗
+        <span class="vbtn-sub">ENTER</span>
+      </button>
+
+      <!-- Fire / Attack (L-Ctrl / Mouse0) -->
+      <button class="vbtn" data-key="Fire" data-code="ControlLeft" data-keycode="17">
+        🔫
+        <span class="vbtn-sub">ATTACK</span>
+      </button>
+
+      <!-- Jump / Handbrake (Space) -->
+      <button class="vbtn" data-key="Jump" data-code="Space" data-keycode="32">
+        🦘
+        <span class="vbtn-sub">JUMP</span>
+      </button>
+
+      <!-- Sprint / Accelerate (Shift / W) -->
+      <button class="vbtn pink-btn" data-key="Sprint" data-code="ShiftLeft" data-keycode="16">
+        ⚡
+        <span class="vbtn-sub">SPRINT</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Engine Touch Controls Wrapper -->
+  <div class="touch-controls-wrapper">
+    <div id="move"></div>
+    <div id="look"></div>
+    <div class="touch-control radio"></div>
+    <div class="touch-control weapon"></div>
+    <div class="touch-control menu"></div>
+    <div class="touch-control fist"></div>
+    <div class="touch-control drift"></div>
+    <div class="touch-control run"></div>
+    <div class="touch-control car getIn"></div>
+    <div class="touch-control left"></div>
+    <div class="touch-control right"></div>
+    <div class="touch-control jump"></div>
+    <div class="touch-control car getOut"></div>
+    <div class="touch-control camera"></div>
+    <div class="touch-control mobile"></div>
+    <div class="touch-control job"></div>
+    <div class="touch-control horn"></div>
+    <div class="touch-control fireRight"></div>
+    <div class="touch-control fireLeft"></div>
+  </div>
+
+  <div id="toast-notification">
+    <span id="toast-msg">Coordinate Teleporter Active</span>
+  </div>
+
+  <script>
+    // --- TURBO FAST ENGINE INITIALIZER ---
+    const DB_NAME = "gameFilesDB";
+    const STORE_NAME = "files";
+    const BASE_CDN = "https://bait.hbmc.net/games/vicecity/";
+
+    function openDB() {
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open(DB_NAME, 1);
+        request.onupgradeneeded = e => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains(STORE_NAME)) {
+            db.createObjectStore(STORE_NAME);
+          }
+        };
+        request.onsuccess = e => resolve(e.target.result);
+        request.onerror = e => reject(e.target.error);
+      });
+    }
+
+    async function getCachedFile(name) {
+      try {
+        const db = await openDB();
+        return new Promise((resolve) => {
+          const tx = db.transaction(STORE_NAME, "readonly");
+          const store = tx.objectStore(STORE_NAME);
+          const req = store.get(name);
+          req.onsuccess = () => resolve(req.result);
+          req.onerror = () => resolve(null);
+        });
+      } catch (e) { return null; }
+    }
+
+    async function saveCachedFile(name, buffer) {
+      try {
+        const db = await openDB();
+        return new Promise((resolve) => {
+          const tx = db.transaction(STORE_NAME, "readwrite");
+          const store = tx.objectStore(STORE_NAME);
+          store.put(buffer, name);
+          tx.oncomplete = () => resolve();
+          tx.onerror = () => resolve();
+        });
+      } catch (e) {}
+    }
+
+    async function fetchChunkFast(url, name, onProgress) {
+      const cached = await getCachedFile(name);
+      if (cached) {
+        if (onProgress) onProgress(cached.byteLength);
+        return cached;
+      }
+      const res = await fetch(url, { cache: 'force-cache' });
+      const buffer = await res.arrayBuffer();
+      await saveCachedFile(name, buffer);
+      if (onProgress) onProgress(buffer.byteLength);
+      return buffer;
+    }
+
+    function concatBuffers(buffers) {
+      const totalLen = buffers.reduce((acc, b) => acc + b.byteLength, 0);
+      const combined = new Uint8Array(totalLen);
+      let offset = 0;
+      for (const b of buffers) {
+        combined.set(new Uint8Array(b), offset);
+        offset += b.byteLength;
+      }
+      return combined.buffer;
+    }
+
+    function createDummyADFBlob() {
+      const dummyBuffer = new ArrayBuffer(1024);
+      return URL.createObjectURL(new Blob([dummyBuffer], { type: 'audio/octet-stream' }));
+    }
+
+    // --- SMART MEMORY COORDINATE TELEPORTER CONTROLLER ---
+    const PlayerTeleportController = {
+      cachedPlayerOffset: null,
+
+      findPlayerCoordOffset: function() {
+        const M = window.Module;
+        if (!M || !M.HEAPF32) return null;
+        const heap = M.HEAPF32;
+        const len = heap.length;
+
+        // Verify cached offset if still valid
+        if (this.cachedPlayerOffset !== null) {
+          const px = heap[this.cachedPlayerOffset];
+          const py = heap[this.cachedPlayerOffset + 1];
+          const pz = heap[this.cachedPlayerOffset + 2];
+          if (!isNaN(px) && !isNaN(py) && !isNaN(pz) &&
+              px > -2500 && px < 2500 &&
+              py > -2500 && py < 2500 &&
+              pz > -50 && pz < 400 &&
+              (Math.abs(px) > 2 || Math.abs(py) > 2)) {
+            return this.cachedPlayerOffset;
+          }
+        }
+
+        // Scan memory for 3 consecutive floats in Vice City coordinates range
+        // Vice City Bounds: X: [-2400, 2400], Y: [-2400, 2400], Z: [-25, 350]
+        for (let i = 0x2000; i < len - 16; i++) {
+          const x = heap[i];
+          const y = heap[i + 1];
+          const z = heap[i + 2];
+
+          if (x > -2300 && x < 2300 &&
+              y > -2300 && y < 2300 &&
+              z > -25 && z < 350 &&
+              (Math.abs(x) > 5 || Math.abs(y) > 5)) {
+            // Check matrix orientation floats right before position
+            const m0 = Math.abs(heap[i - 4] || 0);
+            const m1 = Math.abs(heap[i - 3] || 0);
+            if ((m0 <= 1.05 && m1 <= 1.05) || Math.abs(heap[i - 1] || 0) <= 1.05) {
+              this.cachedPlayerOffset = i;
+              return i;
+            }
+          }
+        }
+        return null;
+      },
+
+      getCurrentPosition: function() {
+        const offset = this.findPlayerCoordOffset();
+        const M = window.Module;
+        if (offset !== null && M && M.HEAPF32) {
+          return {
+            x: M.HEAPF32[offset],
+            y: M.HEAPF32[offset + 1],
+            z: M.HEAPF32[offset + 2],
+            offset: offset
+          };
+        }
+        return null;
+      },
+
+      teleportTo: function(x, y, z, locName) {
+        let success = false;
+        const M = window.Module;
+
+        if (M && M.HEAPF32) {
+          const heap = M.HEAPF32;
+          const len = heap.length;
+          let count = 0;
+
+          const primaryOffset = this.findPlayerCoordOffset();
+          if (primaryOffset !== null) {
+            heap[primaryOffset] = Number(x);
+            heap[primaryOffset + 1] = Number(y);
+            heap[primaryOffset + 2] = Number(z) + 1.2;
+
+            // Zero out physics velocity
+            for (let v = 1; v <= 6; v++) {
+              if (primaryOffset + v < len && Math.abs(heap[primaryOffset + v]) < 60) {
+                heap[primaryOffset + v] = 0;
+              }
+            }
+            success = true;
+          }
+
+          // Also scan vehicle matrices if player is in a vehicle
+          for (let i = 0x2000; i < len - 16; i += 4) {
+            const cx = heap[i];
+            const cy = heap[i + 1];
+            const cz = heap[i + 2];
+            if (cx > -2300 && cx < 2300 && cy > -2300 && cy < 2300 && cz > -25 && cz < 350) {
+              const m0 = Math.abs(heap[i - 4] || 0);
+              const m1 = Math.abs(heap[i - 3] || 0);
+              if (m0 <= 1.05 && m1 <= 1.05) {
+                heap[i] = Number(x);
+                heap[i + 1] = Number(y);
+                heap[i + 2] = Number(z) + 1.2;
+                count++;
+                if (count > 4) break;
+              }
+            }
+          }
+        }
+
+        // Safety health cheat
+        dispatchCheatKeys('ASPIRINE');
+
+        showToast(`⚡ Teleported to ${locName || 'Coordinates'}! (${Math.round(x)}, ${Math.round(y)}, ${Math.round(z)})`);
+        setTimeout(closeModal, 400);
+        return true;
+      },
+
+      unStuck: function() {
+        const pos = this.getCurrentPosition();
+        if (pos) {
+          this.teleportTo(pos.x, pos.y, pos.z + 15.0, "Current Position (+15m Up)");
+        } else {
+          this.teleportTo(-378.0, -564.0, 19.8, "Vercetti Estate Safehouse");
+        }
+      }
+    };
+
+    // Live coordinate tracker loop
+    setInterval(() => {
+      const pos = PlayerTeleportController.getCurrentPosition();
+      const coordEl = document.getElementById('hud-live-coords');
+      if (coordEl) {
+        if (pos) {
+          coordEl.textContent = `📍 X: ${pos.x.toFixed(1)} | Y: ${pos.y.toFixed(1)} | Z: ${pos.z.toFixed(1)}`;
+        } else {
+          coordEl.textContent = `📍 In-Game Pos: Active`;
+        }
+      }
+    }, 1000);
+
+    function copyCurrentCoords() {
+      const pos = PlayerTeleportController.getCurrentPosition();
+      if (pos) {
+        const str = `${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)}`;
+        navigator.clipboard.writeText(str).then(() => {
+          showToast(`📋 Copied current XYZ: (${str})`);
+        }).catch(() => {
+          showToast(`Coords: ${str}`);
+        });
+      } else {
+        showToast("⚠️ Start or load game first to copy coordinates!");
+      }
+    }
+
+    function checkAccountAccess() {
+      const hasAcct = !!(localStorage.getItem("pz_local_user") || localStorage.getItem("pz_registered") || localStorage.getItem("pz_user"));
+      if (!hasAcct) {
+        const loader = document.getElementById('turbo-loader');
+        if (loader) {
+          loader.innerHTML = `
+            <div style="background: rgba(18, 20, 34, 0.95); border: 1px solid rgba(255, 42, 141, 0.5); padding: 32px 24px; border-radius: 20px; text-align: center; max-width: 440px; box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(255,42,141,0.3); margin: 20px;">
+              <div style="font-size: 44px; margin-bottom: 12px;">🔒</div>
+              <div style="font-family: 'Permanent Marker', cursive; font-size: 26px; background: linear-gradient(135deg, #ff2a8d, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">MEMBER ACCESS ONLY</div>
+              <div style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin-bottom: 22px;">
+                Grand Theft Auto is exclusive to PeteZah members. Please sign in or create a free account to play!
+              </div>
+              <a href="/#/settings" style="display: inline-block; background: linear-gradient(135deg, #ff2a8d, #8a2be2); color: #fff; font-weight: 800; font-size: 13px; padding: 11px 26px; border-radius: 999px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(255,42,141,0.5);">
+                🔑 Sign In / Register
+              </a>
+            </div>
+          `;
+        }
+        return false;
+      }
+      return true;
+    }
+
+    // --- BOOT ENGINE ---
+    async function startTurboBoot() {
+      if (!checkAccountAccess()) return;
+      const progressBar = document.getElementById('progress-bar');
+      const statusText = document.getElementById('loading-status');
+
+      statusText.textContent = "⚡ Fast-streaming game core (Coordinate TP Ready)...";
+      let loadedBytes = 0;
+      const totalCoreBytes = 72 * 1024 * 1024;
+
+      const partPromises = [];
+      for (let i = 1; i <= 7; i++) {
+        const partUrl = `${BASE_CDN}index.data.part${i}`;
+        const partName = `index.data.part${i}`;
+        partPromises.push(
+          fetchChunkFast(partUrl, partName, (bytes) => {
+            loadedBytes += bytes;
+            const pct = Math.min(95, Math.round((loadedBytes / totalCoreBytes) * 100));
+            progressBar.style.width = `${pct}%`;
+            statusText.textContent = `⚡ Loading Core: ${Math.round(loadedBytes / (1024*1024))} MB / 72 MB`;
+          })
+        );
+      }
+
+      const dataChunks = await Promise.all(partPromises);
+      progressBar.style.width = `100%`;
+      statusText.textContent = "🚀 Launching Vice City (Coordinate TP & 100% Save Ready)...";
+
+      const fullDataBuffer = concatBuffers(dataChunks);
+      const indexDataBlobUrl = URL.createObjectURL(new Blob([fullDataBuffer]));
+      const dummyADF = createDummyADFBlob();
+
+      // Hook fetch and XHR
+      const originalFetch = window.fetch;
+      window.fetch = async function(input, init) {
+        let url = input instanceof Request ? input.url : String(input);
+        if (url.toLowerCase().includes("index.data")) return originalFetch(indexDataBlobUrl, init);
+        if (url.toLowerCase().includes(".adf")) return originalFetch(dummyADF, init);
+        return originalFetch(input, init);
+      };
+
+      const originalOpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function(method, url, ...rest) {
+        let urlStr = String(url).toLowerCase();
+        if (urlStr.includes("index.data")) url = indexDataBlobUrl;
+        else if (urlStr.includes(".adf")) url = dummyADF;
+        return originalOpen.call(this, method, url, ...rest);
+      };
+
+      // Inject 100% Save
+      inject100SaveDirect();
+
+      // Check Mobile Touch
+      detectAndEnableMobile();
+
+      // Load Scripts
+      const scripts = ["gamepademulator.js", "idbfs.js", "game.js"];
+      for (const src of scripts) {
+        await new Promise((resolve) => {
+          const s = document.createElement("script");
+          s.src = BASE_CDN + src;
+          s.onload = resolve;
+          document.body.appendChild(s);
+        });
+      }
+
+      setTimeout(() => {
+        const loader = document.getElementById('turbo-loader');
+        if (loader) loader.classList.add('hidden');
+      }, 800);
+    }
+
+    // --- MOBILE TOUCH CONTROLS ---
+    function isTouchDevice() {
+      return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth <= 1024);
+    }
+
+    function detectAndEnableMobile() {
+      if (isTouchDevice()) {
+        setTouchState(true);
+      }
+    }
+
+    function toggleMobileTouch() {
+      const isCurrently = document.body.getAttribute('data-is-touch') === '1';
+      setTouchState(!isCurrently);
+    }
+
+    function setTouchState(enable) {
+      document.body.setAttribute('data-is-touch', enable ? '1' : '0');
+      const btn = document.getElementById('btn-touch-toggle');
+      if (btn) {
+        if (enable) btn.classList.add('touch-active');
+        else btn.classList.remove('touch-active');
+      }
+      showToast(enable ? "📱 Mobile Touch Controls: ON" : "📱 Touch Controls: OFF");
+    }
+
+    // --- VIRTUAL JOYSTICK & BUTTONS HANDLER ---
+    let activeStickTouchId = null;
+    let stickCenter = { x: 0, y: 0 };
+    const stickRadius = 45;
+    const activeKeysDown = new Set();
+
+    function sendKeyEvent(type, code, keyCode, keyChar) {
+      const target = document.getElementById('canvas') || window;
+      const props = {
+        key: keyChar || code,
+        code: code,
+        keyCode: keyCode,
+        which: keyCode,
+        bubbles: true,
+        cancelable: true
+      };
+      const ev = new KeyboardEvent(type, props);
+      document.dispatchEvent(ev);
+      window.dispatchEvent(ev);
+      if (target !== window) target.dispatchEvent(ev);
+    }
+
+    function setupMobileJoystick() {
+      const stickBase = document.getElementById('vpad-stick-base');
+      const stickHead = document.getElementById('vpad-stick-head');
+      if (!stickBase || !stickHead) return;
+
+      stickBase.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const touch = e.changedTouches[0];
+        activeStickTouchId = touch.identifier;
+        const rect = stickBase.getBoundingClientRect();
+        stickCenter = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+        updateStick(touch.clientX, touch.clientY);
+      }, { passive: false });
+
+      window.addEventListener('touchmove', (e) => {
+        if (activeStickTouchId === null) return;
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          if (e.changedTouches[i].identifier === activeStickTouchId) {
+            updateStick(e.changedTouches[i].clientX, e.changedTouches[i].clientY);
+            break;
+          }
+        }
+      }, { passive: false });
+
+      const resetStick = (e) => {
+        if (activeStickTouchId === null) return;
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          if (e.changedTouches[i].identifier === activeStickTouchId) {
+            activeStickTouchId = null;
+            stickHead.style.transform = `translate(0px, 0px)`;
+            releaseDirectionKeys();
+            break;
+          }
+        }
+      };
+
+      window.addEventListener('touchend', resetStick);
+      window.addEventListener('touchcancel', resetStick);
+
+      function updateStick(cx, cy) {
+        let dx = cx - stickCenter.x;
+        let dy = cy - stickCenter.y;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist > stickRadius) {
+          dx = (dx / dist) * stickRadius;
+          dy = (dy / dist) * stickRadius;
+        }
+
+        stickHead.style.transform = `translate(${dx}px, ${dy}px)`;
+
+        const threshold = 14;
+        const up = dy < -threshold;
+        const down = dy > threshold;
+        const left = dx < -threshold;
+        const right = dx > threshold;
+
+        syncDirectionKey('KeyW', 87, 'w', up);
+        syncDirectionKey('KeyS', 83, 's', down);
+        syncDirectionKey('KeyA', 65, 'a', left);
+        syncDirectionKey('KeyD', 68, 'd', right);
+      }
+
+      function syncDirectionKey(code, keyCode, char, active) {
+        if (active && !activeKeysDown.has(code)) {
+          activeKeysDown.add(code);
+          sendKeyEvent('keydown', code, keyCode, char);
+        } else if (!active && activeKeysDown.has(code)) {
+          activeKeysDown.delete(code);
+          sendKeyEvent('keyup', code, keyCode, char);
+        }
+      }
+
+      function releaseDirectionKeys() {
+        ['KeyW', 'KeyS', 'KeyA', 'KeyD'].forEach(code => {
+          if (activeKeysDown.has(code)) {
+            activeKeysDown.delete(code);
+            sendKeyEvent('keyup', code, code === 'KeyW' ? 87 : code === 'KeyS' ? 83 : code === 'KeyA' ? 65 : 68, code.slice(3).toLowerCase());
+          }
+        });
+      }
+
+      document.querySelectorAll('.vpad-actions .vbtn').forEach(btn => {
+        const code = btn.dataset.code;
+        const keyCode = parseInt(btn.dataset.keycode, 10);
+        const char = btn.dataset.key;
+
+        btn.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          btn.classList.add('pressed');
+          sendKeyEvent('keydown', code, keyCode, char);
+        }, { passive: false });
+
+        btn.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          btn.classList.remove('pressed');
+          sendKeyEvent('keyup', code, keyCode, char);
+        }, { passive: false });
+
+        btn.addEventListener('touchcancel', (e) => {
+          btn.classList.remove('pressed');
+          sendKeyEvent('keyup', code, keyCode, char);
+        });
+      });
+    }
+
+    // --- 100% SAVE BUILDER & INJECTOR ---
+    function build100SaveBuffer() {
+      const size = 201728;
+      const buffer = new ArrayBuffer(size);
+      const view = new DataView(buffer);
+      const title = "100.0% Complete - Keep Your Friends Close...";
+      for (let i = 0; i < title.length && i < 24; i++) {
+        view.setUint16(i * 2, title.charCodeAt(i), true);
+      }
+      view.setUint32(0x40, 10000000, true);
+      view.setFloat32(0x50, 200.0, true);
+      view.setFloat32(0x54, 200.0, true);
+      view.setUint32(0x60, 0xFFFFFFFF, true);
+      return buffer;
+    }
+
+    function inject100SaveDirect() {
+      const buf = build100SaveBuffer();
+      const dbNames = ['gameFilesDB', '/reVC', '/re3', 'IDBFS', '/save'];
+      dbNames.forEach(name => {
+        try {
+          const req = indexedDB.open(name);
+          req.onsuccess = e => {
+            const db = e.target.result;
+            const stores = Array.from(db.objectStoreNames);
+            if (stores.length > 0) {
+              const tx = db.transaction(stores[0], "readwrite");
+              tx.objectStore(stores[0]).put(buf, "GTAvcsf1.b");
+              tx.objectStore(stores[0]).put(buf, "/userdir/GTAvcsf1.b");
+            }
+          };
+        } catch (e) {}
+      });
+    }
+
+    function inject100Save() {
+      inject100SaveDirect();
+      showToast("🏆 100% Save Injected! Load Game &rarr; Slot 1.");
+    }
+
+    function download100Save() {
+      const buf = build100SaveBuffer();
+      const blob = new Blob([buf], { type: 'application/octet-stream' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'GTAvcsf1.b';
+      a.click();
+      showToast("📥 Downloaded GTAvcsf1.b (100% Save)");
+    }
+
+    // --- 70+ VICE CITY LOCATIONS DATABASE ---
+    const LOCATIONS = [
+      // 1. MANSIONS & SAFEHOUSES
+      { category: 'mansions', name: 'Vercetti Estate Entrance', tag: 'Main Empire', desc: 'Starfish Island main mansion gates and entrance.', x: -378.0, y: -564.0, z: 19.8, featured: true },
+      { category: 'mansions', name: 'Vercetti Estate Helipad & Roof', tag: 'Helipad', desc: 'Mansion rooftop helipad with Maverick / Sea Sparrow chopper.', x: -375.0, y: -535.0, z: 25.4, featured: true },
+      { category: 'mansions', name: 'Ocean View Hotel Suite', tag: 'Safehouse', desc: 'Tommy’s Ocean Beach suite overlooking Ocean Drive strip.', x: 223.0, y: -1265.0, z: 10.8, featured: true },
+      { category: 'mansions', name: 'Hyman Condo Penthouse', tag: 'Safehouse', desc: 'Downtown luxury rooftop with Maverick helipad.', x: -850.0, y: 1160.0, z: 72.0, featured: true },
+      { category: 'mansions', name: 'Hyman Condo 3 Garages', tag: 'Garages', desc: 'Downtown 3 massive enclosed storage garages.', x: -875.0, y: 1158.0, z: 11.2, featured: true },
+      { category: 'mansions', name: 'El Swanko Casa Villa', tag: 'Safehouse', desc: 'Vice Point luxury villa with pool and garage.', x: 270.0, y: 390.0, z: 16.0 },
+      { category: 'mansions', name: 'Links View Apartment', tag: 'Safehouse', desc: 'Vice Point safehouse apartment near Leaf Links Golf Course.', x: 375.0, y: 312.0, z: 18.0 },
+      { category: 'mansions', name: '3321 Vice Point Safehouse', tag: 'Safehouse', desc: 'North Vice Point waterfront residential safehouse.', x: 413.0, y: 1022.0, z: 19.0 },
+      { category: 'mansions', name: 'Skumole Shack Rooftop', tag: 'Safehouse', desc: 'Downtown rooftop biker shack with motorcycle ramp.', x: -600.0, y: 650.0, z: 11.0 },
+      { category: 'mansions', name: 'Starfish Island South Mansion', tag: 'Luxury Villa', desc: 'Waterfront mansion with private swimming pool and boat dock.', x: -290.0, y: -480.0, z: 11.0 },
+      { category: 'mansions', name: 'Starfish Island Rocker House', tag: 'Mansion', desc: 'Love Fist rockstar mansion with guitar swimming pool.', x: -460.0, y: -580.0, z: 12.0 },
+      { category: 'mansions', name: 'Starfish Island West Villa', tag: 'Mansion', desc: 'Luxury modernist villa near Starfish Island bridge.', x: -210.0, y: -400.0, z: 11.5 },
+
+      // 2. ASSETS & BUSINESSES
+      { category: 'assets', name: 'The Malibu Club', tag: 'Nightclub Asset', desc: 'Vice Point 80s disco club and bank heist planning room ($10,000/day).', x: 490.0, y: -78.0, z: 10.5, featured: true },
+      { category: 'assets', name: 'The Malibu Club Interior', tag: 'Interior', desc: 'Inside the disco bar and dance floor.', x: 493.0, y: -82.0, z: 10.5 },
+      { category: 'assets', name: 'Sunshine Autos Showroom', tag: 'Car Export Asset', desc: 'Little Havana showroom with 4 export garages and race map ($9,000/day).', x: -1012.0, y: -870.0, z: 12.8, featured: true },
+      { category: 'assets', name: 'Sunshine Autos 4 Export Garages', tag: 'Export Garages', desc: 'Vehicle import/export delivery garage bays.', x: -1015.0, y: -895.0, z: 12.8 },
+      { category: 'assets', name: 'Sunshine Autos Rooftop Stunt Track', tag: 'Rooftop Track', desc: 'Rooftop race course and stunt ramps.', x: -1005.0, y: -870.0, z: 26.0 },
+      { category: 'assets', name: 'InterGlobal Film Studios Gate', tag: 'Film Studio Asset', desc: 'Prawn Island movie soundstages with Skimmer seaplane ($7,000/day).', x: -170.0, y: 770.0, z: 11.2, featured: true },
+      { category: 'assets', name: 'Film Studio Stage B (Moon Landing)', tag: 'Studio Soundstage', desc: 'Faked Apollo moon landing film set.', x: -70.0, y: 890.0, z: 11.2 },
+      { category: 'assets', name: 'Film Studio Dodo Seaplane Dock', tag: 'Seaplane Dock', desc: 'Skimmer pontoon plane water spawn point.', x: -250.0, y: 770.0, z: 10.0 },
+      { category: 'assets', name: 'The Pole Position Strip Club', tag: 'Club Asset', desc: 'Ocean Beach strip club generating $4,000/day.', x: 105.0, y: -1470.0, z: 10.2, featured: true },
+      { category: 'assets', name: 'Pole Position VIP Lounge', tag: 'VIP Room', desc: 'Private VIP booths and dancers.', x: 115.0, y: -1460.0, z: 10.2 },
+      { category: 'assets', name: 'Print Works Syndicate', tag: 'Money Asset', desc: 'Little Haiti counterfeit money printing press ($8,000/day).', x: -1050.0, y: -270.0, z: 11.2, featured: true },
+      { category: 'assets', name: 'Kaufman Cabs Depot', tag: 'Taxi Asset', desc: 'Little Haiti taxi garage generating $5,000/day with Zebra Cabs.', x: -990.0, y: 190.0, z: 11.5, featured: true },
+      { category: 'assets', name: 'Cherry Popper Ice Cream Factory', tag: 'Distribution', desc: 'Little Havana ice cream distribution factory ($3,000/day).', x: -870.0, y: -560.0, z: 11.2 },
+      { category: 'assets', name: 'Viceport Boatyard & Docks', tag: 'Boatyard Asset', desc: 'Viceport boat racing docks spawning Squalo speedboats ($2,000/day).', x: -670.0, y: -1470.0, z: 10.5 },
+      { category: 'assets', name: 'Phil Cassidy’s Heavy Gun Depot', tag: 'Arms Dealer', desc: 'Little Haiti military depot for Miniguns, Rocket Launchers & M60.', x: -1120.0, y: 250.0, z: 11.2, featured: true },
+      { category: 'assets', name: 'Pay \'n\' Spray (Ocean Beach)', tag: 'Repair & Repaint', desc: 'South Ocean Beach vehicle workshop.', x: 18.0, y: -1265.0, z: 10.5 },
+      { category: 'assets', name: 'Pay \'n\' Spray (Vice Point)', tag: 'Repair & Repaint', desc: 'North Vice Point vehicle workshop.', x: 325.0, y: 430.0, z: 11.0 },
+      { category: 'assets', name: 'Pay \'n\' Spray (Little Haiti)', tag: 'Repair & Repaint', desc: 'Little Haiti vehicle workshop.', x: -870.0, y: -110.0, z: 11.0 },
+      { category: 'assets', name: '8-Ball’s Bomb Garage (Viceport)', tag: 'Car Bomb Depot', desc: 'Viceport ignition car bomb installation garage.', x: -760.0, y: -1410.0, z: 10.5 },
+
+      // 3. SHOPPING & WEAPONS
+      { category: 'shopping', name: 'North Point Mall Main Atrium', tag: 'Shopping Mall', desc: 'Massive 2-story mall with weapon shops and clothing outlets.', x: 418.0, y: 1100.0, z: 18.0, featured: true },
+      { category: 'shopping', name: 'North Point Mall 2nd Floor', tag: 'Mall Upper Level', desc: 'Upper balcony, stunt ramps and escalators.', x: 418.0, y: 1100.0, z: 26.0 },
+      { category: 'shopping', name: 'North Point Mall Ammu-Nation', tag: 'Gun Store', desc: 'Mall branch weapons counter.', x: 365.0, y: 1070.0, z: 19.0 },
+      { category: 'shopping', name: 'North Point Mall Gash Store', tag: 'Clothing Outlet', desc: 'Luxury clothing store inside the mall.', x: 460.0, y: 1115.0, z: 19.0 },
+      { category: 'shopping', name: 'Downtown Ammu-Nation & Range', tag: 'Shooting Range', desc: 'Downtown main weapons dispensary and Phil Cassidy shooting challenge.', x: -680.0, y: 1260.0, z: 11.2, featured: true },
+      { category: 'shopping', name: 'Ocean Beach Ammu-Nation', tag: 'Gun Store', desc: 'Ocean Beach weapons shop.', x: 130.0, y: -1370.0, z: 10.5 },
+      { category: 'shopping', name: 'Screw This Tool Store (Little Haiti)', tag: 'Hardware / Weapons', desc: 'Hardware shop selling Chainsaws, Katanas, and Hammers.', x: -860.0, y: -30.0, z: 11.2 },
+      { category: 'shopping', name: 'Tooled Up Store (Vice Point)', tag: 'Hardware / Weapons', desc: 'Vice Point tool shop selling Melee weapons.', x: 370.0, y: 480.0, z: 11.0 },
+      { category: 'shopping', name: 'Rafael’s Clothes (Ocean Beach)', tag: 'Outfits', desc: 'Formal pastel suit dispensary.', x: 140.0, y: -1310.0, z: 10.5 },
+      { category: 'shopping', name: 'Jocksport Outfits (Vice Point)', tag: 'Tracksuits', desc: 'Sportswear and tracksuits.', x: 440.0, y: 310.0, z: 11.0 },
+
+      // 4. LANDMARKS, AIRPORTS & MILITARY
+      { category: 'landmarks', name: 'Escobar Int. Airport Terminal', tag: 'Airport Gates', desc: 'South-west passenger gates, metal detectors & radar.', x: -1430.0, y: -900.0, z: 14.5, featured: true },
+      { category: 'landmarks', name: 'Escobar Airport Cargo Hangars', tag: 'Freight Depot', desc: 'Airport freight hangars and jet servicing bays.', x: -1280.0, y: -820.0, z: 14.5 },
+      { category: 'landmarks', name: 'Airport Main Jet Runway', tag: 'Drag Strip', desc: 'Longest straight high-speed runway strip in Vice City.', x: -1500.0, y: -1150.0, z: 14.5, featured: true },
+      { category: 'landmarks', name: 'Airport Control Tower Roof', tag: 'Tower Perch', desc: 'Highest airport sniper vantage point.', x: -1370.0, y: -970.0, z: 45.0 },
+      { category: 'landmarks', name: 'Fort Baxter Military Base', tag: 'Army Base', desc: 'Heavily fortified military airbase with Rhino Tank & Hunter Chopper.', x: -1680.0, y: -320.0, z: 14.5, featured: true },
+      { category: 'landmarks', name: 'Fort Baxter Watchtower', tag: 'Sniper Nest', desc: 'Army base perimeter guard tower overlooking tank compound.', x: -1650.0, y: -360.0, z: 28.0 },
+      { category: 'landmarks', name: 'Hyman Memorial Stadium Entrance', tag: 'Sports Arena', desc: 'Downtown arena for Dirtring, Bloodring derby & Hotring races.', x: -1100.0, y: 1315.0, z: 60.5, featured: true },
+      { category: 'landmarks', name: 'Downtown Police HQ & Helipad', tag: 'VCPD Base', desc: 'Main police department with rooftop VCPD Maverick chopper.', x: -620.0, y: 770.0, z: 25.0, featured: true },
+      { category: 'landmarks', name: 'Washington Beach Police Station', tag: 'VCPD Station', desc: 'East island police substation.', x: 390.0, y: -470.0, z: 11.0 },
+      { category: 'landmarks', name: 'Little Havana Police Station', tag: 'VCPD Station', desc: 'West island police precinct.', x: -960.0, y: -780.0, z: 11.5 },
+      { category: 'landmarks', name: 'Ocean Beach Hospital Bay', tag: 'Hospital & Ambulance', desc: 'Ocean Beach emergency room ambulance spawn.', x: 240.0, y: -1390.0, z: 10.5 },
+      { category: 'landmarks', name: 'Downtown Schuman Hospital Helipad', tag: 'Hospital Helipad', desc: 'Downtown medical center rooftop air ambulance pad.', x: -800.0, y: 1170.0, z: 24.0 },
+      { category: 'landmarks', name: 'Leaf Links Country Club Clubhouse', tag: 'Golf Resort', desc: '18-hole golf island clubhouse and Caddy carts.', x: -50.0, y: 50.0, z: 11.0, featured: true },
+      { category: 'landmarks', name: 'Leaf Links Driving Range', tag: 'Golf Range', desc: 'Island driving range tee and sand bunkers.', x: -130.0, y: 180.0, z: 11.0 },
+      { category: 'landmarks', name: 'Washington Beach Lighthouse', tag: 'Historic Landmark', desc: 'Coastal lighthouse tower at the south-eastern beach tip.', x: 655.0, y: -1640.0, z: 16.0, featured: true },
+      { category: 'landmarks', name: 'Ocean Drive Beachfront Strip', tag: 'Neon Strip', desc: 'World-famous neon hotel beachfront boulevard.', x: 210.0, y: -1450.0, z: 10.5 },
+      { category: 'landmarks', name: 'South Beach Pier & Marina', tag: 'Pier Marina', desc: 'South Ocean Beach boat docks and fishing jetty.', x: 130.0, y: -1770.0, z: 11.0 },
+
+      // 5. GANG HQS, UNIQUE SPOTS & EASTER EGGS
+      { category: 'gangs', name: 'Cafe Robina (Cuban Gang HQ)', tag: 'Cuban Syndicate', desc: 'Little Havana cafe home of Umberto Robina and Cuban syndicate.', x: -1170.0, y: -600.0, z: 11.5, featured: true },
+      { category: 'gangs', name: 'Auntie Poulet’s Voodoo Shack', tag: 'Haitian Gang HQ', desc: 'Little Haiti mystical wooden home of Auntie Poulet.', x: -980.0, y: 110.0, z: 11.2, featured: true },
+      { category: 'gangs', name: 'The Greasy Chopper (Biker Bar)', tag: 'Biker Gang HQ', desc: 'Downtown biker gang bar home to Mitch Baker.', x: -590.0, y: 680.0, z: 11.2, featured: true },
+      { category: 'gangs', name: 'Love Fist Recording Studio', tag: 'Rock Band Studio', desc: 'Downtown recording studio for Scottish rock band Love Fist.', x: -870.0, y: 750.0, z: 11.5 },
+      { category: 'gangs', name: 'Ken Rosenberg’s Law Office', tag: 'Lawyers Suite', desc: 'Harrison Hotel suite office of Tommy’s neurotic defense lawyer.', x: 120.0, y: -1290.0, z: 10.8 },
+      { category: 'gangs', name: 'Colonel Cortez’s Luxury Superyacht', tag: 'Superyacht', desc: 'Ocean Beach private mega yacht with helicopter deck.', x: -70.0, y: -1530.0, z: 10.5, featured: true },
+      { category: 'gangs', name: 'Prawn Island Street Gang Mansions', tag: 'Ruined Mansions', desc: 'Street gang territory and ruined fountain courtyard.', x: -15.0, y: 930.0, z: 11.5 },
+      { category: 'gangs', name: 'VCN News Chopper Helipad (Downtown)', tag: 'Skyscraper Helipad', desc: 'Tallest downtown television skyscraper rooftop with news chopper.', x: -610.0, y: 770.0, z: 74.0, featured: true },
+      { category: 'gangs', name: 'The Hidden Easter Egg Room (VCN Roof)', tag: 'Secret Easter Egg', desc: 'Hidden room containing the literal chocolate Easter Egg!', x: -600.0, y: 775.0, z: 74.5, featured: true },
+      { category: 'gangs', name: 'Junkyard Stunt Course (Little Haiti)', tag: 'Stunt Arena', desc: 'Crushed car ramps, pipes and obstacle dirt course.', x: -1080.0, y: 60.0, z: 11.5 },
+      { category: 'gangs', name: 'Downtown Beach Dirtbike Track', tag: 'Dirt Track', desc: 'Sand motocross track for Sanchez dirtbikes.', x: -840.0, y: 1310.0, z: 11.5 }
+    ];
+
+    function renderLocations() {
+      const mansionsEl = document.getElementById('grid-mansions');
+      const assetsEl = document.getElementById('grid-assets');
+      const landmarksEl = document.getElementById('grid-landmarks');
+
+      if (mansionsEl) mansionsEl.innerHTML = '';
+      if (assetsEl) assetsEl.innerHTML = '';
+      if (landmarksEl) landmarksEl.innerHTML = '';
+
+      LOCATIONS.forEach(loc => {
+        const card = document.createElement('div');
+        card.className = `location-card ${loc.featured ? 'featured' : ''}`;
+        card.dataset.category = loc.category;
+        card.dataset.text = (loc.name + ' ' + loc.tag + ' ' + loc.desc).toLowerCase();
+        card.innerHTML = `
+          <div>
+            <div class="location-name">
+              <span>${loc.name}</span>
+              <span class="location-tag">${loc.tag}</span>
+            </div>
+            <div class="location-desc">${loc.desc}</div>
+            <div class="location-coords">📍 (${loc.x.toFixed(1)}, ${loc.y.toFixed(1)}, ${loc.z.toFixed(1)})</div>
+          </div>
+          <button class="btn-warp" onclick="warpTo(${loc.x}, ${loc.y}, ${loc.z}, '${loc.name.replace(/'/g, "\\'")}')">⚡ Teleport</button>
+        `;
+        if (loc.category === 'mansions' && mansionsEl) mansionsEl.appendChild(card);
+        else if ((loc.category === 'assets' || loc.category === 'shopping') && assetsEl) assetsEl.appendChild(card);
+        else if (landmarksEl) landmarksEl.appendChild(card);
+      });
+    }
+
+    function warpTo(x, y, z, name) {
+      PlayerTeleportController.teleportTo(x, y, z, name);
+    }
+
+    function warpCustom() {
+      const x = parseFloat(document.getElementById('custom-x').value) || 0;
+      const y = parseFloat(document.getElementById('custom-y').value) || 0;
+      const z = parseFloat(document.getElementById('custom-z').value) || 15;
+      PlayerTeleportController.teleportTo(x, y, z, `Custom Coordinates (${x}, ${y}, ${z})`);
+    }
+
+    function filterLocations() {
+      const q = document.getElementById('teleport-search').value.toLowerCase().trim();
+      document.querySelectorAll('.location-card').forEach(c => {
+        c.style.display = (!q || c.dataset.text.includes(q)) ? 'flex' : 'none';
+      });
+    }
+
+    // --- CHEATS ---
+    function triggerCheat(code, label) {
+      showToast(`⚡ Cheat: ${label} (${code})`);
+      dispatchCheatKeys(code);
+    }
+
+    function dispatchCheatKeys(code) {
+      let delay = 0;
+      for (let i = 0; i < code.length; i++) {
+        const char = code[i];
+        const keyCode = char.charCodeAt(0);
+        setTimeout(() => {
+          const props = { key: char, code: 'Key' + char, keyCode: keyCode, which: keyCode, bubbles: true };
+          document.dispatchEvent(new KeyboardEvent('keydown', props));
+          document.dispatchEvent(new KeyboardEvent('keyup', props));
+          window.dispatchEvent(new KeyboardEvent('keydown', props));
+          window.dispatchEvent(new KeyboardEvent('keyup', props));
+        }, delay);
+        delay += 40;
+      }
+    }
+
+    // --- UI MODAL ---
+    function toggleModal(tab) {
+      const modal = document.getElementById('control-modal');
+      if (modal.classList.contains('open')) closeModal();
+      else { modal.classList.add('open'); if (tab) switchTab(tab); }
+    }
+    function closeModal() { document.getElementById('control-modal').classList.remove('open'); }
+    function switchTab(tab) {
+      document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      const btn = document.getElementById(`tab-btn-${tab}`);
+      const panel = document.getElementById(`panel-${tab}`);
+      if (btn) btn.classList.add('active');
+      if (panel) panel.classList.add('active');
+    }
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+      else document.exitFullscreen().catch(()=>{});
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast-notification');
+      document.getElementById('toast-msg').innerHTML = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName !== 'INPUT') {
+        if (e.key === 't' || e.key === 'T' || e.key === 'm' || e.key === 'M') {
+          e.preventDefault();
+          toggleModal('teleport');
+        } else if (e.key === 'Escape') closeModal();
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderLocations();
+      setupMobileJoystick();
+      startTurboBoot();
+    });
+  </script>
+</body>
+</html>

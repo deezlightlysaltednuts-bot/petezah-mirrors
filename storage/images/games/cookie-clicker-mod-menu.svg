@@ -7,11 +7,11 @@
     </linearGradient>
   </defs>
   <rect width="300" height="300" rx="54" fill="#0A0F1D"/>
-  <rect x="10" y="10" width="280" height="280" rx="46" fill="url(#grad_cookie_clicker_mod_menu)" opacity="0.15"/>
-  <rect x="10" y="10" width="280" height="280" rx="46" fill="none" stroke="url(#grad_cookie_clicker_mod_menu)" stroke-width="3" opacity="0.55"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="url(#grad_cookie_clicker_mod_menu)" opacity="0.16"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="none" stroke="url(#grad_cookie_clicker_mod_menu)" stroke-width="3.5" opacity="0.6"/>
   <g>
-    <circle cx="150" cy="125" r="45" fill="#B08968"/><circle cx="135" cy="110" r="7" fill="#7F5539"/><circle cx="165" cy="115" r="6" fill="#7F5539"/><circle cx="145" cy="140" r="8" fill="#7F5539"/>
+    <circle cx="150" cy="125" r="45" fill="#B08968"/><circle cx="135" cy="110" r="7" fill="#7F5539"/><circle cx="165" cy="115" r="6" fill="#7F5539"/><circle cx="145" cy="140" r="8" fill="#7F5539"/><circle cx="155" cy="125" r="6" fill="#7F5539"/>
   </g>
-  <text x="150" y="225" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">COOKIE CLICKER</text>
-  <text x="150" y="248" text-anchor="middle" fill="#7F5539" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="2">HACKED MOD MENU</text>
+  <text x="150" y="228" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">COOKIE CLICKER</text>
+  <text x="150" y="250" text-anchor="middle" fill="#7F5539" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="2">MOD MENU HACKED</text>
 </svg>

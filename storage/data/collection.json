@@ -64,7 +64,7 @@
       "id": "google",
       "label": "Google",
       "url": "/games/ubg/google.html",
-      "imageUrl": "/storage/images/games/google.svg",
+      "imageUrl": "/storage/images/games/google.png",
       "categories": [
         "Action",
         "Arcade",
@@ -148,7 +148,7 @@
       "id": "sandstone",
       "label": "Sandstone",
       "url": "/games/ubg/sandstone.html",
-      "imageUrl": "/storage/images/games/sandstone.svg",
+      "imageUrl": "/storage/images/games/sandstone.png",
       "categories": [
         "Action",
         "Arcade",

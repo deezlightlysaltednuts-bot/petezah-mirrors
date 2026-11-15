@@ -1,14 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="50%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#020617"/>
+    <linearGradient id="grad_totally_accurate_battle_simulator_tabs" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E63946"/>
+      <stop offset="50%" stop-color="#457B9D"/>
+      <stop offset="100%" stop-color="#1D3557"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="240" rx="16" fill="url(#g)"/>
-  <circle cx="200" cy="95" r="46" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-  <path d="M 185 80 L 225 95 L 185 110 Z" fill="#ffffff"/>
-  <text x="200" y="175" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">TOTALLY ACCURATE B...</text>
-  <text x="200" y="200" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.6)" text-anchor="middle">PETEZAH VERIFIED</text>
+  <rect width="300" height="300" rx="54" fill="#0A0F1D"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="url(#grad_totally_accurate_battle_simulator_tabs)" opacity="0.16"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="none" stroke="url(#grad_totally_accurate_battle_simulator_tabs)" stroke-width="3.5" opacity="0.6"/>
+  <g>
+    <circle cx="115" cy="125" r="32" fill="#E63946"/><circle cx="185" cy="125" r="32" fill="#457B9D"/><circle cx="110" cy="120" r="8" fill="#fff"/><circle cx="180" cy="120" r="8" fill="#fff"/><circle cx="112" cy="120" r="4" fill="#000"/><circle cx="182" cy="120" r="4" fill="#000"/>
+  </g>
+  <text x="150" y="228" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">T.A.B.S.</text>
+  <text x="150" y="250" text-anchor="middle" fill="#457B9D" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="2">BATTLE SIMULATOR</text>
 </svg>

@@ -1,14 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="50%" stop-color="#a855f7"/>
-      <stop offset="100%" stop-color="#020617"/>
+    <linearGradient id="grad_caseoh_s_basics_in_eating_and_fast_food" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E71D36"/>
+      <stop offset="50%" stop-color="#FF9F1C"/>
+      <stop offset="100%" stop-color="#2EC4B6"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="240" rx="16" fill="url(#g)"/>
-  <circle cx="200" cy="95" r="46" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-  <path d="M 185 80 L 225 95 L 185 110 Z" fill="#ffffff"/>
-  <text x="200" y="175" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">CASEOH'S BASICS IN...</text>
-  <text x="200" y="200" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.6)" text-anchor="middle">PETEZAH VERIFIED</text>
+  <rect width="300" height="300" rx="54" fill="#0A0F1D"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="url(#grad_caseoh_s_basics_in_eating_and_fast_food)" opacity="0.16"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="none" stroke="url(#grad_caseoh_s_basics_in_eating_and_fast_food)" stroke-width="3.5" opacity="0.6"/>
+  <g>
+    <ellipse cx="150" cy="130" r="48" fill="#FF9F1C"/><rect x="120" y="110" width="60" height="15" rx="4" fill="#2EC4B6"/><rect x="115" y="125" width="70" height="15" rx="4" fill="#E71D36"/>
+  </g>
+  <text x="150" y="228" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">CASEOH BASICS</text>
+  <text x="150" y="250" text-anchor="middle" fill="#FF9F1C" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="2">FAST FOOD EXTRAVAGANZA</text>
 </svg>

@@ -1,14 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="50%" stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#020617"/>
+    <linearGradient id="grad_geometry_dash_scratch_edition" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE600"/>
+      <stop offset="50%" stop-color="#FF0055"/>
+      <stop offset="100%" stop-color="#00F0FF"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="240" rx="16" fill="url(#g)"/>
-  <circle cx="200" cy="95" r="46" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-  <path d="M 185 80 L 225 95 L 185 110 Z" fill="#ffffff"/>
-  <text x="200" y="175" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">GEOMETRY DASH (SCR...</text>
-  <text x="200" y="200" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.6)" text-anchor="middle">PETEZAH VERIFIED</text>
+  <rect width="300" height="300" rx="54" fill="#0A0F1D"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="url(#grad_geometry_dash_scratch_edition)" opacity="0.16"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="none" stroke="url(#grad_geometry_dash_scratch_edition)" stroke-width="3.5" opacity="0.6"/>
+  <g>
+    <rect x="110" y="85" width="80" height="80" rx="12" fill="#FFE600"/><rect x="125" y="100" width="20" height="20" fill="#000"/><rect x="155" y="100" width="20" height="20" fill="#000"/><rect x="130" y="135" width="40" height="15" fill="#000"/>
+  </g>
+  <text x="150" y="228" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">GEOMETRY DASH</text>
+  <text x="150" y="250" text-anchor="middle" fill="#FF0055" font-family="'Segoe UI', system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="2">SCRATCH EDITION</text>
 </svg>

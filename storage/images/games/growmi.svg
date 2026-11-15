@@ -1,14 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="50%" stop-color="#f43f5e"/>
-      <stop offset="100%" stop-color="#020617"/>
+    <linearGradient id="grad_growmi" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#52B788"/>
+      <stop offset="50%" stop-color="#2D6A4F"/>
+      <stop offset="100%" stop-color="#081C15"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="240" rx="16" fill="url(#g)"/>
-  <circle cx="200" cy="95" r="46" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-  <path d="M 185 80 L 225 95 L 185 110 Z" fill="#ffffff"/>
-  <text x="200" y="175" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">GROWMI</text>
-  <text x="200" y="200" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.6)" text-anchor="middle">PETEZAH VERIFIED</text>
+  <rect width="300" height="300" rx="54" fill="#0A0F1D"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="url(#grad_growmi)" opacity="0.15"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="none" stroke="url(#grad_growmi)" stroke-width="3" opacity="0.55"/>
+  <g>
+    <circle cx="150" cy="120" r="40" fill="#52B788"/><circle cx="135" cy="110" r="8" fill="#081C15"/><circle cx="165" cy="110" r="8" fill="#081C15"/><path d="M135 135 Q150 150 165 135" stroke="#081C15" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="150" y="225" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">GROWMI</text>
+  <text x="150" y="248" text-anchor="middle" fill="#2D6A4F" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="2">PUZZLE ADVENTURE</text>
 </svg>

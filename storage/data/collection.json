@@ -1,18 +1,6 @@
 {
   "games": [
     {
-      "id": "mode-preview-url-https-3a-2f-2fnowgg",
-      "label": "Mode=Preview&Url=Https%3A%2F%2Fnowgg",
-      "url": "/games/ubg/mode-preview-url-https-3a-2f-2fnowgg.html",
-      "imageUrl": "/storage/images/games/mode-preview-url-https-3a-2f-2fnowgg.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "vicecity",
       "label": "Vicecity",
       "url": "/games/ubg/vicecity.html",
@@ -37,46 +25,10 @@
       "via": "fg"
     },
     {
-      "id": "totally-accurate-battle-simulator-tabs-1",
-      "label": "Totally Accurate Battle Simulator (TABS) (1)",
-      "url": "/games/ubg/totally-accurate-battle-simulator-tabs-1.html",
-      "imageUrl": "/storage/images/games/totally-accurate-battle-simulator-tabs-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "slowroads",
-      "label": "Slowroads",
-      "url": "/games/ubg/slowroads.html",
-      "imageUrl": "/storage/images/games/slowroads.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "reflex-0-0-2-1-8-wasm-gc-offline-download",
       "label": "Reflex 0.0.2 1.8 WASM GC Offline Download",
       "url": "/games/ubg/reflex-0-0-2-1-8-wasm-gc-offline-download.html",
       "imageUrl": "/storage/images/games/reflex-0-0-2-1-8-wasm-gc-offline-download.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "plague-inc-1",
-      "label": "Plague Inc (1)",
-      "url": "/games/ubg/plague-inc-1.html",
-      "imageUrl": "/storage/images/games/plague-inc-1.svg",
       "categories": [
         "Action",
         "Arcade",
@@ -97,58 +49,10 @@
       "via": "fg"
     },
     {
-      "id": "minecraft-26-2-1",
-      "label": "Minecraft 26.2 (1)",
-      "url": "/games/ubg/minecraft-26-2-1.html",
-      "imageUrl": "/storage/images/games/minecraft-26-2-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "kirby-soft-wet",
       "label": "Kirby ~ Soft & Wet",
       "url": "/games/ubg/kirby-soft-wet.html",
       "imageUrl": "/storage/images/games/kirby-soft-wet.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "index",
-      "label": "Index",
-      "url": "/games/ubg/index.html",
-      "imageUrl": "/storage/images/games/index.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "idle-dice-1",
-      "label": "Idle Dice (1)",
-      "url": "/games/ubg/idle-dice-1.html",
-      "imageUrl": "/storage/images/games/idle-dice-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "gunspin-1",
-      "label": "Gunspin (1)",
-      "url": "/games/ubg/gunspin-1.html",
-      "imageUrl": "/storage/images/games/gunspin-1.svg",
       "categories": [
         "Action",
         "Arcade",
@@ -205,42 +109,6 @@
       "via": "fg"
     },
     {
-      "id": "friday-night-funkin-vs-henry-stickmin-v4-3",
-      "label": "Friday Night Funkin'  VS. Henry Stickmin V4 (3)",
-      "url": "/games/ubg/friday-night-funkin-vs-henry-stickmin-v4-3.html",
-      "imageUrl": "/storage/images/games/friday-night-funkin-vs-henry-stickmin-v4-3.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "friday-night-funkin-vs-henry-stickmin-v4-2",
-      "label": "Friday Night Funkin'  VS. Henry Stickmin V4 (2)",
-      "url": "/games/ubg/friday-night-funkin-vs-henry-stickmin-v4-2.html",
-      "imageUrl": "/storage/images/games/friday-night-funkin-vs-henry-stickmin-v4-2.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "friday-night-funkin-vs-henry-stickmin-v4-1",
-      "label": "Friday Night Funkin'  VS. Henry Stickmin V4 (1)",
-      "url": "/games/ubg/friday-night-funkin-vs-henry-stickmin-v4-1.html",
-      "imageUrl": "/storage/images/games/friday-night-funkin-vs-henry-stickmin-v4-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "five-nights-at-freddy-s-into-the-pit",
       "label": "Five Nights At Freddy'S  Into The Pit",
       "url": "/games/ubg/five-nights-at-freddy-s-into-the-pit.html",
@@ -253,70 +121,10 @@
       "via": "fg"
     },
     {
-      "id": "dumb-ways-to-die-1",
-      "label": "Dumb Ways To Die (1)",
-      "url": "/games/ubg/dumb-ways-to-die-1.html",
-      "imageUrl": "/storage/images/games/dumb-ways-to-die-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "drift-hunters-1",
-      "label": "Drift Hunters (1)",
-      "url": "/games/ubg/drift-hunters-1.html",
-      "imageUrl": "/storage/images/games/drift-hunters-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "don-t-you-lecture-me",
       "label": "DON'T YOU LECTURE ME",
       "url": "/games/ubg/don-t-you-lecture-me.html",
       "imageUrl": "/storage/images/games/don-t-you-lecture-me.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "cs",
-      "label": "Cs",
-      "url": "/games/ubg/cs.html",
-      "imageUrl": "/storage/images/games/cs.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "wurst",
-      "label": "Wurst",
-      "url": "/games/ubg/wurst.html",
-      "imageUrl": "/storage/images/games/wurst.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "subway-surfers-san-francisco-1",
-      "label": "Subway Surfers San Francisco (1)",
-      "url": "/games/ubg/subway-surfers-san-francisco-1.html",
-      "imageUrl": "/storage/images/games/subway-surfers-san-francisco-1.svg",
       "categories": [
         "Action",
         "Arcade",
@@ -401,18 +209,6 @@
       "label": "Five Nights At Freddy'S 2",
       "url": "/games/ubg/five-nights-at-freddy-s-2.html",
       "imageUrl": "/storage/images/games/five-nights-at-freddy-s-2.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "don-t-you-lecture-me-html",
-      "label": "Don'T You Lecture Me.Html",
-      "url": "/games/ubg/don-t-you-lecture-me-html.html",
-      "imageUrl": "/storage/images/games/don-t-you-lecture-me-html.svg",
       "categories": [
         "Action",
         "Arcade",
@@ -541,42 +337,6 @@
       "via": "fg"
     },
     {
-      "id": "chat-bot-template",
-      "label": "Chat Bot Template",
-      "url": "/games/ubg/chat-bot-template.html",
-      "imageUrl": "/storage/images/games/chat-bot-template.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "chat-bot-ai-decoded",
-      "label": "Chat Bot Ai Decoded",
-      "url": "/games/ubg/chat-bot-ai-decoded.html",
-      "imageUrl": "/storage/images/games/chat-bot-ai-decoded.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "chat-bot-ai-a-i-gpt",
-      "label": "Chat Bot AI (A.I GPT)",
-      "url": "/games/ubg/chat-bot-ai-a-i-gpt.html",
-      "imageUrl": "/storage/images/games/chat-bot-ai-a-i-gpt.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "caseoh-s-basics-in-eating-and-fast-food",
       "label": "CaseOh'S Basics In Eating And Fast Food",
       "url": "/games/ubg/caseoh-s-basics-in-eating-and-fast-food.html",
@@ -589,58 +349,10 @@
       "via": "fg"
     },
     {
-      "id": "bloons-td-5-1",
-      "label": "Bloons TD 5 (1)",
-      "url": "/games/ubg/bloons-td-5-1.html",
-      "imageUrl": "/storage/images/games/bloons-td-5-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "beemovie",
-      "label": "Beemovie",
-      "url": "/games/ubg/beemovie.html",
-      "imageUrl": "/storage/images/games/beemovie.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "angry-birds-epic-1",
-      "label": "Angry Birds Epic (1)",
-      "url": "/games/ubg/angry-birds-epic-1.html",
-      "imageUrl": "/storage/images/games/angry-birds-epic-1.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "adventure-capatalist",
       "label": "Adventure Capatalist",
       "url": "/games/ubg/adventure-capatalist.html",
       "imageUrl": "/storage/images/games/adventure-capatalist.svg",
-      "categories": [
-        "Action",
-        "Arcade",
-        "Casual"
-      ],
-      "via": "fg"
-    },
-    {
-      "id": "1v1",
-      "label": "1v1",
-      "url": "/games/ubg/1v1.html",
-      "imageUrl": "/storage/images/games/1v1.svg",
       "categories": [
         "Action",
         "Arcade",
@@ -1658,17 +1370,6 @@
       "via": "fg"
     },
     {
-      "id": "dont-you-lecture-me",
-      "label": "Don't You Lecture Me",
-      "url": "/games/ubg/dont-you-lecture-me.html",
-      "imageUrl": "/storage/images/games/dont-you-lecture-me.jpg",
-      "categories": [
-        "Meme",
-        "Music"
-      ],
-      "via": "fg"
-    },
-    {
       "id": "doge-miner",
       "label": "Doge Miner",
       "url": "/games/ubg/doge-miner.html",
@@ -1985,18 +1686,6 @@
         "Retro",
         "Platformer",
         "Adventure"
-      ],
-      "via": "ubg"
-    },
-    {
-      "id": "kirby-soft-and-wet",
-      "label": "Kirby ~ Soft & Wet",
-      "url": "/games/ubg/kirby-soft-and-wet.html",
-      "imageUrl": "/storage/images/games/kirby-soft-and-wet.png",
-      "categories": [
-        "Retro",
-        "Platformer",
-        "Action"
       ],
       "via": "ubg"
     },

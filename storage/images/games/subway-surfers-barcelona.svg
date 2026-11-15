@@ -1,22 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="50%" stop-color="#e11d48"/>
-      <stop offset="100%" stop-color="#020617"/>
+    <linearGradient id="grad_subway_surfers_barcelona" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E63946"/>
+      <stop offset="50%" stop-color="#FFB703"/>
+      <stop offset="100%" stop-color="#1D3557"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-  <rect width="400" height="240" rx="16" fill="url(#grad)"/>
-  <circle cx="200" cy="90" r="50" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
-  <path d="M 180 75 L 225 90 L 180 105 Z" fill="#ffffff" filter="url(#glow)"/>
-  <text x="200" y="165" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">SUBWAY SURFERS</text>
-  <rect x="120" y="185" width="160" height="26" rx="13" fill="#e11d48" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-  <text x="200" y="203" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="2">BARCELONA</text>
+  <rect width="300" height="300" rx="54" fill="#0A0F1D"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="url(#grad_subway_surfers_barcelona)" opacity="0.15"/>
+  <rect x="10" y="10" width="280" height="280" rx="46" fill="none" stroke="url(#grad_subway_surfers_barcelona)" stroke-width="3" opacity="0.55"/>
+  <g>
+    <rect x="80" y="90" width="140" height="80" rx="16" fill="#FFB703"/><circle cx="110" cy="180" r="12" fill="#1D3557"/><circle cx="190" cy="180" r="12" fill="#1D3557"/><path d="M100 130h100" stroke="#1D3557" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="150" y="225" text-anchor="middle" fill="#FFFFFF" font-family="'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="800" letter-spacing="1.5">BARCELONA</text>
+  <text x="150" y="248" text-anchor="middle" fill="#FFB703" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="2">SUBWAY SURFERS</text>
 </svg>

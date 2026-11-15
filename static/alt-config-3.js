@@ -1,6 +1,4 @@
-let host = location.protocol + '//' + location.host;
-
 let _CONFIG = {
-  streamurl: (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/api/websocket-3/',
-  bareurl: host + '/api/edge/'
+  streamurl: 'wss://anura.pro/wisp/',
+  bareurl: 'https://wisp.mercurywork.shop/'
 };

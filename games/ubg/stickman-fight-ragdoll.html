@@ -1,0 +1,90 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L7856P3VNT');
+</script><!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <style>
+    html, body {
+      touch-action: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #000 !important;
+    }
+    canvas {
+      touch-action: none !important;
+      display: block !important;
+    }
+    #unity-mobile-warning, .unity-mobile-warning {
+      display: none !important;
+    }
+  </style>
+  <script>
+    // Global iPad AudioContext Unlocker on first tap/touch
+    (function() {
+      function unlock() {
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) {
+            var ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+          }
+        } catch(e) {}
+      }
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+      window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+      window.addEventListener('click', unlock, { once: true, passive: true });
+      document.addEventListener('touchmove', function(e) {
+        if (e.cancelable && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
+
+    <base href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/stickman-fighto/">
+
+
+	<link rel="manifest" href="appmanifest.json">
+	<link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png">
+	<link rel="apple-touch-icon" sizes="256x256" href="icons/icon-256.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
+	<link rel="icon" type="image/png" href="icons/icon-512.png">
+
+<link rel="stylesheet" href="style.css">
+
+
+
+</head>
+<body style="overflow:hidden;">
+
+	<script src="box2d.wasm.js"></script>
+	<script src="patch/poki-sdk.js"></script>
+	<noscript>
+		<div id="notSupportedWrap">
+			<h2 id="notSupportedTitle">This content requires JavaScript</h2>
+			<p class="notSupportedMessage">JavaScript appears to be disabled. Please enable it to view this content.</p>
+		</div>
+	</noscript>
+	<script src="scripts/supportcheck.js"></script>
+	<script src="scripts/offlineclient.js" type="module"></script>
+	<script src="scripts/main2.js" type="module"></script>
+	<script src="scripts/register-sw.js" type="module"></script>
+
+
+
+
+</body> 
+</html>

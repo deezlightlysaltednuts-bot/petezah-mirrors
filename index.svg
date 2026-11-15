@@ -10,7 +10,7 @@
       <script><![CDATA[
 (() => {
   window.__PZ_ORIGIN__ = "https://petezahgames.com";
-  window.__PZ_CACHE__ = "01-10-2026";
+  window.__PZ_CACHE__ = "03-10-2026";
   const ns = 'http://www.w3.org/1999/xhtml';
   const body = document.querySelector('body');
   if (!body) return;
@@ -48,10 +48,10 @@ var cdnBase = (function() {
   var b = document.createElement('base');
   b.href = cdnBase;
   document.head.appendChild(b);
-var l=document.createElement('link');l.rel='stylesheet';l.crossOrigin='';l.href=cdnBase + "assets/index-CRfXiAgr.css?v=01-10-2026";document.head.appendChild(l);
-var s=document.createElement('script');s.type='module';s.crossOrigin='';s.src=cdnBase + "assets/index-U_2yaLxZ.js?v=01-10-2026";document.body.appendChild(s);
-var m=document.createElement('script');m.src=cdnBase + "m4thx/index.js?v=01-10-2026";document.body.appendChild(m);
-var c=document.createElement('script');c.src=cdnBase + "q9vx/sj.all.js?v=01-10-2026";document.body.appendChild(c);
+var l=document.createElement('link');l.rel='stylesheet';l.crossOrigin='';l.href=cdnBase + "assets/index-CRfXiAgr.css?v=03-10-2026";document.head.appendChild(l);
+var s=document.createElement('script');s.type='module';s.crossOrigin='';s.src=cdnBase + "assets/index-CEcBXNxS.js?v=03-10-2026";document.body.appendChild(s);
+var m=document.createElement('script');m.src=cdnBase + "m4thx/index.js?v=03-10-2026";document.body.appendChild(m);
+var c=document.createElement('script');c.src=cdnBase + "q9vx/sj.all.js?v=03-10-2026";document.body.appendChild(c);
       ]]></script>
     </body>
   </foreignObject>

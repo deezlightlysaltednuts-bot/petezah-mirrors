@@ -145,6 +145,7 @@
   </style>
   <meta name="theme-color" content="#000000">
   
+  <style>html,body{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;margin:0;padding:0;}#unity-mobile-warning,.unity-mobile-warning{display:none!important;}</style>
 </head>
 <body>
   <div id="app"></div>
@@ -174,7 +175,7 @@
     </details>
   </div>
 
-  <script src="/games/ubg/banban-script.js" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/iamthegamesofsprunk/gob-2d@main/script.js'"></script>
+  <script src="script.js"></script>
   <script>
     const appElement = document.getElementById('app');
     const launchScreen = document.getElementById('launch');
@@ -198,10 +199,12 @@
     };
     const interpolate = (a, b, t) => a + t * (b - a);
 
+    var scaffolding = null;
+    window.scaffolding = null;
     try {
       setProgress(0.1);
 
-      const scaffolding = new Scaffolding.Scaffolding();
+      scaffolding = new Scaffolding.Scaffolding();
       scaffolding.width = 480;
       scaffolding.height = 360;
       scaffolding.resizeMode = "preserve-ratio";

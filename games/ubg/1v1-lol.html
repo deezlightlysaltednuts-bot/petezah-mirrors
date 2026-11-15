@@ -12,6 +12,7 @@
       height: 100%;
       overflow: hidden;
       background: #000;
+      font-family: system-ui, -apple-system, sans-serif;
     }
     iframe {
       position: fixed;
@@ -20,10 +21,72 @@
       width: 100vw;
       height: 100vh;
       border: none;
+      z-index: 1;
+    }
+    #pz-hud {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99999;
+      background: rgba(10, 14, 23, 0.92);
+      border: 1px solid rgba(79, 142, 247, 0.4);
+      border-radius: 12px;
+      padding: 8px 16px;
+      color: #fff;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      user-select: none;
+    }
+    #pz-hud strong {
+      color: #60a5fa;
+    }
+    .hud-btn {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
     }
   </style>
+  <style>html,body{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;margin:0;padding:0;}#unity-mobile-warning,.unity-mobile-warning{display:none!important;}</style>
 </head>
 <body>
-  <iframe src="https://bait.hbmc.net/gamefile/1v1.html" allow="autoplay; fullscreen; pointer-lock; camera; microphone; gamepad; keyboard-map; clipboard-read; clipboard-write" allowfullscreen></iframe>
+  <div id="pz-hud">
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
+      <strong>PeteZah Multiplayer:</strong>
+    </div>
+    <span>Play REAL players (no bots): Click <strong>Party</strong> on the left menu to Create or Join a room with friends!</span>
+    <button onclick="document.getElementById('pz-hud').style.display='none'" style="background:transparent;border:none;color:#94a3b8;cursor:pointer;font-size:16px;padding:0 4px;" title="Dismiss">✕</button>
+  </div>
+
+  <iframe
+    id="game-frame"
+    src="https://1v1-lol.gitlab.io/file/"
+    allow="autoplay; fullscreen; pointer-lock; camera; microphone; gamepad; keyboard-map; clipboard-read; clipboard-write"
+    allowfullscreen
+  ></iframe>
+
+  <script>
+    var mirrors = [
+      "https://1v1-lol.gitlab.io/file/",
+      "https://1v1lol-gg.github.io/"
+    ];
+    var currentIdx = 0;
+    var frame = document.getElementById('game-frame');
+
+    frame.onerror = function() {
+      currentIdx = (currentIdx + 1) % mirrors.length;
+      frame.src = mirrors[currentIdx];
+    };
+  </script>
 </body>
 </html>

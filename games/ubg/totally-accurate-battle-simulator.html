@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Totally Accurate Battle Simulator</title>
+    <base href="https://cdn.jsdelivr.net/gh/web-ports/tabs@main/" />
+    <style>
+      * {
+        box-sizing: border-box;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html, body {
+        background-color: #030712;
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: fixed;
+        inset: 0;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      #gameContainer {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: #000000;
+        overflow: hidden;
+      }
+      canvas {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+        touch-action: none;
+        position: absolute;
+        inset: 0;
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+
+      #loader-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at center, #0f172a 0%, #030712 100%);
+        transition: opacity 0.5s ease;
+      }
+
+      .loader-card {
+        width: min(540px, 92vw);
+        padding: 34px 28px;
+        background: rgba(15, 23, 42, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 24px;
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        text-align: center;
+        position: relative;
+      }
+
+      .game-title {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0 0 6px 0;
+        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .game-subtitle {
+        font-size: 13px;
+        color: #94a3b8;
+        margin: 0 0 22px 0;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .device-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 11px;
+        font-weight: 700;
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.15);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: 2px 8px;
+        border-radius: 9999px;
+      }
+
+      .progress-container {
+        width: 100%;
+        height: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 9999px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        position: relative;
+        margin-bottom: 14px;
+      }
+
+      .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
+        border-radius: 9999px;
+        transition: width 0.15s ease-out;
+        box-shadow: 0 0 18px rgba(99, 102, 241, 0.7);
+      }
+
+      .progress-bar.pulse {
+        animation: barGlow 1.8s infinite ease-in-out;
+      }
+
+      @keyframes barGlow {
+        0%, 100% { opacity: 0.85; filter: brightness(1); }
+        50% { opacity: 1; filter: brightness(1.35); }
+      }
+
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #e2e8f0;
+        font-weight: 600;
+      }
+
+      .detail-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 11px;
+        color: #94a3b8;
+        margin-top: 10px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .spinner-container {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 16px;
+        color: #cbd5e1;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(129, 140, 248, 0.25);
+        border-top-color: #818cf8;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .start-button {
+        display: none;
+        width: 100%;
+        margin-top: 20px;
+        padding: 15px 22px;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 14px;
+        cursor: pointer;
+        box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.6);
+        transition: transform 0.15s ease, filter 0.15s ease;
+      }
+
+      .start-button:active {
+        transform: scale(0.97);
+        filter: brightness(0.9);
+      }
+
+      .tip-text {
+        font-size: 11px;
+        color: #64748b;
+        margin-top: 16px;
+        line-height: 1.4;
+      }
+
+      /* High-Performance Universal In-Game Dock */
+      #perf-dock {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        z-index: 50;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+        background: rgba(15, 23, 42, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 5px 8px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+        user-select: none;
+      }
+
+      .dock-btn {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 9999px;
+        padding: 5px 10px;
+        font-size: 11px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        transition: all 0.12s ease;
+      }
+
+      .dock-btn.battle {
+        background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 2px 10px rgba(239, 68, 68, 0.4);
+      }
+
+      .dock-btn.perf {
+        background: rgba(56, 189, 248, 0.18);
+        border-color: rgba(56, 189, 248, 0.4);
+        color: #38bdf8;
+      }
+
+      .dock-btn.active {
+        background: #6366f1;
+        border-color: #818cf8;
+      }
+
+      .dock-btn:active {
+        transform: scale(0.94);
+      }
+
+      .fps-badge {
+        font-size: 11px;
+        font-weight: 800;
+        color: #4ade80;
+        padding: 0 6px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* On-screen Flight D-Pad for iPad */
+      #mobile-dpad {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 50;
+        display: none;
+        width: 120px;
+        height: 120px;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 50%;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        touch-action: none;
+      }
+
+      .dpad-key {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 800;
+        user-select: none;
+      }
+
+      .dpad-key:active, .dpad-key.pressed {
+        background: #6366f1;
+      }
+
+      .dpad-up    { top: 6px; left: 42px; width: 36px; height: 32px; }
+      .dpad-down  { bottom: 6px; left: 42px; width: 36px; height: 32px; }
+      .dpad-left  { top: 42px; left: 6px; width: 32px; height: 36px; }
+      .dpad-right { top: 42px; right: 6px; width: 32px; height: 36px; }
+
+      #error-toast {
+        display: none;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 200;
+        background: rgba(220, 38, 38, 0.95);
+        color: #ffffff;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        max-width: 90vw;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader-overlay">
+      <div class="loader-card">
+        <h1 class="game-title">Totally Accurate Battle Simulator</h1>
+        <div class="game-subtitle">
+          <span id="loader-label">Universal Engine</span>
+          <span class="device-badge" id="loader-badge">⚡ Turbo 60 FPS</span>
+        </div>
+
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
+        <div class="status-row">
+          <span id="status-text">Preparing assets...</span>
+          <span id="percent-text">0%</span>
+        </div>
+
+        <div class="detail-status">
+          <span id="parts-text">Part 0 of 89</span>
+          <span id="speed-text">Connecting...</span>
+        </div>
+
+        <div id="spinner-row" class="spinner-container">
+          <div class="spinner"></div>
+          <span id="spinner-label">Compiling WebAssembly engine...</span>
+        </div>
+
+        <button id="start-btn" class="start-button">
+          ⚔️ Tap to Enter Battle ⚔️
+        </button>
+
+        <div class="tip-text" id="tip-text">
+          Zero-Copy streaming memory loader with persistent disk caching active.
+        </div>
+      </div>
+    </div>
+
+    <!-- Universal Performance & Controls Dock (PC + iPad) -->
+    <div id="perf-dock">
+      <span id="fps-badge" class="fps-badge" title="Real-time framerate">60 FPS</span>
+      <button id="perf-toggle-btn" class="dock-btn perf" title="Click to cycle resolution quality (Turbo 60 FPS / Balanced / High)">
+        ⚡ Turbo
+      </button>
+      <button id="battle-btn" class="dock-btn battle" title="Start/Pause Battle (Spacebar)">
+        ⚔️ Battle!
+      </button>
+      <button id="touch-mode-btn" class="dock-btn active" title="Toggle Touch Placement vs Camera Rotation">
+        👆 Place
+      </button>
+      <button id="dpad-toggle-btn" class="dock-btn" title="Toggle On-screen Flight D-Pad">
+        🎮 Fly
+      </button>
+      <button id="zoom-in-btn" class="dock-btn" title="Zoom Camera In">
+        🔍+
+      </button>
+      <button id="zoom-out-btn" class="dock-btn" title="Zoom Camera Out">
+        🔍-
+      </button>
+      <button id="fs-btn" class="dock-btn" title="Fullscreen">
+        ⛶
+      </button>
+    </div>
+
+    <!-- On-screen Flight D-Pad for iPad / Touch -->
+    <div id="mobile-dpad">
+      <div class="dpad-key dpad-up" data-key="w" data-code="KeyW" data-keycode="87">▲</div>
+      <div class="dpad-key dpad-down" data-key="s" data-code="KeyS" data-keycode="83">▼</div>
+      <div class="dpad-key dpad-left" data-key="a" data-code="KeyA" data-keycode="65">◄</div>
+      <div class="dpad-key dpad-right" data-key="d" data-code="KeyD" data-keycode="68">►</div>
+    </div>
+
+    <div id="error-toast"></div>
+
+    <div id="gameContainer"></div>
+
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      (function () {
+        const progressBar = document.getElementById("progress-bar");
+        const statusText = document.getElementById("status-text");
+        const percentText = document.getElementById("percent-text");
+        const partsText = document.getElementById("parts-text");
+        const speedText = document.getElementById("speed-text");
+        const spinnerRow = document.getElementById("spinner-row");
+        const spinnerLabel = document.getElementById("spinner-label");
+        const startBtn = document.getElementById("start-btn");
+        const loaderOverlay = document.getElementById("loader-overlay");
+        const loaderBadge = document.getElementById("loader-badge");
+        const tipText = document.getElementById("tip-text");
+        const errorToast = document.getElementById("error-toast");
+        const perfDock = document.getElementById("perf-dock");
+        const fpsBadge = document.getElementById("fps-badge");
+        const perfToggleBtn = document.getElementById("perf-toggle-btn");
+        const mobileDpad = document.getElementById("mobile-dpad");
+        const battleBtn = document.getElementById("battle-btn");
+        const touchModeBtn = document.getElementById("touch-mode-btn");
+        const dpadToggleBtn = document.getElementById("dpad-toggle-btn");
+        const zoomInBtn = document.getElementById("zoom-in-btn");
+        const zoomOutBtn = document.getElementById("zoom-out-btn");
+        const fsBtn = document.getElementById("fs-btn");
+
+        const isIpadOrAppleMobile =
+          /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+        if (isIpadOrAppleMobile) {
+          loaderBadge.textContent = "⚡ iPad High-Performance Engine";
+        }
+
+        // =========================================================================
+        // 1. UNIVERSAL ULTRA-PERFORMANCE WEBGL CONTEXT INTERCEPTOR (PC + iPAD)
+        // =========================================================================
+        // - Forces dedicated high-power GPU (NVIDIA/AMD on PC, Apple Silicon GPU on iPad)
+        // - Disables 4x MSAA (anti-aliasing) to cut GPU fillrate overhead by 40-60%
+        // - Enables low-latency direct swapchain rendering (desynchronized)
+        const origGetContext = HTMLCanvasElement.prototype.getContext;
+        HTMLCanvasElement.prototype.getContext = function (type, attributes) {
+          if (type === "webgl2" || type === "webgl" || type === "experimental-webgl") {
+            attributes = attributes || {};
+            attributes.powerPreference = "high-performance";
+            attributes.antialias = false;
+            attributes.desynchronized = true;
+            attributes.preserveDrawingBuffer = false;
+            attributes.failIfMajorPerformanceCaveat = false;
+          }
+          return origGetContext.call(this, type, attributes);
+        };
+
+        // Intercept XMLHttpRequest for tabs.json to inject optimal WebGL settings at root
+        const origXhrOpen = XMLHttpRequest.prototype.open;
+        const origXhrSend = XMLHttpRequest.prototype.send;
+        XMLHttpRequest.prototype.open = function (method, url) {
+          this._reqUrl = url;
+          return origXhrOpen.apply(this, arguments);
+        };
+        XMLHttpRequest.prototype.send = function () {
+          if (typeof this._reqUrl === "string" && this._reqUrl.includes("tabs.json")) {
+            const origOnLoad = this.onload;
+            this.onload = function () {
+              try {
+                const conf = JSON.parse(this.responseText);
+                conf.webglContextAttributes = {
+                  preserveDrawingBuffer: false,
+                  powerPreference: "high-performance",
+                  antialias: false,
+                  desynchronized: true
+                };
+                Object.defineProperty(this, "responseText", { value: JSON.stringify(conf) });
+              } catch (_) {}
+              if (origOnLoad) origOnLoad.apply(this, arguments);
+            };
+          }
+          return origXhrSend.apply(this, arguments);
+        };
+
+        function showError(msg) {
+          console.error("[TABS Error]", msg);
+          if (errorToast) {
+            errorToast.textContent = msg;
+            errorToast.style.display = "block";
+          }
+        }
+
+        window.addEventListener("error", function (e) {
+          if (e && e.message && /memory|webgl|abort/i.test(e.message)) {
+            showError("Engine notice: " + e.message);
+          }
+        });
+
+        // Configure UnityLoader system capabilities
+        if (typeof UnityLoader !== "undefined") {
+          UnityLoader.compatibilityCheck = function (e, t, r) { if (t) t(); };
+          UnityLoader.buildCompatibilityCheck = function (e, t, r) { if (t) t(); };
+          if (UnityLoader.SystemInfo) {
+            UnityLoader.SystemInfo.mobile = false;
+            UnityLoader.SystemInfo.hasWebGL = 2; // WebGL 2.0
+            UnityLoader.SystemInfo.hasWebGL2 = true;
+          }
+
+          // Hook processDataJob to cleanly free the 1.4 GB buffer AFTER Unity creates virtual files
+          const origProcessDataJob = UnityLoader.processDataJob;
+          UnityLoader.processDataJob = function (e, t) {
+            origProcessDataJob.apply(this, arguments);
+            try {
+              if (e && e.Jobs && e.Jobs["downloadData"]) {
+                e.Jobs["downloadData"].result = null;
+              }
+              window.__tabsDataUint8 = null;
+              console.log("[TABS] Asset buffer cleanly freed from RAM after processDataJob");
+            } catch (_) {}
+          };
+        }
+
+        const CDN_MIRRORS = [
+          "https://cdn.jsdelivr.net/gh/web-ports/tabs@main/",
+          "https://fastly.jsdelivr.net/gh/web-ports/tabs@main/",
+          "https://gcore.jsdelivr.net/gh/web-ports/tabs@main/"
+        ];
+
+        // Exact pre-computed sizes for 86 data parts (total: 1,440,788,737 bytes)
+        const DATA_PART_SIZES = [
+          9193167,18134618,16744743,16282823,16535993,18485046,18543151,19385662,15834922,16695298,
+          17639809,13300079,17354774,15167279,18144618,16121313,13718913,17439441,18443750,15475255,
+          16042702,15688205,15536028,19658282,15860224,18068026,13952619,18046141,20098707,12871672,
+          14650007,17283847,19462885,13012154,17429764,15044401,19336129,13002013,18832924,14596823,
+          19093906,13675622,15635311,19961173,12189267,12896130,19812648,12778753,19034432,19150133,
+          19373634,12408249,18671089,15345823,18905819,16350078,17728364,20253516,15695699,17332862,
+          16557209,13570570,16547414,12240667,17900479,20020127,16372365,12437228,17253823,19434016,
+          16201138,17993606,17195182,17329265,18708219,18507665,18195016,16454423,16516214,19702388,
+          19523354,19698171,19996324,20019520,19678551,9329088
+        ];
+
+        // Exact pre-computed sizes for 3 wasm parts (total: 11,772,053 bytes)
+        const WASM_PART_SIZES = [5844999, 4018298, 1908756];
+
+        const TOTAL_PARTS = DATA_PART_SIZES.length + WASM_PART_SIZES.length; // 89 parts
+        let completedCount = 0;
+        let downloadedBytes = 0;
+        let lastReportTime = performance.now();
+        let lastBytes = 0;
+        let currentMBps = 0;
+
+        function reportProgress(chunkSize, isFromCache = false) {
+          completedCount++;
+          downloadedBytes += chunkSize;
+
+          const now = performance.now();
+          const elapsedSec = (now - lastReportTime) / 1000;
+          if (elapsedSec >= 0.5) {
+            const diffBytes = downloadedBytes - lastBytes;
+            const instMBps = (diffBytes / (1024 * 1024)) / elapsedSec;
+            currentMBps = currentMBps === 0 ? instMBps : (currentMBps * 0.7 + instMBps * 0.3);
+            lastReportTime = now;
+            lastBytes = downloadedBytes;
+
+            const remainingParts = Math.max(0, TOTAL_PARTS - completedCount);
+            const remainingMB = remainingParts * 15.5;
+            const etaSec = currentMBps > 0.1 ? Math.ceil(remainingMB / currentMBps) : 0;
+            const etaStr = etaSec > 0 ? (etaSec >= 60 ? ` • ETA ${Math.floor(etaSec / 60)}m ${etaSec % 60}s` : ` • ETA ${etaSec}s`) : "";
+
+            speedText.textContent = isFromCache
+              ? `⚡ Local Cache (${currentMBps.toFixed(0)} MB/s)`
+              : `${currentMBps.toFixed(1)} MB/s${etaStr}`;
+          }
+
+          const pct = Math.min(100, Math.round((completedCount / TOTAL_PARTS) * 100));
+          progressBar.style.width = pct + "%";
+          percentText.textContent = pct + "%";
+          partsText.textContent = `Part ${completedCount} of ${TOTAL_PARTS} (${(downloadedBytes / (1024 * 1024)).toFixed(0)} MB)`;
+
+          if (completedCount < TOTAL_PARTS) {
+            statusText.textContent = isFromCache
+              ? `Loading cached assets (${pct}%)...`
+              : `Downloading game assets (${pct}%)...`;
+          }
+        }
+
+        // CacheStorage Integration for Instant Subsequent Launches
+        let persistentCache = null;
+        async function getTabsCache() {
+          if (persistentCache) return persistentCache;
+          if (typeof caches !== "undefined") {
+            try {
+              persistentCache = await caches.open("tabs-game-cache-v1");
+            } catch (_) {}
+          }
+          return persistentCache;
+        }
+
+        async function fetchPartWithTimeout(relativePath, index, maxAttempts = 3) {
+          // 1. Try local disk cache
+          try {
+            const cache = await getTabsCache();
+            if (cache) {
+              const matched = await cache.match(relativePath);
+              if (matched) {
+                const buf = await matched.arrayBuffer();
+                if (buf && buf.byteLength >= 50000) {
+                  reportProgress(buf.byteLength, true);
+                  return buf;
+                } else {
+                  // Purge corrupted cached item
+                  cache.delete(relativePath).catch(() => {});
+                }
+              }
+            }
+          } catch (_) {}
+
+          // 2. Fetch from CDN mirror
+          let lastErr = null;
+          for (let attempt = 0; attempt < maxAttempts; attempt++) {
+            const base = CDN_MIRRORS[(index + attempt) % CDN_MIRRORS.length];
+            const url = base + relativePath;
+
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 18000);
+
+            try {
+              const res = await fetch(url, { signal: controller.signal });
+              clearTimeout(timer);
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+              const buf = await res.arrayBuffer();
+              if (!buf || buf.byteLength < 50000) {
+                throw new Error(`Truncated chunk (${buf ? buf.byteLength : 0} bytes)`);
+              }
+              reportProgress(buf.byteLength, false);
+
+              // 3. Save to disk cache for future instant launches
+              try {
+                const cache = await getTabsCache();
+                if (cache) {
+                  cache.put(relativePath, new Response(buf.slice(0), {
+                    headers: { "Content-Type": "application/octet-stream" }
+                  })).catch(() => {});
+                }
+              } catch (_) {}
+
+              return buf;
+            } catch (err) {
+              clearTimeout(timer);
+              lastErr = err;
+              await new Promise(r => setTimeout(r, 400));
+            }
+          }
+          throw new Error(`Failed to load ${relativePath}: ${lastErr?.message}`);
+        }
+
+        // Resilient Dynamic Buffer Streamer (Eliminates Out-of-Bounds RangeError)
+        async function streamPartsDirect(partPrefix, countOrSizes, concurrency) {
+          const count = typeof countOrSizes === "number" ? countOrSizes : countOrSizes.length;
+          const buffers = new Array(count);
+          let cursor = 0;
+
+          async function worker() {
+            while (cursor < count) {
+              const idx = cursor++;
+              const partName = `${partPrefix}.part${idx + 1}`;
+              const buf = await fetchPartWithTimeout(partName, idx);
+              buffers[idx] = new Uint8Array(buf);
+            }
+          }
+
+          const pool = [];
+          for (let i = 0; i < Math.min(concurrency, count); i++) {
+            pool.push(worker());
+          }
+          await Promise.all(pool);
+
+          // Calculate exact total size dynamically from verified chunks
+          let totalBytes = 0;
+          for (let i = 0; i < count; i++) {
+            if (!buffers[i]) throw new Error(`Missing chunk ${partPrefix}.part${i + 1}`);
+            totalBytes += buffers[i].length;
+          }
+
+          const target = new Uint8Array(totalBytes);
+          let offset = 0;
+          for (let i = 0; i < count; i++) {
+            target.set(buffers[i], offset);
+            offset += buffers[i].length;
+            buffers[i] = null; // Cleanly drop individual buffer references
+          }
+
+          return target;
+        }
+
+        function unlockAudio() {
+          try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (AudioCtx) {
+              const dummyCtx = new AudioCtx({ latencyHint: "interactive" });
+              if (dummyCtx.state === "suspended") {
+                dummyCtx.resume();
+              }
+            }
+          } catch (_) {}
+        }
+
+        function sendKeyEvent(type, key, code, keyCode) {
+          const evt = new KeyboardEvent(type, {
+            key: key,
+            code: code,
+            keyCode: keyCode,
+            which: keyCode,
+            bubbles: true,
+            cancelable: true
+          });
+          const canvas = document.querySelector("#gameContainer canvas");
+          if (canvas) canvas.dispatchEvent(evt);
+          window.dispatchEvent(evt);
+        }
+
+        function triggerSpacebar() {
+          sendKeyEvent("keydown", " ", "Space", 32);
+          setTimeout(() => sendKeyEvent("keyup", " ", "Space", 32), 100);
+        }
+
+        // =========================================================================
+        // 2. DYNAMIC QUALITY / RESOLUTION ENGINE (TURBO 60 FPS)
+        // =========================================================================
+        // Cycle: turbo (0.75x) -> balanced (1.0x native 1080p) -> high (1.5x)
+        let qualityModes = ["turbo", "balanced", "high"];
+        let qualityIdx = isIpadOrAppleMobile ? 0 : 1; // Default: Turbo on mobile, Balanced on PC
+
+        function applyResolutionScale() {
+          const canvas = document.querySelector("#gameContainer canvas");
+          if (!canvas) return;
+
+          const mode = qualityModes[qualityIdx];
+          let scale = 1.0;
+          if (mode === "turbo") {
+            scale = isIpadOrAppleMobile ? 0.70 : 0.85; // 720p / 900p equivalent
+            perfToggleBtn.textContent = "⚡ Turbo";
+            perfToggleBtn.className = "dock-btn perf active";
+          } else if (mode === "balanced") {
+            scale = isIpadOrAppleMobile ? 0.90 : 1.0; // 1080p native
+            perfToggleBtn.textContent = "⚖️ Balanced";
+            perfToggleBtn.className = "dock-btn perf";
+          } else {
+            scale = Math.min(window.devicePixelRatio || 1, 1.75); // Native retina
+            perfToggleBtn.textContent = "🎨 High";
+            perfToggleBtn.className = "dock-btn";
+          }
+
+          const rect = canvas.getBoundingClientRect();
+          const targetW = Math.max(640, Math.round(rect.width * scale));
+          const targetH = Math.max(360, Math.round(rect.height * scale));
+
+          canvas.width = targetW;
+          canvas.height = targetH;
+          window.dispatchEvent(new Event("resize"));
+          console.log(`[TABS Performance] Quality set to ${mode.toUpperCase()} (${targetW}x${targetH})`);
+        }
+
+        // Real-time Framerate Meter
+        let frameCount = 0;
+        let lastFpsTime = performance.now();
+        function runFpsMeter() {
+          frameCount++;
+          const now = performance.now();
+          if (now - lastFpsTime >= 1000) {
+            const fps = Math.round((frameCount * 1000) / (now - lastFpsTime));
+            frameCount = 0;
+            lastFpsTime = now;
+            fpsBadge.textContent = `${fps} FPS`;
+            if (fps >= 50) {
+              fpsBadge.style.color = "#4ade80"; // Bright Green
+            } else if (fps >= 30) {
+              fpsBadge.style.color = "#facc15"; // Yellow
+            } else {
+              fpsBadge.style.color = "#f87171"; // Red
+            }
+          }
+          requestAnimationFrame(runFpsMeter);
+        }
+        requestAnimationFrame(runFpsMeter);
+
+        // Camera rotation / placement touch controller
+        let cameraRotateMode = false;
+        let dpadVisible = false;
+
+        function setupInGameDock() {
+          perfDock.style.display = "flex";
+
+          perfToggleBtn.addEventListener("click", () => {
+            qualityIdx = (qualityIdx + 1) % qualityModes.length;
+            applyResolutionScale();
+          });
+
+          battleBtn.addEventListener("click", triggerSpacebar);
+          battleBtn.addEventListener("touchend", function (e) {
+            e.preventDefault();
+            triggerSpacebar();
+          });
+
+          touchModeBtn.addEventListener("click", () => {
+            cameraRotateMode = !cameraRotateMode;
+            if (cameraRotateMode) {
+              touchModeBtn.textContent = "🎥 Rotate";
+              touchModeBtn.classList.add("active");
+            } else {
+              touchModeBtn.textContent = "👆 Place";
+              touchModeBtn.classList.remove("active");
+            }
+          });
+
+          dpadToggleBtn.addEventListener("click", () => {
+            dpadVisible = !dpadVisible;
+            mobileDpad.style.display = dpadVisible ? "block" : "none";
+            dpadToggleBtn.classList.toggle("active", dpadVisible);
+          });
+
+          zoomInBtn.addEventListener("click", () => {
+            const canvas = document.querySelector("#gameContainer canvas");
+            if (canvas) {
+              const wheelEvt = new WheelEvent("wheel", { deltaY: -140, bubbles: true });
+              canvas.dispatchEvent(wheelEvt);
+            }
+          });
+
+          zoomOutBtn.addEventListener("click", () => {
+            const canvas = document.querySelector("#gameContainer canvas");
+            if (canvas) {
+              const wheelEvt = new WheelEvent("wheel", { deltaY: 140, bubbles: true });
+              canvas.dispatchEvent(wheelEvt);
+            }
+          });
+
+          fsBtn.addEventListener("click", () => {
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen?.().catch(() => {});
+            } else {
+              document.exitFullscreen?.().catch(() => {});
+            }
+          });
+
+          // Hotkey [P] for performance cycle on PC
+          window.addEventListener("keydown", (e) => {
+            if (e.key === "p" || e.key === "P") {
+              if (document.activeElement?.tagName !== "INPUT") {
+                qualityIdx = (qualityIdx + 1) % qualityModes.length;
+                applyResolutionScale();
+              }
+            }
+          });
+
+          // Virtual D-Pad flight controls
+          const dpadKeys = mobileDpad.querySelectorAll(".dpad-key");
+          dpadKeys.forEach((keyEl) => {
+            const key = keyEl.getAttribute("data-key");
+            const code = keyEl.getAttribute("data-code");
+            const keyCode = parseInt(keyEl.getAttribute("data-keycode"));
+
+            function handleDown(e) {
+              e.preventDefault();
+              keyEl.classList.add("pressed");
+              sendKeyEvent("keydown", key, code, keyCode);
+            }
+
+            function handleUp(e) {
+              e.preventDefault();
+              keyEl.classList.remove("pressed");
+              sendKeyEvent("keyup", key, code, keyCode);
+            }
+
+            keyEl.addEventListener("touchstart", handleDown, { passive: false });
+            keyEl.addEventListener("touchend", handleUp, { passive: false });
+            keyEl.addEventListener("touchcancel", handleUp, { passive: false });
+            keyEl.addEventListener("mousedown", handleDown);
+            keyEl.addEventListener("mouseup", handleUp);
+          });
+
+          // Apply initial resolution scale after 1.5s
+          setTimeout(applyResolutionScale, 1500);
+        }
+
+        function enableTouchControls() {
+          const canvas = document.querySelector("#gameContainer canvas");
+          if (!canvas) {
+            setTimeout(enableTouchControls, 200);
+            return;
+          }
+
+          let lastTouchDistance = null;
+
+          function getTouchDist(t1, t2) {
+            const dx = t1.clientX - t2.clientX;
+            const dy = t1.clientY - t2.clientY;
+            return Math.hypot(dx, dy);
+          }
+
+          function touchHandler(event) {
+            const touches = event.touches;
+            
+            // Pinch-to-zoom detection
+            if (touches.length === 2) {
+              const dist = getTouchDist(touches[0], touches[1]);
+              if (lastTouchDistance !== null) {
+                const diff = lastTouchDistance - dist;
+                if (Math.abs(diff) > 2) {
+                  const wheelEvt = new WheelEvent("wheel", { deltaY: diff * 2.5, bubbles: true });
+                  canvas.dispatchEvent(wheelEvt);
+                }
+              }
+              lastTouchDistance = dist;
+              return;
+            } else {
+              lastTouchDistance = null;
+            }
+
+            const changed = event.changedTouches;
+            if (!changed || !changed.length) return;
+            const first = changed[0];
+
+            let type = "";
+            switch (event.type) {
+              case "touchstart": type = "mousedown"; break;
+              case "touchmove":  type = "mousemove"; break;
+              case "touchend":   type = "mouseup";   break;
+              default: return;
+            }
+
+            const isRightClick = cameraRotateMode || touches.length >= 2;
+            const btnCode = isRightClick ? 2 : 0;
+            const btnsMask = (type === "mouseup") ? 0 : (isRightClick ? 2 : 1);
+
+            const mouseEvt = new MouseEvent(type, {
+              bubbles: true,
+              cancelable: true,
+              view: window,
+              detail: 1,
+              screenX: first.screenX,
+              screenY: first.screenY,
+              clientX: first.clientX,
+              clientY: first.clientY,
+              button: btnCode,
+              buttons: btnsMask
+            });
+            canvas.dispatchEvent(mouseEvt);
+          }
+
+          canvas.addEventListener("touchstart", touchHandler, { passive: false });
+          canvas.addEventListener("touchmove", touchHandler, { passive: false });
+          canvas.addEventListener("touchend", touchHandler, { passive: false });
+
+          document.addEventListener("gesturestart", function (e) { e.preventDefault(); }, { passive: false });
+          setupInGameDock();
+        }
+
+        let isEntered = false;
+        function enterBattle() {
+          if (isEntered) return;
+          isEntered = true;
+          unlockAudio();
+          enableTouchControls();
+
+          loaderOverlay.style.opacity = "0";
+          setTimeout(() => {
+            loaderOverlay.style.display = "none";
+          }, 500);
+
+          // Force canvas resize sync
+          window.dispatchEvent(new Event("resize"));
+          const canvas = document.querySelector("#gameContainer canvas");
+          if (canvas) canvas.focus();
+        }
+
+        async function start() {
+          try {
+            // Concurrency: 4 streams on iPad to avoid WebKit Jetsam RAM spikes, 6 on desktop
+            const concurrency = isIpadOrAppleMobile ? 4 : 6;
+
+            // 1. Stream parts directly into single pre-allocated Uint8Arrays (Zero-Copy)
+            const [dataUint8, wasmUint8] = await Promise.all([
+              streamPartsDirect("Build/tabs.data.unityweb", DATA_PART_SIZES, concurrency),
+              streamPartsDirect("Build/tabs.wasm.code.unityweb", WASM_PART_SIZES, concurrency)
+            ]);
+
+            // Visual update: download complete, compiling engine
+            progressBar.style.width = "100%";
+            progressBar.classList.add("pulse");
+            percentText.textContent = "100%";
+            statusText.textContent = "Compiling WebAssembly engine...";
+            partsText.textContent = "Assets ready";
+            speedText.textContent = "Compiling...";
+            spinnerRow.style.display = "flex";
+            spinnerLabel.textContent = isIpadOrAppleMobile
+              ? "Compiling 3D shaders (~25-40s on mobile)..."
+              : "Compiling WebAssembly shaders...";
+            tipText.textContent = "Please wait while the WebGL 2.0 graphics pipeline compiles...";
+
+            // Register global buffers for direct injection into UnityLoader
+            window.__tabsDataUint8 = dataUint8;
+            window.__tabsWasmBuffer = wasmUint8.buffer;
+
+            // Direct injection into UnityLoader's Job pipeline
+            const origSchedule = UnityLoader.scheduleBuildDownloadJob;
+            UnityLoader.scheduleBuildDownloadJob = function (e, t, r) {
+              if (t === "downloadData" && window.__tabsDataUint8) {
+                UnityLoader.Progress.update(e, t);
+                UnityLoader.Job.schedule(e, t, [], function (module, task) {
+                  task.complete(window.__tabsDataUint8);
+                });
+                return;
+              }
+              if (t === "downloadWasmCode" && window.__tabsWasmBuffer) {
+                UnityLoader.Progress.update(e, t);
+                UnityLoader.Job.schedule(e, t, [], function (module, task) {
+                  task.complete(window.__tabsWasmBuffer);
+                  setTimeout(() => { window.__tabsWasmBuffer = null; }, 1000);
+                });
+                return;
+              }
+              return origSchedule.apply(this, arguments);
+            };
+
+            function onReadyToPlay() {
+              spinnerRow.style.display = "none";
+              statusText.textContent = "Battle Ready!";
+              speedText.textContent = "100%";
+
+              if (isIpadOrAppleMobile) {
+                startBtn.style.display = "block";
+                startBtn.addEventListener("click", enterBattle);
+                startBtn.addEventListener("touchend", function (e) {
+                  e.preventDefault();
+                  enterBattle();
+                });
+              } else {
+                enterBattle();
+              }
+            }
+
+            // Launch Unity WebGL engine with 60 FPS mobile + PC performance tuning
+            UnityLoader.instantiate("gameContainer", "Build/tabs.json", {
+              Module: {
+                // Set native 1.0 DPR default to prevent 4K/Retina pixel overdraw lag
+                devicePixelRatio: 1.0
+              },
+              onProgress: function (inst, prog) {
+                if (prog >= 1.0) {
+                  spinnerLabel.textContent = "Initializing 3D world...";
+                }
+              },
+              onsuccess: function () {
+                console.log("[TABS] Unity instance initialized successfully");
+                onReadyToPlay();
+              },
+              onerror: function (err) {
+                console.warn("[TABS] Unity notice:", err);
+                setTimeout(onReadyToPlay, 3000);
+              }
+            });
+
+            // Safe fallback timer (50 seconds) in case onsuccess callback is dropped
+            setTimeout(onReadyToPlay, 50000);
+
+          } catch (err) {
+            console.error("[TABS] Launch failed:", err);
+            statusText.textContent = "Failed to load";
+            partsText.textContent = err.message || "Please refresh";
+            statusText.style.color = "#ef4444";
+            showError("Load failure: " + (err.message || "Network timeout"));
+          }
+        }
+
+        window.addEventListener("DOMContentLoaded", start);
+      })();
+    </script>
+  </body>
+</html>

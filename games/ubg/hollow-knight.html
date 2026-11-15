@@ -1,29 +1,547 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hollow Knight | PeteZah</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-    iframe {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      border: none;
-    }
-  </style>
+    <base href="https://cdn.jsdelivr.net/gh/web-ports/hollow-knight@latest/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Hollow Knight | PeteZah</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+        * { box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #09090b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #fff;
+            touch-action: none;
+        }
+
+        #unity-container {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            inset: 0;
+        }
+
+        #unity-canvas {
+            width: 100%;
+            height: 100%;
+            background: #09090b;
+            display: block;
+            touch-action: none;
+        }
+
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #18181b 0%, #09090b 100%);
+            z-index: 9999;
+            transition: opacity 0.4s ease;
+        }
+
+        .loader-card {
+            background: rgba(24, 24, 27, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 32px 40px;
+            width: 90%;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.85);
+        }
+
+        .loader-title {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            color: #f4f4f5;
+            text-transform: uppercase;
+        }
+
+        .loader-subtitle {
+            font-size: 13px;
+            color: #a1a1aa;
+            margin-bottom: 20px;
+        }
+
+        .loader-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .loader-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6366f1, #38bdf8);
+            border-radius: 999px;
+            transition: width 0.12s linear;
+        }
+
+        .loader-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #71717a;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* iPad / Touch Virtual Gamepad Controls */
+        #virtual-controller {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 8000;
+            display: none;
+        }
+
+        .dpad-zone {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            width: 160px;
+            height: 160px;
+            pointer-events: auto;
+            touch-action: none;
+        }
+
+        .dpad-btn {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            touch-action: none;
+            transition: background 0.1s, transform 0.1s;
+        }
+
+        .dpad-btn:active, .dpad-btn.active {
+            background: rgba(56, 189, 248, 0.55);
+            border-color: #38bdf8;
+            transform: scale(0.95);
+        }
+
+        .dpad-up { top: 0; left: 54px; width: 52px; height: 50px; }
+        .dpad-down { bottom: 0; left: 54px; width: 52px; height: 50px; }
+        .dpad-left { top: 54px; left: 0; width: 50px; height: 52px; }
+        .dpad-right { top: 54px; right: 0; width: 50px; height: 52px; }
+        .dpad-center { position: absolute; top: 54px; left: 54px; width: 52px; height: 52px; background: rgba(0,0,0,0.3); border-radius: 8px; }
+
+        .action-zone {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: auto;
+            touch-action: none;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .act-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            touch-action: none;
+            line-height: 1.1;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+            transition: background 0.1s, transform 0.1s;
+        }
+
+        .act-btn small {
+            font-size: 9px;
+            opacity: 0.65;
+            font-weight: 600;
+        }
+
+        .act-btn:active, .act-btn.active {
+            transform: scale(0.92);
+        }
+
+        .btn-jump { background: rgba(34, 197, 94, 0.35); border-color: #22c55e; }
+        .btn-jump:active, .btn-jump.active { background: rgba(34, 197, 94, 0.7); }
+
+        .btn-attack { background: rgba(239, 68, 68, 0.35); border-color: #ef4444; }
+        .btn-attack:active, .btn-attack.active { background: rgba(239, 68, 68, 0.7); }
+
+        .btn-dash { background: rgba(56, 189, 248, 0.35); border-color: #38bdf8; }
+        .btn-dash:active, .btn-dash.active { background: rgba(56, 189, 248, 0.7); }
+
+        .btn-focus { background: rgba(168, 85, 247, 0.35); border-color: #a855f7; }
+        .btn-focus:active, .btn-focus.active { background: rgba(168, 85, 247, 0.7); }
+
+        .top-touch-bar {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            pointer-events: auto;
+        }
+
+        .util-btn {
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #cbd5e1;
+            font-size: 11px;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+            touch-action: none;
+            cursor: pointer;
+        }
+
+        .util-btn:active, .util-btn.active {
+            background: rgba(56, 189, 248, 0.4);
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-  <iframe src="https://bait.hbmc.net/games/newesthk/index.html" allow="autoplay; fullscreen; pointer-lock; camera; microphone; gamepad; keyboard-map; clipboard-read; clipboard-write" allowfullscreen></iframe>
+    <div id="unity-container">
+        <canvas id="unity-canvas"></canvas>
+        <div id="unity-loading-bar" style="display: none;">
+            <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Virtual Gamepad for School iPads & Tablets -->
+    <div id="virtual-controller">
+        <div class="dpad-zone">
+            <button class="dpad-btn dpad-up" data-key="ArrowUp" data-code="ArrowUp" data-keycode="38">▲</button>
+            <button class="dpad-btn dpad-left" data-key="ArrowLeft" data-code="ArrowLeft" data-keycode="37">◀</button>
+            <div class="dpad-center"></div>
+            <button class="dpad-btn dpad-right" data-key="ArrowRight" data-code="ArrowRight" data-keycode="39">▶</button>
+            <button class="dpad-btn dpad-down" data-key="ArrowDown" data-code="ArrowDown" data-keycode="40">▼</button>
+        </div>
+
+        <div class="action-zone">
+            <div class="action-row">
+                <button class="act-btn btn-focus" data-key="a" data-code="KeyA" data-keycode="65">FOCUS<small>A</small></button>
+                <button class="act-btn btn-dash" data-key="c" data-code="KeyC" data-keycode="67">DASH<small>C</small></button>
+            </div>
+            <div class="action-row">
+                <button class="act-btn btn-attack" data-key="x" data-code="KeyX" data-keycode="88">ATTACK<small>X</small></button>
+                <button class="act-btn btn-jump" data-key="z" data-code="KeyZ" data-keycode="90">JUMP<small>Z</small></button>
+            </div>
+        </div>
+
+        <div class="top-touch-bar">
+            <button class="util-btn" data-key="Tab" data-code="Tab" data-keycode="9">MAP (Tab)</button>
+            <button class="util-btn" data-key="Escape" data-code="Escape" data-keycode="27">PAUSE</button>
+            <button id="toggle-ctrl-btn" class="util-btn" onclick="toggleControls()">🎮 Controls: ON</button>
+        </div>
+    </div>
+
+    <div id="loading-overlay">
+        <div class="loader-card">
+            <div class="loader-title">Hollow Knight</div>
+            <div class="loader-subtitle" id="status-text">Preparing engine modules...</div>
+            <div class="loader-bar-bg">
+                <div class="loader-bar-fill" id="progress-fill"></div>
+            </div>
+            <div class="loader-stats">
+                <span id="speed-text">Checking cache...</span>
+                <span id="pct-text">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Suppress intrusive popups and mobile warnings on iPad
+        window.alert = function(msg) { console.log("[HollowKnight alert suppressed]:", msg); };
+        
+        const CACHE_NAME = 'hollow-knight-v4';
+        const fillEl = document.getElementById('progress-fill');
+        const statusEl = document.getElementById('status-text');
+        const speedEl = document.getElementById('speed-text');
+        const pctEl = document.getElementById('pct-text');
+        const overlay = document.getElementById('loading-overlay');
+        const controllerEl = document.getElementById('virtual-controller');
+
+        const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || /iPad|iPhone|iPod|Android/i.test(navigator.userAgent);
+        if (isTouch && controllerEl) {
+            controllerEl.style.display = 'block';
+        }
+
+        let controlsVisible = isTouch;
+        function toggleControls() {
+            controlsVisible = !controlsVisible;
+            if (controllerEl) controllerEl.style.display = controlsVisible ? 'block' : 'none';
+            const btn = document.getElementById('toggle-ctrl-btn');
+            if (btn) btn.textContent = controlsVisible ? '🎮 Controls: ON' : '🎮 Controls: OFF';
+        }
+
+        // Virtual Controller Touch Event Dispatcher
+        function sendKeyEvent(type, key, code, keyCode) {
+            const ev = new KeyboardEvent(type, {
+                key: key,
+                code: code,
+                keyCode: keyCode,
+                which: keyCode,
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+            });
+            window.dispatchEvent(ev);
+            document.dispatchEvent(ev);
+            const cv = document.querySelector("#unity-canvas");
+            if (cv) cv.dispatchEvent(ev);
+        }
+
+        function bindTouchButton(btn) {
+            const key = btn.getAttribute('data-key');
+            const code = btn.getAttribute('data-code');
+            const keyCode = parseInt(btn.getAttribute('data-keycode') || '0', 10);
+            if (!key) return;
+
+            const onStart = (e) => {
+                e.preventDefault();
+                btn.classList.add('active');
+                if (navigator.vibrate) try { navigator.vibrate(10); } catch(err) {}
+                sendKeyEvent('keydown', key, code, keyCode);
+            };
+
+            const onEnd = (e) => {
+                e.preventDefault();
+                btn.classList.remove('active');
+                sendKeyEvent('keyup', key, code, keyCode);
+            };
+
+            btn.addEventListener('touchstart', onStart, { passive: false });
+            btn.addEventListener('touchend', onEnd, { passive: false });
+            btn.addEventListener('touchcancel', onEnd, { passive: false });
+            btn.addEventListener('mousedown', onStart);
+            btn.addEventListener('mouseup', onEnd);
+            btn.addEventListener('mouseleave', onEnd);
+        }
+
+        document.querySelectorAll('#virtual-controller button').forEach(bindTouchButton);
+
+        // iPad Audio Unlock on first interaction
+        ['touchstart', 'touchend', 'click'].forEach(evt => {
+            window.addEventListener(evt, () => {
+                if (window.unityInstance && window.unityInstance.Module && window.unityInstance.Module.audioContext) {
+                    if (window.unityInstance.Module.audioContext.state === 'suspended') {
+                        window.unityInstance.Module.audioContext.resume();
+                    }
+                }
+            }, { once: true });
+        });
+
+        const TOTAL_BYTES = 902172672; // ~860 MB
+
+        function updateProgress(doneBytes, totalBytes, msg) {
+            const pct = Math.min(100, Math.round((doneBytes / totalBytes) * 100));
+            const mbDone = (doneBytes / (1024 * 1024)).toFixed(1);
+            const mbTotal = (totalBytes / (1024 * 1024)).toFixed(1);
+            if (fillEl) fillEl.style.width = pct + '%';
+            if (pctEl) pctEl.textContent = pct + '%';
+            if (speedEl) speedEl.textContent = `${mbDone} MB / ${mbTotal} MB`;
+            if (statusEl && msg) statusEl.textContent = msg;
+        }
+
+        async function fetchChunkWithProgress(url, onBytes) {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+            const reader = res.body.getReader();
+            const chunks = [];
+            let len = 0;
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                chunks.push(value);
+                len += value.byteLength;
+                onBytes(value.byteLength);
+            }
+            const out = new Uint8Array(len);
+            let off = 0;
+            for (const c of chunks) {
+                out.set(c, off);
+                off += c.byteLength;
+            }
+            return out.buffer;
+        }
+
+        function getParts(file, start, end) {
+            let parts = [];
+            for (let i = start; i <= end; i++) {
+                parts.push(file + ".part" + i);
+            }
+            return parts;
+        }
+
+        async function downloadPartsConcurrently(parts, onBytes, concurrency = 16) {
+            const results = new Array(parts.length);
+            let nextIdx = 0;
+
+            async function worker() {
+                while (nextIdx < parts.length) {
+                    const idx = nextIdx++;
+                    results[idx] = await fetchChunkWithProgress(parts[idx], onBytes);
+                }
+            }
+
+            const workers = [];
+            for (let i = 0; i < Math.min(concurrency, parts.length); i++) {
+                workers.push(worker());
+            }
+            await Promise.all(workers);
+
+            const total = results.reduce((s, b) => s + b.byteLength, 0);
+            const merged = new Uint8Array(total);
+            let offset = 0;
+            for (let i = 0; i < results.length; i++) {
+                merged.set(new Uint8Array(results[i]), offset);
+                offset += results[i].byteLength;
+                results[i] = null; // free memory for iPad
+            }
+            return merged.buffer;
+        }
+
+        (async () => {
+            let dataBuffer = null;
+            let wasmBuffer = null;
+            let cache = null;
+
+            try {
+                cache = await caches.open(CACHE_NAME);
+                const cachedData = await cache.match('hk.data');
+                const cachedWasm = await cache.match('hk.wasm');
+                if (cachedData && cachedWasm) {
+                    statusEl.textContent = 'Instant Cache Loaded!';
+                    fillEl.style.width = '100%';
+                    pctEl.textContent = '100%';
+                    speedEl.textContent = '860 MB (Cached)';
+                    dataBuffer = await cachedData.arrayBuffer();
+                    wasmBuffer = await cachedWasm.arrayBuffer();
+                }
+            } catch (e) {
+                console.warn('Cache check failed:', e);
+            }
+
+            if (!dataBuffer || !wasmBuffer) {
+                let loaded = 0;
+                const onBytes = (n) => {
+                    loaded += n;
+                    updateProgress(loaded, TOTAL_BYTES, 'Downloading Hollow Knight assets...');
+                };
+
+                const dataParts = getParts("Build/hk.data", 1, 42);
+                const wasmParts = getParts("Build/hk.wasm", 1, 2);
+
+                const [dBuf, wBuf] = await Promise.all([
+                    downloadPartsConcurrently(dataParts, onBytes, 16),
+                    downloadPartsConcurrently(wasmParts, onBytes, 2)
+                ]);
+
+                dataBuffer = dBuf;
+                wasmBuffer = wBuf;
+
+                if (cache) {
+                    try {
+                        await cache.put('hk.data', new Response(dataBuffer.slice(0), { headers: { 'Content-Type': 'application/octet-stream' } }));
+                        await cache.put('hk.wasm', new Response(wasmBuffer.slice(0), { headers: { 'Content-Type': 'application/wasm' } }));
+                    } catch (e) {
+                        console.warn('Failed to cache game:', e);
+                    }
+                }
+            }
+
+            statusEl.textContent = 'Booting WebGL Engine...';
+            fillEl.style.width = '100%';
+            pctEl.textContent = '100%';
+
+            const dataUrl = URL.createObjectURL(new Blob([dataBuffer]));
+            const wasmUrl = URL.createObjectURL(new Blob([wasmBuffer], { type: 'application/wasm' }));
+            dataBuffer = null;
+            wasmBuffer = null;
+
+            const canvas = document.querySelector("#unity-canvas");
+            const config = {
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.25),
+                dataUrl: dataUrl,
+                frameworkUrl: "Build/hk.framework.js",
+                codeUrl: wasmUrl,
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "Team Cherry",
+                productName: "Hollow Knight",
+                productVersion: "1.0",
+            };
+
+            function resizeCanvas() {
+                const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                canvas.style.width = window.innerWidth + "px";
+                canvas.style.height = window.innerHeight + "px";
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const script = document.createElement("script");
+            script.src = "Build/hk.loader.js";
+            script.onload = () => {
+                createUnityInstance(canvas, config, (progress) => {
+                    statusEl.textContent = `Initializing game modules (${Math.round(progress * 100)}%)...`;
+                }).then((inst) => {
+                    window.unityInstance = inst;
+                    URL.revokeObjectURL(dataUrl);
+                    URL.revokeObjectURL(wasmUrl);
+                    if (overlay) {
+                        overlay.style.opacity = '0';
+                        setTimeout(() => overlay.remove(), 400);
+                    }
+                }).catch((msg) => {
+                    statusEl.textContent = "Engine Error: " + msg;
+                });
+            };
+            document.body.appendChild(script);
+        })().catch(err => {
+            console.error(err);
+            statusEl.textContent = "Error loading game: " + (err.message || err);
+        });
+    </script>
 </body>
 </html>

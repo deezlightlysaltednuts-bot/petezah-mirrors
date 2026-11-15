@@ -1,0 +1,97 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L7856P3VNT');
+</script><!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <style>
+    html, body {
+      touch-action: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #000 !important;
+    }
+    canvas {
+      touch-action: none !important;
+      display: block !important;
+    }
+    #unity-mobile-warning, .unity-mobile-warning {
+      display: none !important;
+    }
+  </style>
+  <script>
+    // Global iPad AudioContext Unlocker on first tap/touch
+    (function() {
+      function unlock() {
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) {
+            var ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+          }
+        } catch(e) {}
+      }
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+      window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+      window.addEventListener('click', unlock, { once: true, passive: true });
+      document.addEventListener('touchmove', function(e) {
+        if (e.cancelable && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
+
+    <base href="https://rawcdn.githack.com/fork-so-the-site-i-take-wont-be-deleted/bulbasaurchat.github.io/de2858a9fa7b7176cee2788842d4278686969811/games/idle-lumber-inc-main/idle-lumber-inc-main/">
+	<script>
+		window.config = {
+            devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.25),
+		loader: 'unity-2020',
+		debug: false,
+		maxRatio: 16 / 9,
+		minRatio: 9 / 16,
+
+		title: 'Idle Lumber Inc',
+		thumbnail: '0c34b496947005ef659a036aaf6d33d8.png',
+		numScreenshots:  5 ,
+
+		unityVersion: '2020.1.10f1',
+		unityWebglBuildUrl: '',
+
+		fileSize:  43 ,
+		cachedDecompressedFileSizes: {
+			'Web_IdleLumber.data.unityweb':  187 ,
+			'Web_IdleLumber.framework.js.unityweb':  187 ,
+			'Web_IdleLumber.loader.js':  187 ,
+			'Web_IdleLumber.wasm.unityweb':  187 ,
+		},
+		"metadata": {"poki_template_version":1,"background_color":"#000000","code_filename":"Web_IdleLumber.wasm.unityweb","company_name":"No PowerUp","data_filename":"Web_IdleLumber.data.unityweb","decompression_fallback":"Gzip","development_player":"false","framework_filename":"Web_IdleLumber.framework.js.unityweb","height":"600","loader_filename":"Web_IdleLumber.loader.js","product_name":"Idle Lumber Inc","product_version":"0.0.1","splash_screen_style":"Dark","total_memory":"16777216","unity_version":"2020.1.10f1","use_data_caching":"true","use_threads":"false","use_wasm":"true","use_webgl_1_0":"true","use_webgl_2_0":"true","width":"960"}
+	};
+	</script>
+	<!-- will be copied to the resulting head //-->
+
+</head>
+
+<body style="overflow:hidden;">
+
+	<script src="patch/master-loader.js"></script>
+	<!-- will be copied to the resulting body //-->
+	<!-- will also be copied to the resulting body //-->
+
+
+</body>
+
+</html>

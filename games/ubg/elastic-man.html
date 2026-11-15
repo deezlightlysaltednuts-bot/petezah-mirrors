@@ -1,0 +1,80 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L7856P3VNT');
+</script><html>
+  <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <style>
+    html, body {
+      touch-action: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #000 !important;
+    }
+    canvas {
+      touch-action: none !important;
+      display: block !important;
+    }
+    #unity-mobile-warning, .unity-mobile-warning {
+      display: none !important;
+    }
+  </style>
+  <script>
+    // Global iPad AudioContext Unlocker on first tap/touch
+    (function() {
+      function unlock() {
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) {
+            var ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+          }
+        } catch(e) {}
+      }
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+      window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+      window.addEventListener('click', unlock, { once: true, passive: true });
+      document.addEventListener('touchmove', function(e) {
+        if (e.cancelable && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
+
+    <base href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@9defddfd6a5653144cd8c423f6fb83d532dc9967/elasticman/">
+    <link rel="stylesheet" href="face.css" type="text/css">
+</head>
+  <body>
+    <script type="text/template" id="loading-template"><div id="loading-bar" class="loading-bar-visible">
+                <div id="loading-fill"></div>
+            </div>
+  </script>
+  <script type="text/template" id="no-support-template"><div id="error">Your browser does not support the required features. Try another browser and/or device!</div></script>
+  <script type="text/template" id="main-template"><div id="quality-container">
+                <div id="quality-label">Quality</div>
+                <div class="quality" id="quality-medium">Medium</div>
+                <div class="quality" id="quality-high">High</div>
+            </div>
+
+            <div id="credits">
+                <div>Created by <a href="http://david.li" target="_blank">David Li</a></div>
+                <div>Audio by <a href="http://dolphinclub.website/audio" target="_blank">Dolphin Club Audio</a></div>
+            </div></script>
+  <div id="placeholder"></div>
+  <script src="face.js"></script>
+  
+
+</body>
+</html>

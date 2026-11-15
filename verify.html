@@ -344,6 +344,7 @@
     let solved = false;
     let busy = false;
     let legalVersion = null;
+    let gateToken = null;
 
     function sync() {
       btn.disabled = busy || !solved || !agree.checked;
@@ -376,11 +377,13 @@
       status.textContent = "Saving agreement…";
       status.className = "status";
       try {
+        const headers = { "Content-Type": "application/json", Accept: "application/json" };
+        if (gateToken) headers["x-pz-gate"] = gateToken;
         const r = await fetch("/api/legal/accept", {
           method: "POST",
           credentials: "include",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ accepted: true, version: legalVersion }),
+          headers,
+          body: JSON.stringify({ accepted: true, version: legalVersion, gate: gateToken }),
         });
         const d = await r.json().catch(() => ({}));
         if (!r.ok) {
@@ -392,7 +395,7 @@
         }
         status.textContent = "You're in — redirecting…";
         status.className = "status ok";
-        setTimeout(() => { location.replace("/"); }, 250);
+        setTimeout(() => { location.replace("/"); }, 200);
       } catch {
         status.textContent = "Network error. Please try again.";
         status.className = "status err";
@@ -404,8 +407,9 @@
     agree.addEventListener("change", sync);
     btn.addEventListener("click", continueOn);
 
-    el.addEventListener("solve", () => {
+    el.addEventListener("solve", (e) => {
       solved = true;
+      if (e.detail?.gate) gateToken = e.detail.gate;
       status.textContent = agree.checked
         ? "Verified. Click Continue."
         : "Verified. Accept the policies, then Continue.";

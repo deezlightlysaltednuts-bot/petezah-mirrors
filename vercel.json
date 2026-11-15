@@ -1,0 +1,64 @@
+{
+  "version": 2,
+  "headers": [
+    {
+      "source": "/firefox-wasm(.*)",
+      "headers": [
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
+        { "key": "Cross-Origin-Embedder-Policy", "value": "credentialless" },
+        { "key": "Cross-Origin-Resource-Policy", "value": "cross-origin" }
+      ]
+    },
+    {
+      "source": "/games(.*)",
+      "headers": [
+        { "key": "Cross-Origin-Resource-Policy", "value": "cross-origin" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/firefox-wasm/(.*)",
+      "dest": "/firefox-wasm/$1"
+    },
+    {
+      "src": "/games/(.*)",
+      "dest": "/games/$1"
+    },
+    {
+      "src": "/storage/(.*)",
+      "dest": "/storage/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/fx/(.*)",
+      "dest": "/fx/$1"
+    },
+    {
+      "src": "/vendor/(.*)",
+      "dest": "/vendor/$1"
+    },
+    {
+      "src": "/api/v1/games/list.json",
+      "dest": "/storage/data/collection.json"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

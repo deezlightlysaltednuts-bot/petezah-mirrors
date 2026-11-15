@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Backrooms</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/aKevbo/lumassets@39dcf72cfd3d38396758105fcd0a41ac651a0bc1/backrooms/TemplateData/style.css"
+  />
+
+  <style>
+    #button {
+      display: none;
+    }
+
+    .imgb_vis {
+      animation: imgb-animation 7s linear;
+    }
+
+    @keyframes imgb-animation {
+      10% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(100px);
+      }
+
+      90% {
+        transform: translateX(100px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .webgl-content {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #gameContainer {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background:
+        url(
+          "https://cdn.jsdelivr.net/gh/aKevbo/lumassets@39dcf72cfd3d38396758105fcd0a41ac651a0bc1/backrooms/Build/WebGL.jpg"
+        )
+        center center / cover no-repeat;
+    }
+
+    #gameContainer canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/gh/aKevbo/lumassets@39dcf72cfd3d38396758105fcd0a41ac651a0bc1/backrooms/TemplateData/UnityProgress.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/gh/aKevbo/lumassets@39dcf72cfd3d38396758105fcd0a41ac651a0bc1/backrooms/Build/UnityLoader.js"></script>
+  <style>html,body{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;margin:0;padding:0;}#unity-mobile-warning,.unity-mobile-warning{display:none!important;}</style>
+</head>
+
+<body dir="ltr">
+  <main class="webgl-content">
+    <div id="gameContainer">
+    </div>
+  </main>
+
+  <script>
+    var gameInstance = UnityLoader.instantiate(
+      "gameContainer",
+      "https://cdn.jsdelivr.net/gh/aKevbo/lumassets@39dcf72cfd3d38396758105fcd0a41ac651a0bc1/backrooms/Build/WebGL.json",
+      {
+        onProgress: UnityProgress
+      }
+    );
+  </script>
+</body>
+</html>

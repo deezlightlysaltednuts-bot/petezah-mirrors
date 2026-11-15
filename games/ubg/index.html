@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculator</title>
+    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling on body to keep it app-like */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000;
+}
+
+.view {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.view.active {
+    display: flex;
+}
+
+/* =========================================
+   CALCULATOR VIEW (iOS Style)
+   ========================================= */
+#calculator-view {
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+
+.calculator-container {
+    width: 100%;
+    max-width: 400px; /* Looks good on iPad in portrait or centered */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+#calc-display {
+    color: white;
+    font-size: 80px;
+    font-weight: 300;
+    text-align: right;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.calc-btn {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    transition: filter 0.1s;
+}
+
+.calc-btn:active {
+    filter: brightness(1.5);
+}
+
+.calc-btn.number {
+    background-color: #333333;
+    color: white;
+}
+
+.calc-btn.operator {
+    background-color: #f1a33b;
+    color: white;
+}
+
+.calc-btn.function {
+    background-color: #a5a5a5;
+    color: black;
+}
+
+.calc-btn.zero {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    border-radius: 40px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+/* =========================================
+   TERMINAL VIEW
+   ========================================= */
+#terminal-view {
+    flex-direction: column;
+    background-color: #111;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#terminal-output {
+    flex-grow: 1;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    padding-bottom: 40px;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.prompt {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #0f0;
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    flex-grow: 1;
+    outline: none;
+}
+
+#panic-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 0, 0, 0.3);
+    color: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#panic-button:active {
+    background: red;
+    color: white;
+}
+
+/* =========================================
+   GAMES VIEW
+   ========================================= */
+#games-view {
+    background-color: #222;
+    color: white;
+    flex-direction: column;
+}
+
+.games-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #333;
+}
+
+.games-header button {
+    padding: 10px 20px;
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.game-card {
+    background: #444;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.game-card:active {
+    transform: scale(0.95);
+}
+
+#game-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+    position: relative;
+}
+
+.close-game-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* =========================================
+   FX & COMMAND EFFECTS
+   ========================================= */
+#fx-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through to terminal */
+    z-index: 5000;
+}
+
+.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.spin {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+.rainbow-bg {
+    animation: rainbow 5s infinite;
+}
+
+@keyframes rainbow {
+    0% { background-color: #ff0000; }
+    16% { background-color: #ffff00; }
+    33% { background-color: #00ff00; }
+    50% { background-color: #00ffff; }
+    66% { background-color: #0000ff; }
+    83% { background-color: #ff00ff; }
+    100% { background-color: #ff0000; }
+}
+
+/* For Snake Game */
+canvas.snake-canvas {
+    background: #000;
+    border: 2px solid #0f0;
+}
+
+/* For Tic Tac Toe */
+.ttt-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    background: #fff;
+    padding: 5px;
+}
+.ttt-cell {
+    background: #000;
+    color: #fff;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* For Clicker */
+.clicker-btn {
+    padding: 20px 40px;
+    font-size: 30px;
+    background: #0f0;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.clicker-score {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #0f0;
+}
+
+/* =========================================
+   LOCATION SPOOF MODAL
+   ========================================= */
+.loc-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 99999;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: locSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes locSlideIn {
+    from { opacity: 0; transform: translateY(60px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.loc-modal-card {
+    background: linear-gradient(180deg, #141a1f 0%, #0d1117 100%);
+    border: 1px solid rgba(0, 255, 180, 0.18);
+    border-bottom: none;
+    border-radius: 24px 24px 0 0;
+    width: 100%;
+    max-width: 600px;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 -10px 60px rgba(0, 255, 180, 0.08);
+}
+
+.loc-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.loc-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.loc-icon {
+    font-size: 28px;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 150, 0.6));
+}
+
+.loc-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #e8f0fe;
+    letter-spacing: 0.3px;
+}
+
+.loc-subtitle {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.loc-close-btn {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #9ca3af;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.loc-close-btn:hover {
+    background: rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+    border-color: rgba(255, 59, 48, 0.4);
+}
+
+.loc-status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(255,255,255,0.03);
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.loc-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.loc-status-off {
+    background: #374151;
+}
+
+.loc-status-on {
+    background: #00ff88;
+    box-shadow: 0 0 6px #00ff88;
+    animation: locPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes locPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+#loc-map-container {
+    position: relative;
+    flex: 1;
+    min-height: 240px;
+    max-height: 340px;
+}
+
+#loc-map {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+}
+
+.loc-crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    color: rgba(0, 255, 136, 0.8);
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+    z-index: 500;
+    line-height: 1;
+}
+
+.loc-coords-panel {
+    display: flex;
+    gap: 12px;
+    padding: 14px 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.loc-coord-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.loc-coord-group label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #00ff88;
+}
+
+.loc-coord-group input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #e8f0fe;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+.loc-coord-group input:focus {
+    border-color: rgba(0, 255, 136, 0.4);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.loc-coord-group input::placeholder {
+    color: #374151;
+}
+
+.loc-actions {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px 14px;
+}
+
+.loc-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.2px;
+}
+
+.loc-btn:active {
+    transform: scale(0.97);
+}
+
+.loc-btn-primary {
+    background: linear-gradient(135deg, #00c97d, #00a060);
+    color: #000;
+    box-shadow: 0 4px 16px rgba(0, 200, 120, 0.3);
+}
+
+.loc-btn-primary:hover {
+    box-shadow: 0 4px 24px rgba(0, 200, 120, 0.5);
+}
+
+.loc-btn-danger {
+    background: rgba(255, 59, 48, 0.12);
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    color: #ff3b30;
+}
+
+.loc-btn-danger:hover {
+    background: rgba(255, 59, 48, 0.2);
+}
+
+.loc-selected-info {
+    margin: 0 20px 16px;
+    padding: 10px 14px;
+    background: rgba(0, 255, 136, 0.07);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #e8f0fe;
+}
+
+.loc-info-label {
+    color: #00ff88;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Leaflet dark overrides */
+.leaflet-container {
+    background: #0d1117 !important;
+}
+
+.leaflet-control-zoom a {
+    background: #1f2937 !important;
+    color: #9ca3af !important;
+    border-color: #374151 !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: #374151 !important;
+    color: #e5e7eb !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(13, 17, 23, 0.8) !important;
+    color: #4b5563 !important;
+    font-size: 9px !important;
+}
+
+.leaflet-control-attribution a {
+    color: #6b7280 !important;
+}
+
+
+</style>
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>html,body{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;margin:0;padding:0;}#unity-mobile-warning,.unity-mobile-warning{display:none!important;}</style>
+</head>
+<body>
+
+    <!-- Calculator View -->
+    <div id="calculator-view" class="view active">
+        <div class="calculator-container">
+            <div id="calc-display">0</div>
+            <div class="calc-buttons">
+                <button class="calc-btn function" onclick="calcAction('clear')">AC</button>
+                <button class="calc-btn function" onclick="calcAction('sign')">+/-</button>
+                <button class="calc-btn function" onclick="calcAction('percent')">%</button>
+                <button class="calc-btn operator" onclick="calcAction('divide')">÷</button>
+                
+                <button class="calc-btn number" onclick="calcAction('7')">7</button>
+                <button class="calc-btn number" onclick="calcAction('8')">8</button>
+                <button class="calc-btn number" onclick="calcAction('9')">9</button>
+                <button class="calc-btn operator" onclick="calcAction('multiply')">×</button>
+                
+                <button class="calc-btn number" onclick="calcAction('4')">4</button>
+                <button class="calc-btn number" onclick="calcAction('5')">5</button>
+                <button class="calc-btn number" onclick="calcAction('6')">6</button>
+                <button class="calc-btn operator" onclick="calcAction('subtract')">-</button>
+                
+                <button class="calc-btn number" onclick="calcAction('1')">1</button>
+                <button class="calc-btn number" onclick="calcAction('2')">2</button>
+                <button class="calc-btn number" onclick="calcAction('3')">3</button>
+                <button class="calc-btn operator" onclick="calcAction('add')">+</button>
+                
+                <button class="calc-btn number zero" onclick="calcAction('0')">0</button>
+                <button class="calc-btn number" onclick="calcAction('dot')">.</button>
+                <button class="calc-btn operator" onclick="calcAction('equals')">=</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal View -->
+    <div id="terminal-view" class="view">
+        <div id="terminal-output"></div>
+        <div class="terminal-input-line">
+            <span class="prompt">guest@ipad:~$</span>
+            <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+        </div>
+        <button id="panic-button" onclick="triggerPanic()">✕</button>
+    </div>
+
+    <!-- Games View -->
+    <div id="games-view" class="view">
+        <div class="games-header">
+            <h2>Game Hub</h2>
+            <button onclick="switchView('terminal-view')">Exit</button>
+        </div>
+        <div class="games-grid">
+            <div class="game-card" onclick="startGame('snake')">
+                <h3>Snake</h3>
+            </div>
+            <div class="game-card" onclick="startGame('tictactoe')">
+                <h3>Tic-Tac-Toe</h3>
+            </div>
+            <div class="game-card" onclick="startGame('clicker')">
+                <h3>Clicker</h3>
+            </div>
+        </div>
+        <div id="game-container" style="display:none;">
+            <!-- Game canvas/content goes here -->
+             <div id="game-area"></div>
+             <button onclick="closeGame()" class="close-game-btn">Back to Hub</button>
+        </div>
+    </div>
+
+    <!-- Special Effects Container -->
+    <div id="fx-container"></div>
+
+    <!-- ====== LOCATION SPOOF MODAL ====== -->
+    <div id="location-modal" class="loc-modal-overlay" style="display:none;">
+        <div class="loc-modal-card">
+            <div class="loc-modal-header">
+                <div class="loc-header-left">
+                    <span class="loc-icon">📍</span>
+                    <div>
+                        <div class="loc-title">Location Spoofer</div>
+                        <div class="loc-subtitle">Tap anywhere on the map to set your fake location</div>
+                    </div>
+                </div>
+                <button class="loc-close-btn" onclick="closeLocationModal()">✕</button>
+            </div>
+
+            <div class="loc-status-bar">
+                <div id="loc-status-dot" class="loc-status-dot loc-status-off"></div>
+                <span id="loc-status-text">No spoof active</span>
+            </div>
+
+            <div id="loc-map-container">
+                <div id="loc-map"></div>
+                <div class="loc-crosshair">＋</div>
+            </div>
+
+            <div class="loc-coords-panel">
+                <div class="loc-coord-group">
+                    <label>LATITUDE</label>
+                    <input type="number" id="loc-lat-input" placeholder="e.g. 51.5074" step="0.0001">
+                </div>
+                <div class="loc-coord-group">
+                    <label>LONGITUDE</label>
+                    <input type="number" id="loc-lon-input" placeholder="e.g. -0.1278" step="0.0001">
+                </div>
+            </div>
+
+            <div class="loc-actions">
+                <button class="loc-btn loc-btn-primary" onclick="confirmLocationSpoof()">
+                    <span>🎯</span> Set Location
+                </button>
+                <button class="loc-btn loc-btn-danger" onclick="clearLocationSpoof()">
+                    <span>🔴</span> Clear Spoof
+                </button>
+            </div>
+
+            <div id="loc-selected-info" class="loc-selected-info" style="display:none;">
+                <span class="loc-info-label">SPOOFED TO:</span>
+                <span id="loc-selected-coords"></span>
+            </div>
+        </div>
+    </div>
+    <!-- ====== END LOCATION SPOOF MODAL ====== -->
+
+    <script>
+
+/* --- calculator.js --- */
+let calcDisplay = '0';
+let calcFirstOperand = null;
+let calcWaitingForSecondOperand = false;
+let calcOperator = null;
+let calcSequence = '';
+
+function switchView(viewId) {
+    document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+    document.getElementById(viewId).classList.add('active');
+    
+    if (viewId === 'terminal-view') {
+        document.getElementById('terminal-input').focus();
+        printToTerminal("Welcome to iPad Terminal. Type 'man' for a list of commands.");
+    }
+}
+
+function updateDisplay() {
+    const displayElement = document.getElementById('calc-display');
+    displayElement.innerText = calcDisplay;
+}
+
+function calcAction(action) {
+    // Check for secret sequence
+    if (!isNaN(action) || action === 'equals') {
+        calcSequence += (action === 'equals' ? '=' : action);
+        if (calcSequence === '123123123123=') {
+            switchView('terminal-view');
+            calcSequence = '';
+            return;
+        }
+        // keep sequence length bounded
+        if (calcSequence.length > 20) {
+            calcSequence = calcSequence.slice(-20);
+        }
+    } else {
+        calcSequence = '';
+    }
+
+    if (!isNaN(action)) {
+        inputDigit(action);
+    } else if (action === 'dot') {
+        inputDecimal();
+    } else if (action === 'clear') {
+        resetCalculator();
+    } else if (action === 'sign') {
+        calcDisplay = calcDisplay.startsWith('-') ? calcDisplay.slice(1) : '-' + calcDisplay;
+    } else if (action === 'percent') {
+        calcDisplay = String(parseFloat(calcDisplay) / 100);
+    } else if (action === 'equals') {
+        handleOperator('=');
+    } else {
+        // operators: add, subtract, multiply, divide
+        const opMap = { 'add': '+', 'subtract': '-', 'multiply': '*', 'divide': '/' };
+        handleOperator(opMap[action]);
+    }
+    updateDisplay();
+}
+
+function inputDigit(digit) {
+    if (calcWaitingForSecondOperand) {
+        calcDisplay = digit;
+        calcWaitingForSecondOperand = false;
+    } else {
+        calcDisplay = calcDisplay === '0' ? digit : calcDisplay + digit;
+    }
+}
+
+function inputDecimal() {
+    if (calcWaitingForSecondOperand) {
+        calcDisplay = '0.';
+        calcWaitingForSecondOperand = false;
+        return;
+    }
+    if (!calcDisplay.includes('.')) {
+        calcDisplay += '.';
+    }
+}
+
+function handleOperator(nextOperator) {
+    const inputValue = parseFloat(calcDisplay);
+
+    if (calcOperator && calcWaitingForSecondOperand) {
+        calcOperator = nextOperator;
+        return;
+    }
+
+    if (calcFirstOperand == null && !isNaN(inputValue)) {
+        calcFirstOperand = inputValue;
+    } else if (calcOperator) {
+        const result = calculate(calcFirstOperand, inputValue, calcOperator);
+        calcDisplay = `${parseFloat(result.toFixed(7))}`;
+        calcFirstOperand = result;
+    }
+
+    calcWaitingForSecondOperand = true;
+    calcOperator = nextOperator;
+}
+
+function calculate(firstOperand, secondOperand, operator) {
+    if (operator === '+') return firstOperand + secondOperand;
+    if (operator === '-') return firstOperand - secondOperand;
+    if (operator === '*') return firstOperand * secondOperand;
+    if (operator === '/') return firstOperand / secondOperand;
+    return secondOperand;
+}
+
+function resetCalculator() {
+    calcDisplay = '0';
+    calcFirstOperand = null;
+    calcWaitingForSecondOperand = false;
+    calcOperator = null;
+    calcSequence = '';
+}
+
+// Global panic function
+function triggerPanic() {
+    window.location.href = "mobilenotes://";
+    // Fallback if mobilenotes:// doesn't work (opens iCloud Notes in new tab)
+    setTimeout(() => {
+        window.location.href = "https://www.icloud.com/notes";
+    }, 500);
+}
+
+/* --- games.js --- */
+let currentGame = null;
+let gameInterval = null;
+
+function startGame(gameName) {
+    document.querySelector('.games-grid').style.display = 'none';
+    document.getElementById('game-container').style.display = 'flex';
+    document.getElementById('game-area').innerHTML = '';
+    
+    if (gameInterval) clearInterval(gameInterval);
+    
+    if (gameName === 'snake') {
+        initSnake();
+    } else if (gameName === 'tictactoe') {
+        initTicTacToe();
+    } else if (gameName === 'clicker') {
+        initClicker();
+    }
+}
+
+function closeGame() {
+    if (gameInterval) clearInterval(gameInterval);
+    document.querySelector('.games-grid').style.display = 'grid';
+    document.getElementById('game-container').style.display = 'none';
+    document.getElementById('game-area').innerHTML = '';
+}
+
+// --- SNAKE GAME ---
+function initSnake() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 300;
+    canvas.height = 300;
+    canvas.className = 'snake-canvas';
+    document.getElementById('game-area').appendChild(canvas);
+    
+    const ctx = canvas.getContext('2d');
+    const box = 15;
+    let snake = [];
+    snake[0] = { x: 9 * box, y: 10 * box };
+    
+    let food = {
+        x: Math.floor(Math.random() * 19 + 1) * box,
+        y: Math.floor(Math.random() * 19 + 1) * box
+    };
+    
+    let score = 0;
+    let d;
+    
+    // Add virtual d-pad for iPad or use touch swipes
+    let touchStartX = 0;
+    let touchStartY = 0;
+    
+    canvas.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, {passive: true});
+    
+    canvas.addEventListener('touchend', e => {
+        let touchEndX = e.changedTouches[0].screenX;
+        let touchEndY = e.changedTouches[0].screenY;
+        handleSwipe(touchStartX, touchStartY, touchEndX, touchEndY);
+    }, {passive: true});
+    
+    function handleSwipe(startX, startY, endX, endY) {
+        let dx = endX - startX;
+        let dy = endY - startY;
+        if(Math.abs(dx) > Math.abs(dy)) {
+            if(dx > 0 && d != "LEFT") d = "RIGHT";
+            else if(dx < 0 && d != "RIGHT") d = "LEFT";
+        } else {
+            if(dy > 0 && d != "UP") d = "DOWN";
+            else if(dy < 0 && d != "DOWN") d = "UP";
+        }
+    }
+
+    document.addEventListener("keydown", direction);
+    function direction(event) {
+        let key = event.keyCode;
+        if (key == 37 && d != "RIGHT") d = "LEFT";
+        else if (key == 38 && d != "DOWN") d = "UP";
+        else if (key == 39 && d != "LEFT") d = "RIGHT";
+        else if (key == 40 && d != "UP") d = "DOWN";
+    }
+    
+    function draw() {
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, 300, 300);
+        
+        for (let i = 0; i < snake.length; i++) {
+            ctx.fillStyle = (i == 0) ? "#0f0" : "white";
+            ctx.fillRect(snake[i].x, snake[i].y, box, box);
+            ctx.strokeStyle = "red";
+            ctx.strokeRect(snake[i].x, snake[i].y, box, box);
+        }
+        
+        ctx.fillStyle = "red";
+        ctx.fillRect(food.x, food.y, box, box);
+        
+        let snakeX = snake[0].x;
+        let snakeY = snake[0].y;
+        
+        if (d == "LEFT") snakeX -= box;
+        if (d == "UP") snakeY -= box;
+        if (d == "RIGHT") snakeX += box;
+        if (d == "DOWN") snakeY += box;
+        
+        if (snakeX == food.x && snakeY == food.y) {
+            score++;
+            food = {
+                x: Math.floor(Math.random() * 19 + 1) * box,
+                y: Math.floor(Math.random() * 19 + 1) * box
+            }
+        } else {
+            snake.pop();
+        }
+        
+        let newHead = { x: snakeX, y: snakeY };
+        
+        if (snakeX < 0 || snakeX >= 300 || snakeY < 0 || snakeY >= 300 || collision(newHead, snake)) {
+            clearInterval(gameInterval);
+            ctx.fillStyle = "white";
+            ctx.font = "30px Arial";
+            ctx.fillText("Game Over", 75, 150);
+            return;
+        }
+        
+        snake.unshift(newHead);
+        
+        ctx.fillStyle = "white";
+        ctx.font = "20px Arial";
+        ctx.fillText("Score: " + score, 10, 20);
+    }
+    
+    function collision(head, array) {
+        for (let i = 0; i < array.length; i++) {
+            if (head.x == array[i].x && head.y == array[i].y) return true;
+        }
+        return false;
+    }
+    
+    gameInterval = setInterval(draw, 150);
+}
+
+// --- TIC TAC TOE ---
+function initTicTacToe() {
+    const board = document.createElement('div');
+    board.className = 'ttt-board';
+    document.getElementById('game-area').appendChild(board);
+    
+    let currentPlayer = 'X';
+    let gameState = ["", "", "", "", "", "", "", "", ""];
+    let gameActive = true;
+    
+    const winningConditions = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+    
+    for(let i=0; i<9; i++) {
+        let cell = document.createElement('div');
+        cell.className = 'ttt-cell';
+        cell.setAttribute('data-index', i);
+        cell.addEventListener('click', handleCellClick);
+        board.appendChild(cell);
+    }
+    
+    const statusText = document.createElement('h2');
+    statusText.innerText = "Player X's turn";
+    statusText.style.color = '#0f0';
+    statusText.style.marginTop = '20px';
+    document.getElementById('game-area').appendChild(statusText);
+    
+    function handleCellClick(e) {
+        const cell = e.target;
+        const index = parseInt(cell.getAttribute('data-index'));
+        
+        if(gameState[index] !== "" || !gameActive) return;
+        
+        gameState[index] = currentPlayer;
+        cell.innerText = currentPlayer;
+        
+        checkWin();
+    }
+    
+    function checkWin() {
+        let roundWon = false;
+        for(let i=0; i<=7; i++) {
+            const winCondition = winningConditions[i];
+            let a = gameState[winCondition[0]];
+            let b = gameState[winCondition[1]];
+            let c = gameState[winCondition[2]];
+            if(a === '' || b === '' || c === '') continue;
+            if(a === b && b === c) {
+                roundWon = true;
+                break;
+            }
+        }
+        
+        if(roundWon) {
+            statusText.innerText = `Player ${currentPlayer} has won!`;
+            gameActive = false;
+            return;
+        }
+        
+        let roundDraw = !gameState.includes("");
+        if(roundDraw) {
+            statusText.innerText = "Game ended in a draw!";
+            gameActive = false;
+            return;
+        }
+        
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+        statusText.innerText = `Player ${currentPlayer}'s turn`;
+    }
+}
+
+// --- CLICKER GAME ---
+function initClicker() {
+    let score = 0;
+    
+    const scoreDisplay = document.createElement('div');
+    scoreDisplay.className = 'clicker-score';
+    scoreDisplay.innerText = score;
+    document.getElementById('game-area').appendChild(scoreDisplay);
+    
+    const btn = document.createElement('button');
+    btn.className = 'clicker-btn';
+    btn.innerText = 'CLICK ME';
+    btn.addEventListener('click', () => {
+        score++;
+        scoreDisplay.innerText = score;
+        
+        // Small effect
+        btn.style.transform = 'scale(0.9)';
+        setTimeout(() => btn.style.transform = 'scale(1)', 50);
+    });
+    
+    document.getElementById('game-area').appendChild(btn);
+}
+
+/* --- location_spoof.js --- */
+/* ================================================
+   LOCATION SPOOFER
+   - Opens a Leaflet map modal for picking fake GPS
+   - Overrides navigator.geolocation so ALL location
+     requests (including geo_loc command) return the
+     spoofed position.
+   ================================================ */
+
+// ── State ─────────────────────────────────────────
+let spoofedLocation = null;   // { lat, lon } or null
+let locMap = null;            // Leaflet map instance
+let locMarker = null;         // Pin on the map
+let locMapInitialized = false;
+
+// ── Geolocation API Override ──────────────────────
+// Intercept navigator.geolocation.getCurrentPosition
+// to inject our fake coords when a spoof is active.
+(function patchGeolocation() {
+    const _realGetCurrentPosition = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+    const _realWatchPosition       = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+
+    navigator.geolocation.getCurrentPosition = function(success, error, options) {
+        if (spoofedLocation) {
+            const fakePosition = {
+                coords: {
+                    latitude:         spoofedLocation.lat,
+                    longitude:        spoofedLocation.lon,
+                    accuracy:         5,
+                    altitude:         null,
+                    altitudeAccuracy: null,
+                    heading:          null,
+                    speed:            null
+                },
+                timestamp: Date.now()
+            };
+            success(fakePosition);
+        } else {
+            _realGetCurrentPosition(success, error, options);
+        }
+    };
+
+    navigator.geolocation.watchPosition = function(success, error, options) {
+        if (spoofedLocation) {
+            const fakePosition = {
+                coords: {
+                    latitude:         spoofedLocation.lat,
+                    longitude:        spoofedLocation.lon,
+                    accuracy:         5,
+                    altitude:         null,
+                    altitudeAccuracy: null,
+                    heading:          null,
+                    speed:            null
+                },
+                timestamp: Date.now()
+            };
+            success(fakePosition);
+            return 0; // fake watch ID
+        } else {
+            return _realWatchPosition(success, error, options);
+        }
+    };
+})();
+
+// ── Modal Open/Close ──────────────────────────────
+function openLocationModal() {
+    const modal = document.getElementById('location-modal');
+    modal.style.display = 'flex';
+
+    // Restore existing spoof coords to inputs if set
+    if (spoofedLocation) {
+        document.getElementById('loc-lat-input').value = spoofedLocation.lat;
+        document.getElementById('loc-lon-input').value = spoofedLocation.lon;
+    }
+
+    // Initialise map lazily (first open only)
+    if (!locMapInitialized) {
+        _initMap();
+    } else {
+        // Re-invalidate size because the modal was hidden
+        setTimeout(() => locMap.invalidateSize(), 50);
+    }
+}
+
+function closeLocationModal() {
+    document.getElementById('location-modal').style.display = 'none';
+}
+
+// ── Map Initialisation ────────────────────────────
+function _initMap() {
+    locMapInitialized = true;
+
+    // Default to London if nothing set yet
+    const startLat = spoofedLocation ? spoofedLocation.lat : 51.505;
+    const startLon = spoofedLocation ? spoofedLocation.lon : -0.09;
+
+    locMap = L.map('loc-map', {
+        center: [startLat, startLon],
+        zoom: 13,
+        zoomControl: true,
+        attributionControl: true
+    });
+
+    // Dark CartoDB tile layer
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(locMap);
+
+    // Custom green marker icon
+    const greenIcon = L.divIcon({
+        className: '',
+        html: `<div style="
+            width:22px;height:22px;border-radius:50%;
+            background:radial-gradient(circle, #00ff88 30%, #00a060 100%);
+            border:3px solid #fff;
+            box-shadow:0 0 12px rgba(0,255,136,0.8), 0 2px 6px rgba(0,0,0,0.5);
+            position:relative;
+        "></div>
+        <div style="
+            position:absolute;left:50%;transform:translateX(-50%);
+            width:2px;height:10px;background:#00ff88;margin-top:-2px;
+        "></div>`,
+        iconSize: [22, 32],
+        iconAnchor: [11, 32]
+    });
+
+    // Place existing spoof marker if set
+    if (spoofedLocation) {
+        locMarker = L.marker([spoofedLocation.lat, spoofedLocation.lon], { icon: greenIcon }).addTo(locMap);
+    }
+
+    // Click anywhere on map → update coords
+    locMap.on('click', (e) => {
+        const { lat, lng } = e.latlng;
+        const roundedLat = Math.round(lat * 1e6) / 1e6;
+        const roundedLon = Math.round(lng * 1e6) / 1e6;
+
+        document.getElementById('loc-lat-input').value = roundedLat;
+        document.getElementById('loc-lon-input').value = roundedLon;
+
+        // Move / create marker
+        if (locMarker) {
+            locMarker.setLatLng([roundedLat, roundedLon]);
+        } else {
+            locMarker = L.marker([roundedLat, roundedLon], { icon: greenIcon }).addTo(locMap);
+        }
+    });
+}
+
+// ── Confirm / Apply Spoof ─────────────────────────
+function confirmLocationSpoof() {
+    const lat = parseFloat(document.getElementById('loc-lat-input').value);
+    const lon = parseFloat(document.getElementById('loc-lon-input').value);
+
+    if (isNaN(lat) || isNaN(lon)) {
+        // Visual shake on inputs
+        ['loc-lat-input', 'loc-lon-input'].forEach(id => {
+            const el = document.getElementById(id);
+            el.style.borderColor = '#ff3b30';
+            setTimeout(() => el.style.borderColor = '', 1500);
+        });
+        return;
+    }
+
+    if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+        alert('Invalid coordinates. Latitude must be -90 to 90, longitude -180 to 180.');
+        return;
+    }
+
+    spoofedLocation = { lat, lon };
+    localStorage.setItem('spoofedLocation', JSON.stringify(spoofedLocation));
+
+    // Update status UI
+    _updateStatusUI(true, lat, lon);
+
+    // Ensure marker is on the map
+    if (locMap) {
+        const greenIcon = L.divIcon({
+            className: '',
+            html: `<div style="
+                width:22px;height:22px;border-radius:50%;
+                background:radial-gradient(circle, #00ff88 30%, #00a060 100%);
+                border:3px solid #fff;
+                box-shadow:0 0 12px rgba(0,255,136,0.8), 0 2px 6px rgba(0,0,0,0.5);
+            "></div>`,
+            iconSize: [22, 22],
+            iconAnchor: [11, 11]
+        });
+        if (locMarker) {
+            locMarker.setLatLng([lat, lon]);
+        } else {
+            locMarker = L.marker([lat, lon], { icon: greenIcon }).addTo(locMap);
+        }
+        locMap.flyTo([lat, lon], Math.max(locMap.getZoom(), 13), { duration: 0.8 });
+    }
+
+    // Print to terminal
+    printToTerminal(`\x1b[32m[SPOOF ACTIVE] Location set to ${lat.toFixed(6)}, ${lon.toFixed(6)}`);
+    printToTerminal('All geolocation requests will now return this position.');
+
+    setTimeout(closeLocationModal, 800);
+}
+
+// ── Clear Spoof ───────────────────────────────────
+function clearLocationSpoof() {
+    spoofedLocation = null;
+    localStorage.removeItem('spoofedLocation');
+
+    if (locMarker && locMap) {
+        locMap.removeLayer(locMarker);
+        locMarker = null;
+    }
+
+    document.getElementById('loc-lat-input').value = '';
+    document.getElementById('loc-lon-input').value = '';
+
+    _updateStatusUI(false);
+
+    printToTerminal('[SPOOF CLEARED] Location spoofing disabled. Real GPS will be used.');
+    setTimeout(closeLocationModal, 600);
+}
+
+// ── Status UI Helper ──────────────────────────────
+function _updateStatusUI(active, lat, lon) {
+    const dot  = document.getElementById('loc-status-dot');
+    const text = document.getElementById('loc-status-text');
+    const info = document.getElementById('loc-selected-info');
+    const coords = document.getElementById('loc-selected-coords');
+
+    if (active) {
+        dot.className  = 'loc-status-dot loc-status-on';
+        text.textContent = `SPOOFING ACTIVE — ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+        info.style.display = 'flex';
+        coords.textContent = `${lat.toFixed(6)}, ${lon.toFixed(6)}`;
+    } else {
+        dot.className  = 'loc-status-dot loc-status-off';
+        text.textContent = 'No spoof active';
+        info.style.display = 'none';
+    }
+}
+
+// ── Restore spoof from storage on boot ───────────
+document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('spoofedLocation');
+    if (saved) {
+        try {
+            const parsed = JSON.parse(saved);
+            spoofedLocation = parsed;
+            // Update status bar if modal was ever opened
+            // (we just silently restore — modal hasn't initialised yet)
+        } catch(e) {}
+    }
+});
+
+// ── Terminal Commands ─────────────────────────────
+registerCommand('location_change',
+    'Open interactive map to spoof GPS location',
+    () => {
+        printToTerminal('Opening Location Spoofer...');
+        openLocationModal();
+    }
+);
+
+registerCommand('loc_status',
+    'Check current GPS spoof status',
+    () => {
+        if (spoofedLocation) {
+            printToTerminal(`[ACTIVE] Spoofed location: ${spoofedLocation.lat}, ${spoofedLocation.lon}`);
+        } else {
+            printToTerminal('[INACTIVE] No location spoof active. Real GPS in use.');
+        }
+    }
+);
+
+registerCommand('loc_clear',
+    'Clear GPS location spoof',
+    () => {
+        if (!spoofedLocation) return printToTerminal('No spoof is currently active.');
+        clearLocationSpoof();
+    }
+);
+
+registerCommand('loc_set',
+    'Manually set spoof location: loc_set <lat> <lon>',
+    (args) => {
+        if (args.length < 2) return printToTerminal('Usage: loc_set <latitude> <longitude>');
+        const lat = parseFloat(args[0]);
+        const lon = parseFloat(args[1]);
+        if (isNaN(lat) || isNaN(lon)) return printToTerminal('Invalid coordinates.');
+        document.getElementById('loc-lat-input').value = lat;
+        document.getElementById('loc-lon-input').value = lon;
+        confirmLocationSpoof();
+    }
+);
+
+/* --- terminal.js --- */
+const commands = {};
+const history = [];
+let historyIndex = -1;
+let currentBTDevice = null;
+
+function printToTerminal(text, isHTML=false) {
+    const output = document.getElementById('terminal-output');
+    const div = document.createElement('div');
+    if (isHTML) { div.innerHTML = text; } else { div.textContent = text; }
+    output.appendChild(div);
+    output.scrollTop = output.scrollHeight;
+}
+
+function registerCommand(name, desc, fn) { commands[name] = { desc, fn }; }
+
+// --- Core Utils (15) ---
+registerCommand('help', 'List basic commands', () => printToTerminal("Type 'man' to see all 130 commands."));
+registerCommand('man', 'Encyclopedia of all 130 commands', () => {
+    let out = "--- COMMAND ENCYCLOPEDIA ---\n";
+    let count = 1;
+    for (let cmd in commands) {
+        out += `${count}. ${cmd.padEnd(15)} - ${commands[cmd].desc}\n`;
+        count++;
+    }
+    printToTerminal(out);
+});
+registerCommand('clear', 'Clear the terminal screen', () => { document.getElementById('terminal-output').innerHTML = ''; });
+registerCommand('echo', 'Print text', (args) => printToTerminal(args.join(' ')));
+registerCommand('date', 'Print system date', () => printToTerminal(new Date().toString()));
+registerCommand('time', 'Get current time', () => printToTerminal(new Date().toLocaleTimeString()));
+registerCommand('history', 'Command History', () => printToTerminal(history.map((h, i) => `${i} ${h}`).join('\n')));
+registerCommand('esc', 'Close the tab/app', () => { printToTerminal('Closing...'); window.close(); window.location.href = "about:blank"; });
+registerCommand('exit', 'Try to exit', () => printToTerminal('Use esc to close the tab.'));
+registerCommand('reload', 'Reload page', () => location.reload());
+registerCommand('back', 'Go back in history', () => window.history.back());
+registerCommand('forward', 'Go forward in history', () => window.history.forward());
+registerCommand('print', 'Trigger print dialog', () => window.print());
+registerCommand('copy', 'Copy text to clipboard', (args) => {
+    navigator.clipboard.writeText(args.join(' ')); printToTerminal('Copied!');
+});
+registerCommand('paste', 'Read from clipboard', async () => {
+    try { let txt = await navigator.clipboard.readText(); printToTerminal("Clipboard: " + txt); }
+    catch(e) { printToTerminal("Clipboard permission denied"); }
+});
+
+// --- Text & Data Manipulation (20) ---
+registerCommand('base64', 'Base64 encode', (args) => printToTerminal(btoa(args.join(' '))));
+registerCommand('unbase64', 'Base64 decode', (args) => { try { printToTerminal(atob(args.join(' '))) } catch(e) { printToTerminal('Invalid base64') } });
+registerCommand('hex', 'String to Hex', (args) => printToTerminal(args.join(' ').split('').map(c => c.charCodeAt(0).toString(16)).join(' ')));
+registerCommand('unhex', 'Hex to String', (args) => {
+    let hex = args.join(''); let str = '';
+    for (let i = 0; i < hex.length; i += 2) str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    printToTerminal(str);
+});
+registerCommand('rot13', 'Apply ROT13 cipher', (args) => {
+    printToTerminal(args.join(' ').replace(/[a-zA-Z]/g, c => String.fromCharCode((c<='Z'?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26)));
+});
+registerCommand('reverse', 'Reverse a string', (args) => printToTerminal(args.join(' ').split('').reverse().join('')));
+registerCommand('upper', 'Uppercase text', (args) => printToTerminal(args.join(' ').toUpperCase()));
+registerCommand('lower', 'Lowercase text', (args) => printToTerminal(args.join(' ').toLowerCase()));
+registerCommand('length', 'String length', (args) => printToTerminal(args.join(' ').length.toString()));
+registerCommand('camelcase', 'Convert to camelCase', (args) => printToTerminal(args.join(' ').replace(/(?:^\w|[A-Z]|\b\w)/g, (w, i) => i === 0 ? w.toLowerCase() : w.toUpperCase()).replace(/\s+/g, '')));
+registerCommand('snakecase', 'Convert to snake_case', (args) => printToTerminal(args.join(' ').toLowerCase().replace(/\s+/g, '_')));
+registerCommand('sort', 'Sort words alphabetically', (args) => printToTerminal(args.sort().join(' ')));
+registerCommand('uniq', 'Remove duplicate words', (args) => printToTerminal([...new Set(args)].join(' ')));
+registerCommand('trim', 'Trim whitespace', (args) => printToTerminal(args.join(' ').trim()));
+registerCommand('wordcount', 'Count words', (args) => printToTerminal(args.length.toString()));
+registerCommand('charcount', 'Count characters without spaces', (args) => printToTerminal(args.join('').length.toString()));
+registerCommand('urlencode', 'URL Encode', (args) => printToTerminal(encodeURIComponent(args.join(' '))));
+registerCommand('urldecode', 'URL Decode', (args) => printToTerminal(decodeURIComponent(args.join(' '))));
+registerCommand('jsonformat', 'Pretty print JSON', (args) => {
+    try { printToTerminal('<pre>'+JSON.stringify(JSON.parse(args.join(' ')), null, 2)+'</pre>', true); } catch(e) { printToTerminal('Invalid JSON'); }
+});
+registerCommand('csv2json', 'Convert simple CSV to JSON', (args) => {
+    let rows = args.join(' ').split(','); printToTerminal(JSON.stringify(rows));
+});
+
+// --- Cryptography & Randomness (10) ---
+async function hashText(algo, text) {
+    const buf = await crypto.subtle.digest(algo, new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+registerCommand('sha1', 'SHA-1 Hash', async (args) => printToTerminal(await hashText('SHA-1', args.join(' '))));
+registerCommand('sha256', 'SHA-256 Hash', async (args) => printToTerminal(await hashText('SHA-256', args.join(' '))));
+registerCommand('sha384', 'SHA-384 Hash', async (args) => printToTerminal(await hashText('SHA-384', args.join(' '))));
+registerCommand('sha512', 'SHA-512 Hash', async (args) => printToTerminal(await hashText('SHA-512', args.join(' '))));
+registerCommand('uuid', 'Generate UUID', () => printToTerminal(crypto.randomUUID ? crypto.randomUUID() : 'N/A'));
+registerCommand('random', 'Random number (1-100)', () => printToTerminal(Math.floor(Math.random() * 100) + 1));
+registerCommand('coin', 'Flip a coin', () => printToTerminal(Math.random() > 0.5 ? 'Heads' : 'Tails'));
+registerCommand('dice', 'Roll a die', () => printToTerminal(Math.floor(Math.random() * 6) + 1));
+registerCommand('password', 'Generate password', () => printToTerminal(Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8).toUpperCase() + "!@#"[Math.floor(Math.random()*3)]));
+registerCommand('lorem', 'Generate Lorem Ipsum', () => printToTerminal('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'));
+
+// --- Math Functions (10) ---
+registerCommand('calc', 'Evaluate math expression', (args) => { try { printToTerminal(eval(args.join(' '))); } catch(e) { printToTerminal('Math error'); } });
+registerCommand('sin', 'Math.sin', (args) => printToTerminal(Math.sin(parseFloat(args[0]))));
+registerCommand('cos', 'Math.cos', (args) => printToTerminal(Math.cos(parseFloat(args[0]))));
+registerCommand('tan', 'Math.tan', (args) => printToTerminal(Math.tan(parseFloat(args[0]))));
+registerCommand('sqrt', 'Math.sqrt', (args) => printToTerminal(Math.sqrt(parseFloat(args[0]))));
+registerCommand('log', 'Math.log', (args) => printToTerminal(Math.log(parseFloat(args[0]))));
+registerCommand('abs', 'Math.abs', (args) => printToTerminal(Math.abs(parseFloat(args[0]))));
+registerCommand('round', 'Math.round', (args) => printToTerminal(Math.round(parseFloat(args[0]))));
+registerCommand('ceil', 'Math.ceil', (args) => printToTerminal(Math.ceil(parseFloat(args[0]))));
+registerCommand('floor', 'Math.floor', (args) => printToTerminal(Math.floor(parseFloat(args[0]))));
+
+// --- Visual & FX (20) ---
+registerCommand('color', 'Change text color', (args) => { document.getElementById('terminal-view').style.color = args[0] || '#0f0'; printToTerminal('Color changed.'); });
+registerCommand('bgcolor', 'Change bg color', (args) => { document.getElementById('terminal-view').style.backgroundColor = args[0] || '#111'; printToTerminal('Background changed.'); });
+registerCommand('invert', 'Invert colors', () => { document.getElementById('terminal-view').classList.toggle('invert'); printToTerminal('Colors inverted.'); });
+registerCommand('blur', 'Blur screen', () => { document.getElementById('terminal-view').classList.add('blur'); printToTerminal('Screen blurred.'); });
+registerCommand('unblur', 'Unblur screen', () => { document.getElementById('terminal-view').classList.remove('blur'); printToTerminal('Screen unblurred.'); });
+registerCommand('shake', 'Shake screen', () => { 
+    document.getElementById('terminal-view').classList.add('shake'); 
+    setTimeout(() => document.getElementById('terminal-view').classList.remove('shake'), 2000); 
+    printToTerminal('EARTHQUAKE!');
+});
+registerCommand('spin', 'Spin screen', () => { 
+    document.getElementById('terminal-view').classList.add('spin'); 
+    setTimeout(() => document.getElementById('terminal-view').classList.remove('spin'), 2000);
+    printToTerminal('Wheee!');
+});
+registerCommand('rainbow', 'Rainbow mode', () => { document.getElementById('terminal-view').classList.toggle('rainbow-bg'); printToTerminal('Rainbow mode toggled.'); });
+registerCommand('font', 'Change font family', (args) => { document.getElementById('terminal-view').style.fontFamily = args[0] || 'Courier'; printToTerminal('Font changed.'); });
+registerCommand('shrek', 'Dancing Shrek', () => { printToTerminal(`<img src="https://media.giphy.com/media/TIGP3k4gIGd7W/giphy.gif" style="width:200px;" alt="Shrek">`, true); });
+registerCommand('rickroll', 'Never gonna give you up', () => { printToTerminal(`<img src="https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif" style="width:200px;">`, true); });
+registerCommand('nyancat', 'Nyan cat', () => { printToTerminal(`<img src="https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif" style="width:200px;">`, true); });
+registerCommand('dog', 'Show a dog', () => { printToTerminal(`<img src="https://placedog.net/200/200?random" style="width:200px;">`, true); });
+registerCommand('catpic', 'Show a cat', () => { printToTerminal(`<img src="https://cataas.com/cat" style="width:200px;">`, true); });
+registerCommand('matrix', 'Matrix text', () => {
+    let str = '01010101010101010101';
+    for(let i=0;i<5;i++) printToTerminal(str.split('').sort(()=>0.5-Math.random()).join(''));
+});
+registerCommand('error', 'Print error msg', () => printToTerminal('<span style="color:red">CRITICAL ERROR 0x000000</span>', true));
+registerCommand('warning', 'Print warning msg', () => printToTerminal('<span style="color:yellow">WARNING: System unstable</span>', true));
+registerCommand('success', 'Print success msg', () => printToTerminal('<span style="color:lime">Operation completed successfully.</span>', true));
+registerCommand('hack', 'Simulated hacking (exception)', () => {
+    let count = 0; let int = setInterval(() => {
+        printToTerminal(`[${Math.random().toString(36).substring(7)}] Bypassing mainframe... ${Math.floor(Math.random()*100)}%`);
+        if(++count > 10) { clearInterval(int); printToTerminal('Access Granted.', true); }
+    }, 200);
+});
+registerCommand('marquee', 'Scrolling text', (args) => printToTerminal(`<marquee>${args.join(' ')}</marquee>`, true));
+
+// --- Browser / Device APIs (15) ---
+registerCommand('speak', 'Text to speech', (args) => {
+    if('speechSynthesis' in window) {
+        let msg = new SpeechSynthesisUtterance(args.join(' ')); window.speechSynthesis.speak(msg); printToTerminal('Speaking...');
+    } else printToTerminal('Speech not supported.');
+});
+registerCommand('alert', 'Show alert box', (args) => alert(args.join(' ')));
+registerCommand('prompt', 'Show prompt box', (args) => { let res = prompt(args.join(' ')); printToTerminal(`User entered: ${res}`); });
+registerCommand('confirm', 'Show confirm box', (args) => { let res = confirm(args.join(' ')); printToTerminal(`Result: ${res}`); });
+registerCommand('cookie', 'View cookies', () => printToTerminal(document.cookie || 'No cookies.'));
+registerCommand('storage', 'View local storage items', () => printToTerminal(`Storage keys: ${Object.keys(localStorage).join(', ')}`));
+registerCommand('location', 'Get current URL', () => printToTerminal(window.location.href));
+registerCommand('useragent', 'Get browser user agent', () => printToTerminal(navigator.userAgent));
+registerCommand('screen', 'Get screen resolution', () => printToTerminal(`${window.screen.width}x${window.screen.height}`));
+registerCommand('battery', 'Get battery status', () => {
+    if(navigator.getBattery) { navigator.getBattery().then(b => printToTerminal(`Battery: ${b.level * 100}% ${b.charging ? '(Charging)' : ''}`)); } 
+    else { printToTerminal('Battery API not supported.'); }
+});
+registerCommand('online', 'Check network status', () => printToTerminal(navigator.onLine ? 'Online' : 'Offline'));
+registerCommand('vibrate', 'Vibrate device', (args) => {
+    if(navigator.vibrate) { navigator.vibrate(args[0] || 500); printToTerminal('Vibrating...'); } else { printToTerminal('Vibration not supported.'); }
+});
+registerCommand('netinfo', 'Connection info', () => {
+    let conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if(conn) { printToTerminal(`Type: ${conn.effectiveType}, Downlink: ${conn.downlink}Mb/s, RTT: ${conn.rtt}ms`); } else { printToTerminal('Network Info API not supported.'); }
+});
+registerCommand('language', 'Browser language', () => printToTerminal(navigator.language));
+registerCommand('platform', 'Browser platform', () => printToTerminal(navigator.platform));
+
+// --- Real Web Network/API Commands (25) ---
+async function fetchAndPrint(url, parser) {
+    printToTerminal(`Fetching ${url}...`);
+    try { let res = await fetch(url); let data = await parser(res); printToTerminal(data); } 
+    catch(e) { printToTerminal('Fetch failed: ' + e.message); }
+}
+registerCommand('ip', 'Fetch public IP', () => fetchAndPrint('https://api.ipify.org?format=json', async r => (await r.json()).ip));
+registerCommand('geoip', 'Fetch Geo IP info', () => fetchAndPrint('https://ipapi.co/json/', async r => JSON.stringify(await r.json(), null, 2)));
+registerCommand('headers', 'Fetch your HTTP headers', () => fetchAndPrint('https://httpbin.org/headers', async r => JSON.stringify((await r.json()).headers, null, 2)));
+registerCommand('my_useragent', 'Fetch remote User-Agent', () => fetchAndPrint('https://httpbin.org/user-agent', async r => (await r.json())["user-agent"]));
+registerCommand('delay_test', 'Test network latency', (args) => fetchAndPrint(`https://httpbin.org/delay/${args[0]||1}`, async r => 'Response received after delay.'));
+registerCommand('uuid_api', 'Fetch UUID from API', () => fetchAndPrint('https://httpbin.org/uuid', async r => (await r.json()).uuid));
+registerCommand('weather', 'Fetch weather', (args) => fetchAndPrint(`https://wttr.in/${args[0]||''}?format=j1`, async r => {
+    let j = await r.json(); return `Temp: ${j.current_condition[0].temp_C}°C, ${j.current_condition[0].weatherDesc[0].value}`;
+}));
+registerCommand('dictionary', 'Define word', (args) => fetchAndPrint(`https://api.dictionaryapi.dev/api/v2/entries/en/${args[0]}`, async r => {
+    let j = await r.json(); return `${j[0].word}: ${j[0].meanings[0].definitions[0].definition}`;
+}));
+registerCommand('github_user', 'GitHub User Info', (args) => fetchAndPrint(`https://api.github.com/users/${args[0]}`, async r => {
+    let j = await r.json(); return `Name: ${j.name}\nBio: ${j.bio}\nFollowers: ${j.followers}\nRepos: ${j.public_repos}`;
+}));
+registerCommand('cat_fact', 'Random Cat Fact', () => fetchAndPrint('https://catfact.ninja/fact', async r => (await r.json()).fact));
+registerCommand('dog_image', 'Random Dog Image', () => fetchAndPrint('https://dog.ceo/api/breeds/image/random', async r => {
+    let url = (await r.json()).message; printToTerminal(`<img src="${url}" style="width:200px;">`, true); return 'Woof!';
+}));
+registerCommand('qr_code', 'Generate QR Code', (args) => {
+    let url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(args.join(' '))}`;
+    printToTerminal(`<img src="${url}" alt="QR">`, true);
+});
+registerCommand('shorten_url', 'Shorten URL (TinyURL)', (args) => fetchAndPrint(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(args[0])}`, async r => await r.text()));
+registerCommand('agify', 'Guess age by name', (args) => fetchAndPrint(`https://api.agify.io/?name=${args[0]}`, async r => `Guessed Age: ${(await r.json()).age}`));
+registerCommand('genderize', 'Guess gender by name', (args) => fetchAndPrint(`https://api.genderize.io/?name=${args[0]}`, async r => `Guessed Gender: ${(await r.json()).gender}`));
+registerCommand('nationalize', 'Guess nationality', (args) => fetchAndPrint(`https://api.nationalize.io/?name=${args[0]}`, async r => `Guessed Country ID: ${(await r.json()).country[0]?.country_id}`));
+registerCommand('check_site', 'Check if site is reachable', (args) => {
+    printToTerminal(`Checking ${args[0]}...`);
+    fetch(args[0].startsWith('http') ? args[0] : 'https://'+args[0], {mode: 'no-cors'}).then(()=>printToTerminal('Site is reachable')).catch(()=>printToTerminal('Site unreachable or CORS blocked.'));
+});
+registerCommand('bitcoin_price', 'Fetch BTC Price', () => fetchAndPrint('https://api.coindesk.com/v1/bpi/currentprice.json', async r => `BTC: ${(await r.json()).bpi.USD.rate}`));
+registerCommand('random_user', 'Fetch Random User', () => fetchAndPrint('https://randomuser.me/api/', async r => {
+    let u = (await r.json()).results[0]; return `${u.name.first} ${u.name.last} - ${u.email}`;
+}));
+registerCommand('joke_api', 'Official Joke API', () => fetchAndPrint('https://official-joke-api.appspot.com/random_joke', async r => {
+    let j = await r.json(); return `${j.setup}\n...${j.punchline}`;
+}));
+registerCommand('bored', 'Bored API Activity', () => fetchAndPrint('https://www.boredapi.com/api/activity', async r => (await r.json()).activity));
+
+// Web Bluetooth Commands
+registerCommand('bt_scan', 'Scan for Bluetooth devices', async () => {
+    try {
+        printToTerminal('Requesting Bluetooth Device...');
+        const device = await navigator.bluetooth.requestDevice({ acceptAllDevices: true });
+        currentBTDevice = device;
+        printToTerminal(`Paired with: ${device.name || 'Unknown Device'} (${device.id})`);
+    } catch(e) { printToTerminal(`Bluetooth error: ${e.message}`); }
+});
+registerCommand('bt_disconnect', 'Disconnect Bluetooth', () => {
+    if(currentBTDevice && currentBTDevice.gatt.connected) {
+        currentBTDevice.gatt.disconnect();
+        printToTerminal('Disconnected from device.');
+    } else { printToTerminal('No active Bluetooth connection.'); }
+});
+
+// External Site Navigators
+registerCommand('google', 'Search google', (args) => { window.open('https://google.com/search?q=' + args.join('+')); printToTerminal('Opening Google...'); });
+registerCommand('youtube', 'Search youtube', (args) => { window.open('https://youtube.com/results?search_query=' + args.join('+')); printToTerminal('Opening YouTube...'); });
+registerCommand('wikipedia', 'Search wikipedia', (args) => { 
+    let query = args.join(' '); window.open('https://en.wikipedia.org/wiki/Special:Search?search=' + args.join('+')); 
+    fetchAndPrint(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`, async r => `\n--- WIKIPEDIA: ${(await r.json()).extract} ---`);
+});
+registerCommand('reddit', 'Open Reddit', () => { window.open('https://reddit.com'); printToTerminal('Opening Reddit...'); });
+registerCommand('github', 'Open GitHub', () => { window.open('https://github.com'); printToTerminal('Opening GitHub...'); });
+registerCommand('open', 'Open a URL', (args) => { window.open(args[0].startsWith('http') ? args[0] : 'https://'+args[0]); printToTerminal('Opening...'); });
+
+// --- Games & Utilities (15) ---
+registerCommand('game', 'Open Game Hub', () => { switchView('games-view'); printToTerminal('Launching Game Hub...'); });
+registerCommand('timer', 'Start a timer (sec)', (args) => {
+    let s = parseInt(args[0]) || 5; printToTerminal(`Timer set for ${s}s.`);
+    setTimeout(() => { alert(`Timer for ${s}s finished!`); }, s*1000);
+});
+registerCommand('stopwatch', 'Toggle stopwatch', () => {
+    if(window.startTime) { let e = (Date.now() - window.startTime)/1000; printToTerminal(`Stopwatch stopped: ${e}s.`); window.startTime=null; } 
+    else { window.startTime = Date.now(); printToTerminal('Stopwatch started.'); }
+});
+registerCommand('notes', 'Open Apple Notes', () => triggerPanic());
+registerCommand('panic', 'Instantly hide/exit', () => triggerPanic());
+registerCommand('rps', 'Rock Paper Scissors', (args) => {
+    let c = ['rock', 'paper', 'scissors'][Math.floor(Math.random()*3)];
+    let u = (args[0]||'').toLowerCase();
+    if(!['rock','paper','scissors'].includes(u)) return printToTerminal('Usage: rps rock|paper|scissors');
+    printToTerminal(`Computer chose ${c}. ${(u===c)?'Tie!':((u==='rock'&&c==='scissors')||(u==='paper'&&c==='rock')||(u==='scissors'&&c==='paper'))?'You win!':'You lose!'}`);
+});
+registerCommand('8ball', 'Magic 8 Ball', () => printToTerminal(['Yes','No','Maybe','Ask again later','Definitely','Absolutely not'][Math.floor(Math.random()*6)]));
+registerCommand('joke', 'Tell a local joke', () => printToTerminal(['Why do programmers prefer dark mode? Because light attracts bugs.'][0]));
+registerCommand('quote', 'Show a local quote', () => printToTerminal(['Talk is cheap. Show me the code.'][0]));
+registerCommand('bingo', 'Bingo!', () => printToTerminal('BINGO!'));
+registerCommand('roll100', 'Roll 1-100', () => printToTerminal(Math.floor(Math.random()*100)+1));
+registerCommand('flip3', 'Flip 3 coins', () => printToTerminal(`${Math.random()>.5?'H':'T'} ${Math.random()>.5?'H':'T'} ${Math.random()>.5?'H':'T'}`));
+// --- Hardware & OS Level Commands ---
+registerCommand('battery', 'Show device battery status', async () => {
+    if(!navigator.getBattery) return printToTerminal('Battery API not supported on this device.');
+    const b = await navigator.getBattery();
+    printToTerminal(`Level: ${Math.round(b.level * 100)}% | Charging: ${b.charging ? 'Yes' : 'No'} | Time to empty: ${b.dischargingTime}s`);
+});
+registerCommand('vibrate', 'Vibrate phone (ms)', (args) => {
+    let ms = parseInt(args[0]) || 200;
+    if(navigator.vibrate) { navigator.vibrate(ms); printToTerminal(`Vibrated for ${ms}ms`); }
+    else printToTerminal('Vibrate API not supported.');
+});
+registerCommand('clipboard_write', 'Copy text to clipboard', async (args) => {
+    if(!args.length) return printToTerminal('Usage: clipboard_write <text>');
+    try { await navigator.clipboard.writeText(args.join(' ')); printToTerminal('Copied to clipboard.'); }
+    catch(e) { printToTerminal('Clipboard access denied.'); }
+});
+registerCommand('clipboard_read', 'Read text from clipboard', async () => {
+    try { let txt = await navigator.clipboard.readText(); printToTerminal(`Clipboard: ${txt}`); }
+    catch(e) { printToTerminal('Clipboard access denied.'); }
+});
+registerCommand('network_info', 'Show network connection type', () => {
+    let c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if(c) printToTerminal(`Type: ${c.effectiveType} | Downlink: ${c.downlink} Mbps | RTT: ${c.rtt}ms | Data Saver: ${c.saveData}`);
+    else printToTerminal('Network Information API not supported.');
+});
+registerCommand('cpu_cores', 'Show logical CPU cores', () => printToTerminal(`Logical Cores: ${navigator.hardwareConcurrency || 'Unknown'}`));
+registerCommand('device_ram', 'Show approximate Device RAM (GB)', () => printToTerminal(`RAM: ${navigator.deviceMemory || 'Unknown'} GB`));
+registerCommand('browser_info', 'Show User Agent', () => printToTerminal(`Agent: ${navigator.userAgent}`));
+
+// --- Utilities & Fun ---
+registerCommand('speech_synth', 'Make device speak', (args) => {
+    if(!args.length) return printToTerminal('Usage: speech_synth <text>');
+    let u = new SpeechSynthesisUtterance(args.join(' '));
+    window.speechSynthesis.speak(u);
+    printToTerminal('Speaking...');
+});
+registerCommand('torch', 'Turn on flashlight (if supported)', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({video: {facingMode: "environment"}});
+        const track = stream.getVideoTracks()[0];
+        const caps = track.getCapabilities();
+        if(caps.torch) {
+            await track.applyConstraints({advanced: [{torch: true}]});
+            printToTerminal('Torch activated. Run again to disable? Actually, just close the app to kill it.');
+        } else {
+            printToTerminal('Torch not supported on this camera.');
+            track.stop();
+        }
+    } catch(e) { printToTerminal('Camera access denied or torch unsupported.'); }
+});
+registerCommand('share', 'Open native share dialog', async (args) => {
+    if(!navigator.share) return printToTerminal('Share API not supported.');
+    try {
+        await navigator.share({ title: 'MultiTool', text: args.join(' ') || 'Check out my tool!' });
+        printToTerminal('Share dialog opened.');
+    } catch(e) { printToTerminal('Share cancelled or failed.'); }
+});
+registerCommand('morse', 'Translate text to morse code & vibrate', (args) => {
+    if(!args.length) return printToTerminal('Usage: morse <text>');
+    const dict = { 'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..' };
+    let text = args.join(' ').toUpperCase();
+    let morse = text.split('').map(c => dict[c] || c).join(' ');
+    printToTerminal(`Morse: ${morse}`);
+    if(navigator.vibrate) {
+        let pattern = [];
+        for(let char of morse) {
+            if(char === '.') pattern.push(100, 100);
+            else if(char === '-') pattern.push(300, 100);
+            else if(char === ' ') pattern.push(0, 300);
+        }
+        navigator.vibrate(pattern);
+    }
+});
+registerCommand('math_eval', 'Evaluate math expression', (args) => {
+    try { printToTerminal(`Result: ${eval(args.join(' ').replace(/[^0-9+\-*/(). ]/g, ''))}`); } 
+    catch(e) { printToTerminal('Invalid math expression.'); }
+});
+let stopwatchStart = 0;
+registerCommand('stopwatch_start', 'Start stopwatch', () => { stopwatchStart = Date.now(); printToTerminal('Stopwatch started.'); });
+registerCommand('stopwatch_stop', 'Stop stopwatch', () => { 
+    if(!stopwatchStart) return printToTerminal('Stopwatch not started.');
+    printToTerminal(`Elapsed: ${(Date.now() - stopwatchStart)/1000}s`); 
+    stopwatchStart = 0;
+});
+registerCommand('timer', 'Start a countdown timer (seconds)', (args) => {
+    let sec = parseInt(args[0]);
+    if(!sec || sec <= 0) return printToTerminal('Usage: timer <seconds>');
+    printToTerminal(`Timer started for ${sec}s...`);
+    setTimeout(() => {
+        printToTerminal(`\n[ALARM] Timer for ${sec}s finished!`);
+        if(navigator.vibrate) navigator.vibrate([500,200,500,200,500]);
+        let u = new SpeechSynthesisUtterance("Timer finished");
+        window.speechSynthesis.speak(u);
+    }, sec * 1000);
+});
+registerCommand('theme', 'Change terminal color (e.g., red, #00ff00)', (args) => {
+    if(!args.length) return printToTerminal('Usage: theme <color>');
+    document.getElementById('terminal-output').style.color = args[0];
+    printToTerminal(`Theme color set to ${args[0]}`);
+});
+registerCommand('font_size', 'Change terminal font size (px)', (args) => {
+    let px = parseInt(args[0]);
+    if(!px) return printToTerminal('Usage: font_size <px>');
+    document.getElementById('terminal-output').style.fontSize = px + 'px';
+    printToTerminal(`Font size set to ${px}px`);
+});
+registerCommand('clear_cache', 'Clear all local storage (Warning!)', () => {
+    let cloud = localStorage.getItem('CloudUrl');
+    localStorage.clear();
+    if(cloud) localStorage.setItem('CloudUrl', cloud); // preserve cloud config
+    printToTerminal('Local storage cleared.');
+});
+registerCommand('rickroll', 'Stealth trap', () => {
+    printToTerminal('Executing critical system wipe...');
+    setTimeout(() => window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 2000);
+});
+registerCommand('dim_screen', 'Simulate screen dimming for stealth', () => {
+    let overlay = document.getElementById('dim-overlay');
+    if(!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'dim-overlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:9999;pointer-events:none;';
+        document.body.appendChild(overlay);
+        printToTerminal('Screen dimmed. Run undim_screen to revert.');
+    }
+});
+registerCommand('undim_screen', 'Remove screen dimming', () => {
+    let overlay = document.getElementById('dim-overlay');
+    if(overlay) { overlay.remove(); printToTerminal('Screen restored.'); }
+});
+
+// --- Extended Utility Commands ---
+registerCommand('geo_loc', 'Get exact GPS coordinates', () => {
+    if(!navigator.geolocation) return printToTerminal('Geolocation API not supported.');
+    navigator.geolocation.getCurrentPosition(
+        p => printToTerminal(`Lat: ${p.coords.latitude}, Lon: ${p.coords.longitude} | Acc: ${p.coords.accuracy}m`),
+        e => printToTerminal(`Geo Error: ${e.message}`)
+    );
+});
+registerCommand('screen_resolution', 'Print hardware screen specs', () => printToTerminal(`Screen: ${window.screen.width}x${window.screen.height} | Color Depth: ${window.screen.colorDepth}-bit`));
+registerCommand('window_size', 'Print active window size', () => printToTerminal(`Window: ${window.innerWidth}x${window.innerHeight}`));
+registerCommand('language', 'Print system language', () => printToTerminal(`Language: ${navigator.language}`));
+registerCommand('online_status', 'Check internet connection status', () => printToTerminal(`Status: ${navigator.onLine ? 'ONLINE' : 'OFFLINE'}`));
+registerCommand('timezone', 'Print local timezone', () => printToTerminal(`Timezone: ${Intl.DateTimeFormat().resolvedOptions().timeZone}`));
+registerCommand('random_uuid', 'Generate random UUID v4', () => printToTerminal(`UUID: ${crypto.randomUUID ? crypto.randomUUID() : 'Unsupported'}`));
+registerCommand('random_hex', 'Generate random hex color', () => printToTerminal(`Hex: #${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}`));
+
+// --- Text Processing & Crypto ---
+registerCommand('base64_encode', 'Encode text to Base64', (args) => { try { printToTerminal(window.btoa(args.join(' '))); } catch(e) { printToTerminal('Error encoding.'); } });
+registerCommand('base64_decode', 'Decode Base64 to text', (args) => { try { printToTerminal(window.atob(args.join(' '))); } catch(e) { printToTerminal('Error decoding.'); } });
+registerCommand('url_encode', 'URL Encode string', (args) => printToTerminal(encodeURIComponent(args.join(' '))));
+registerCommand('url_decode', 'URL Decode string', (args) => printToTerminal(decodeURIComponent(args.join(' '))));
+registerCommand('word_count', 'Count words in string', (args) => printToTerminal(`Words: ${args.length === 0 ? 0 : args.join(' ').split(/\s+/).length}`));
+registerCommand('char_count', 'Count characters in string', (args) => printToTerminal(`Characters: ${args.join(' ').length}`));
+registerCommand('reverse_text', 'Reverse a string', (args) => printToTerminal(args.join(' ').split('').reverse().join('')));
+registerCommand('uppercase', 'Convert to UPPERCASE', (args) => printToTerminal(args.join(' ').toUpperCase()));
+registerCommand('lowercase', 'Convert to lowercase', (args) => printToTerminal(args.join(' ').toLowerCase()));
+registerCommand('leet_speak', 'Convert to 1337 speak', (args) => {
+    const leetMap = { a: '4', e: '3', i: '1', o: '0', s: '5', t: '7', l: '1' };
+    printToTerminal(args.join(' ').toLowerCase().replace(/[aeiostl]/g, m => leetMap[m]));
+});
+registerCommand('hash_sha256', 'Hash text using SHA-256', async (args) => {
+    if(!crypto.subtle) return printToTerminal('Crypto API not supported.');
+    const msgBuffer = new TextEncoder().encode(args.join(' '));
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    printToTerminal(`SHA-256: ${hashArray.map(b => b.toString(16).padStart(2, '0')).join('')}`);
+});
+
+// --- Fun & Visuals ---
+registerCommand('coin_flip', 'Flip a coin', () => printToTerminal(`Result: ${Math.random() < 0.5 ? 'Heads' : 'Tails'}`));
+registerCommand('roll_dice', 'Roll a multi-sided dice', (args) => {
+    let sides = parseInt(args[0]) || 6;
+    printToTerminal(`Rolled a d${sides}: ${Math.floor(Math.random() * sides) + 1}`);
+});
+registerCommand('color_invert', 'Invert all screen colors', () => {
+    document.body.style.filter = document.body.style.filter === 'invert(1)' ? '' : 'invert(1)';
+    printToTerminal('Screen colors inverted.');
+});
+registerCommand('color_grayscale', 'Make screen grayscale', () => {
+    document.body.style.filter = document.body.style.filter === 'grayscale(1)' ? '' : 'grayscale(1)';
+    printToTerminal('Screen is now grayscale.');
+});
+
+// Stealth & Direct Game Launchers
+registerCommand('calculator', 'Return to stealth calculator mode', () => {
+    document.getElementById('terminal-view').classList.remove('active');
+    document.getElementById('calculator-view').classList.add('active');
+    printToTerminal('Returning to stealth mode...');
+});
+registerCommand('snake', 'Launch Snake Game', () => { switchView('games-view'); setTimeout(() => document.getElementById('snake-game').scrollIntoView(), 100); });
+registerCommand('tictactoe', 'Launch Tic-Tac-Toe', () => { switchView('games-view'); setTimeout(() => document.getElementById('tictactoe-game').scrollIntoView(), 100); });
+registerCommand('clicker', 'Launch Cookie Clicker', () => { switchView('games-view'); setTimeout(() => document.getElementById('clicker-game').scrollIntoView(), 100); });
+
+
+// --- Special: Android Native Bridge (1) ---
+registerCommand('wifi_hotspot', 'Create Native Hotspot (Android Only)', (args) => {
+    if (args.length < 2) {
+        printToTerminal('Usage: wifi_hotspot <ssid> <password>');
+        return;
+    }
+    if (window.AndroidBridge && window.AndroidBridge.startHotspot) {
+        printToTerminal(`Attempting to start hotspot '${args[0]}' on S22...`);
+        // Call the native Java interface
+        let success = window.AndroidBridge.startHotspot(args[0], args[1]);
+        if (success) {
+            printToTerminal(`Hotspot started! Name: ${args[0]}`);
+        } else {
+            printToTerminal('Failed to start hotspot. Check permissions.');
+        }
+    } else {
+        printToTerminal('ERROR: Native Android Bridge not found.');
+        printToTerminal('You must be running inside the S22 Android Wrapper to create a real Wi-Fi hotspot.');
+    }
+});
+
+registerCommand('bt_changename', 'Change Bluetooth Name (Android Only)', (args) => {
+    if (args.length < 1) return printToTerminal('Usage: bt_changename <new_name>');
+    if (window.AndroidBridge && window.AndroidBridge.btChangeName) {
+        window.AndroidBridge.btChangeName(args.join(' '));
+    } else printToTerminal('ERROR: Native Android Bridge not found.');
+});
+
+registerCommand('bt_ping', 'Make device discoverable (Android Only)', () => {
+    if (window.AndroidBridge && window.AndroidBridge.btPing) {
+        window.AndroidBridge.btPing();
+    } else printToTerminal('ERROR: Native Android Bridge not found.');
+});
+
+registerCommand('bt_splitkey', 'Start Bluetooth HID Keyboard (Android Only) [optional name]', (args) => {
+    if (window.AndroidBridge && window.AndroidBridge.btStartSplitKey) {
+        window.AndroidBridge.btStartSplitKey(args.join(' '));
+    } else printToTerminal('ERROR: Native Android Bridge not found.');
+});
+
+registerCommand('bt_send', 'Send keystrokes over BT HID (Android Only)', (args) => {
+    if (args.length < 1) return printToTerminal('Usage: bt_send <text>');
+    if (window.AndroidBridge && window.AndroidBridge.btSendKey) {
+        window.AndroidBridge.btSendKey(args.join(' '));
+    } else printToTerminal('ERROR: Native Android Bridge not found.');
+});
+
+registerCommand('cloud_update', 'Set cloud URL for instant updates', (args) => {
+    if(args.length < 1) return printToTerminal('Usage: cloud_update <url> | cloud_update off');
+    if(args[0] === 'off') {
+        localStorage.removeItem('CloudUrl');
+        printToTerminal('Cloud updates disabled. Reloading local app...');
+        setTimeout(() => location.reload(), 1000);
+    } else {
+        localStorage.setItem('CloudUrl', args[0]);
+        printToTerminal('Cloud update URL set! Redirecting to cloud app...');
+        setTimeout(() => window.location.href = args[0], 1000);
+    }
+});
+
+
+// Setup terminal input listener
+document.addEventListener('DOMContentLoaded', () => {
+    // Cloud Updater Bootloader
+    const cloudUrl = localStorage.getItem('CloudUrl');
+    if (cloudUrl && !window.location.href.includes(cloudUrl)) {
+        document.body.innerHTML = '<h1 style="color:lime; font-family:monospace; text-align:center; margin-top:20%">Booting Cloud OS...</h1>';
+        setTimeout(() => window.location.href = cloudUrl, 500);
+        return;
+    }
+
+    const input = document.getElementById('terminal-input');
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const val = input.value.trim();
+            if (val) {
+                history.push(val);
+                historyIndex = history.length;
+                printToTerminal(`guest@ipad:~$ ${val}`);
+                
+                const parts = val.split(' ');
+                const cmd = parts[0].toLowerCase();
+                const args = parts.slice(1);
+                
+                if (commands[cmd]) {
+                    try { commands[cmd].fn(args); } catch(err) { printToTerminal(`Error: ${err.message}`); }
+                } else { printToTerminal(`Command not found: ${cmd}`); }
+            }
+            input.value = '';
+            const out = document.getElementById('terminal-output');
+            out.scrollTop = out.scrollHeight;
+        } else if (e.key === 'ArrowUp') {
+            if (historyIndex > 0) { historyIndex--; input.value = history[historyIndex]; }
+        } else if (e.key === 'ArrowDown') {
+            if (historyIndex < history.length - 1) { historyIndex++; input.value = history[historyIndex]; } 
+            else { historyIndex = history.length; input.value = ''; }
+        }
+    });
+
+    document.getElementById('terminal-view').addEventListener('click', () => {
+        if(document.getElementById('terminal-view').classList.contains('active')) {
+            document.getElementById('terminal-input').focus();
+        }
+    });
+});
+
+</script>
+</body>
+</html>

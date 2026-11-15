@@ -416,7 +416,7 @@ ${l}`}}if((0,n.U5)("rewriterLogs",r.base))for(let e of s.errors)console.error("o
                 <div class="card">
                     <h3><i class="fab fa-discord" style="color: var(--accent)"></i> Report on Discord</h3>
                     <p>Tell us the site and what you saw so we can improve proxy coverage.</p>
-                    <a href="https://discord.gg/cYjHFDguxS" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Join Discord</a>
+                    <a href="https://discord.gg/zq8HvCeCU" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Join Discord</a>
                 </div>
                 <div class="card">
                     <h3><i class="fas fa-comment-dots" style="color: var(--accent)"></i> Send feedback</h3>

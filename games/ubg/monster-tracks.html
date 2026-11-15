@@ -1,0 +1,90 @@
+                                
+                                                                                                                              
+                       
+
+<!doctype html>
+<html lang="en-us">
+  <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <style>
+    html, body {
+      touch-action: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #000 !important;
+    }
+    canvas {
+      touch-action: none !important;
+      display: block !important;
+    }
+    #unity-mobile-warning, .unity-mobile-warning {
+      display: none !important;
+    }
+  </style>
+  <script>
+    // Global iPad AudioContext Unlocker on first tap/touch
+    (function() {
+      function unlock() {
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) {
+            var ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+          }
+        } catch(e) {}
+      }
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+      window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+      window.addEventListener('click', unlock, { once: true, passive: true });
+      document.addEventListener('touchmove', function(e) {
+        if (e.cancelable && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/bubblfan/google-class@23207b238c7c587d12da3cac4233366120ea47c0/monster-tracks/Jump_Gamemonetize.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/bubblfan/google-class/monster-tracks/webapp/fancade.css"
+    />
+  </head>
+
+  <body>
+    <div id="canvas_border">
+      <div id="play_content" class="middle center">
+        <div class="box">
+          <img
+            src="https://cdn.jsdelivr.net/gh/bubblfan/google-class/monster-tracks/webapp/cover.jpg"
+            class="cover"
+          />
+          <p class="title">Monster Tracks</p>
+          <p class="author">TGC</p>
+        </div>
+        <progress id="progress" class="loading" value="0" max="100"></progress>
+      </div>
+      <canvas class="emscripten" id="canvas" tabindex="-1"></canvas>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/bubblfan/google-class/monster-tracks/webapp/source_min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/bubblfan/google-class/monster-tracks/webapp/index.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="bd0ff877-b5a0-483c-801d-917a24828bb9"></script>
+  <style>html,body{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;margin:0;padding:0;}#unity-mobile-warning,.unity-mobile-warning{display:none!important;}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("51496f4a-c0d9-43cf-a375-2714a291cec5") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c04fcd97-ebc3-455f-b2fe-7f0c50f81dc3") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ba717882-c396-4c08-8ab0-4d9ded58029b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6eb080a1-c36b-4515-b747-b11fb273a4ff") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("211330bb-1d24-4e11-9bbd-50db826e545b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("690ca44d-8d5e-48cc-b4a8-4ba2f57c9c03") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8d37a903-18a3-472a-8b53-f283e4742032") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ecfe5b91-6bb3-42a3-bb7f-21eb77146e58") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3721f427-355b-4c54-8ef8-41ff10bce0be") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7d0ceeef-fb07-40fb-9134-7438f1205cdb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("33630ef5-a9b7-42f4-9d4f-c6275314d690") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("da8b10a1-e6be-43b3-98b3-6a009bd33b03") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("75a17a44-092a-4136-8d18-93f2798d0959") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("c0b16b4a-f6ed-4329-97e0-4b9f30001a45") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d41739e3-9fe6-4e33-a45f-c0609120f227") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f2219697-07b5-4341-b890-c1c60d1e2c9b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("33630ef5-a9b7-42f4-9d4f-c6275314d690") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("da8b10a1-e6be-43b3-98b3-6a009bd33b03") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("75a17a44-092a-4136-8d18-93f2798d0959") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("c0b16b4a-f6ed-4329-97e0-4b9f30001a45") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d41739e3-9fe6-4e33-a45f-c0609120f227") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f2219697-07b5-4341-b890-c1c60d1e2c9b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("33630ef5-a9b7-42f4-9d4f-c6275314d690") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("da8b10a1-e6be-43b3-98b3-6a009bd33b03") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("75a17a44-092a-4136-8d18-93f2798d0959") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("c0b16b4a-f6ed-4329-97e0-4b9f30001a45") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d41739e3-9fe6-4e33-a45f-c0609120f227") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("f2219697-07b5-4341-b890-c1c60d1e2c9b") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  :root {
+    --bg: #f4f2ed; --panel: #fffdf9; --ink: #22201d; --ink-2: #5d584f; --ink-3: #a09a8e;
+    --line: #e2ddd2; --line-2: #cfc8b9; --me: #e9e4d7; --code-bg: #211f1c; --code-ink: #e7e1d5;
+    --accent: #b0512c; --accent-ink: #fffdf9; --ok: #4a7a52; --bad: #b0402c; --soft: #efece4;
+  }
+  [data-theme="dark"] {
+    --bg: #15140f; --panel: #1d1c17; --ink: #ece7dc; --ink-2: #a8a29a; --ink-3: #6d675e;
+    --line: #2c2a24; --line-2: #3d3a33; --me: #2a2822; --code-bg: #0f0e0b; --code-ink: #d9d3c6;
+    --accent: #d97b4f; --accent-ink: #15140f; --ok: #7fa886; --bad: #e08a6c; --soft: #232119;
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  * { box-sizing: border-box; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in oklab, var(--accent) 40%, transparent); }
+  a:hover { border-bottom-color: var(--accent); }
+  textarea, input, button, select { font: inherit; color: inherit; }
+  ::selection { background: var(--me); }
+  #chat::-webkit-scrollbar, .codepane::-webkit-scrollbar { width: 11px; }
+  #chat::-webkit-scrollbar-thumb, .codepane::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 10px; border: 4px solid var(--bg); }
+  @keyframes rise { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+  @keyframes pulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+  @keyframes slidein { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="height: 100dvh; min-height: 460px; display: flex; align-items: stretch; background: var(--bg); color: var(--ink); font-family: 'IBM Plex Sans', 'Helvetica Neue', Helvetica, sans-serif; font-size: 15.5px; line-height: 1.62;">
+
+  <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column;">
+    <header style="flex: 0 0 auto; border-bottom: 1px solid var(--line);">
+      <div style="max-width: 760px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase;">ai</span>
+          <span style="width: 5px; height: 5px; border-radius: 50%; background: {{ dotColor }}; animation: {{ dotAnim }};"></span>
+          <span id="status" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.05em; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ status }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px;">
+          <button sc-camel-on-click="{{ clearChat }}" title="clear chat" style="border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); border-radius: 9px; height: 30px; padding: 0 11px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.05em;" style-hover="border-color: var(--line-2); color: var(--ink);">clear</button>
+          <button sc-camel-on-click="{{ toggleTheme }}" title="light / dark" style="border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); border-radius: 9px; width: 32px; height: 30px; cursor: pointer; font-size: 13px; line-height: 1;" style-hover="border-color: var(--line-2); color: var(--ink);">{{ themeIcon }}</button>
+        </div>
+      </div>
+    </header>
+
+    <div id="chat" style="flex: 1 1 auto; overflow-y: auto; overflow-x: hidden;">
+      <div style="max-width: 760px; margin: 0 auto; padding: 20px 18px 10px; display: flex; flex-direction: column; gap: 20px;">
+
+        <div id="notice" style="border: 1px solid var(--line); background: var(--soft); border-radius: 12px; padding: 11px 14px; font-size: 13px; color: var(--ink-2);">
+          dont abuse ai pls. if you have problems tell us on <a href="https://discord.gg/gn-math">our discord</a>
+        </div>
+
+        <sc-for list="{{ thread }}" as="m" hint-placeholder-count="0">
+          <div style="display: flex; flex-direction: column; gap: 9px; animation: rise 220ms ease both;">
+            <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ true }}">
+              <div style="align-self: flex-end; max-width: 84%; background: var(--me); border-radius: 15px 15px 5px 15px; padding: 10px 14px; white-space: pre-wrap; word-break: break-word;">{{ m.text }}</div>
+            </sc-if>
+            <sc-if value="{{ m.isBot }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 9px;">
+                <sc-if value="{{ m.hasReasoning }}" hint-placeholder-val="{{ false }}">
+                  <div style="border: 1px solid var(--line); background: var(--soft); border-radius: 12px; overflow: hidden;">
+                    <button sc-camel-on-click="{{ m.toggle }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; text-align: left; border: 0; background: transparent; padding: 9px 13px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-3);"><span>{{ m.reasoningLabel }}</span><span style="font-size: 12px;">{{ m.caret }}</span></button>
+                    <sc-if value="{{ m.open }}" hint-placeholder-val="{{ false }}">
+                      <div style="border-top: 1px solid var(--line); padding: 11px 14px 13px; font-size: 13px; line-height: 1.7; color: var(--ink-2); white-space: pre-wrap; word-break: break-word; max-height: 320px; overflow-y: auto;">{{ m.reasoning }}</div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+                <sc-for list="{{ m.blocks }}" as="b" hint-placeholder-count="1">
+                  <sc-if value="{{ b.isArtifact }}" hint-placeholder-val="{{ false }}">
+                    <button sc-camel-on-click="{{ b.open }}" style="display: flex; align-items: center; gap: 12px; width: 100%; max-width: 420px; text-align: left; border: 1px solid var(--line); background: var(--panel); border-radius: 13px; padding: 11px 13px; cursor: pointer; transition: border-color 160ms ease, transform 160ms ease;" style-hover="border-color: var(--line-2); transform: translateY(-1px);">
+                      <span style="flex: 0 0 auto; width: 34px; height: 34px; border-radius: 9px; background: var(--soft); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-2);">{{ b.glyph }}</span>
+                      <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                        <span style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ b.title }}</span>
+                        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);">{{ b.meta }}</span>
+                      </span>
+                    </button>
+                  </sc-if>
+                  <sc-if value="{{ b.isCode }}" hint-placeholder-val="{{ false }}">
+                    <div style="border-radius: 12px; overflow: hidden; background: var(--code-bg);">
+                      <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 13px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #8d867a;"><span>{{ b.lang }}</span><button sc-camel-on-click="{{ b.copy }}" style="border: 0; background: transparent; color: #8d867a; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;" style-hover="color: #ded7c9;">{{ b.copyLabel }}</button></div>
+                      <pre style="margin: 0; padding: 0 14px 14px; overflow-x: auto; color: var(--code-ink); font-family: 'IBM Plex Mono', monospace; font-size: 12.8px; line-height: 1.65;">{{ b.text }}</pre>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ b.isText }}" hint-placeholder-val="{{ true }}">
+                    <div style="white-space: pre-wrap; word-break: break-word; max-width: 70ch;">{{ b.text }}</div>
+                  </sc-if>
+                </sc-for>
+                <sc-if value="{{ m.streaming }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--ink-3); animation: pulse 1.4s ease-in-out infinite;">{{ m.streamLabel }}</div>
+                </sc-if>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size: 13px; color: var(--bad); border: 1px solid var(--line); background: var(--soft); border-radius: 12px; padding: 10px 14px;">{{ error }}</div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div id="form" style="flex: 0 0 auto; border-top: 1px solid var(--line); background: var(--bg);">
+      <div style="max-width: 760px; margin: 0 auto; padding: 12px 18px 16px; display: flex; align-items: flex-end; gap: 9px;">
+        <textarea id="input" ref="{{ inputRef }}" sc-camel-on-input="{{ onInput }}" sc-camel-on-key-down="{{ onKeyDown }}" rows="1" placeholder="ask something…" style="flex: 1 1 auto; min-width: 0; border: 1px solid var(--line); background: var(--panel); border-radius: 14px; padding: 10px 14px; outline: none; resize: none; max-height: 150px; line-height: 1.55; transition: border-color 160ms ease;" style-focus="border-color: var(--line-2);"></textarea>
+        <div title="how much the model thinks before answering" style="flex: 0 0 auto; display: flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: var(--panel); border-radius: 14px; padding: 0 10px 0 12px; height: 42px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-3);">think</span>
+          <sc-raw-select value="{{ effort }}" sc-camel-on-change="{{ onEffort }}" style="border: 0; background: transparent; outline: none; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; padding: 2px 0;">
+            <option value="none">none</option>
+            <option value="low">low</option>
+            <option value="high">high</option>
+            <option value="max">max</option>
+          </sc-raw-select>
+        </div>
+        <button id="send" sc-camel-on-click="{{ send }}" title="send" style="flex: 0 0 auto; border: 0; border-radius: 14px; height: 42px; padding: 0 18px; cursor: pointer; font-size: 14px; letter-spacing: 0.02em; background: {{ sendBg }}; color: {{ sendFg }}; transition: background 160ms ease, color 160ms ease;">{{ sendLabel }}</button>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+    <aside style="flex: 0 0 auto; display: flex; flex-direction: column; background: var(--panel); border-left: 1px solid var(--line); animation: slidein 200ms ease both; width: {{ panelWidth }}; position: {{ panelPos }}; inset: {{ panelInset }}; z-index: 40; box-shadow: {{ panelShadow }};">
+      <div style="flex: 0 0 auto; border-bottom: 1px solid var(--line); padding: 11px 14px; display: flex; align-items: center; gap: 10px;">
+        <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px;">
+          <span style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ artTitle }}</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);">{{ artMeta }}</span>
+        </div>
+        <sc-if value="{{ artCanPreview }}" hint-placeholder-val="{{ true }}">
+          <div style="flex: 0 0 auto; display: flex; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 10px;">
+            <button sc-camel-on-click="{{ showPreviewTab }}" style="border: 0; border-radius: 7px; padding: 4px 10px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11px; background: {{ tabPreviewBg }}; color: {{ tabPreviewFg }};">preview</button>
+            <button sc-camel-on-click="{{ showCodeTab }}" style="border: 0; border-radius: 7px; padding: 4px 10px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11px; background: {{ tabCodeBg }}; color: {{ tabCodeFg }};">code</button>
+          </div>
+        </sc-if>
+        <button sc-camel-on-click="{{ closePanel }}" title="close" style="flex: 0 0 auto; border: 1px solid var(--line); background: var(--bg); color: var(--ink-2); border-radius: 9px; width: 30px; height: 30px; cursor: pointer; font-size: 14px; line-height: 1;" style-hover="border-color: var(--line-2); color: var(--ink);">✕</button>
+      </div>
+
+      <sc-if value="{{ artShowPreview }}" hint-placeholder-val="{{ true }}">
+        <iframe title="preview" sandbox="allow-scripts allow-forms allow-modals allow-popups" sc-camel-src-doc="{{ artPreviewSrc }}" style="flex: 1 1 auto; width: 100%; border: 0; background: #ffffff;"></iframe>
+      </sc-if>
+      <sc-if value="{{ artShowCode }}" hint-placeholder-val="{{ false }}">
+        <div class="codepane" style="flex: 1 1 auto; overflow: auto; background: var(--code-bg);">
+          <pre style="margin: 0; padding: 14px 16px; color: var(--code-ink); font-family: 'IBM Plex Mono', monospace; font-size: 12.8px; line-height: 1.7;">{{ artCode }}</pre>
+        </div>
+      </sc-if>
+
+      <div style="flex: 0 0 auto; border-top: 1px solid var(--line); padding: 10px 14px; display: flex; align-items: center; gap: 8px;">
+        <button sc-camel-on-click="{{ artCopy }}" style="border: 1px solid var(--line); background: var(--bg); color: var(--ink-2); border-radius: 10px; height: 32px; padding: 0 13px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em;" style-hover="border-color: var(--line-2); color: var(--ink);">{{ artCopyLabel }}</button>
+        <button sc-camel-on-click="{{ artDownload }}" style="border: 1px solid var(--line); background: var(--bg); color: var(--ink-2); border-radius: 10px; height: 32px; padding: 0 13px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em;" style-hover="border-color: var(--line-2); color: var(--ink);">download</button>
+        <span style="flex: 1 1 auto;"></span>
+        <sc-if value="{{ artCanPreview }}" hint-placeholder-val="{{ true }}">
+          <button sc-camel-on-click="{{ artRerun }}" title="reload preview" style="border: 1px solid var(--line); background: var(--bg); color: var(--ink-2); border-radius: 10px; height: 32px; padding: 0 13px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.06em;" style-hover="border-color: var(--line-2); color: var(--ink);">rerun</button>
+        </sc-if>
+      </div>
+    </aside>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;}}">
+const ENDPOINT = 'wss://ai.thi-ng.ixl.college';
+const KEY = 'gnm-ai-chat-v3';
+const THEME_KEY = 'gnm-ai-theme';
+const EFFORT_LABEL = { none: 'none', low: 'low', high: 'high', max: 'max' };
+const PREVIEWABLE = { html: 1, htm: 1, svg: 1, js: 1, javascript: 1, css: 1 };
+const EXT = { html: 'html', htm: 'html', svg: 'svg', js: 'js', javascript: 'js', jsx: 'jsx', ts: 'ts', tsx: 'tsx', css: 'css', json: 'json', python: 'py', py: 'py', java: 'java', cpp: 'cpp', c: 'c', sh: 'sh', bash: 'sh', sql: 'sql', md: 'md' };
+const TAG_OPEN = '<' + 'script>';
+const TAG_CLOSE = '<' + '/script>';
+
+class Component extends DCLogic {
+  state = { tick: 0, status: 'connecting…', phase: 'connecting', theme: 'light', effort: 'low', showReasoning: true, draft: '', error: '', open: {}, copied: '', panel: null, tab: 'preview', narrow: false, runKey: 0 };
+  msgs = [];
+
+  componentDidMount() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved) {
+        if (Array.isArray(saved.msgs)) this.msgs = saved.msgs.filter(m => m && m.text !== undefined).map(m => ({ ...m, streaming: false }));
+        if (EFFORT_LABEL[saved.effort]) this.setState({ effort: saved.effort });
+        if (typeof saved.showReasoning === 'boolean') this.setState({ showReasoning: saved.showReasoning });
+      }
+    } catch (e) {}
+    const theme = localStorage.getItem(THEME_KEY) === 'dark' ? 'dark' : 'light';
+    this.applyTheme(theme);
+    this.onResize = () => this.setState({ narrow: window.innerWidth < 880 });
+    window.addEventListener('resize', this.onResize);
+    this.setState({ theme, narrow: window.innerWidth < 880 });
+    this.connect();
+  }
+
+  componentWillUnmount() {
+    this.dead = true;
+    window.removeEventListener('resize', this.onResize);
+    clearTimeout(this.timer); clearTimeout(this.watchdog);
+    if (this.ws) { try { this.ws.close(); } catch (e) {} }
+  }
+
+  applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); }
+
+  persist() {
+    try {
+      const trimmed = this.msgs.slice(-40).map(m => ({ role: m.role, text: m.text, reasoning: m.reasoning || '', effort: m.effort, id: m.id }));
+      localStorage.setItem(KEY, JSON.stringify({ msgs: trimmed, effort: this.state.effort, showReasoning: this.state.showReasoning }));
+    } catch (e) {}
+  }
+
+  paint() {
+    if (this.raf) return;
+    this.raf = requestAnimationFrame(() => {
+      this.raf = null;
+      this.setState(s => ({ tick: s.tick + 1 }));
+      const sc = document.getElementById('chat');
+      if (sc && sc.scrollHeight - sc.scrollTop - sc.clientHeight < 220) sc.scrollTop = sc.scrollHeight;
+    });
+  }
+
+  toBottom() {
+    requestAnimationFrame(() => { const sc = document.getElementById('chat'); if (sc) sc.scrollTop = sc.scrollHeight; });
+  }
+
+  connect() {
+    if (this.dead) return;
+    this.setState({ status: this.tries ? 'reconnecting…' : 'connecting…', phase: 'connecting' });
+    let ws;
+    try { ws = new WebSocket(ENDPOINT); } catch (e) { return this.retry(); }
+    this.ws = ws;
+    ws.onopen = () => { this.tries = 0; this.setState({ status: 'connected', phase: 'ready', error: '' }); };
+    ws.onmessage = e => this.onFrame(e.data);
+    ws.onerror = () => { this.setState({ phase: 'error', status: 'connection error' }); };
+    ws.onclose = () => {
+      if (this.dead) return;
+      const cur = this.current();
+      if (cur && cur.streaming) { cur.streaming = false; this.busy = false; }
+      this.setState({ phase: 'closed', status: 'disconnected' });
+      this.paint();
+      this.retry();
+    };
+  }
+
+  retry() {
+    this.tries = (this.tries || 0) + 1;
+    if (this.tries > 6) { this.setState({ status: 'offline — reload to retry', phase: 'error' }); return; }
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => this.connect(), Math.min(800 * this.tries, 6000));
+  }
+
+  current() { const m = this.msgs[this.msgs.length - 1]; return m && m.role === 'assistant' ? m : null; }
+
+  onFrame(raw) {
+    let d;
+    try { d = JSON.parse(raw); } catch (e) { d = { type: 'token', token: String(raw) }; }
+    const cur = this.current();
+    if (cur && ['start', 'reasoning', 'token', 'answer'].includes(d.type)) this.lastStreamAt = Date.now();
+    switch (d.type) {
+      case 'start':
+        if (cur) { cur.streaming = true; cur.text = ''; cur.reasoning = ''; }
+        break;
+      case 'reasoning':
+        if (cur) {
+          cur.reasoning = (cur.reasoning || '') + (d.token || '');
+          if (!this.state.open[cur.id]) this.setState(s => ({ open: { ...s.open, [cur.id]: true } }));
+        }
+        break;
+      case 'token':
+      case 'answer':
+        if (cur) { cur.text = (cur.text || '') + (d.token || d.text || ''); cur.streaming = true; }
+        break;
+      case 'done':
+      case 'end':
+        if (cur) {
+          if (typeof d.full === 'string' && d.full.trim()) cur.text = d.full;
+          if (typeof d.reasoning === 'string' && d.reasoning.trim()) cur.reasoning = d.reasoning;
+          if (d.reasoning_effort) cur.effort = d.reasoning_effort;
+          cur.streaming = false;
+          if (!String(cur.text).trim()) cur.text = 'no answer came back. try sending it again.';
+        }
+        this.busy = false;
+        clearTimeout(this.watchdog);
+        this.setState(s => ({ open: cur ? { ...s.open, [cur.id]: false } : s.open }));
+        if (cur) this.autoOpen(cur);
+        this.persist();
+        break;
+      case 'error':
+        if (cur && !cur.text) this.msgs.pop();
+        this.busy = false;
+        clearTimeout(this.watchdog);
+        this.setState({ error: d.message || d.error || 'the server rejected that request.' });
+        break;
+      default:
+        if (typeof d.token === 'string' && cur) cur.text = (cur.text || '') + d.token;
+    }
+    this.paint();
+  }
+
+  autoOpen(msg) {
+    const arts = this.parse(msg.text).filter(b => b.kind === 'artifact');
+    if (!arts.length) return;
+    const last = arts[arts.length - 1];
+    this.setState({ panel: { mid: msg.id, idx: last.idx }, tab: last.canPreview ? 'preview' : 'code' });
+  }
+
+  send() {
+    const text = (this.state.draft || '').trim();
+    if (!text || this.busy) return;
+    if (!this.ws || this.ws.readyState !== 1) { this.setState({ error: 'not connected yet — one second.' }); return; }
+    const effort = this.state.effort;
+    this.msgs.push({ role: 'user', text, id: 'u' + Date.now() });
+    const history = this.msgs.filter(m => m.text && String(m.text).trim()).slice(-12).map(m => ({ role: m.role, content: m.text }));
+    this.msgs.push({ role: 'assistant', text: '', reasoning: '', streaming: true, effort, id: 'a' + Date.now() });
+    this.busy = true;
+    this.setState({ draft: '', error: '' });
+    if (this.input) { this.input.value = ''; this.input.style.height = 'auto'; }
+    try {
+      this.ws.send(JSON.stringify({ question: text, history, reasoning_effort: effort, effort }));
+    } catch (e) {
+      this.busy = false;
+      this.msgs.pop();
+      this.setState({ error: 'could not send that. check the connection.' });
+    }
+    clearTimeout(this.watchdog);
+    this.lastStreamAt = Date.now();
+    this.watchdog = setInterval(() => {
+      const cur = this.current();
+      if (cur && cur.streaming && Date.now() - this.lastStreamAt > 300000) {
+        this.msgs.pop();
+        this.busy = false;
+        clearTimeout(this.watchdog);
+        this.watchdog = null;
+        this.setState({ error: 'no stream activity for 5 minutes — try again.' });
+        this.paint();
+      }
+    }, 15000);
+    this.paint();
+    this.toBottom();
+  }
+
+  parse(text) {
+    const src = String(text || '');
+    if (!src) return [];
+    const parts = src.split('```');
+    const out = [];
+    parts.forEach((p, i) => {
+      if (i % 2 === 1) {
+        const nl = p.indexOf('\n');
+        const head = nl > -1 ? p.slice(0, nl).trim() : '';
+        const lang = /^[a-z0-9+#.\-]{0,14}$/i.test(head) ? head.toLowerCase() : '';
+        const body = (nl > -1 ? p.slice(nl + 1) : p).replace(/\s+$/, '');
+        if (!body) return;
+        const lines = body.split('\n').length;
+        const looksDoc = /<!doctype html|<html[\s>]|<body[\s>]|<svg[\s>]/i.test(body);
+        const canPreview = !!PREVIEWABLE[lang] || looksDoc;
+        const isArtifact = looksDoc || (canPreview && lines >= 5) || lines >= 14;
+        out.push({ kind: isArtifact ? 'artifact' : 'code', idx: i, lang: lang || (looksDoc ? 'html' : 'code'), text: body, lines, canPreview, looksDoc });
+      } else {
+        const body = p.replace(/^\n+|\n+$/g, '');
+        if (body) out.push({ kind: 'text', idx: i, text: this.clean(body) });
+      }
+    });
+    return out;
+  }
+
+  clean(t) { return t.replace(/^#{1,6}\s+/gm, '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/\n{3,}/g, '\n\n'); }
+
+  titleOf(b) {
+    if (b.looksDoc || b.lang === 'html' || b.lang === 'htm') {
+      const t = b.text.match(/<title[^>]*>([^<]{1,60})<\/title>/i);
+      const h = b.text.match(/<h1[^>]*>([^<]{1,60})<\/h1>/i);
+      return (t && t[1].trim()) || (h && h[1].trim()) || 'untitled site';
+    }
+    if (b.lang === 'svg') return 'vector graphic';
+    return b.lang + ' snippet';
+  }
+
+  previewSrc(b) {
+    const code = b.text;
+    if (b.looksDoc || b.lang === 'html' || b.lang === 'htm' || b.lang === 'svg') {
+      return /<html[\s>]/i.test(code) ? code : '<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0;font-family:system-ui,sans-serif}</style>' + code;
+    }
+    if (b.lang === 'css') {
+      return '<!doctype html><style>' + code + '</style><body><h1>Heading</h1><p>Paragraph of sample text.</p><button>Button</button> <a href="#">Link</a></body>';
+    }
+    const shim = '(function(){var out=function(){var d=document.createElement("div");d.textContent=[].slice.call(arguments).map(function(x){try{return typeof x==="object"?JSON.stringify(x):String(x)}catch(e){return String(x)}}).join(" ");document.body.appendChild(d)};console.log=console.info=console.warn=out;console.error=function(){var d=document.createElement("div");d.style.color="#e08a6c";d.textContent=[].slice.call(arguments).join(" ");document.body.appendChild(d)};window.onerror=function(m){console.error(m)};try{';
+    const body = code.split(TAG_CLOSE).join('<\\/script>');
+    return '<!doctype html><style>body{margin:0;padding:14px;font:13px/1.6 ui-monospace,Menlo,monospace;background:#0f0e0b;color:#d9d3c6;white-space:pre-wrap}</style><body>' + TAG_OPEN + shim + body + '}catch(e){console.error(e&&e.message||e)}})();' + TAG_CLOSE + '</body>';
+  }
+
+  findArtifact() {
+    const p = this.state.panel;
+    if (!p) return null;
+    const msg = this.msgs.find(m => m.id === p.mid);
+    if (!msg) return null;
+    return this.parse(msg.text).find(x => x.idx === p.idx && x.kind === 'artifact') || null;
+  }
+
+  download(b) {
+    try {
+      const ext = EXT[b.lang] || (b.looksDoc ? 'html' : 'txt');
+      const name = this.titleOf(b).replace(/[^a-z0-9]+/gi, '-').toLowerCase().replace(/^-|-$/g, '') || 'artifact';
+      const url = URL.createObjectURL(new Blob([b.text], { type: 'text/plain' }));
+      const a = document.createElement('a');
+      a.href = url; a.download = name + '.' + ext;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    } catch (e) {}
+  }
+
+  copy(text, key) {
+    try { navigator.clipboard.writeText(text); } catch (e) {}
+    this.setState({ copied: key });
+    setTimeout(() => this.setState(s => (s.copied === key ? { copied: '' } : {})), 1400);
+  }
+
+  renderVals() {
+    const phase = this.state.phase;
+    const ready = (this.state.draft || '').trim() && !this.busy && phase === 'ready';
+    const art = this.findArtifact();
+    const narrow = this.state.narrow;
+    const tab = art && !art.canPreview ? 'code' : this.state.tab;
+    const on = { bg: 'var(--ink)', fg: 'var(--bg)' };
+    const off = { bg: 'transparent', fg: 'var(--ink-3)' };
+    const t = k => (tab === k ? on : off);
+
+    return {
+      status: this.state.status,
+      dotColor: phase === 'ready' ? 'var(--ok)' : phase === 'error' || phase === 'closed' ? 'var(--bad)' : 'var(--ink-3)',
+      dotAnim: phase === 'connecting' ? 'pulse 1.3s ease-in-out infinite' : 'none',
+      themeIcon: this.state.theme === 'dark' ? '☀' : '☾',
+      effort: this.state.effort,
+      error: this.state.error,
+      hasError: !!this.state.error,
+      sendBg: ready ? 'var(--accent)' : 'var(--soft)',
+      sendFg: ready ? 'var(--accent-ink)' : 'var(--ink-3)',
+      sendLabel: this.busy ? '…' : 'send',
+      reasoningToggleLabel: this.state.showReasoning ? 'reasoning on' : 'reasoning off',
+
+      thread: this.msgs.map(m => {
+        const isUser = m.role === 'user';
+        const open = !!this.state.open[m.id];
+        const pieces = isUser ? [] : this.parse(m.text);
+        return {
+          isUser, isBot: !isUser, text: m.text, streaming: !!m.streaming,
+          streamLabel: m.text ? 'writing…' : (m.reasoning ? 'thinking…' : 'waiting for the model…'),
+          hasReasoning: !isUser && !!(m.reasoning && String(m.reasoning).trim()),
+          showReasoning: this.state.showReasoning && !isUser && !!(m.reasoning && String(m.reasoning).trim()),
+          reasoning: m.reasoning || '',
+          reasoningLabel: 'reasoning · ' + (EFFORT_LABEL[m.effort] || 'high') + (m.streaming && !m.text ? ' · live' : ''),
+          open, caret: open ? '−' : '+',
+          blocks: pieces.map(b => {
+            if (b.kind === 'text') return { isText: true, isCode: false, isArtifact: false, text: b.text };
+            if (b.kind === 'artifact') return {
+              isText: false, isCode: false, isArtifact: true,
+              glyph: b.lang === 'svg' ? '◇' : b.canPreview ? '</>' : '{ }',
+              title: this.titleOf(b),
+              meta: b.lang + ' · ' + b.lines + ' lines · ' + (b.canPreview ? 'click to preview' : 'click to open'),
+              open: () => this.setState({ panel: { mid: m.id, idx: b.idx }, tab: b.canPreview ? 'preview' : 'code' })
+            };
+            const key = m.id + ':' + b.idx;
+            return {
+              isText: false, isCode: true, isArtifact: false, text: b.text, lang: b.lang,
+              copyLabel: this.state.copied === key ? 'copied' : 'copy',
+              copy: () => this.copy(b.text, key)
+            };
+          }),
+          toggle: () => this.setState(s => ({ open: { ...s.open, [m.id]: !s.open[m.id] } }))
+        };
+      }),
+
+      panelOpen: !!art,
+      panelWidth: narrow ? '100%' : 'clamp(380px, 46%, 720px)',
+      panelPos: narrow ? 'fixed' : 'relative',
+      panelInset: narrow ? '0' : 'auto',
+      panelShadow: narrow ? '0 0 40px rgba(0,0,0,0.28)' : 'none',
+      artTitle: art ? this.titleOf(art) : '',
+      artMeta: art ? art.lang + ' · ' + art.lines + ' lines' : '',
+      artCode: art ? art.text : '',
+      artCanPreview: !!(art && art.canPreview),
+      artShowPreview: !!(art && art.canPreview && tab === 'preview'),
+      artShowCode: !!(art && (tab === 'code' || !art.canPreview)),
+      artPreviewSrc: art && art.canPreview ? this.previewSrc(art) + '<!--r' + this.state.runKey + '-->' : '',
+      artCopyLabel: this.state.copied === 'panel' ? 'copied' : 'copy code',
+      artCopy: () => art && this.copy(art.text, 'panel'),
+      artDownload: () => art && this.download(art),
+      artRerun: () => this.setState(s => ({ runKey: s.runKey + 1 })),
+      showPreviewTab: () => this.setState({ tab: 'preview' }),
+      showCodeTab: () => this.setState({ tab: 'code' }),
+      closePanel: () => this.setState({ panel: null }),
+      tabPreviewBg: t('preview').bg, tabPreviewFg: t('preview').fg,
+      tabCodeBg: t('code').bg, tabCodeFg: t('code').fg,
+
+      toggleTheme: () => {
+        const theme = this.state.theme === 'dark' ? 'light' : 'dark';
+        this.applyTheme(theme);
+        try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+        this.setState({ theme });
+      },
+      clearChat: () => { this.msgs = []; this.setState({ open: {}, error: '', copied: '', panel: null }); this.persist(); },
+      onEffort: e => { const effort = e.target.value; this.setState({ effort }); setTimeout(() => this.persist(), 0); },
+      toggleReasoning: () => this.setState(s => { const showReasoning = !s.showReasoning; setTimeout(() => this.persist(), 0); return { showReasoning }; }),
+      onInput: e => {
+        const el = e.target;
+        el.style.height = 'auto';
+        el.style.height = Math.min(el.scrollHeight, 150) + 'px';
+        this.setState({ draft: el.value });
+      },
+      onKeyDown: e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.send(); } },
+      send: () => this.send(),
+      inputRef: el => { this.input = el; }
+    };
+  }
+}
+
+</script>
+
+
+</body></html>

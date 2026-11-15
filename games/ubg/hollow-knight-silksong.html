@@ -3,11 +3,12 @@
   <head>
     <base href="https://cdn.jsdelivr.net/gh/web-ports/hollow-knight-silksong@master/">
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Hollow Knight: Silksong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Hollow Knight: Silksong | PeteZah</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
+      * { box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
       html, body {
         margin: 0;
         padding: 0;
@@ -20,6 +21,8 @@
         justify-content: center;
         align-items: center;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: #fff;
+        touch-action: none;
       }
       #unity-container {
         width: 100%;
@@ -34,6 +37,8 @@
         width: 100%;
         height: 100%;
         background: #000;
+        display: block;
+        touch-action: none;
       }
       #loading-modal {
         position: absolute;
@@ -47,7 +52,7 @@
         border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.12);
         box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8);
-        z-index: 50;
+        z-index: 9999;
         min-width: 320px;
         max-width: 90vw;
       }
@@ -87,344 +92,309 @@
         color: rgba(255, 255, 255, 0.5);
         font-variant-numeric: tabular-nums;
       }
+
+      /* iPad / Touch Virtual Gamepad Controls */
+      #virtual-controller {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 8000;
+        display: none;
+      }
+
+      .dpad-zone {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        width: 160px;
+        height: 160px;
+        pointer-events: auto;
+        touch-action: none;
+      }
+
+      .dpad-btn {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+        touch-action: none;
+        transition: background 0.1s, transform 0.1s;
+      }
+
+      .dpad-btn:active, .dpad-btn.active {
+        background: rgba(168, 85, 247, 0.55);
+        border-color: #a855f7;
+        transform: scale(0.95);
+      }
+
+      .dpad-up { top: 0; left: 54px; width: 52px; height: 50px; }
+      .dpad-down { bottom: 0; left: 54px; width: 52px; height: 50px; }
+      .dpad-left { top: 54px; left: 0; width: 50px; height: 52px; }
+      .dpad-right { top: 54px; right: 0; width: 50px; height: 52px; }
+      .dpad-center { position: absolute; top: 54px; left: 54px; width: 52px; height: 52px; background: rgba(0,0,0,0.3); border-radius: 8px; }
+
+      .action-zone {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        pointer-events: auto;
+        touch-action: none;
+      }
+
+      .action-row {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+      }
+
+      .act-btn {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.16);
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 800;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+        touch-action: none;
+        line-height: 1.1;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+        transition: background 0.1s, transform 0.1s;
+      }
+
+      .act-btn small {
+        font-size: 9px;
+        opacity: 0.65;
+        font-weight: 600;
+      }
+
+      .act-btn:active, .act-btn.active {
+        transform: scale(0.92);
+      }
+
+      .btn-jump { background: rgba(34, 197, 94, 0.35); border-color: #22c55e; }
+      .btn-jump:active, .btn-jump.active { background: rgba(34, 197, 94, 0.7); }
+
+      .btn-attack { background: rgba(239, 68, 68, 0.35); border-color: #ef4444; }
+      .btn-attack:active, .btn-attack.active { background: rgba(239, 68, 68, 0.7); }
+
+      .btn-dash { background: rgba(168, 85, 247, 0.35); border-color: #a855f7; }
+      .btn-dash:active, .btn-dash.active { background: rgba(168, 85, 247, 0.7); }
+
+      .btn-focus { background: rgba(234, 179, 8, 0.35); border-color: #eab308; }
+      .btn-focus:active, .btn-focus.active { background: rgba(234, 179, 8, 0.7); }
+
+      .top-touch-bar {
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        pointer-events: auto;
+      }
+
+      .util-btn {
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #cbd5e1;
+        font-size: 11px;
+        font-weight: 600;
+        backdrop-filter: blur(8px);
+        touch-action: none;
+        cursor: pointer;
+      }
+
+      .util-btn:active, .util-btn.active {
+        background: rgba(168, 85, 247, 0.4);
+        color: #fff;
+      }
     </style>
   </head>
   <body>
     <div id="loading-modal">
       <div class="loading-title">Hollow Knight: Silksong</div>
-      <div class="loading-subtitle" id="loading-status">Initializing Game Engine...</div>
+      <div class="loading-subtitle" id="loading-status">Booting Game Engine...</div>
       <div class="progress-bar-bg">
         <div class="progress-bar-fill" id="progress-fill"></div>
       </div>
       <div class="loading-stats">
-        <span id="loading-mb">0 MB / 1986 MB</span>
+        <span id="loading-mb">Preparing Engine (35 MB)...</span>
         <span id="loading-pct">0%</span>
+      </div>
+    </div>
+
+    <!-- Virtual Gamepad for School iPads & Tablets -->
+    <div id="virtual-controller">
+      <div class="dpad-zone">
+        <button class="dpad-btn dpad-up" data-key="ArrowUp" data-code="ArrowUp" data-keycode="38">▲</button>
+        <button class="dpad-btn dpad-left" data-key="ArrowLeft" data-code="ArrowLeft" data-keycode="37">◀</button>
+        <div class="dpad-center"></div>
+        <button class="dpad-btn dpad-right" data-key="ArrowRight" data-code="ArrowRight" data-keycode="39">▶</button>
+        <button class="dpad-btn dpad-down" data-key="ArrowDown" data-code="ArrowDown" data-keycode="40">▼</button>
+      </div>
+
+      <div class="action-zone">
+        <div class="action-row">
+          <button class="act-btn btn-focus" data-key="a" data-code="KeyA" data-keycode="65">BIND<small>A</small></button>
+          <button class="act-btn btn-dash" data-key="c" data-code="KeyC" data-keycode="67">DASH<small>C</small></button>
+        </div>
+        <div class="action-row">
+          <button class="act-btn btn-attack" data-key="x" data-code="KeyX" data-keycode="88">NEEDLE<small>X</small></button>
+          <button class="act-btn btn-jump" data-key="z" data-code="KeyZ" data-keycode="90">JUMP<small>Z</small></button>
+        </div>
+      </div>
+
+      <div class="top-touch-bar">
+        <button class="util-btn" data-key="Tab" data-code="Tab" data-keycode="9">MAP (Tab)</button>
+        <button class="util-btn" data-key="Escape" data-code="Escape" data-keycode="27">PAUSE</button>
+        <button id="toggle-ctrl-btn" class="util-btn" onclick="toggleControls()">🎮 Controls: ON</button>
       </div>
     </div>
 
     <div id="unity-container">
       <canvas id="unity-canvas" tabindex="-1"></canvas>
-      <div id="unity-loading-bar" style="display: none;">
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-warning" style="display: none;"></div>
     </div>
 
-    <!-- Multi-CDN JSZip Loader with Fallbacks -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script>
-      if (typeof window.JSZip === 'undefined') {
-        document.write('<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"><\/script>');
+      // Suppress alert dialogs
+      window.alert = function(msg) { console.log("[Silksong alert suppressed]:", msg); };
+
+      const statusEl = document.getElementById("loading-status");
+      const fillEl = document.getElementById("progress-fill");
+      const mbEl = document.getElementById("loading-mb");
+      const pctEl = document.getElementById("loading-pct");
+      const modal = document.getElementById("loading-modal");
+      const controllerEl = document.getElementById("virtual-controller");
+
+      const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || /iPad|iPhone|iPod|Android/i.test(navigator.userAgent);
+      if (isTouch && controllerEl) {
+        controllerEl.style.display = 'block';
       }
-    </script>
-    <script>
-      if (typeof window.JSZip === 'undefined') {
-        document.write('<script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"><\/script>');
+
+      let controlsVisible = isTouch;
+      function toggleControls() {
+        controlsVisible = !controlsVisible;
+        if (controllerEl) controllerEl.style.display = controlsVisible ? 'block' : 'none';
+        const btn = document.getElementById('toggle-ctrl-btn');
+        if (btn) btn.textContent = controlsVisible ? '🎮 Controls: ON' : '🎮 Controls: OFF';
       }
-    </script>
 
-    <script>
-      (function() {
-        const CACHE_NAME = "hksilksongcache-v3";
-        const statusEl = document.getElementById("loading-status");
-        const fillEl = document.getElementById("progress-fill");
-        const mbEl = document.getElementById("loading-mb");
-        const pctEl = document.getElementById("loading-pct");
-        const modal = document.getElementById("loading-modal");
+      // Virtual Controller Touch Event Dispatcher
+      function sendKeyEvent(type, key, code, keyCode) {
+        const ev = new KeyboardEvent(type, {
+          key: key,
+          code: code,
+          keyCode: keyCode,
+          which: keyCode,
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+        });
+        window.dispatchEvent(ev);
+        document.dispatchEvent(ev);
+        const cv = document.querySelector("#unity-canvas");
+        if (cv) cv.dispatchEvent(ev);
+      }
 
-        function updateProgress(loadedBytes, totalBytes, stageText) {
-          const pct = Math.min(Math.round((loadedBytes / totalBytes) * 100), 100);
-          const mbDone = (loadedBytes / (1024 * 1024)).toFixed(1);
-          const mbTotal = (totalBytes / (1024 * 1024)).toFixed(1);
-          if (fillEl) fillEl.style.width = pct + "%";
-          if (pctEl) pctEl.textContent = pct + "%";
-          if (mbEl) mbEl.textContent = mbDone + " MB / " + mbTotal + " MB";
-          if (statusEl && stageText) statusEl.textContent = stageText;
-        }
+      function bindTouchButton(btn) {
+        const key = btn.getAttribute('data-key');
+        const code = btn.getAttribute('data-code');
+        const keyCode = parseInt(btn.getAttribute('data-keycode') || '0', 10);
+        if (!key) return;
 
-        async function ensureJSZipLoaded() {
-          if (typeof window.JSZip !== 'undefined') return window.JSZip;
-          const fallbacks = [
-            "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js",
-            "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js",
-            "https://unpkg.com/jszip@3.10.1/dist/jszip.min.js",
-            "https://cdn.jsdelivr.net/gh/web-ports/hollow-knight-silksong@master/jszip.js"
-          ];
-          for (const url of fallbacks) {
-            try {
-              await new Promise((resolve, reject) => {
-                const s = document.createElement("script");
-                s.src = url;
-                s.onload = resolve;
-                s.onerror = reject;
-                document.head.appendChild(s);
-              });
-              if (typeof window.JSZip !== 'undefined') return window.JSZip;
-            } catch (e) {}
-          }
-          throw new Error("Unable to load JSZip decompression library. Check internet connectivity.");
-        }
-
-        const originalFetch = window.fetch;
-        window.fetch = async function(resource, options) {
-          let url = typeof resource === "string" ? resource : (resource ? resource.url : "");
-          let cleanPath = url.split("?")[0].split("/").pop();
-          try {
-            const cache = await caches.open(CACHE_NAME);
-            let cached = await cache.match(url);
-            if (!cached && cleanPath) cached = await cache.match(cleanPath);
-            if (cached) return cached;
-          } catch(e) {}
-          
-          if (typeof resource === "string" && !resource.startsWith("http") && !resource.startsWith("blob:") && !resource.startsWith("data:")) {
-            resource = CDN_BASES[0] + resource.replace(/^(\.\/|\/)/, '');
-          }
-          return originalFetch(resource, options);
+        const onStart = (e) => {
+          e.preventDefault();
+          btn.classList.add('active');
+          if (navigator.vibrate) try { navigator.vibrate(10); } catch(err) {}
+          sendKeyEvent('keydown', key, code, keyCode);
         };
 
-        async function isCached() {
-          try {
-            const cache = await caches.open(CACHE_NAME);
-            const done = await cache.match("CACHE_COMPLETE");
-            return !!done;
-          } catch(e) {
-            return false;
-          }
-        }
+        const onEnd = (e) => {
+          e.preventDefault();
+          btn.classList.remove('active');
+          sendKeyEvent('keyup', key, code, keyCode);
+        };
 
-        async function cleanupOldCaches() {
-          try {
-            const cacheNames = await caches.keys();
-            await Promise.all(
-              cacheNames.map(name => {
-                if (name !== CACHE_NAME && name.includes("hksilksong")) {
-                  return caches.delete(name);
-                }
-              })
-            );
-          } catch(e) {}
-        }
+        btn.addEventListener('touchstart', onStart, { passive: false });
+        btn.addEventListener('touchend', onEnd, { passive: false });
+        btn.addEventListener('touchcancel', onEnd, { passive: false });
+        btn.addEventListener('mousedown', onStart);
+        btn.addEventListener('mouseup', onEnd);
+        btn.addEventListener('mouseleave', onEnd);
+      }
 
-        const CDN_BASES = [
-          "https://cdn.jsdelivr.net/gh/web-ports/hollow-knight-silksong@master/",
-          "https://fastly.jsdelivr.net/gh/web-ports/hollow-knight-silksong@master/",
-          "https://gcore.jsdelivr.net/gh/web-ports/hollow-knight-silksong@master/",
-          "https://testingcf.jsdelivr.net/gh/web-ports/hollow-knight-silksong@master/",
-          "https://raw.githubusercontent.com/web-ports/hollow-knight-silksong/master/"
-        ];
+      document.querySelectorAll('#virtual-controller button').forEach(bindTouchButton);
 
-        async function fetchPartWithRetry(partPath, partIndex, onBytes) {
-          const primaryBase = CDN_BASES[partIndex % 4];
-          const candidates = [
-            primaryBase + partPath,
-            CDN_BASES[(partIndex + 1) % 4] + partPath,
-            CDN_BASES[(partIndex + 2) % 4] + partPath,
-            "/api/asset-proxy?url=" + encodeURIComponent(primaryBase + partPath),
-            "https://api.allorigins.win/raw?url=" + encodeURIComponent(primaryBase + partPath)
-          ];
-
-          for (const target of candidates) {
-            try {
-              const res = await originalFetch(target);
-              if (!res.ok) throw new Error("HTTP " + res.status);
-              const ab = await res.arrayBuffer();
-              if (ab.byteLength < 100) throw new Error("Incomplete part download");
-              onBytes(ab.byteLength);
-              return ab;
-            } catch(e) {}
-          }
-          throw new Error("Failed to download " + partPath);
-        }
-
-        async function downloadPartsConcurrently(parts, totalExpectedBytes, concurrency = 24) {
-          let loadedBytes = 0;
-          const results = new Array(parts.length);
-          let nextIndex = 0;
-
-          function onBytes(n) {
-            loadedBytes += n;
-            updateProgress(loadedBytes, totalExpectedBytes, "Ultra-Speed Downloading (" + Math.round((loadedBytes / totalExpectedBytes) * 100) + "%)...");
-          }
-
-          async function worker() {
-            while (nextIndex < parts.length) {
-              const idx = nextIndex++;
-              results[idx] = await fetchPartWithRetry(parts[idx], idx, onBytes);
+      // iPad Audio Unlock on first interaction
+      ['touchstart', 'touchend', 'click'].forEach(evt => {
+        window.addEventListener(evt, () => {
+          if (window.unityInstance && window.unityInstance.Module && window.unityInstance.Module.audioContext) {
+            if (window.unityInstance.Module.audioContext.state === 'suspended') {
+              window.unityInstance.Module.audioContext.resume();
             }
           }
+        }, { once: true });
+      });
 
-          const workers = [];
-          for (let i = 0; i < Math.min(concurrency, parts.length); i++) {
-            workers.push(worker());
-          }
-          await Promise.all(workers);
-          return new Blob(results, { type: "application/zip" });
+      const canvas = document.querySelector("#unity-canvas");
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      const config = {
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.25),
+        dataUrl: "Build/w-pt.data.unityweb",
+        frameworkUrl: "Build/w-pt.framework.js.unityweb",
+        codeUrl: "Build/w-pt.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Team Cherry",
+        productName: "Hollow Knight Silksong",
+        productVersion: "1.0",
+      };
+
+      const loaderScript = document.createElement("script");
+      loaderScript.src = "Build/w-pt.loader.js";
+      loaderScript.onload = () => {
+        if (typeof createUnityInstance === "function") {
+          createUnityInstance(canvas, config, (progress) => {
+            const pct = Math.round(progress * 100);
+            if (fillEl) fillEl.style.width = pct + "%";
+            if (pctEl) pctEl.textContent = pct + "%";
+            if (mbEl) mbEl.textContent = `${(progress * 35.4).toFixed(1)} MB / 35.4 MB`;
+            if (statusEl) statusEl.textContent = `Loading Silksong Modules (${pct}%)...`;
+          }).then((inst) => {
+            window.unityInstance = inst;
+            if (modal) modal.style.display = "none";
+          }).catch((e) => {
+            if (statusEl) statusEl.textContent = "Launch Error: " + (e?.message || e);
+          });
         }
-
-        async function unzipAndStore(zipBlob) {
-          if (statusEl) statusEl.textContent = "High-speed extracting game assets...";
-          const JSZipLib = await ensureJSZipLoaded();
-          const zip = await JSZipLib.loadAsync(zipBlob);
-          const files = Object.values(zip.files).filter(f => !f.dir);
-          const total = files.length;
-          const cache = await caches.open(CACHE_NAME);
-
-          let processed = 0;
-          const batchSize = 48;
-
-          for (let i = 0; i < files.length; i += batchSize) {
-            const batch = files.slice(i, i + batchSize);
-            await Promise.all(batch.map(async (file) => {
-              try {
-                const u8 = await file.async("uint8array");
-                await cache.put(file.name, new Response(u8, { headers: { 'Content-Type': 'application/octet-stream' } }));
-                var baseName = file.name.split("/").pop();
-                if (baseName && baseName !== file.name) {
-                  await cache.put(baseName, new Response(u8, { headers: { 'Content-Type': 'application/octet-stream' } }));
-                }
-              } catch(e) {
-                console.error("Cache put error:", file.name, e);
-              }
-              processed++;
-              if (pctEl) pctEl.textContent = Math.round((processed / total) * 100) + "%";
-              if (fillEl) fillEl.style.width = Math.round((processed / total) * 100) + "%";
-              if (statusEl) statusEl.textContent = "Extracting assets (" + processed + "/" + total + ")...";
-            }));
-            await new Promise(r => setTimeout(r, 0));
-          }
-
-          await cache.put("CACHE_COMPLETE", new Response("ok"));
-        }
-
-        function getParts(prefix, start, end) {
-          const parts = [];
-          for (let i = start; i <= end; i++) {
-            parts.push(prefix + ".part" + i);
-          }
-          return parts;
-        }
-
-        // Background pre-fetch and pre-cache engine components directly into CacheStorage
-        async function prefetchEngineComponents() {
-          const engineFiles = [
-            "Build/w-pt.loader.js",
-            "Build/w-pt.data.unityweb",
-            "Build/w-pt.framework.js.unityweb",
-            "Build/w-pt.wasm.unityweb"
-          ];
-          try {
-            const cache = await caches.open(CACHE_NAME);
-            await Promise.all(engineFiles.map(async (f) => {
-              const baseName = f.split("/").pop();
-              const existing = await cache.match(f);
-              if (!existing) {
-                for (let i = 0; i < CDN_BASES.length; i++) {
-                  try {
-                    const res = await originalFetch(CDN_BASES[i] + f);
-                    if (res.ok) {
-                      const clone = res.clone();
-                      await cache.put(f, res);
-                      if (baseName && baseName !== f) {
-                        await cache.put(baseName, clone);
-                      }
-                      break;
-                    }
-                  } catch(e) {}
-                }
-              }
-            }));
-          } catch(e) {}
-        }
-
-        async function downloadPartsConcurrently(parts, totalExpectedBytes, concurrency = 32) {
-          let loadedBytes = 0;
-          const results = new Array(parts.length);
-          let nextIndex = 0;
-          const startTime = performance.now();
-
-          function onBytes(n) {
-            loadedBytes += n;
-            const elapsed = (performance.now() - startTime) / 1000;
-            const speedMBps = elapsed > 0 ? ((loadedBytes / (1024 * 1024)) / elapsed).toFixed(1) : "0";
-            updateProgress(
-              loadedBytes, 
-              totalExpectedBytes, 
-              "Ultra-Speed Downloading (" + Math.round((loadedBytes / totalExpectedBytes) * 100) + "% @ " + speedMBps + " MB/s)..."
-            );
-          }
-
-          async function worker() {
-            while (nextIndex < parts.length) {
-              const idx = nextIndex++;
-              results[idx] = await fetchPartWithRetry(parts[idx], idx, onBytes);
-            }
-          }
-
-          const workers = [];
-          for (let i = 0; i < Math.min(concurrency, parts.length); i++) {
-            workers.push(worker());
-          }
-          await Promise.all(workers);
-          return new Blob(results, { type: "application/zip" });
-        }
-
-        (async () => {
-          try {
-            // Kick off engine pre-caching in parallel with asset pipeline
-            const enginePrefetchPromise = prefetchEngineComponents();
-            await cleanupOldCaches();
-            const cached = await isCached();
-            if (!cached) {
-              const TOTAL_EXPECTED = 2083200000;
-              const parts = getParts("StreamingAssets/aa/WebGL.zip", 1, 100);
-              const zipBlob = await downloadPartsConcurrently(parts, TOTAL_EXPECTED, 32);
-              await unzipAndStore(zipBlob);
-            } else {
-              if (statusEl) statusEl.textContent = "Instant Cache Ready!";
-              if (fillEl) fillEl.style.width = "100%";
-              if (pctEl) pctEl.textContent = "100%";
-            }
-
-            await enginePrefetchPromise;
-
-            if (statusEl) statusEl.textContent = "Booting WebGL Engine...";
-
-            const canvas = document.querySelector("#unity-canvas");
-
-            const config = {
-              dataUrl: "Build/w-pt.data.unityweb",
-              frameworkUrl: "Build/w-pt.framework.js.unityweb",
-              codeUrl: "Build/w-pt.wasm.unityweb",
-              streamingAssetsUrl: "StreamingAssets",
-              companyName: "Team Cherry",
-              productName: "Hollow Knight Silksong",
-              productVersion: "1.0",
-            };
-
-            const loaderScript = document.createElement("script");
-            loaderScript.src = "https://cdn.jsdelivr.net/gh/web-ports/hollow-knight-silksong@master/Build/w-pt.loader.js";
-            loaderScript.onload = () => {
-              if (typeof createUnityInstance === "function") {
-                createUnityInstance(canvas, config, (progress) => {
-                  if (fillEl) fillEl.style.width = (progress * 100) + "%";
-                  if (pctEl) pctEl.textContent = Math.round(progress * 100) + "%";
-                  if (statusEl) statusEl.textContent = "Initializing Game Modules (" + Math.round(progress * 100) + "%)...";
-                }).then(() => {
-                  if (modal) modal.style.display = "none";
-                }).catch((e) => {
-                  if (statusEl) statusEl.textContent = "Launch Error: " + (e?.message || e);
-                });
-              }
-            };
-            document.body.appendChild(loaderScript);
-          } catch(err) {
-            console.error(err);
-            if (statusEl) statusEl.textContent = "Error: " + (err?.message || err);
-          }
-        })();
-      })();
+      };
+      document.body.appendChild(loaderScript);
     </script>
   </body>
 </html>

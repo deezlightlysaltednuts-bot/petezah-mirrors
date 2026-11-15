@@ -1,0 +1,2117 @@
+<!DOCTYPE html><html data-theme="light" lang="en-US"><head><meta charset="utf-8"><title>Stick Hook | Play Now on Stickman Games</title><meta name="description" content="Swing through the sky in Stick Hook, a free grappling-hook stickman game. Time your release, keep your momentum, and nail every landing."><meta name="keywords" content="stick hook"><meta name="title" content="Stick Hook | Play Now on Stickman Games"> <meta property="og:title" content="Stick Hook"><meta property="og:site_name" content="Stickman Games"><link rel="image_src" href="https://stickmangamespc.io/data/image/game/stick-hook/stick-hook.png" /><meta property="og:type" content="article" /><meta property="og:url" content="https://stickmangamespc.io/stick-hook" /><meta property="og:description" content="Swing through the sky in Stick Hook, a free grappling-hook stickman game. Time your release, keep your momentum, and nail every landing." /><meta property="og:image" content="https://stickmangamespc.io/data/image/game/stick-hook/stick-hook.png" /> <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Stick Hook"><meta name="twitter:description" content="Swing through the sky in Stick Hook, a free grappling-hook stickman game. Time your release, keep your momentum, and nail every landing."><meta name="twitter:image" content="https://stickmangamespc.io/data/image/game/stick-hook/stick-hook.png"> <meta name="robots" content="index,follow" /><meta name="viewport"
+ content="width=device-width, initial-scale=1.0, minimal-ui, shrink-to-fit=no viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Stickman Games"><meta name="HandheldFriendly" content="true" /><meta name="mobile-web-app-capable" content="yes" /><link rel="shortcut icon" sizes="512x512"
+ href="https://stickmangamespc.io/cache/data/image/options/favicon-s512x512.png" /><link rel="icon" type="image/x-icon" href="https://stickmangamespc.io/favicon.ico"><link rel="apple-touch-icon"
+ href="https://stickmangamespc.io/cache/data/image/options/favicon-s512x512.png"><meta http-equiv="x-ua-compatible" content="ie=edge"><link rel="canonical" href="https://stickmangamespc.io/stick-hook" data-react-helmet="true"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-JSTBNC933N"></script><script>window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'G-JSTBNC933N');</script> <script data-cfasync="false">var game_config = {
+ current_slug: 'stick-hook',
+ domain_url: 'https://stickmangamespc.io',
+ theme_url: '/themes/stickmangamespc.io',
+ id_game: 1,
+ url_game: 'https://stickmangamespc.io/stick-hook',
+ logo: '/cache/data/image/options/stickmangamespc.io-f150x35.png',
+ theme_color: '#003afa',
+ not_allow_comment: 'no',
+ show_comment: 'yes'
+ };</script><link rel="preload" href="/themes/stickmangamespc.io/resources/css/index_chunk_2.css" as="style" crossorigin="anonymous" /><link rel="stylesheet" href="/themes/stickmangamespc.io/resources/css/index_chunk_2.css" crossorigin="anonymous" data-n-g="" /><link rel="preload" href="/themes/stickmangamespc.io/resources/css/index_chunk_6.css" as="style" crossorigin="anonymous" /><link rel="stylesheet" href="/themes/stickmangamespc.io/resources/css/index_chunk_6.css" crossorigin="anonymous" /><link rel="preload" href="/themes/stickmangamespc.io/resources/css/index_chunk_4.css?v1" as="style" crossorigin="anonymous" /><link rel="stylesheet" href="/themes/stickmangamespc.io/resources/css/index_chunk_4.css?v1" crossorigin="anonymous" /><link rel="preload" href="/themes/stickmangamespc.io/resources/css/style.min.css?v2" as="style" crossorigin="anonymous" /><link rel="stylesheet" href="/themes/stickmangamespc.io/resources/css/style.min.css?v2" crossorigin="anonymous" /><link rel="stylesheet" type="text/css" href="/themes/stickmangamespc.io/resources/css/index_chunk_1.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="/themes/stickmangamespc.io/resources/css/index_chunk_5.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="/themes/stickmangamespc.io/resources/css/index_chunk_3.css" crossorigin="anonymous"><style>#gamePageMainContainer .Carousel_simpleCarouselContainer__ZGe38{overflow:unset}</style></head><body dir="ltr"><div id="__next"><div class="__className_ca8460 css-1f20jmh">
+ <header id="czyHeader" class="css-1geg79l"><div style="display: flex; flex-direction: row; padding-left: 8px; align-items: center;"><button aria-label="Open/Close sidebar" class="MuiButton-root css-h9dwsh close" id="menuButton" data-track-section="btn_sidebar_toggle" data-track-position="01" data-track-value="Sidebar Toggle" data-event_name="btn_sidebar_toggle_01" data-event_value="Sidebar Toggle" data-track-type="menu" data-click-kind="interact" onclick="handleClick(this)"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6 menu-svg-close"><path xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" d="M19 4C19.5523 4 20 3.55229 20 3C20 2.44772 19.5523 2 19 2L3 2C2.44772 2 2 2.44772 2 3C2 3.55228 2.44772 4 3 4L19 4ZM20.47 7.95628L15.3568 11.152C14.7301 11.5437 14.7301 12.4564 15.3568 12.848L20.47 16.0438C21.136 16.4601 22 15.9812 22 15.1958V8.80427C22 8.01884 21.136 7.54 20.47 7.95628ZM11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11L3 11C2.44771 11 2 11.4477 2 12C2 12.5523 2.44771 13 3 13L11 13ZM20 21C20 21.5523 19.5523 22 19 22L3 22C2.44771 22 2 21.5523 2 21C2 20.4477 2.44771 20 3 20L19 20C19.5523 20 20 20.4477 20 21Z"></path></svg><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6 menu-svg-open"><path xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" d="M21 4C21.5523 4 22 3.55229 22 3C22 2.44772 21.5523 2 21 2L5 2C4.44772 2 4 2.44772 4 3C4 3.55228 4.44772 4 5 4L21 4ZM3.53 16.0438L8.6432 12.848C9.26987 12.4563 9.26987 11.5437 8.6432 11.152L3.53 7.95625C2.86395 7.53997 2 8.01881 2 8.80425V15.1958C2 15.9812 2.86395 16.46 3.53 16.0438ZM21 13C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11L13 11C12.4477 11 12 11.4477 12 12C12 12.5523 12.4477 13 13 13L21 13ZM22 21C22 21.5523 21.5523 22 21 22L5 22C4.44771 22 4 21.5523 4 21C4 20.4477 4.44771 20 5 20L21 20C21.5523 20 22 20.4477 22 21Z"></path></svg></button><a href="/"><div class="css-15nij48" data-track-section="logo" data-track-position="01" data-track-value="Logo" data-event_name="logo_01" data-event_value="Logo" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="css-1q4s03l" style="height: 50px;"><img width="" height="50" src="/cache/data/image/options/stickmangamespc.io-f165x50.webp" title="Stickman Games" alt="Stickman Games" /></div></div></a></div><div class="TopSearch_topSearchForm__b9Z8c TopSearch_isDesktop__2eSKm search-mobile"><input class="TopSearch_searchInput__Nbapa TopSearch_topSearchInput__mCCPQ TopSearch_isDesktop__2eSKm" id="search-input" placeholder="Search" name="q" autocomplete="off" /><button class="MuiBox-root css-1r4eqz btn_search" type="submit" data-track-section="btn_search" data-track-position="01" data-track-value="Search Desktop" data-event_name="btn_search_01" data-event_value="Search Desktop" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 4C6.91015 4 4 6.91015 4 10.5C4 14.0899 6.91015 17 10.5 17C14.0899 17 17 14.0899 17 10.5C17 6.91015 14.0899 4 10.5 4ZM2 10.5C2 5.80558 5.80558 2 10.5 2C15.1944 2 19 5.80558 19 10.5C19 15.1944 15.1944 19 10.5 19C5.80558 19 2 15.1944 2 10.5Z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M15.2929 15.2929C15.6834 14.9024 16.3166 14.9024 16.7071 15.2929L21.7071 20.2929C22.0976 20.6834 22.0976 21.3166 21.7071 21.7071C21.3166 22.0976 20.6834 22.0976 20.2929 21.7071L15.2929 16.7071C14.9024 16.3166 14.9024 15.6834 15.2929 15.2929Z"></path></svg></button><button class="close-search-input MuiButton-root css-2r8q21"><span class="svg-icon" aria-hidden="true"> <svg class="svg-icon__link"><use xlink:href="#icon-close"></use></svg> </span></button><ul class="TopSearch_resultContainer__Ev21P result-search" role="listbox"></ul></div><div class="header-right" style="flex-direction: row; display: flex; padding-left: 8px; padding-right: 20px; align-items: center; justify-content: flex-end; min-width: 115px;"><button class="search-btn MuiButton-root css-2r8q21" data-event_name="header_button" data-event_value="Search Mobile" data-track-type="button" onclick="handleClick(this)"><span class="svg-icon" aria-hidden="true"> <svg class="svg-icon__link"><use xlink:href="#icon-search"></use></svg> </span></button><div style="margin:0 8px;"><div style="position: relative;" data-track-section="btn_random" data-track-position="01" data-track-value="Random" data-event_name="btn_random_01" data-event_value="Random" data-track-type="menu" data-click-kind="interact" onclick="handleClick(this)"><a id="random-games" class="random-games MuiButton-root css-2r8q21"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6"><path d="M5.27511 4.90729C5.68383 3.30164 7.30788 2.36461 8.90252 2.81438L18.1126 5.41212C19.7073 5.86189 20.6687 7.52814 20.2599 9.13379L17.7249 19.0927C17.3162 20.6984 15.6921 21.6354 14.0975 21.1856L4.88735 18.5879C3.29271 18.1381 2.33133 16.4719 2.74005 14.8662L5.27511 4.90729Z" fill="url(#paint0_linear_3332_34154)"></path><ellipse cx="1.55695" cy="1.62765" rx="1.55695" ry="1.62765" transform="matrix(0.962449 0.271461 -0.246685 0.969096 7.47775 4.66669)" fill="url(#paint1_linear_3332_34154)"></ellipse><ellipse cx="1.55695" cy="1.62765" rx="1.55695" ry="1.62765" transform="matrix(0.962449 0.271461 -0.246685 0.969096 10.403 10)" fill="url(#paint2_linear_3332_34154)"></ellipse><ellipse cx="1.55695" cy="1.62765" rx="1.55695" ry="1.62765" transform="matrix(0.962449 0.271461 -0.246685 0.969096 13.3282 15.3334)" fill="url(#paint3_linear_3332_34154)"></ellipse><defs><linearGradient id="paint0_linear_3332_34154" x1="13.5076" y1="4.11325" x2="9.09059" y2="19.7734" gradientUnits="userSpaceOnUse"><stop stop-color="#FF769F"></stop><stop offset="1" stop-color="#FF1B1B"></stop></linearGradient><linearGradient id="paint1_linear_3332_34154" x1="1.55695" y1="0" x2="1.55695" y2="3.25531" gradientUnits="userSpaceOnUse"><stop stop-color="#B6E0FF"></stop><stop offset="1" stop-color="#FFF6F6"></stop></linearGradient><linearGradient id="paint2_linear_3332_34154" x1="1.55695" y1="0" x2="1.55695" y2="3.25531" gradientUnits="userSpaceOnUse"><stop stop-color="#B6E0FF"></stop><stop offset="1" stop-color="#FFF6F6"></stop></linearGradient><linearGradient id="paint3_linear_3332_34154" x1="1.55695" y1="0" x2="1.55695" y2="3.25531" gradientUnits="userSpaceOnUse"><stop stop-color="#B6E0FF"></stop><stop offset="1" stop-color="#FFF6F6"></stop></linearGradient></defs></svg></a></div></div><div style="margin-right: 8px;"><div style="position: relative;" ><button id="button-favorites" data-track-section="btn_favorite" data-track-position="01" data-track-value="Favorite" data-event_name="btn_favorite_01" data-event_value="Favorite" data-track-type="menu" data-click-kind="interact" onclick="handleClick(this)" class="MuiButton-root css-2r8q21" type="button" aria-label="Favorites games"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6" style="width: 22px; height: 22px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.47368 6.78578C3.94666 7.79745 3.9392 9.02672 4.07146 9.70273C4.46989 11.7393 5.98381 14.0997 7.75719 15.9902C8.63197 16.9227 9.53387 17.7018 10.3315 18.2394C11.1783 18.8102 11.749 19 12 19C12.251 19 12.8217 18.8102 13.6685 18.2394C14.4661 17.7018 15.368 16.9227 16.2428 15.9902C18.0162 14.0997 19.5301 11.7393 19.9286 9.70273C20.0608 9.02672 20.0534 7.79745 19.5263 6.78578C19.2725 6.29849 18.9017 5.86627 18.3619 5.55002C17.82 5.23252 17.0529 5 15.96 5C14.7111 5 13.7204 5.56856 13.2125 6.32446C12.8891 6.80569 12.3638 6.94309 12 6.94309C11.6362 6.94309 11.1109 6.80569 10.7876 6.32446C10.2796 5.56856 9.28887 5 8.04003 5C6.94711 5 6.18001 5.23252 5.63809 5.55002C5.09831 5.86627 4.72752 6.29849 4.47368 6.78578ZM4.62707 3.82438C5.52816 3.29645 6.65797 3 8.04003 3C9.61785 3 11.0464 3.61724 12 4.64452C12.9536 3.61724 14.3822 3 15.96 3C17.342 3 18.4719 3.29645 19.3729 3.82438C20.2762 4.35357 20.8945 5.08322 21.3001 5.86176C22.0919 7.38172 22.0844 9.09982 21.8913 10.0867C21.3888 12.6555 19.5878 15.3476 17.7015 17.3585C16.7464 18.3766 15.7323 19.2603 14.7863 19.8979C13.8895 20.5023 12.8891 21 12 21C11.1109 21 10.1105 20.5023 9.21371 19.8979C8.26775 19.2603 7.25361 18.3766 6.29853 17.3585C4.41221 15.3476 2.61121 12.6555 2.10867 10.0867C1.91558 9.09982 1.90812 7.38172 2.69993 5.86176C3.1055 5.08322 3.72383 4.35357 4.62707 3.82438Z"></path></svg></button></div></div></div></header><div class="css-ta5pm1"></div> <nav id="mainNav" class="Sidebar_main___ex0V Sidebar_isDesktop__aieVO"><div class="Sidebar_container__CqXNx" id="sidebarContainer"><!-- Header --><!-- Sidebar --><a aria-label="Home" href="/" class="" data-track-section="menu_sidebar" data-track-position="01" data-track-value="Home" data-event_name="menu_sidebar_01" data-event_value="Home" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="Sidebar_link__Tbdup"><img loading="lazy" width="22" height="22" src="/cache/data/image/menu/home-m22x22.webp" alt="Home icon" title="Home icon" /><div class="Sidebar_labelContainer__qHPDa">Home</div></div></a><a aria-label="New" href="/new-games" class="" data-track-section="menu_sidebar" data-track-position="02" data-track-value="New" data-event_name="menu_sidebar_02" data-event_value="New" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="Sidebar_link__Tbdup"><img loading="lazy" width="22" height="22" src="/cache/data/image/menu/new3-m22x22.webp" alt="New icon" title="New icon" /><div class="Sidebar_labelContainer__qHPDa">New</div></div></a><a aria-label="Hot" href="/hot-games" class="" data-track-section="menu_sidebar" data-track-position="03" data-track-value="Hot" data-event_name="menu_sidebar_03" data-event_value="Hot" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="Sidebar_link__Tbdup"><img loading="lazy" width="22" height="22" src="/cache/data/image/menu/hot-m22x22.webp" alt="Hot icon" title="Hot icon" /><div class="Sidebar_labelContainer__qHPDa">Hot</div></div></a><a aria-label="Popular" href="/top-popular" class="" data-track-section="menu_sidebar" data-track-position="04" data-track-value="Popular" data-event_name="menu_sidebar_04" data-event_value="Popular" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="Sidebar_link__Tbdup"><img loading="lazy" width="22" height="22" src="/cache/data/image/menu/top-popular-m22x22.webp" alt="Popular icon" title="Popular icon" /><div class="Sidebar_labelContainer__qHPDa">Popular</div></div></a><a aria-label="Favorite" href="/favorite-games" class="" data-track-section="menu_sidebar" data-track-position="05" data-track-value="Favorite" data-event_name="menu_sidebar_05" data-event_value="Favorite" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="Sidebar_link__Tbdup"><img loading="lazy" width="22" height="22" src="/cache/data/image/menu/favourite-m22x22.webp" alt="Favorite icon" title="Favorite icon" /><div class="Sidebar_labelContainer__qHPDa">Favorite</div></div></a><hr class="MuiDivider-root MuiDivider-fullWidth css-148wt6v" /><a aria-label="Arcade" href="/arcade.games" class="" data-track-section="menu_category" data-track-position="01" data-track-value="Arcade" data-event_name="menu_category_01" data-event_value="Arcade" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="Sidebar_link__Tbdup"><img loading="lazy" width="22" height="22" src="/cache/data/image/menu/arcadegames-m22x22.webp" alt="Arcade" title="Arcade icon" /><div class="Sidebar_labelContainer__qHPDa">Arcade</div></div></a><a aria-label="Action" href="/action.games" class="" data-track-section="menu_category" data-track-position="02" data-track-value="Action" data-event_name="menu_category_02" data-event_value="Action" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><div class="Sidebar_link__Tbdup"><img loading="lazy" width="22" height="22" src="/cache/data/image/menu/action-game-m22x22.webp" alt="Action" title="Action icon" /><div class="Sidebar_labelContainer__qHPDa">Action</div></div></a><hr class="MuiDivider-root MuiDivider-fullWidth css-148wt6v" /><div class="MuiBox-root css-1ibfcce" id="sidebar-hidden"><a style="display:none;" rel="external nofollow" class="Button_czyButton__y8IRs Button_czyButton--contained--purple__OBSeL Button_czyButton--height34__0zFYJ sidebarContactButton contact-us-link report_bug" onclick="report_open(this)"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6"><path
+ fill-rule="evenodd"
+ clip-rule="evenodd"
+ d="M1.99998 7C1.99998 5.34315 3.34313 4 4.99998 4H19C20.6568 4 22 5.34315 22 7V7.98448C22.0001 7.99422 22.0001 8.00395 22 8.01368V17C22 18.6569 20.6568 20 19 20H4.99998C3.34313 20 1.99998 18.6569 1.99998 17V8.01367C1.99984 8.00395 1.99984 7.99422 1.99998 7.98449V7ZM3.99998 9.86852V17C3.99998 17.5523 4.4477 18 4.99998 18H19C19.5523 18 20 17.5523 20 17V9.86852L13.6641 14.0925C12.6564 14.7642 11.3436 14.7642 10.3359 14.0925L3.99998 9.86852ZM20 7.46482L12.5547 12.4283C12.2188 12.6523 11.7812 12.6523 11.4453 12.4283L3.99998 7.46482V7C3.99998 6.44772 4.4477 6 4.99998 6H19C19.5523 6 20 6.44772 20 7V7.46482Z"></path></svg>Contact us</a><div class="Sidebar_linksContainer__n3z0G sidebarLinks Sidebar_isDesktop__aieVO"><a rel="external nofollow" href="/about-us" data-track-section="menu_footer" data-track-position="01" data-track-value="About Us" data-event_name="menu_footer_01" data-event_value="About Us" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><span class="Sidebar_sidebarSpan__fHyyG">About Us</span></a><a rel="external nofollow" href="/contact-us" data-track-section="menu_footer" data-track-position="02" data-track-value="Contact Us" data-event_name="menu_footer_02" data-event_value="Contact Us" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><span class="Sidebar_sidebarSpan__fHyyG">Contact Us</span></a><a rel="external nofollow" href="/dmca" data-track-section="menu_footer" data-track-position="03" data-track-value="DMCA" data-event_name="menu_footer_03" data-event_value="DMCA" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><span class="Sidebar_sidebarSpan__fHyyG">DMCA</span></a><a rel="external nofollow" href="/privacy-policy" data-track-section="menu_footer" data-track-position="04" data-track-value="Privacy Policy" data-event_name="menu_footer_04" data-event_value="Privacy Policy" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><span class="Sidebar_sidebarSpan__fHyyG">Privacy Policy</span></a><a rel="external nofollow" href="/terms-of-service" data-track-section="menu_footer" data-track-position="05" data-track-value="Terms of Service" data-event_name="menu_footer_05" data-event_value="Terms of Service" data-track-type="menu" data-click-kind="nav" onclick="handleClick(this)"><span class="Sidebar_sidebarSpan__fHyyG">Terms of Service</span></a></div><div class="Sidebar_copyright__65TvR">©2026 Stickman Games </div></div></div></nav><script>window.addEventListener("DOMContentLoaded", function() {
+ load_menu_css();
+ });
+ function load_menu_css() {
+ jQuery("#sidebarContainer a").removeClass('active');
+ var href = window.location.href;
+ var path_name = window.location.pathname;
+
+ jQuery("#sidebarContainer a").each(function(e) {
+ var current_url = jQuery(this).attr('href');
+ if (href == current_url || href == current_url + "/" || path_name == current_url) {
+ jQuery(this).addClass("active");
+ }
+ })
+
+ }</script><main id="layoutMain" class="css-t2sft"> <div id="layoutMainWrapper" style="position:relative"><script type='text/javascript'>var themeurl = 'http://stickmangamespc.io/themes/stickmangamespc.io/';
+ function get_format_url(controller, action) {
+ var urlformat = '/:a:.:c:';
+ urlformat = urlformat.replace(':c:', controller);
+ return urlformat.replace(':a:', action);
+ }</script><script type="application/ld+json">[{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Stick Hook","url":"https://stickmangamespc.io/stick-hook","author":{"@type":"Organization","name":"StickmanGamesPC.io"},"description":"Swing through the sky in Stick Hook, a free grappling-hook stickman game. Time your release, keep your momentum, and nail every landing.","applicationCategory":"GameApplication","operatingSystem":"any","image":"https://stickmangamespc.io/data/image/game/stick-hook/banner/stick-hook.png","aggregateRating":{"@type":"AggregateRating","worstRating":1,"bestRating":10,"ratingValue":8.8,"ratingCount":129},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"InStock"},"sameAs":[]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Stickman Games","item":"https://stickmangamespc.io"},{"@type":"ListItem","position":2,"name":"Stick Hook","item":"https://stickmangamespc.io/stick-hook"}]}]</script><style>@media (max-width: 600px) {
+ body.fullscreen #game-iframe-play.open_fullscreen {
+ z-index: 10000;
+ min-height: 0;
+ max-height: none;
+ aspect-ratio: auto;
+ margin: 0;
+ }
+ .game-iframe-play.open_fullscreen .css-1h1938b { display: none; }
+ .game-iframe-play.open_fullscreen .css-uwwqev { min-height: 0; }
+
+ .icon-fullscreen {
+ display: none;
+ }
+ }</style><div class="GamePageDesktop_main__fSalE"><div class="GamePageDesktop_mainContainer__QMRhB" id="gamePageMainContainer"><div class="GamePageDesktop_gfContainer__ywzsh"><div class="GamePageDesktop_gfAspectRatioContainer__f_hUp game-iframe-play" id="game-iframe-play"><div class="css-uwwqev"><div class="GameContainer" id="game"
+ style="position: relative; width: 100%; height: 100%;"><style>.mobile-fs-bar{display:none;}.game-iframe-play.open_fullscreen{position:fixed;top:0;left:0;width:100vw;height:100vh;height:100svh;z-index:10000;background:var(--black-100)}#loader_game_iframe{display:inline-block;width:15px;aspect-ratio:1;border-radius:50%;animation:1s linear infinite alternate l5}@keyframes l5{0%{box-shadow:20px 0 #818181,-20px 0 #0002;background:#818181}33%{box-shadow:20px 0 #818181,-20px 0 #0002;background:#0002}66%{box-shadow:20px 0 #0002,-20px 0 #818181;background:#0002}100%{box-shadow:20px 0 #0002,-20px 0 #000;background:#000}}.game-preview,.game-preview-bgi,.game_area_frame{top:0;height:100%;width:100%;left:0}.close_mobile_box img,.close_mobile_box svg{width:24px;height:24px}.is_mobile .game-preview-bgi{filter:unset}.close_mobile_box.hide,.is_mobile .game-preview__logo{display:none}.game_area_frame{display:flex;align-items:center;justify-content:center;background:#0a0a0a;z-index:1;overflow:hidden;border:0;position:fixed;right:0;bottom:0}.game-preview{position:absolute;overflow:hidden;z-index:1}.game-preview-bgi{position:absolute;z-index:10;background-position:center;background-size:cover;filter:blur(10px)}.game-preview__content{position:relative;z-index:20;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;height:100%;background-color:rgb(0 0 0 / .6)}.play-btn,.play-btn__ctrl{position:relative;height:50px}.game-preview__logo img{border-radius:8px;-webkit-box-shadow:0 0 1rem 0 #fff;box-shadow:0 0 1rem 0 #fff;max-width:200px}.game-preview__title{font-size:24px;color:#fff;font-weight:700;margin:20px auto;background:linear-gradient(90deg,#fff0 0,rgb(0 0 0 / .3) 50%,#fff0);width:100%;text-align:center;padding:14px 0;font-family:inherit}.play-btn{display:inline-block;vertical-align:top}.play-btn__ctrl{overflow:hidden;-webkit-appearance:none;-moz-appearance:none;appearance:none;z-index:10;box-shadow:0 0 1rem 0 #fff;background:#ff3814;font-weight:700;color:#fff;font-size:22px;padding:0 32px;border-radius:16px;border:0;margin:0;cursor:pointer;-webkit-overflow-scrolling:touch;transition:box-shadow .15s,background-color .15s,transform .1s,opacity .1s}.play-btn__ctrl[disabled=disabled]{opacity:.5}.play-btn__ctrl:hover{animation:1s ease-in-out infinite pulse-glow;box-shadow:0 0 2rem 0 #fff,0 8px 25px rgba(255,56,20,.5)}.play-btn__ctrl:active{transform:scale(.95);animation:none}@keyframes pulse-glow{0%,100%{transform:scale(1);box-shadow:0 0 1rem 0 #fff}50%{transform:scale(1.08);box-shadow:0 0 2.5rem 0 #fff,0 8px 30px rgba(255,56,20,.6)}}.play-btn__ctrl:before{content:"";position:absolute;height:30px;left:50%;width:50px;margin-left:-25px;top:45px;z-index:0;border-radius:10px;background-color:#fff}.close_mobile_box{align-items:center;background:#fff;border-radius:0 16px 16px 0;box-shadow:0 2px 12px 4px #5d6b8414,0 23px 9px 0 #5d6b8408,0 13px 8px 0 #5d6b8417,0 6px 6px 0 #5d6b8426,0 1px 3px 0 #5d6b842e;display:flex;height:46px;padding:0 7px 0 0;overflow:hidden;display:flex;justify-content:center;position:fixed;top:24px;left:0;color:#009cff;z-index:999;border-top:2px solid #fff;border-bottom:2px solid #fff;border-right:2px solid #fff}.game-iframe,.game__video{height:100%;top:0;width:100%}.close_mobile_box svg{display:inline-block;vertical-align:middle;fill:currentColor;font-size:0}.game-frame,.game-frame iframe{width:100%}.game-iframe{position:absolute;bottom:0;left:0;right:0;border:0}.game__preview{position:absolute;inset:0;cursor:pointer}.game__preview::before{content:"";position:absolute;inset:0;z-index:2;background:url("/themes/stickmangamespc.io/resources/images/pattern.svg") 0 0/3.125rem 3.125rem;mix-blend-mode:soft-light}.game__video{position:absolute;left:0;-o-object-fit:cover;object-fit:cover;-o-object-position:bottom center;object-position:bottom center;z-index:1;pointer-events:none}.frame_fix_mobile{position:fixed!important;left:0;background:#fff;z-index:9999;top:0;bottom:0;min-height:100vh;height:100vh;height:100dvh;box-shadow:unset;border-radius:unset;width:100vw}.frame_fix_mobile .game-preview{height:100%!important;width:100%!important}#mobile-nav.close_mobile_box{z-index:10000}body.fullscreen{overflow:hidden;position:fixed;width:100%}/* Neo top+bottom thay cho height:100svh. Tren Safari iPhone, khi body la position:fixed thi trinh duyet PHU thanh cong cu len noi dung, nen 100vh/100dvh va ca visualViewport.height deu bao viewport LON -> day game lot xuong duoi thanh cong cu, mat ban phim. bottom:0 bam dung mep duoi ma #mobile-fs-bar (cung fixed; bottom:0) dang bam, nen hai cai khop nhau theo cau tao, khong phai doan chieu cao. */body.fullscreen .game-iframe-play.open_fullscreen{bottom:0;height:auto}@media (max-width:600px){.game-iframe-play:not(.open_fullscreen) .css-uwwqev{flex:1 1 auto}.game-iframe-play.open_fullscreen{top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);height:calc(100vh - env(safe-area-inset-top,0px));height:calc(100svh - env(safe-area-inset-top,0px))}.close_mobile_box{top:max(24px,calc(env(safe-area-inset-top,0px) + 8px))}.game-iframe-play.open_fullscreen .game-iframe{position:absolute;inset:0;width:100%;height:100%}}@media (max-width:600px){.mobile-fs-bar{display:none;align-items:center;gap:8px;position:fixed;bottom:0;left:0;right:0;z-index:10001;min-height:44px;padding:0 12px;padding-bottom:env(safe-area-inset-bottom,0px);background:rgba(0,0,0,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.mobile-fs-bar__back{flex:0 0 36px;width:36px;height:36px;min-width:36px;min-height:36px;align-self:center;padding:0;margin:0;border:none;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,.15);border-radius:8px;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}.mobile-fs-bar__back svg{width:20px;height:20px;flex:0 0 auto;display:block}.mobile-fs-bar__title{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mobile-fs-bar.active{display:flex}.game-iframe-play.open_fullscreen #frame-container{width:100% !important;height:100% !important}body.fullscreen .game-iframe-play.open_fullscreen.has-fs-bar{bottom:calc(44px + env(safe-area-inset-bottom,0px));padding-bottom:0}.game-iframe-play.open_fullscreen.has-fs-bar #frame-container{height:100% !important}.game-iframe-play.open_fullscreen .player__footer{display:none}}</style><script data-cfasync="false">// Detect real mobile device via User-Agent only — avoids false positives from
+ // DevTools touch emulation, touchscreen laptops, and iPadOS desktop mode.
+ window._isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) &&
+ window.matchMedia('(max-width: 768px)').matches;</script>
+ <div id="game-code" class="game-frame" data-id="1" style="display:block;"><iframe class="game-iframe" id="game-area"
+ src="https://stickmangamespc.io/embed/stick-hook?pub_id=&amp;preroll=0"
+ allow="autoplay; fullscreen; focus-without-user-activation *; gamepad; keyboard-map *; accelerometer; gyroscope" 
+ allowfullscreen></iframe></div><!-- Mobile fullscreen bottom bar: tên game + nút back --><div class="mobile-fs-bar" id="mobile-fs-bar"><button class="mobile-fs-bar__back" id="mobile-fs-back" aria-label="Back"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></button><span class="mobile-fs-bar__title">Stick Hook</span></div><script data-cfasync="false">var isNewWindow = false;
+ var hasVideoPreview = false;
+ var isFullscreenMode = false;
+
+ var gamePlayParams = {"game_id":"stick-hook","game_category":"arcade"};
+
+ // Helper function to check if currently in fullscreen
+ function isCurrentlyFullscreen() {
+ return !!(document.fullscreenElement ||
+ document.webkitFullscreenElement ||
+ document.mozFullScreenElement ||
+ document.msFullscreenElement);
+ }</script><script data-cfasync="false">// ===== Mobile UX state flags =====
+ var _hasInteracted = false;
+ var _scrollY = 0;
+
+ function applyMobileFullscreenHeight() {
+ // Height is owned by the CSS (100svh). This only trims it further
+ // when the soft keyboard is up - see the note below for why it must
+ // never be allowed to grow the frame.
+ var gp = document.querySelector('.game-iframe-play');
+ if (!gp) return;
+ var vv = window.visualViewport;
+ if (!vv) return;
+
+ // Measure the height CSS gives it (100svh) with no inline override.
+ gp.style.height = '';
+ var rect = gp.getBoundingClientRect();
+ var cssHeight = rect.height;
+ var offsetTop = rect.top > 0 ? rect.top : 0;
+ var visible = vv.height - offsetTop;
+
+ // ONLY EVER SHRINK. While iOS Safari overlays its toolbars over a
+ // position:fixed body, visualViewport.height reports the LARGE
+ // viewport - the same value as innerHeight and 100dvh - so trusting
+ // it to size the frame made the frame taller than the screen and
+ // pushed the game's keyboard clean off the bottom. 100svh in the CSS
+ // is the toolbars-visible height, and the only thing that should
+ // still shrink the frame below it is the soft keyboard, which does
+ // genuinely shrink visualViewport.
+ if (visible > 0 && visible < cssHeight - 1) {
+ gp.style.height = Math.max(240, Math.round(visible)) + 'px';
+ }
+ }
+
+ function resetMobileFullscreenHeight() {
+ var gp = document.querySelector('.game-iframe-play');
+ if (gp) gp.style.height = '';
+ }
+
+ function syncMobileFullscreenHeight() {
+ if (document.body.classList.contains('fullscreen') && window._isMobile) {
+ applyMobileFullscreenHeight();
+ }
+ }
+
+ if (window.visualViewport) {
+ // 'scroll' matters as much as 'resize': iOS fires it when the
+ // toolbars collapse or expand, which changes the visible height.
+ window.visualViewport.addEventListener('resize', syncMobileFullscreenHeight);
+ window.visualViewport.addEventListener('scroll', syncMobileFullscreenHeight);
+ }
+ window.addEventListener('orientationchange', function() {
+ setTimeout(syncMobileFullscreenHeight, 250);
+ });
+
+ function exitMobileGame() {
+ var gp = document.querySelector('.game-iframe-play');
+ if (gp) gp.classList.remove('open_fullscreen');
+ document.body.classList.remove('fullscreen');
+ document.documentElement.style.overflow = '';
+ resetMobileFullscreenHeight();
+
+ // Tell embed iframe to reset back to preview state
+ var embedIframe = document.getElementById('game-area');
+ if (embedIframe && embedIframe.contentWindow) {
+ embedIframe.contentWindow.postMessage({ type: 'exit_game' }, '*');
+ }
+
+ var mobileFsBar = document.getElementById('mobile-fs-bar');
+ if (mobileFsBar) mobileFsBar.classList.remove('active');
+ var gp = document.querySelector('.game-iframe-play');
+ if (gp) gp.classList.remove('has-fs-bar');
+
+ window.scrollTo(0, _scrollY);
+ }
+
+ if (window._isMobile) {
+ _scrollY = window.scrollY || window.pageYOffset;
+ }
+
+ if (!window._isMobile && isFullscreenMode && !isCurrentlyFullscreen()) {
+ // Desktop fullscreen mode: trigger browser fullscreen after iframe loads
+ var _fsIframe = document.getElementById('game-area');
+ if (_fsIframe) {
+ _fsIframe.addEventListener('load', function() {
+ if (this.src && this.src !== 'about:blank') {
+ setTimeout(function() {
+ var el = document.documentElement;
+ if (el.requestFullscreen) el.requestFullscreen();
+ else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+ }, 200);
+ }
+ }, { once: true });
+ }
+ }
+
+ if (typeof sendEventToGA === 'function') {
+ sendEventToGA('game_detail_play', gamePlayParams);
+ }
+
+ document.addEventListener('DOMContentLoaded', function() {
+ var mobileFsBack = document.getElementById('mobile-fs-back');
+ if (mobileFsBack) {
+ mobileFsBack.addEventListener('click', exitMobileGame);
+ }
+ });
+
+ // postMessage + back-gesture trap
+ (function() {
+ var _trapped = false;
+
+ function trapBackGesture() {
+ if (_trapped) return;
+ _trapped = true;
+ history.replaceState({ gameActive: true }, '');
+ history.pushState({ gameActive: true }, '');
+ window.addEventListener('popstate', function() {
+ history.pushState({ gameActive: true }, '');
+ });
+ }
+
+ var embedIframe = document.getElementById('game-area');
+ if (embedIframe) {
+ embedIframe.addEventListener('load', function() {
+ if (embedIframe.src && embedIframe.src !== 'about:blank') trapBackGesture();
+ });
+ }
+
+ var _prerollActive = false;
+
+ function showMobileFsBar() {
+ var bar = document.getElementById('mobile-fs-bar');
+ if (bar) bar.classList.add('active');
+ var gp = document.querySelector('.game-iframe-play');
+ if (gp) gp.classList.add('has-fs-bar');
+ }
+
+ window.addEventListener('message', function(e) {
+ if (e.data && (e.data.type === 'preroll_ad_break_done' || e.data.type === 'game_loaded')) {
+ trapBackGesture();
+ if (window._isMobile) {
+ _prerollActive = false;
+ showMobileFsBar();
+ }
+ }
+ if (e.data && e.data.type === 'play_clicked' && window._isMobile) {
+ _hasInteracted = true;
+ _scrollY = window.scrollY || window.pageYOffset;
+ var gameCode = document.getElementById('game-code');
+ if (gameCode) gameCode.style.display = 'block';
+ var gp = document.querySelector('.game-iframe-play');
+ if (gp && !gp.classList.contains('open_fullscreen')) {
+ gp.classList.add('open_fullscreen');
+ document.body.classList.add('fullscreen');
+ document.documentElement.style.overflow = 'hidden';
+ }
+ // Size it now rather than waiting for a viewport event that
+ // may never come: entering fullscreen does not by itself
+ // fire resize on iOS.
+ applyMobileFullscreenHeight();
+ requestAnimationFrame(applyMobileFullscreenHeight);
+ setTimeout(applyMobileFullscreenHeight, 300);
+ // 'play_clicked' giờ chỉ bắn từ loadGameIframe() của embed, tức game đã thật sự
+ // bắt đầu (có preroll thì ads.js gọi nó sau khi quảng cáo xong) -> luôn hiện bar.
+ showMobileFsBar();
+ }
+ });
+ })();
+
+ // Override open_fullscreen after scripts.min.js loads to ensure #game-code stays visible
+ window.addEventListener('load', function() {
+ var _orig_open_fullscreen = window.open_fullscreen;
+ window.open_fullscreen = function() {
+ if (_orig_open_fullscreen) _orig_open_fullscreen();
+ var gameCode = document.getElementById('game-code');
+ if (gameCode) gameCode.style.display = 'block';
+ };
+ });</script></div></div><div class="css-1h1938b"><div class="MuiGrid-root MuiGrid-container MuiGrid-wrap-xs-nowrap css-1xe247z"><div class="MuiGrid-root MuiGrid-item css-lhmnzp"><div class="css-glv0sd"><div class="css-inwm4l" style="margin-left:0"><h1>Stick Hook</h1></div></div></div><div class="MuiGrid-root MuiGrid-item css-u9enjd"><div
+ class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-wrap-xs-nowrap css-1h1owej"><div class="game_vote" id="game_vote_panel" data-game="1" data-url="https://stickmangamespc.io/stick-hook"><div class="game_thumb_up css-1g0vwi8 MuiButtonBase-root" data-content="Like"><button class="control__button button_vote_game g-footer__button" data-game="1" data-vote="like" id="vote-up" data-event_name="game_vote_01"
+ data-event_value="stick-hook"
+ data-click-kind="interact"
+ data-track-type="other"><span class="svg-icon" aria-hidden="true"><svg class="svg-icon__link"><use
+ xlink:href="#icon-thumbs-up"></use></svg></span><div class="g-footer__button-title"><span class="g-footer__button-title_text g-footer__button-title_first thumb_up_count"
+ id="up-count"></span><!-- <span class="g-footer__button-title_text g-footer__button-title_last">Like</span> --></div></button><span class="MuiTouchRipple-root css-w0pj6f"></span></div><!-- <div class="player-footer__divider"></div>--><div class="css-qeuppi game_thumb_down MuiButtonBase-root" data-content="Dislike"><button class="control__button button_vote_game g-footer__button" id="vote-down" data-game="1" data-vote="dislike"
+ data-event_name="game_vote_02"
+ data-event_value="stick-hook"
+ data-click-kind="interact"
+ data-track-type="other"><span class="svg-icon" aria-hidden="true"><svg class="svg-icon__link"><use
+ xlink:href="#icon-thumbs-down"></use></svg></span><div class="g-footer__button-title"><!-- <span class="g-footer__button-title_text g-footer__button-title_first thumb_down_count"
+ id="down-count"></span> --><!-- <span class="g-footer__button-title_text g-footer__button-title_last">Dislike</span> --></div></button></div></div><style>.game_vote {
+ display: flex;
+ align-items: center;
+ gap: 2px;
+ }
+
+ .button_vote_game {
+ outline: 0;
+ border: 0;
+ }
+</style><div class="MuiGrid-root MuiGrid-item css-1sv96h7"><button
+ id="addFavoritesGame"
+ class="favorites-add-1 MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary footerButton css-1bnqyvi"
+ tabindex="0" type="button" data-content="Add to favorites"
+ onclick="favorite(this);"
+ data-id="1"
+ data-name="Stick Hook"
+ data-slug="stick-hook"
+ data-image="/cache/data/image/game/stick-hook/stick-hook-m230x230.webp"><div class="MuiGrid-root MuiGrid-container css-1c87emg"><div class="MuiGrid-root MuiGrid-item css-1wxaqej"><div class="css-1nsd28h"><span><svg
+ class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-14yq2cq svg-active"
+ focusable="false" aria-hidden="true"
+ viewBox="0 0 24 24"><path fill-rule="evenodd"
+ clip-rule="evenodd"
+ d="M8.04445 3C6.66359 3 5.53468 3.29654 4.63432 3.82463C3.73186 4.35395 3.11419 5.08371 2.70912 5.86217C1.91829 7.38195 1.92575 9.0998 2.11858 10.0865C2.62052 12.655 4.41942 15.3472 6.3037 17.3581C7.25773 18.3762 8.27078 19.26 9.21577 19.8976C10.1115 20.502 11.1112 21 12 21C12.8888 21 13.8885 20.502 14.7842 19.8976C15.7292 19.26 16.7423 18.3762 17.6963 17.3581C19.5806 15.3472 21.3795 12.655 21.8814 10.0865C22.0743 9.0998 22.0817 7.38195 21.2909 5.86217C20.8858 5.08371 20.2682 4.35395 19.3657 3.82463C18.4653 3.29654 17.3364 3 15.9556 3C14.8581 3 13.9104 3.49559 13.1784 4.11305C12.7259 4.49473 12.3303 4.94327 12 5.40732C11.6697 4.94327 11.2741 4.49473 10.8216 4.11305C10.0896 3.49559 9.14193 3 8.04445 3Z"></path></svg></span></div></div></div><span class="MuiTouchRipple-root css-w0pj6f"></span></button></div><div class="MuiGrid-root MuiGrid-item css-16hlm1x"><button
+ id="feedBackGame" data-target="#comment-area"
+ class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary footerButton css-1bnqyvi"
+ tabindex="0" type="button" data-content="Feedback"><svg
+ class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-14yq2cq"
+ focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+ width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd"
+ d="M2 5C2 3.34315 3.34315 2 5 2H19C20.6569 2 22 3.34315 22 5V16C22 17.6569 20.6569 19 19 19H8.55397C8.37272 19 8.19489 19.0493 8.03947 19.1425L3.5145 21.8575C3.20556 22.0429 2.82081 22.0477 2.5073 21.8702C2.19379 21.6927 2 21.3603 2 21V5ZM5 4C4.44772 4 4 4.44772 4 5V19.2338L7.01048 17.4275C7.47673 17.1478 8.01024 17 8.55397 17H19C19.5523 17 20 16.5523 20 16V5C20 4.44772 19.5523 4 19 4H5Z"></path><path
+ d="M11 7C11 6.44772 11.4477 6 12 6C12.5523 6 13 6.44772 13 7V11C13 11.5523 12.5523 12 12 12C11.4477 12 11 11.5523 11 11V7Z"></path><path
+ d="M11 14C11 13.4477 11.4477 13 12 13C12.5523 13 13 13.4477 13 14C13 14.5523 12.5523 15 12 15C11.4477 15 11 14.5523 11 14Z"></path></svg><span
+ class="MuiTouchRipple-root css-w0pj6f"></span></button></div><div class="MuiGrid-root MuiGrid-item css-16hlm1x"><button
+ id="shareGame"
+ class="toggleModalBtn MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary footerButton css-1bnqyvi"
+ tabindex="0" type="button" data-content="Share" data-target="#modalShare"><svg
+ class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-14yq2cq"
+ focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+ width="24" height="24"><path
+ d="M13 8.04515V4.99884C13 4.73394 13.1057 4.47991 13.2932 4.29259C13.4807 4.10527 13.7351 4.00004 14 4.00004C14.2626 4.00115 14.514 4.09718 14.7002 4.2897L21.7003 11.2812C21.794 11.3741 21.8684 11.4845 21.9192 11.6062C21.97 11.728 21.9961 11.8585 21.9961 11.9904C21.9961 12.1222 21.97 12.2527 21.9192 12.3745C21.8684 12.4962 21.794 12.6066 21.7003 12.6995L14.7002 19.691C14.56 19.8284 14.3821 19.9216 14.189 19.9585C13.996 19.9956 13.7963 19.9751 13.615 19.8994C13.4335 19.8238 13.2785 19.6963 13.1692 19.5331C13.0598 19.3699 13.0012 19.1782 13 18.982V15.8856L12.1502 15.8856C10.5704 15.8621 9.00425 16.1822 7.56063 16.8239C6.117 17.4654 4.83046 18.4132 3.79029 19.6012C3.66494 19.7678 3.49051 19.8911 3.29146 19.9538C3.0924 20.0165 2.8787 20.0154 2.6803 19.9507C2.47838 19.8827 2.30353 19.752 2.18121 19.5776C2.05889 19.4034 1.99551 19.1946 2.00029 18.9818C2.00029 9.87293 10.0803 8.31481 13 8.04515ZM12.1502 13.868C12.8191 13.866 13.4874 13.9093 14.1503 13.9979C14.387 14.0338 14.603 14.1533 14.759 14.3347C14.915 14.5163 15.0006 14.7475 15.0002 14.9867V16.5748L19.5803 11.9904L15.0002 7.40596V8.994C15.0002 9.25889 14.8945 9.51293 14.7074 9.70024C14.5199 9.88756 14.2655 9.99279 14 9.99279C13.0903 9.99279 5.89029 10.1925 4.33029 16.415C6.59459 14.7475 9.33713 13.8544 12.1502 13.868Z"></path></svg><span
+ class="MuiTouchRipple-root css-w0pj6f"></span></button></div><div class="MuiGrid-root MuiGrid-item css-16hlm1x"><button
+ id="reportGame"
+ class="report_bug MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary footerButton css-1bnqyvi"
+ tabindex="0" type="button" data-content="Report a bug" onclick="report_open(this)"
+ data-game-name="Stick Hook"><svg
+ class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-14yq2cq"
+ focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+ width="24" height="24"><path xmlns="http://www.w3.org/2000/svg"
+ d="M5 13.397v-9.859c0.44-0.218 1.365-0.538 3-0.538 1.281 0 2.361 0.421 3.629 0.928 1.232 0.493 2.652 1.072 4.371 1.072 1.298 0 2.278-0.175 3-0.397v9.859c-0.44 0.218-1.365 0.538-3 0.538-1.281 0-2.361-0.421-3.629-0.928-1.232-0.493-2.652-1.072-4.371-1.072-1.298 0-2.278 0.175-3 0.397zM5 22v-6.462c0.44-0.218 1.365-0.538 3-0.538 1.281 0 2.361 0.421 3.629 0.928 1.232 0.493 2.652 1.072 4.371 1.072 3.247 0 4.507-1.093 4.707-1.293 0.195-0.195 0.293-0.451 0.293-0.707v-12c0-0.552-0.448-1-1-1-0.265 0-0.506 0.103-0.685 0.272-0.096 0.078-0.984 0.728-3.315 0.728-1.281 0-2.361-0.421-3.629-0.928-1.232-0.493-2.652-1.072-4.371-1.072-3.247 0-4.507 1.093-4.707 1.293-0.195 0.195-0.293 0.451-0.293 0.707v19c0 0.552 0.448 1 1 1s1-0.448 1-1z" /></svg><span
+ class="MuiTouchRipple-root css-w0pj6f"></span></button></div><div class="MuiGrid-root MuiGrid-item css-16hlm1x icon-fullscreen"><button
+ id="expand"
+ class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary footerButton css-1bnqyvi"
+ tabindex="0" type="button" data-content="Fullscreen" onclick="open_fullscreen();"><svg
+ class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-14yq2cq svg-unactive"
+ focusable="false" aria-hidden="true" viewBox="0 0 24 24"
+ width="24" height="24"><path fill-rule="evenodd" clip-rule="evenodd"
+ d="M4 2C2.89543 2 2 2.89543 2 4V8C2 8.55228 2.44772 9 3 9C3.55228 9 4 8.55228 4 8V5.41421L7.79289 9.20711C8.18342 9.59763 8.81658 9.59763 9.20711 9.20711C9.59763 8.81658 9.59763 8.18342 9.20711 7.79289L5.41421 4H8C8.55228 4 9 3.55228 9 3C9 2.44772 8.55228 2 8 2H4ZM16 2C15.4477 2 15 2.44772 15 3C15 3.55228 15.4477 4 16 4H18.5858L14.7929 7.79289C14.4024 8.18342 14.4024 8.81658 14.7929 9.20711C15.1834 9.59763 15.8166 9.59763 16.2071 9.20711L20 5.41421V8C20 8.55228 20.4477 9 21 9C21.5523 9 22 8.55228 22 8V4C22 2.89543 21.1046 2 20 2H16ZM16 20L18.5858 20L14.7929 16.2071C14.4024 15.8166 14.4024 15.1834 14.7929 14.7929C15.1834 14.4024 15.8166 14.4024 16.2071 14.7929L20 18.5858V16C20 15.4477 20.4477 15 21 15C21.5523 15 22 15.4477 22 16V20C22 21.1046 21.1046 22 20 22L16 22C15.4477 22 15 21.5523 15 21C15 20.4477 15.4477 20 16 20ZM4 18.5858L7.79289 14.7929C8.18342 14.4024 8.81658 14.4024 9.20711 14.7929C9.59763 15.1834 9.59763 15.8166 9.20711 16.2071L5.41421 20H8C8.55228 20 9 20.4477 9 21C9 21.5523 8.55228 22 8 22H4C2.89543 22 2 21.1046 2 20V16C2 15.4477 2.44772 15 3 15C3.55228 15 4 15.4477 4 16L4 18.5858Z"></path></svg><span
+ class="MuiTouchRipple-root css-w0pj6f"></span></button></div><div class="MuiGrid-root MuiGrid-item css-16hlm1x icon-shrink-button"><button
+ class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary footerButton css-1bnqyvi"
+ tabindex="0" type="button" data-content="Fullscreen" onclick="open_fullscreen();"><span class="svg-icon" aria-hidden="true"><svg class="svg-icon__link"><use
+ xlink:href="#icon-shrink"></use></svg></span></button></div></div></div></div></div><div id="game-controls" class="css-12hw0sw"><button class="close-control-guide MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-16f9g0o" tabindex="0" type="button" id="close__game-controls"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-14yq2cq" focusable="false" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" style="color: rgb(102, 106, 127); width: 24px; height: 24px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L12 10.5858L18.2929 4.29289C18.6834 3.90237 19.3166 3.90237 19.7071 4.29289C20.0976 4.68342 20.0976 5.31658 19.7071 5.70711L13.4142 12L19.7071 18.2929C20.0976 18.6834 20.0976 19.3166 19.7071 19.7071C19.3166 20.0976 18.6834 20.0976 18.2929 19.7071L12 13.4142L5.70711 19.7071C5.31658 20.0976 4.68342 20.0976 4.29289 19.7071C3.90237 19.3166 3.90237 18.6834 4.29289 18.2929L10.5858 12L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z"></path></svg></button><div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-15ngedg"><div class="css-1a6omjn"><div class="content-wrapper"><div style="font-size: 22px; color: var(--text-body); font-weight: 600; margin: 0 0 10px;">How To Play</div></div></div></div></div></div></div><div class="GamePageDesktop_underGameContainerGrid__cdhNC area_bounce" data-area="collection_new-games" style="display:flex;"><div class="GamePageDesktop_underGameContainerGamesWrapper__Rahgf"><div class="css-ujjn8y" style="justify-content: center; border: 1px solid var(--border-color); border-radius: 8px;"><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-basketball"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="01" data-track-value="stickman-basketball" data-event_name="game_hot_bottom_01" data-event_value="stickman-basketball" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Basketball</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-basketball/stickman-basketball-m230x230.webp"
+ alt="Play Stickman Basketball game" title="Stickman Basketball game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/foot-battle-ball"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="02" data-track-value="foot-battle-ball" data-event_name="game_hot_bottom_02" data-event_value="foot-battle-ball" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Foot Battle Ball</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/foot-battle-ball/foot-battle-ball-m230x230.webp"
+ alt="Play Foot Battle Ball game" title="Foot Battle Ball game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/no-pain-no-gain-ragdoll-sandbox"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="03" data-track-value="no-pain-no-gain-ragdoll-sandbox" data-event_name="game_hot_bottom_03" data-event_value="no-pain-no-gain-ragdoll-sandbox" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">No Pain No Gain - Ragdoll Sandbox</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/no-pain-no-gain-ragdoll-sandbox/no-pain-no-gain-ragdoll-sandbox-m230x230.webp"
+ alt="Play No Pain No Gain - Ragdoll Sandbox game" title="No Pain No Gain - Ragdoll Sandbox game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-crazy-box"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="04" data-track-value="stickman-crazy-box" data-event_name="game_hot_bottom_04" data-event_value="stickman-crazy-box" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Crazy Box</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-crazy-box/stickman-crazy-box-m230x230.webp"
+ alt="Play Stickman Crazy Box game" title="Stickman Crazy Box game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/ragdoll-throw-challenge"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="05" data-track-value="ragdoll-throw-challenge" data-event_name="game_hot_bottom_05" data-event_value="ragdoll-throw-challenge" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Ragdoll Throw Challenge</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/ragdoll-throw-challenge/ragdoll-throw-challenge-m230x230.webp"
+ alt="Play Ragdoll Throw Challenge game" title="Ragdoll Throw Challenge game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/ragdoll-drop"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="06" data-track-value="ragdoll-drop" data-event_name="game_hot_bottom_06" data-event_value="ragdoll-drop" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Ragdoll Drop</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/ragdoll-drop/ragdoll-drop-m230x230.webp"
+ alt="Play Ragdoll Drop game" title="Ragdoll Drop game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-race"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="07" data-track-value="stickman-race" data-event_name="game_hot_bottom_07" data-event_value="stickman-race" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Race</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-race-3d/stickman-race-m230x230.webp"
+ alt="Play Stickman Race game" title="Stickman Race game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-boost-2"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="08" data-track-value="stickman-boost-2" data-event_name="game_hot_bottom_08" data-event_value="stickman-boost-2" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Boost 2</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-boost-2/stickman-boost-2-m230x230.webp"
+ alt="Play Stickman Boost 2 game" title="Stickman Boost 2 game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-bow"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="09" data-track-value="stickman-bow" data-event_name="game_hot_bottom_09" data-event_value="stickman-bow" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Bow</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-bow/stickman-bow-m230x230.webp"
+ alt="Play Stickman Bow game" title="Stickman Bow game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/sniper-code-2"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="10" data-track-value="sniper-code-2" data-event_name="game_hot_bottom_10" data-event_value="sniper-code-2" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Sniper Code 2</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/sniper-code-2/sniper-code-2-m230x230.webp"
+ alt="Play Sniper Code 2 game" title="Sniper Code 2 game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/war-master"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="11" data-track-value="war-master" data-event_name="game_hot_bottom_11" data-event_value="war-master" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">War Master</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/war-master/war-master1-m230x230.webp"
+ alt="Play War Master game" title="War Master game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/count-war"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="12" data-track-value="count-war" data-event_name="game_hot_bottom_12" data-event_value="count-war" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Count War</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/count-war/count-war-m230x230.webp"
+ alt="Play Count War game" title="Count War game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-army-the-resistance"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="13" data-track-value="stickman-army-the-resistance" data-event_name="game_hot_bottom_13" data-event_value="stickman-army-the-resistance" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Army: The Resistance</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-army-the-resistance/stickman-army-the-resistance-m230x230.webp"
+ alt="Play Stickman Army: The Resistance game" title="Stickman Army: The Resistance game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-boxing-ko-champion"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="14" data-track-value="stickman-boxing-ko-champion" data-event_name="game_hot_bottom_14" data-event_value="stickman-boxing-ko-champion" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Boxing KO Champion</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-boxing-ko-champion/stickman-boxing-ko-champion-m230x230.webp"
+ alt="Play Stickman Boxing KO Champion game" title="Stickman Boxing KO Champion game"
+ width="200" /></a><a
+ class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-fighter-mega-brawl"
+ data-videosrc=""
+ data-track-section="game_hot_bottom" data-track-position="15" data-track-value="stickman-fighter-mega-brawl" data-event_name="game_hot_bottom_15" data-event_value="stickman-fighter-mega-brawl" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div
+ class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Fighter: Mega Brawl</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img
+ class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-fighter-mega-brawl/stickman-fighter-mega-brawl-m230x230.webp"
+ alt="Play Stickman Fighter: Mega Brawl game" title="Stickman Fighter: Mega Brawl game"
+ width="200" /></a></div></div></div><div class="GamePageDesktop_gameInfoContainer__SwKQu"><div class="GameInfo_gameInfo__2UItk"><div class="GameInfo_leftColumn__vMTeN"><div class="GameInfo_roundedCornersContainer__D5D_p" style="margin-top:12px;"><div class="Breadcrumbs_breadcrumbs__L3mrb"><div><a href="/">Games</a><div class="Breadcrumbs_separator__yCVN1">»</div></div><div><a href="/arcade.games">Arcade</a> <div class="Breadcrumbs_separator__yCVN1">»</div></div><div><span style="font-size:14px; color: var(--text-body);">Stick Hook</span></div></div><div class="GameInfo_containerWithPadding__z9aMp"><div style="font-size:20px; font-weight:600; color: var(--text-body);">Stick Hook</div></div><div><div class="GameSummary_gameTableRow__9i4Mt"><div class="GameSummary_gameTableRowHeader__qmvU_">Developer:</div><div class="GameSummary_gameTableRowContent__RW5fE"><div><div class="GameInfo_styledDevName__MnwFN">1Games.IO</div></div></div></div><div class="GameSummary_gameTableRow__9i4Mt"><div class="GameSummary_gameTableRowHeader__qmvU_">Rating:</div><div class="GameSummary_gameTableRowContent__RW5fE"><div style="font-weight: 900;">8.8 </div><div
+ style="font-weight: 400; font-size: 12px; margin-left: 4px;">(129 votes)</div></div></div><div class="GameSummary_gameTableRow__9i4Mt"><div class="GameSummary_gameTableRowHeader__qmvU_">Technology:</div><div class="GameSummary_gameTableRowContent__RW5fE">HTML5</div></div><div class="GameSummary_gameTableRow__9i4Mt"><div class="GameSummary_gameTableRowHeader__qmvU_">Platforms:</div><div class="GameSummary_gameTableRowContent__RW5fE">Browser (desktop, tablet, mobile)</div></div></div><div class="GameTags_gameTagChipContainer__F5xPO"><a
+ href="/arcade.games"><div class="TagGrid_tagPillContainer__rY0CY tagPill"><p class="">Arcade</p><span class="count-val" data-count="28"></span></div></a><a
+ href="/tag/parkour"><div class="TagGrid_tagPillContainer__rY0CY tagPill"><p class="">Parkour</p><span class="count-val" data-count="12"></span></div></a><a
+ href="/tag/physics"><div class="TagGrid_tagPillContainer__rY0CY tagPill"><p class="">Physics</p><span class="count-val" data-count="31"></span></div></a></div></div><div class="GameInfo_roundedCornersContainer__D5D_p"><div class="content-wrapper" style="border-bottom:1px solid var(--border-color);"><div class="GameInfo_styledHtmlDiv__Zg2EY content-inner"><div class="game-description"><h2>What is Stick Hook?</h2><p>Stick Hook is a physics-based swinging game where your stickman flies through each level on a grappling hook. Latch onto anchor points, build up speed, and let go at exactly the right moment to launch yourself toward the finish line. The rules take seconds to learn, but stringing together one smooth, unbroken swing is a skill you will keep chasing.</p><p><img style="margin-left: auto; margin-right: auto; width: 512px; max-width: 100%; height: 512px; display: block;" src="https://stickmangamespc.io/data/image/game/stick-hook1.png" alt="" width="512" height="512" /></p><h2>How to Play Stick Hook</h2><p>Each level is a series of hook points hanging over open air. Press and hold to attach your rope to the nearest point, swing like a pendulum to build momentum, then release to fly forward. Chain your swings together to keep your speed up, and aim your landings so you touch down on the platform at the end of the run.</p><h3>Controls</h3><ul style="padding-left: 24px; margin: 0 0 10px;"><li style="margin: 0 0 6px;">Click, tap, or hold Space to hook on</li><li style="margin: 0 0 6px;">Release to let go and fly</li><li style="margin: 0 0 6px;">Time your release at the top of each swing for maximum distance</li></ul><h2>Tips for smoother swings in Stick Hook</h2><ul style="padding-left: 24px; margin: 0 0 10px;"><li style="margin: 0 0 6px;">Release near the peak of your swing to launch farther</li><li style="margin: 0 0 6px;">Short, quick hooks beat long lazy swings on tricky sections</li><li style="margin: 0 0 6px;">Keep momentum &mdash; stopping mid-level makes gaps harder to clear</li><li style="margin: 0 0 6px;">If you overshoot, hook again fast to save yourself from falling</li></ul><h2>Why Stick Hook is so hard to put down</h2><p>Stick Hook nails the feeling that makes swinging games great: flow. When your timing clicks, your stickman rockets through the level in one silky motion, and every clean release feels earned. Miss, and you are one tap away from another attempt. With instant restarts and levels built around rhythm rather than luck, it is the kind of game where one more try always turns into ten.</p><h2>Frequently Asked Questions</h2><h3>Is Stick Hook free to play?</h3><p>Yes &mdash; Stick Hook is completely free to play online in your browser at Stickman Games (stickmangamespc.io). There is no download, no install, and no sign-up &mdash; just open the page and play.</p><h3>How do you control Stick Hook?</h3><p>You control Stick Hook with simple inputs &mdash; click, tap, or hold Space to hook on. The full controls and tips are listed above, so you can jump straight into the action.</p> </div></div><div class="show_content "><button class="ShowMore_button more"><span>Show more</span><span class="svg-icon" aria-hidden="true"> <svg class="svg-icon__link"><use xlink:href="#icon-keyboard_arrow_down"></use></svg> </span></button></div></div><div id="comment-area" class="comment-area"><div class="box-comment mb16"><div class="header-comment flex-comment" xmlns="http://www.w3.org/1999/html"><div class="title-comment"><svg class="icon-svg"><use xlink:href="/themes/stickmangamespc.io/resources/images/icons/icon.svg?v=1#commenting"></use></svg> Comment (3)</div><div class="sort"><a href="javascript:;"><span id="sort_text">Newest</span><svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path
+ d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z" /></svg></a><div class="list" id="sort_by"><a class="active" href="javascript:;" data-sort="newest"><span>Newest</span><svg class="icon-svg"><use xlink:href="/themes/stickmangamespc.io/resources/images/icons/icon.svg#Checked"></use></svg></a><a href="javascript:;" data-sort="oldest"><span>Oldest</span><svg class="icon-svg"><use xlink:href="/themes/stickmangamespc.io/resources/images/icons/icon.svg#Checked"></use></svg></a><a href="javascript:;" data-sort="popular"><span>Popular</span><svg class="icon-svg"><use xlink:href="/themes/stickmangamespc.io/resources/images/icons/icon.svg#Checked"></use></svg></a></div></div></div><div id="comments_area"><div class="make-comment has_comments"><form id="comment_form" class="form-group" autocomplete="off"><div class="form-default box-area-input"><div class="form-group"><div class="content_comment"><textarea class="form-control " id="comment_content" name="comment_content"
+ placeholder="Add comment"></textarea><div class="send-comment"><span href="#" class="send" id="btn_submit"><svg class="icon-svg"><use
+ xlink:href="/themes/stickmangamespc.io/resources/images/icons/icon.svg?v=1#Send"></use></svg></span></div></div><div class="error-message" data-error="comment_content"></div></div></div><div class="form-default"><div class="form_group_divide"><div class="form-group form_part"><input type="text" id="comment_author" name="comment_author" class="form-control"
+ placeholder="Name"><div class="error-message" data-error="comment_author"></div></div><div class="form-group form_part"><input type="email" class="form-control " id="comment_email" autocomplete="off"
+ name="comment_email" placeholder="Email"><div class="error-message" data-error="comment_email"></div></div></div><div class="form-group"><label class="confir_res"><div class="text">I'd read and agree to the terms and conditions.</div><input type="checkbox" id="comment_confirm" name="comment_confirm"><span class="checkmark"></span></label><div class="error-message" data-error="comment_confirm"></div></div><input type="hidden" name="parent_id" id="parent_id" value="0" /><input name="submit" type="submit" class="submit btn-load-more btn-primary hidden"
+ value="Comment" /><input type="button" onclick="reply_all();
+ return false;" id="btn_cancel" class="submit btn-cancel pull-right hidden"
+ value="Cancel" /></div></form><div id="comment_errors"></div>
+</div><div class="all_comments"><div class="main-comnent scrollbar-inner has_comments" id="list_comment"></div><div class="comment_loading"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div></div><script data-cfasync="false">window.addEventListener("DOMContentLoaded", (function() {
+ //reply_open();
+ change_button();
+ validate_form();
+ }));
+
+ function change_button() {
+ /* $('#comment_confirm').change(function() {
+ if (this.checked) {
+ $("#btn_submit").removeClass("disabled");
+
+ } else {
+ $("#btn_submit").addClass("disabled");
+ }
+
+ }); */
+ $("#btn_submit").click(function(event) {
+ if (!$("#btn_submit").hasClass('disabled')) {
+ $("#comment_form").submit();
+ }
+ });
+ }
+
+ /*function open_form() {
+ $(".box-comment").addClass("open-form");
+ }
+
+ function close_form() {
+ $(".box-comment").removeClass("open-form");
+ }*/
+
+ function reply_open() {
+ if (game_config.not_allow_comment === "yes") return;
+ $(".replies__button").click(function(e) {
+ $(this).toggleClass("_active");
+ $(this).closest(".item-comment").find(".sub-comment-container").toggleClass("active")
+ })
+
+ }
+
+ function validate_form() {
+ $.getScript('/themes/stickmangamespc.io/resources/js/jquery.validate.min.js', function() {
+ jQuery("#comment_form").validate({
+ focusInvalid: false,
+ onkeyup: function(element) { // Sửa thành function để kiểm soát tốt hơn
+ if (element.name === "comment_confirm") return; // Bỏ qua trường confirm
+ jQuery(element).valid();
+ },
+ onfocusout: function(element) { // Validate khi rời khỏi trường
+ jQuery(element).valid();
+ },
+ errorElement: "div",
+ errorClass: "error-message",
+ validClass: "input-success",
+ highlight: function(element, errorClass, validClass) {
+ var $element = $(element);
+ $element.addClass("input-error").removeClass(validClass);
+ $element.closest('.form-group').addClass('show-error');
+ },
+ unhighlight: function(element, errorClass, validClass) {
+ var $element = $(element);
+ $element.removeClass("input-error").addClass(validClass);
+ $element.closest('.form-group').removeClass('show-error');
+ },
+ errorPlacement: function(error, element) {
+ const allowedFields = ["comment_content", "comment_confirm", "comment_author", "comment_email"];
+ if (allowedFields.includes(element.attr("name"))) {
+ // Xóa message cũ trước khi thêm mới
+ element.closest('.form-group').find('.error-message').remove();
+ error.appendTo(element.closest('.form-group'));
+ }
+ },
+ ignore: ".ignore",
+ rules: {
+ "comment_content": {
+ required: true,
+ maxlength: 65525
+ },
+ "comment_author": {
+ required: true,
+ maxlength: 200
+ },
+ "comment_email": {
+ required: true,
+ email: true,
+ maxlength: 100
+ },
+ "comment_confirm": {
+ required: true
+ }
+ },
+ messages: {
+ comment_content: {
+ required: "Please enter your comment",
+ minlength: "Comment must be at least 10 characters"
+ },
+ comment_author: "Please enter your name",
+ comment_confirm: "Please accept if you agree to the terms",
+ comment_email: {
+ required: "Please enter your email",
+ email: "Please enter a valid email address"
+ }
+ },
+ invalidHandler: function(form, validator) {
+ if (validator.numberOfInvalids() > 0) {
+ // Tìm tất cả .form-group có class show-error và thêm shake-animation
+ $('#comment_form .form-group.show-error').each(function() {
+ var $formGroup = $(this);
+ $formGroup.addClass('shake-animation');
+ setTimeout(function() {
+ $formGroup.removeClass('shake-animation');
+ }, 500);
+ });
+ }
+ },
+ submitHandler: function(form) {
+ $("#btn_submit").removeClass("disabled");
+ jQuery(".comment_loading").css('display', 'flex');
+ console.log("submit");
+
+ var question_ajax = "/make-comment.ajax";
+ var content = jQuery("#comment_content").val();
+ var author = jQuery("#comment_author").val();
+ var email = jQuery("#comment_email").val();
+ var website = jQuery("#comment_website").val();
+ var parent_id = jQuery("#parent_id").val();
+ var token = jQuery("#csrf-token").val();
+ var metadataload = {};
+ metadataload.content = content;
+ metadataload.author = author;
+ metadataload.email = email;
+ metadataload.website = website;
+ metadataload.token = token;
+ metadataload.parent_id = parent_id;
+ metadataload.related_id = parseInt("0");
+ metadataload.related_url = "https://stickmangamespc.io/stick-hook";
+
+
+ jQuery.ajax({
+ url: question_ajax,
+ data: metadataload,
+ type: 'POST',
+ success: function(data) {
+ jQuery(".comment_loading").hide();
+ if (data != '') {
+ var result = jQuery.parseJSON(data);
+ $("#csrf-token").val(result.t);
+ if (result.result === true) {
+ var comment_data = result.comment;
+ var str_comment = "";
+ if (comment_data.parent_id == 0) {
+ str_comment = "<div class='item-comment' id='comment_" + comment_data.id + "'><div class='user_status'><a class='avata_coment' href='#' title='" + comment_data.author + "'>" + comment_data.author.charAt(0).toUpperCase() + "</a><div class='sum-user'><span class='txt-name'>" + comment_data.author + "</span><span class='time-com'> Now</span></div></div><div class='content-comment'><p> " + comment_data.content + "</p></div></div>";
+ if (comment_data.status == 'trash') {
+ str_comment += "<p class='text-center moderation_alert'><i>Your comment is awaiting moderation</i></p>";
+ }
+ jQuery("#list_comment").prepend(str_comment);
+
+ } else {
+ str_comment = "<div class='item-comment' id='comment_" + comment_data.id + "'><div class='user_status'><a class='avata_coment' href='#' title='" + comment_data.author + "'>" + comment_data.author.charAt(0).toUpperCase() + "</a><div class='sum-user'><span class='txt-name'>" + comment_data.author + "</span><span class='time-com'> Now</span></div></div><div class='content-comment'><p> " + comment_data.content + "</p></div></div>";
+ if (comment_data.status == 'trash') {
+ str_comment += "<p class='text-center moderation_alert'><i>Your comment is awaiting moderation</i></p>";
+ }
+
+ if (jQuery("#comment_" + comment_data.parent_id).find(".sub-comment").length === 0) {
+
+ let str_subcomment = "<div class='sub-comment'>" + str_comment + "</div>";
+ //console.log(str_subcomment)
+ jQuery("#comment_" + comment_data.parent_id).find(".content-comment").append(str_subcomment);
+
+ } else {
+
+ jQuery("#list_comment").find("#comment_" + comment_data.parent_id).find(".sub-comment").append(str_comment);
+ }
+
+ //jQuery("#comment_" + comment_data.parent_id).prependTo('#list_comment');
+ jQuery("#comment_form").appendTo(".make-comment");
+ jQuery("#comment_form").removeClass("commentBlock");
+ jQuery(".reply_comment").addClass("hidden");
+
+ reply_all(comment_data.parent_id);
+ }
+ // close_form();
+ jQuery("#comment_count").html(parseInt(("3")));
+ jQuery("html, body").animate({
+ scrollTop: jQuery("#list_comment").offset().top
+ }, 1000);
+ jQuery("#comment_form").trigger("reset");
+
+ }
+ }
+ }
+ });
+ },
+
+ });
+ });
+ }</script><script data-cfasync="false">function reply_to(comment_id) {
+ if (game_config.not_allow_comment === "yes") return;
+ jQuery("#comment_form").addClass("commentBlock");
+ jQuery("#btn_cancel").removeClass("hidden");
+ jQuery("#comment_form").trigger("reset");
+ jQuery("#parent_id").val(comment_id);
+
+ //jQuery(".btn_cancel").attr("onclick", "reply_all(" + comment_id + ")");
+ //jQuery(".form-comments__header").hide();
+
+ jQuery("#comment_form").appendTo("#comment_" + comment_id);
+
+ //open_form();
+
+ // $(".reply_comment").removeClass('hidden');
+ //$("#comment_" + comment_id).clone().attr("id", "").attr("class", "item-comment comment_" + comment_id).appendTo('.reply_comment');
+ //$(".reply_comment").find(".item-comment .reply span").attr("onclick", "reply_all(" + comment_id + ")");
+ //reply_open();
+ }
+
+ function reply_all(id) {
+ if (game_config.not_allow_comment === "yes") return;
+ if (id !== null) {
+ $(".reply_comment").find(".comment_" + id).remove();
+ }
+ jQuery("#comment_form").trigger("reset");
+ jQuery("#parent_id").val("0");
+ jQuery("#comment_form").appendTo(".make-comment");
+ //jQuery("#comment_form").appendTo(".form-comments__form-wrap");
+ jQuery("#btn_cancel").addClass("hidden");
+ //jQuery(".form-comments__header").show();
+ //$(".reply_comment").addClass('hidden');
+ jQuery("#comment_form").removeClass("commentBlock");
+ // jQuery(".btn_cancel").attr("onclick", "close_form()");
+ //close_form();
+ //reply_open();
+
+ }
+
+ function comment_vote(comment_id, vote) {
+ if (game_config.not_allow_comment === "yes")
+ jQuery(".comment_vote_row_" + comment_id).prop('onclick', null).off('click');
+ var token = jQuery("#csrf-token").val();
+ var url = game_config.url_game;
+ var comment_comment_voteajax = "/comment-vote.ajax";
+ var metadataload = {};
+ metadataload.comment_id = comment_id;
+ metadataload.vote = vote;
+ metadataload.token = token;
+ metadataload.url = url;
+ jQuery.ajax({
+ url: comment_comment_voteajax,
+ data: metadataload,
+ type: 'POST',
+ success: function(data) {
+ if (data != '') {
+ var result = jQuery.parseJSON(data);
+ if (result.result === true) {
+ $("#csrf-token").val(result.t);
+ var comment_obj = result.comment;
+ switch (vote) {
+ case "up":
+ jQuery("#comment_voteup_count_" + comment_id).html(comment_obj.like);
+ break;
+ case "down":
+ jQuery("#comment_votedown_count_" + comment_id).html(comment_obj.dislike);
+ break;
+ }
+
+ }
+ }
+ }
+ });
+ }
+
+ function report_comment(comment_id) {
+ if (game_config.not_allow_comment === "yes") return;
+ jQuery("#report_comment_" + comment_id).css("fontSize", 0);
+ jQuery("#report_comment_" + comment_id).prop('onclick', null).off('click');
+ }</script><script data-cfasync="false">window.addEventListener("DOMContentLoaded", (function() {
+ $(document).on('click', '#btn_comments_area', function(event) {
+ jQuery("html, body").animate({
+ scrollTop: jQuery("#comment_form").offset().top
+ }, 1000);
+ });
+ //
+ $(document).on('click', '#load_more_comment', function(event) {
+ event.preventDefault();
+ var page = jQuery(this).data("page");
+ var limit = jQuery(this).data("limit");
+ var sort = jQuery(this).data("sort");
+ var url = jQuery(this).data("url");
+ var token = jQuery("#csrf-token").val();
+ $('#alert-icon-loadmore').fadeIn('slow', function() {
+ $(this).delay(3000).fadeOut('slow');
+ });
+ load_comment(page, limit, sort, url, '#list_comment', '', token);
+ });
+ //
+ $(document).on('click', '#sort_by a', function(event) {
+ $("#sort_by a").removeClass('active');
+ $(this).addClass('active');
+ const sort = $(this).data('sort');
+ load_comment(1, 10, "" + sort + "", "https://stickmangamespc.io/stick-hook", "#list_comment", "f5", jQuery("#csrf-token").val());
+ $("#sort_text").html(sort);
+ });
+ //await game_vote_load();
+ //load_comment(1,10, "newest", "https://stickmangamespc.io/stick-hook", "#list_comment", "", jQuery("#csrf-token").val());
+
+
+ }));
+
+ function load_comment(page, limit, sort, url, main_contain_id, refresh, token) {
+ // 
+ jQuery(".comment_loading").css('display', 'flex');
+ jQuery("#load_more_comment").remove();
+ jQuery(".comment-load-more").show();
+ var mainposturl = "/comment-paging-v2.ajax";
+ var metadataload = {};
+ metadataload.page = page;
+ metadataload.limit = limit;
+ metadataload.sort = sort;
+ metadataload.token = token;
+ metadataload.url = url;
+ jQuery.ajax({
+ url: mainposturl,
+ data: metadataload,
+ type: 'GET',
+ success: function(data) {
+ let returnData = JSON.parse(data)
+ $("#csrf-token").val(returnData.t);
+ jQuery(".comment_loading").hide();
+ jQuery(".comment-load-more").hide();
+ if (refresh === 'f5') {
+ jQuery(main_contain_id).html(returnData.content);
+ } else {
+ jQuery(main_contain_id).append(returnData.content);
+ }
+
+ reply_open();
+ if (game_config.not_allow_comment === "yes") {
+ $('.item-comment .count-option').hide();
+ }
+ }
+ });
+ }</script><div class="alert-icon arrow" id="alert-icon-loadmore"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path
+ d="M143 256.3L7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192l136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z" /></svg></div></div></div><style>#comments_area,
+ .all_comments,
+ .box-comment,
+ .content_comment,
+ .make-comment,
+ .scroll-wrapper {
+ position: relative
+ }
+
+ .confir_res,
+ .textLeft {
+ text-align: left
+ }
+
+ .btn-load-more:not(:disabled):not(.disabled),
+ .confir_res,
+ .confir_res input {
+ cursor: pointer
+ }
+
+ .alert-icon svg,
+ .icon-svg {
+ fill: currentColor
+ }
+
+ .box-comment .sub-comment-container,
+ .form-comments__body {
+ display: -ms-grid;
+ -ms-grid-rows: 0fr;
+ grid-template-rows: 0fr
+ }
+
+ .box-comment {
+ --bg-button-cmt: #002B50;
+ --bg-button-cancel-cmt: #dddad4;
+ --color-button-cancel-cmt: #525151;
+ --text-cmt: var(--text-body);
+ --bg-avatar-cmt: #002B50;
+ --text-avatar-cmt: #fff;
+ --bg-form-cmt: var(--box-bg);
+ --bg-cmt: var(--bg-input);
+ --border-color-input-cmt: var(--border-color);
+ --shadow-form-cmt: 0 0 0.813rem #1d6eff;
+ --border-color-form-cmt: #1d6eff;
+ font-family: inherit;
+ box-sizing: border-box;
+ color: var(--text-cmt);
+ font-weight: 400;
+ background: var(--bg-form-cmt);
+ padding: 10px;
+
+ position: relative;
+ }
+
+ .box-comment .header-comment {
+ -webkit-box-align: center;
+ -webkit-align-items: center;
+ -ms-flex-align: center;
+ align-items: center;
+ flex-flow: row wrap;
+ -webkit-box-pack: justify;
+ -webkit-justify-content: space-between;
+ -ms-flex-pack: justify;
+ justify-content: space-between;
+ padding: 8px 0;
+ border-bottom: 2px solid rgba(255, 255, 255, .2)
+ }
+
+ #comments_area {
+ padding: 16px 0 0
+ }
+
+ .box-comment .header-comment .title-comment {
+ font-size: 18px;
+ font-weight: 700;
+ display: flex;
+ align-items: center;
+ gap: 6px
+ }
+
+ .title-comment .icon-svg {
+ width: 20px;
+ height: 20px
+ }
+
+ .box-comment .header-comment .sort {
+ position: relative;
+ display: inline-block;
+ font-size: 14px
+ }
+
+ .box-comment .header-comment .sort>a {
+ color: var(--text-cmt);
+ text-decoration: none;
+ display: flex;
+ align-items: center
+ }
+
+ #sort_text {
+ text-transform: capitalize
+ }
+
+ .box-comment .header-comment .sort>a svg {
+ width: 12px;
+ height: 12px;
+ margin-left: 4px
+ }
+
+ .box-comment .sub-comment,
+ .scrollbar-inner>.scroll-element .scroll-element_outer,
+ svg:not(:root) {
+ overflow: hidden
+ }
+
+ .count-option__left {
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ gap: 10px
+ }
+
+ .box-comment .item-comment .user_status,
+ .box-comment .item-comment .user_status .avata_coment,
+ .flex-comment {
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -ms-flexbox
+ }
+
+ .empty-comment img {
+ max-width: 120px;
+ margin: 0 auto
+ }
+
+ .box-comment .header-comment .sort .list {
+ position: absolute;
+ z-index: 1;
+ top: calc(100% + 20px);
+ right: 0;
+ background: var(--bg-form-cmt);
+ box-shadow: 8px 10px 20px rgb(0 0 0 / 18%);
+ border-radius: 4px;
+ padding: 5px 12px;
+ width: 100px;
+ opacity: 0;
+ visibility: hidden;
+ -webkit-transition-duration: .2s;
+ transition-duration: .2s;
+ -webkit-transition-property: opacity, top, visible;
+ transition-property: opacity, top, visible;
+ -webkit-transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+ transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1)
+ }
+
+ .box-comment .header-comment .sort .list a.active {
+ font-weight: 500
+ }
+
+ .box-comment .header-comment .sort .list a {
+ color: var(--text-cmt);
+ display: block;
+ margin: 4px 0;
+ font-weight: 400;
+ text-decoration: none
+ }
+
+ .box-comment .header-comment .sort .list a.active svg {
+ display: inline-block
+ }
+
+ .box-comment .header-comment .sort .list a svg {
+ display: none;
+ width: 10px;
+ height: 10px;
+ margin-left: 4px
+ }
+
+ .box-comment .main-comnent.scrollbar-inner {
+ padding-right: 10px;
+ margin-right: 0;
+ max-height: 500px;
+ overflow-x: hidden;
+ overflow-y: scroll
+ }
+
+ .main-comnent.has_comments {
+ margin-bottom: 30px
+ }
+
+ .scroll-wrapper {
+ overflow: hidden !important;
+ padding: 0 !important;
+ -ms-overflow-style: none
+ }
+
+ .scroll-wrapper>.scroll-content {
+ border: none !important;
+ box-sizing: content-box !important;
+ height: auto;
+ left: 0;
+ margin: 0;
+ max-height: none;
+ max-width: none !important;
+ overflow: scroll !important;
+ padding: 0;
+ position: relative !important;
+ top: 0;
+ width: auto !important
+ }
+
+ .box-comment .item-comment {
+ margin-bottom: 15px;
+ padding: 12px;
+ background: var(--bg-cmt);
+ border-radius: 12px;
+ border: 1px solid #ffffff1f;
+ }
+
+ .box-comment .item-comment .sub-comment .item-comment {
+ background: 0;
+ padding: 0;
+ margin: 0;
+ border: 0;
+ overflow: hidden
+ }
+
+ .box-comment .item-comment .user_status {
+ display: flex;
+ -webkit-box-align: center;
+ -webkit-align-items: center;
+ -ms-flex-align: center;
+ align-items: center;
+ margin-bottom: 5px;
+ gap: 12px
+ }
+
+ .flex-comment {
+ display: flex;
+ -webkit-flex-wrap: wrap;
+ -ms-flex-wrap: wrap;
+ flex-wrap: wrap
+ }
+
+ .confir_res input:checked~.checkmark:after,
+ .form-control {
+ display: block
+ }
+
+ .box-comment .item-comment .user_status .avata_coment {
+ background: var(--bg-avatar-cmt);
+ border-radius: 50%;
+ width: 32px;
+ height: 32px;
+ display: flex;
+ -webkit-box-align: center;
+ -webkit-align-items: center;
+ -ms-flex-align: center;
+ align-items: center;
+ -webkit-box-pack: center;
+ -webkit-justify-content: center;
+ -ms-flex-pack: center;
+ justify-content: center;
+ font-size: 14px;
+ font-weight: 700;
+ text-decoration: none;
+ color: var(--text-avatar-cmt)
+ }
+
+ .box-comment .item-comment .user_status .sum-user {
+ color: var(--text-cmt);
+ font-size: 14px;
+ display: flex;
+ width: 100%;
+ line-height: normal;
+ flex: 1
+ }
+
+ .box-comment .sub-comment-container {
+ display: grid;
+ -webkit-transition: grid-template-rows .3s;
+ transition: grid-template-rows .3s;
+ transition: grid-template-rows .3s, -ms-grid-rows .3s
+ }
+
+ .box-comment .sub-comment-container.active {
+ grid-template-rows: 1fr;
+ border: 1px solid #dddddd5c;
+ padding: 12px;
+ border-radius: 12px;
+ margin-top: 12px
+ }
+
+ .item-comment .txt-name {
+ max-width: 200px;
+ font-weight: 500
+ }
+
+ .box-comment .item-comment .user_status .sum-user .time-com {
+ opacity: .8;
+ font-size: 12px;
+ margin-left: auto
+ }
+
+ .box-comment .item-comment .content-comment p {
+ margin-bottom: 12px;
+ line-height: 1.4;
+ text-align: left;
+ word-break: break-word
+ }
+
+ .box-comment .item-comment .content-comment p:last-child,
+ .form-group {
+ margin: 0
+ }
+
+ .content-comment {
+ word-wrap: break-word;
+ margin-bottom: 8px;
+ font-weight: 500;
+ font-size: 14px
+ }
+
+ .btn-cancel.hidden,
+ .btn-load-more.hidden {
+ display: none !important
+ }
+
+ .box-comment .item-comment .count-option a {
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+ text-decoration: none;
+ background: 0 0;
+ border-radius: 6px;
+ transition: .2s linear;
+ font-size: 14px;
+ color: var(--text-cmt)
+ }
+
+ .box-comment .item-comment .count-option a:last-child {
+ margin-right: 0
+ }
+
+ .form-control {
+ width: 100%;
+ padding: 6px 12px;
+ font-size: 1rem;
+ line-height: 1.5;
+ color: var(--text-cmt);
+ background-clip: padding-box;
+ border-radius: .25rem;
+ transition: border-color .15s ease-in-out, box-shadow .15s
+ }
+
+ .confir_res .checkmark {
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 18px;
+ width: 18px;
+ background: #292433;
+ border: none;
+ box-sizing: border-box;
+ border-radius: 4px
+ }
+
+ .confir_res .checkmark:after {
+ content: "";
+ position: absolute;
+ display: none;
+ left: 6px;
+ top: 1px;
+ width: 5px;
+ height: 10px;
+ border: solid #fff;
+ border-width: 0 2px 2px 0;
+ -webkit-transform: rotate(45deg);
+ -ms-transform: rotate(45deg);
+ transform: rotate(45deg)
+ }
+
+ .scrollbar-inner>.scroll-element.scroll-x {
+ bottom: 2px;
+ height: 6px;
+ left: 0;
+ width: 100%
+ }
+
+ .reply_comment::-webkit-scrollbar,
+ .scrollbar-inner::-webkit-scrollbar {
+ width: 6px
+ }
+
+ .reply_comment::-webkit-scrollbar-thumb,
+ .scrollbar-inner::-webkit-scrollbar-thumb {
+ border-radius: 10px;
+ -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+ background-color: var(--bg-button-cmt)
+ }
+
+ .reply_comment::-webkit-scrollbar-track,
+ .scrollbar-inner::-webkit-scrollbar-track {
+ border-radius: 10px
+ }
+
+ .scrollbar-inner>.scroll-element,
+ .scrollbar-inner>.scroll-element div {
+ border: none;
+ margin: 0;
+ padding: 0;
+ position: absolute;
+ z-index: 10
+ }
+
+ .scroll-element,
+ .scroll-element div {
+ box-sizing: content-box
+ }
+
+ .scroll-element {
+ display: none
+ }
+
+ .scrollbar-inner>.scroll-element div {
+ display: block;
+ height: 100%;
+ left: 0;
+ top: 0;
+ width: 100%
+ }
+
+ .box-area-input,
+ .scrollbar-inner>.scroll-element .scroll-bar,
+ .scrollbar-inner>.scroll-element .scroll-element_outer,
+ .scrollbar-inner>.scroll-element .scroll-element_track {
+ border-radius: 6px
+ }
+
+ .scrollbar-inner>.scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size,
+ .scrollbar-inner>.scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track {
+ left: -12px
+ }
+
+ .scrollbar-inner>.scroll-element .scroll-element_track {
+ background-color: unset
+ }
+
+ .scrollbar-inner>.scroll-element .scroll-bar,
+ .scrollbar-inner>.scroll-element .scroll-element_track {
+ opacity: .9
+ }
+
+ .scroll-element .scroll-arrow,
+ .scroll-element .scroll-bar {
+ cursor: default
+ }
+
+ .scrollbar-inner>.scroll-element.scroll-y {
+ height: 100%;
+ right: 2px;
+ top: 0;
+ width: 6px
+ }
+
+ .form_group_divide {
+ display: flex;
+ gap: 12px;
+ flex-wrap: row wrap
+ }
+
+ .form_part {
+ width: 50%
+ }
+
+ @media only screen and (max-width:768px) {
+ .form_group_divide {
+ flex-direction: column
+ }
+
+ .form_part {
+ width: 100%
+ }
+ }
+
+ .box-comment .box-area-input {
+ position: relative;
+ margin-bottom: 24px
+ }
+
+ .box-comment .box-area-input textarea {
+ width: 100%;
+ resize: none;
+ color: var(--text-cmt);
+ font-size: 14px;
+ outline: 0;
+ overflow: hidden
+ }
+
+ .form-default .form-control::placeholder {
+ color: var(--text-cmt)
+ }
+
+ .form-default .form-control:focus::placeholder {
+ color: transparent
+ }
+
+ .form-default .form-control:active,
+ .form-default .form-control:focus,
+ .form-default .form-control:hover {
+ outline: 0;
+ box-shadow: none;
+ box-shadow: rgb(9 30 66 / 15%) 0 4px 8px, rgb(9 30 66 / 15%) 0 0 2px
+ }
+
+ .form-default .form-control:focus::-webkit-input-placeholder {
+ color: transparent
+ }
+
+ .form-default .form-control:focus:-moz-placeholder {
+ color: transparent
+ }
+
+ .form-default .form-control:focus::-moz-placeholder {
+ color: transparent
+ }
+
+ .form-default .form-control:focus:-ms-input-placeholder {
+ color: transparent
+ }
+
+ .form-default textarea.form-control {
+ resize: none
+ }
+
+ .form-default .form-control {
+ background: var(--bg-cmt) !important;
+ background: 0 0;
+ border-radius: 4px;
+ font-size: 14px;
+ color: var(--text-cmt);
+ -webkit-transition-duration: .2s;
+ transition-duration: .2s;
+ -webkit-transition-property: all;
+ transition-property: all;
+ -webkit-transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+ transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
+ box-sizing: border-box;
+ position: relative;
+ height: fit-content;
+ font-family: inherit;
+ border: 1px solid transparent;
+ }
+
+ .icon-svg {
+ width: 16px;
+ height: 16px;
+ vertical-align: middle
+ }
+
+ .item-comment .form-default .form-control {
+ border: 1px solid var(--border-color-input-cmt);
+ background: var(--bg-cmt)
+ }
+
+ .form-control.error {
+ border-color: red
+ }
+
+ .box-area-input .send-comment {
+ position: absolute;
+ right: 4px;
+ top: 50%;
+ transform: translateY(-50%)
+ }
+
+ .box-comment .box-area-input .send-comment .send {
+ background: #ff3814;
+ border-radius: 6px;
+ color: #fff
+ }
+
+ .box-comment .box-area-input .send-comment span {
+ width: 28px;
+ height: 28px;
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -ms-flexbox;
+ display: flex;
+ -webkit-box-align: center;
+ -webkit-align-items: center;
+ -ms-flex-align: center;
+ align-items: center;
+ -webkit-box-pack: center;
+ -webkit-justify-content: center;
+ -ms-flex-pack: center;
+ justify-content: center;
+ color: var(--text-cmt);
+ margin-left: 10px;
+ cursor: pointer
+ }
+
+ .box-comment .box-area-input .send-comment span.disabled {
+ background: grey !important;
+ color: #fff
+ }
+
+ .box-comment .box-area-input .send-comment .send svg {
+ width: 14px;
+ height: 14px
+ }
+
+ .box-comment .form-default {
+ color: var(--text-cmt);
+ color: #000
+ }
+
+ .form-default .form-group {
+ position: relative;
+ margin-bottom: 16px
+ }
+
+ input {
+ outline: 0
+ }
+
+ .mb10 {
+ margin-bottom: 10px !important
+ }
+
+ .txt_12 {
+ font-size: 12px
+ }
+
+ a.link {
+ color: #1977f3
+ }
+
+ .confir_res {
+ padding-left: 26px;
+ position: relative;
+ display: block;
+ margin-bottom: .5rem
+ }
+
+ .button-cmt,
+ .comment_loading,
+ .empty-comment,
+ .success-message {
+ text-align: center
+ }
+
+ .confir_res .text {
+ color: var(--text-cmt);
+ font-size: 14px
+ }
+
+ .confir_res input {
+ position: absolute;
+ opacity: 0;
+ visibility: hidden
+ }
+
+ input[type=checkbox],
+ input[type=radio] {
+ box-sizing: border-box;
+ padding: 0
+ }
+
+ .btn-primary {
+ color: var(--text-cmt);
+ background-color: var(--bg-button-cmt);
+ border-color: var(--bg-button-cmt)
+ }
+
+ .btn-cancel,
+ .btn-load-more {
+ display: inline-block;
+ font-weight: 400;
+ text-align: center;
+ white-space: nowrap;
+ vertical-align: middle;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+ border: 1px solid transparent;
+ padding: 10px;
+ font-size: 14px;
+ line-height: 1.5;
+ border-radius: .25rem;
+ color: #fff;
+ box-sizing: border-box;
+ transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+ }
+
+ .btn-load-more:hover {
+ color: #fff;
+ opacity: .8
+ }
+
+ .btn-cancel {
+ color: #fff;
+ background-color: gray
+ }
+
+ .box-comment .header-comment .sort:hover .list {
+ top: 100%;
+ opacity: 1;
+ visibility: visible
+ }
+
+ .make-comment.has_comments {
+ margin: 0 0 24px;
+ border-bottom: 1px solid #ffffff1f
+ }
+
+ .alert-icon {
+ position: absolute;
+ bottom: 0;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 24px;
+ height: 24px;
+ z-index: 100;
+ display: none;
+ color: var(--text-cmt)
+ }
+
+ .arrow {
+ animation: 1s ease-in-out infinite scroll
+ }
+
+ .input-error,
+ .shake-animation {
+ animation: .3s ease-in-out shake
+ }
+
+ @keyframes scroll {
+
+ 0%,
+ 100% {
+ transform: translate(0, 0)
+ }
+
+ 50% {
+ transform: translate(0, 10px)
+ }
+ }
+
+ .error-message {
+ color: #e74c3c;
+ font-size: .85rem;
+ display: flex;
+ align-items: center;
+ opacity: 0;
+ height: 0;
+ overflow: hidden;
+ transition: opacity .3s, height .3s, margin-top .3s linear
+ }
+
+ .error-message::before {
+ content: "!";
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 18px;
+ height: 18px;
+ background-color: #e74c3c;
+ color: #fff;
+ border-radius: 50%;
+ margin-right: .5rem;
+ font-size: .75rem;
+ font-weight: 700
+ }
+
+ .show-error .error-message {
+ opacity: 1;
+ height: 18px;
+ margin-top: 6px
+ }
+
+ .success-message {
+ color: #2ecc71;
+ padding: 1rem;
+ margin-top: 1rem;
+ background: rgba(46, 204, 113, .1);
+ border-radius: 6px
+ }
+
+ .input-error {
+ border-color: #e74c3c !important
+ }
+
+ .input-error:focus {
+ box-shadow: 0 0 0 3px rgba(231, 76, 60, .2)
+ }
+
+ @keyframes shake {
+
+ 0%,
+ 100% {
+ transform: translateX(0)
+ }
+
+ 20%,
+ 60% {
+ transform: translateX(-5px)
+ }
+
+ 40%,
+ 80% {
+ transform: translateX(5px)
+ }
+ }
+
+ .input-success {
+ border-color: #2ecc71 !important
+ }
+
+ .input-success:focus {
+ box-shadow: 0 0 0 3px rgba(46, 204, 113, .2)
+ }
+
+ .form-comments__header {
+ position: absolute;
+ z-index: 1;
+ bottom: 12px;
+ left: 1.5rem;
+ right: 1.5rem
+ }
+
+ .form-comments__header-inner {
+ position: relative;
+ z-index: 1;
+ display: flex;
+ -webkit-box-align: center;
+ -ms-flex-align: center;
+ align-items: center;
+ justify-content: center;
+ border-radius: .75rem
+ }
+
+ .button-cmt {
+ display: -webkit-inline-box;
+ display: -ms-inline-flexbox;
+ display: inline-flex;
+ -ms-flex-wrap: wrap;
+ flex-wrap: wrap;
+ -webkit-box-align: center;
+ -ms-flex-align: center;
+ align-items: center;
+ -webkit-box-pack: center;
+ -ms-flex-pack: center;
+ justify-content: center;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+ border: 0;
+ font-family: inherit
+ }
+
+ .form-comments__button {
+ font-size: 14px;
+ height: 2.375rem;
+ border: 1px solid #ccc;
+ -webkit-box-shadow: var(--shadow-form-cmt);
+ box-shadow: var(--shadow-form-cmt)
+ }
+
+ .form-comments__button:focus {
+ outline: 0
+ }
+
+ .button--blue {
+ padding: .286em 2.286em;
+ border-radius: 1.429em;
+ color: var(--text-cmt);
+ background-color: var(--bg-button-cmt);
+ position: relative;
+ z-index: 1;
+ overflow: hidden;
+ font-weight: 500
+ }
+
+ .button--gray {
+ padding: .714em 2.286em;
+ border-radius: 1.429em;
+ color: var(--color-button-cancel-cmt);
+ background-color: var(--bg-button-cancel-cmt)
+ }
+
+ .form-comments__body {
+ display: grid;
+ -webkit-transition: grid-template-rows .2s;
+ transition: grid-template-rows .2s;
+ transition: grid-template-rows .2s, -ms-grid-rows .2s;
+ position: absolute;
+ bottom: 12px;
+ left: 0;
+ right: 0
+ }
+
+ .form-comments__container {
+ position: relative;
+ z-index: 1;
+ overflow: hidden;
+ border: 1px solid transparent;
+ border-radius: .75rem
+ }
+
+ .box-comment.open-form .form-comments__container {
+ border: 1px solid var(--border-color-form-cmt);
+ -webkit-box-shadow: var(--shadow-form-cmt);
+ box-shadow: var(--shadow-form-cmt)
+ }
+
+ .form-comments__form-wrap {
+ padding: 1.25rem;
+ background: var(--bg-form-cmt);
+ border-radius: .75rem
+ }
+
+ .box-comment.open-form .form-comments__body {
+ -ms-grid-rows: 1fr;
+ grid-template-rows: 1fr
+ }
+
+ .form__buttons {
+ display: -ms-grid;
+ display: grid;
+ -ms-grid-columns: 1fr 1fr;
+ grid-template-columns: repeat(2, 1fr);
+ -webkit-box-align: center;
+ -ms-flex-align: center;
+ align-items: center;
+ gap: .75rem 1.25rem;
+ margin-top: 1.5rem
+ }
+
+ .form__buttons .form__button.button-cmt {
+ height: 2.375rem;
+ padding: 0
+ }
+
+ .comment_blur {
+ position: absolute;
+ inset: 0;
+ opacity: 0;
+ pointer-events: none;
+ background-color: rgba(32, 31, 31, .66);
+ -webkit-transition: opacity .2s;
+ transition: opacity .2s;
+ border-radius: 1rem
+ }
+
+ .box-comment.open-form .comment_blur {
+ opacity: 1;
+ pointer-events: auto
+ }
+
+ .reply_comment {
+ max-height: 250px;
+ overflow-y: scroll;
+ margin-bottom: 24px
+ }
+
+ .reply,
+ .voteDown,
+ .voteUp {
+ color: inherit;
+ border: 0;
+ background: 0 0;
+ outline: 0;
+ padding: 0;
+ margin: 0;
+ display: flex;
+ gap: 2px;
+ align-items: center;
+ font-family: inherit
+ }
+
+ .voteUp {
+ margin-left: auto
+ }
+
+ .voteDown,
+ .voteUp {
+ opacity: 0.8;
+ }
+
+ .button-replies:focus,
+ .reply:focus,
+ .voteDown:focus,
+ .voteUp:focus {
+ border: 0;
+ outline: 0
+ }
+
+ .moderation_alert {
+ color: #f97b7b;
+ font-size: 14px;
+ background-color: var(--bg-cmt);
+ border-radius: 8px;
+ padding: 2px 10px;
+ border: 1px solid #a8a8a8;
+ margin-top: 10px;
+ opacity: .9
+ }
+
+ .button-replies {
+ display: -webkit-box;
+ display: -ms-flexbox;
+ display: flex;
+ -webkit-box-pack: start;
+ -ms-flex-pack: start;
+ justify-content: flex-start;
+ -webkit-box-align: center;
+ -ms-flex-align: center;
+ align-items: center;
+ gap: .5rem;
+ margin: .625rem 0 .375rem;
+ color: var(--bg-button-cmt);
+ font-size: 12px;
+ font-weight: 700;
+ -webkit-transition: color .2s;
+ transition: color .2s;
+ background: 0 0;
+ width: inherit;
+ height: inherit;
+ border: 0
+ }
+
+ .button-replies__icon {
+ -webkit-box-flex: 0;
+ -ms-flex: 0 0 1.25rem;
+ flex: 0 0 1.25rem;
+ width: 1.25rem;
+ height: 1.25rem;
+ -webkit-transition: -webkit-transform .2s;
+ transition: transform .2s;
+ transition: transform .2s, -webkit-transform .2s
+ }
+
+ .replies__button._active .button-replies__icon {
+ -webkit-transform: rotate(-180deg);
+ -ms-transform: rotate(-180deg);
+ transform: rotate(-180deg)
+ }
+
+ .comment_loading {
+ display: none;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ width: 100%;
+ height: 100%;
+ align-items: center;
+ justify-content: center;
+ background: #0000003b;
+ z-index: 11;
+ backdrop-filter: blur(3px);
+ border-radius: 8px
+ }
+
+ .lds-ellipsis,
+ .lds-ellipsis div {
+ box-sizing: border-box
+ }
+
+ .lds-ellipsis {
+ display: inline-block;
+ position: relative;
+ width: 40px;
+ height: 40px;
+ transform: scale(.5)
+ }
+
+ .lds-ellipsis div {
+ position: absolute;
+ top: 33.33333px;
+ width: 13.33333px;
+ height: 13.33333px;
+ border-radius: 50%;
+ background: currentColor;
+ animation-timing-function: cubic-bezier(0, 1, 1, 0)
+ }
+
+ .lds-ellipsis div:first-child {
+ left: 8px;
+ animation: .6s infinite lds-ellipsis1
+ }
+
+ .lds-ellipsis div:nth-child(2) {
+ left: 8px;
+ animation: .6s infinite lds-ellipsis2
+ }
+
+ .lds-ellipsis div:nth-child(3) {
+ left: 32px;
+ animation: .6s infinite lds-ellipsis2
+ }
+
+ .lds-ellipsis div:nth-child(4) {
+ left: 56px;
+ animation: .6s infinite lds-ellipsis3
+ }
+
+ @keyframes lds-ellipsis1 {
+ 0% {
+ transform: scale(0)
+ }
+
+ 100% {
+ transform: scale(1)
+ }
+ }
+
+ @keyframes lds-ellipsis3 {
+ 0% {
+ transform: scale(1)
+ }
+
+ 100% {
+ transform: scale(0)
+ }
+ }
+
+ @keyframes lds-ellipsis2 {
+ 0% {
+ transform: translate(0, 0)
+ }
+
+ 100% {
+ transform: translate(24px, 0)
+ }
+ }</style> </div></div></div></div></div></div><div style="overflow: hidden;display: flex;flex-direction: column;width: 100%;flex: 1;" class=" area_bounce" data-area="collection_feature-games"><div style="width: 100%; padding: 0 16px 0 8px;"><div class="grid-trend" style="padding-top:10px;width:100%;justify-content:center"><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/count-masters-stickman-games" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="01" data-track-value="count-masters-stickman-games" data-event_name="home_collection_promo_01" data-event_value="count-masters-stickman-games" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Count Masters: Stickman Games</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/count-masters-stickman-games/count-masters-stickman-games-game-m230x230.webp"
+ alt="Play Count Masters: Stickman Games game"
+ title="Count Masters: Stickman Games game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/parkour-race" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="02" data-track-value="parkour-race" data-event_name="home_collection_promo_02" data-event_value="parkour-race" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Parkour Race</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/parkour-race/parkour-race-m230x230.webp"
+ alt="Play Parkour Race game"
+ title="Parkour Race game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-run" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="03" data-track-value="stickman-run" data-event_name="home_collection_promo_03" data-event_value="stickman-run" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Run</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-run/stickman-run-m230x230.webp"
+ alt="Play Stickman Run game"
+ title="Stickman Run game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-boost" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="04" data-track-value="stickman-boost" data-event_name="home_collection_promo_04" data-event_value="stickman-boost" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Boost</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-boost/stickman-boost-m230x230.webp"
+ alt="Play Stickman Boost game"
+ title="Stickman Boost game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-parkour" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="05" data-track-value="stickman-parkour" data-event_name="home_collection_promo_05" data-event_value="stickman-parkour" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Parkour</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-parkours/stickman-parkours-game-m230x230.webp"
+ alt="Play Stickman Parkour game"
+ title="Stickman Parkour game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-hook-2" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="06" data-track-value="stickman-hook-2" data-event_name="home_collection_promo_06" data-event_value="stickman-hook-2" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Hook 2</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-hook-2/stickman-hook-21-m230x230.webp"
+ alt="Play Stickman Hook 2 game"
+ title="Stickman Hook 2 game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/tallman-run" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="07" data-track-value="tallman-run" data-event_name="home_collection_promo_07" data-event_value="tallman-run" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Tallman Run</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/tallman-run/tallman-run-m230x230.webp"
+ alt="Play Tallman Run game"
+ title="Tallman Run game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/man-runner-2048" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="08" data-track-value="man-runner-2048" data-event_name="home_collection_promo_08" data-event_value="man-runner-2048" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Man Runner 2048</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-parkour-2-lucky-block/man-runner-2048-m230x230.webp"
+ alt="Play Man Runner 2048 game"
+ title="Man Runner 2048 game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/epic-parkour-block-platformer" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="09" data-track-value="epic-parkour-block-platformer" data-event_name="home_collection_promo_09" data-event_value="epic-parkour-block-platformer" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Epic Parkour: Block Platformer</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/epic-parkour-block-platformer/epic-parkour-block-platformer-m230x230.webp"
+ alt="Play Epic Parkour: Block Platformer game"
+ title="Epic Parkour: Block Platformer game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/unicycle-hero-game" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="10" data-track-value="unicycle-hero-game" data-event_name="home_collection_promo_10" data-event_value="unicycle-hero-game" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Unicycle Hero Game</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/unicycle-hero-game/unicycle-hero-game-m230x230.webp"
+ alt="Play Unicycle Hero Game game"
+ title="Unicycle Hero Game game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/joyrider" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="11" data-track-value="joyrider" data-event_name="home_collection_promo_11" data-event_value="joyrider" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Joyrider</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/joyrider/joyrider-m230x230.webp"
+ alt="Play Joyrider game"
+ title="Joyrider game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/ragdoll-soccer-2-players" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="12" data-track-value="ragdoll-soccer-2-players" data-event_name="home_collection_promo_12" data-event_value="ragdoll-soccer-2-players" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Ragdoll Soccer 2 Players</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/ragdoll-soccer-2-players/ragdoll-soccer-2-players-m230x230.webp"
+ alt="Play Ragdoll Soccer 2 Players game"
+ title="Ragdoll Soccer 2 Players game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-bike" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="13" data-track-value="stickman-bike" data-event_name="home_collection_promo_13" data-event_value="stickman-bike" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Bike</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-bike-pro-ride/stickman-bike-pro-ride-1-m230x230.webp"
+ alt="Play Stickman Bike game"
+ title="Stickman Bike game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-falling" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="14" data-track-value="stickman-falling" data-event_name="home_collection_promo_14" data-event_value="stickman-falling" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Falling</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-falling/stickman-falling-m230x230.webp"
+ alt="Play Stickman Falling game"
+ title="Stickman Falling game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-destruction" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="15" data-track-value="stickman-destruction" data-event_name="home_collection_promo_15" data-event_value="stickman-destruction" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Destruction</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-destruction/stickman-destruction-m230x230.webp"
+ alt="Play Stickman Destruction game"
+ title="Stickman Destruction game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-destruction-3-heroes" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="16" data-track-value="stickman-destruction-3-heroes" data-event_name="home_collection_promo_16" data-event_value="stickman-destruction-3-heroes" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Destruction 3 Heroes</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-destruction-3-heroes/stickman-destruction-3-heroes-m230x230.webp"
+ alt="Play Stickman Destruction 3 Heroes game"
+ title="Stickman Destruction 3 Heroes game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/ragdoll-hit-stickman" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="17" data-track-value="ragdoll-hit-stickman" data-event_name="home_collection_promo_17" data-event_value="ragdoll-hit-stickman" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Ragdoll Hit Stickman</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/ragdoll-hit/ragdoll-hit-stickman-m230x230.webp"
+ alt="Play Ragdoll Hit Stickman game"
+ title="Ragdoll Hit Stickman game" width="200"></a><a class="css-y8aj3r GameThumb_gameThumbLinkDesktop__wcir5 GameThumb_isResponsiveGrid__b4QQf GameThumb_isResponsive__UwFpC css-y8aj3r game-thumb-test-class"
+ href="/stickman-dismounting" target="" data-videosrc=""
+ style="position: relative;"
+ data-track-section="home_collection_promo" data-track-position="18" data-track-value="stickman-dismounting" data-event_name="home_collection_promo_18" data-event_value="stickman-dismounting" data-track-type="game" data-click-kind="nav" onclick="handleClick(this)"><div class="GameThumbLabel_label__dz3yR rating-val" data-rating=""></div><div class="GameThumb_gameThumbTitleContainer__J1K4D gameThumbTitleContainer">Stickman Dismounting</div><div class="GameThumb_gradientVignette__Q04oZ"></div><img class="GameThumb_gameThumbImage__FSasr" loading="eager"
+ src="/cache/data/image/game/stickman-dismounting-2026/stickman-dismounting-game-m230x230.webp"
+ alt="Play Stickman Dismounting game"
+ title="Stickman Dismounting game" width="200"></a></div></div></div><!-- Collection right --><!--<div class="GamePageDesktop_rightSidebar__QgTMJ"><div class="GamePageDesktop_rightGridContainer__qJUvH"><div class="css-ujjn8y" style="justify-content: center;"></div></div></div>--><!-- End Collection right --></div><input type="hidden" id="game_id" value="1"><input type="hidden" id="game_slug" value="stick-hook"><script>let game_id = document.getElementById("game_id").value;
+ let game_slug = document.getElementById("game_slug").value;
+ let http = new XMLHttpRequest();
+ let url = '/game-tracking-views.ajax';
+ let params = '?game_id=' + game_id + '&game_slug=' + game_slug;
+ http.open('GET', url + params, true);
+
+ http.onreadystatechange = function() { //Call a function when the state changes.
+ if (http.readyState == 4 && http.status == 200) {}
+ }
+ http.send(params);</script><script type="text/javascript">window.addEventListener("DOMContentLoaded", function() {
+ insert_follow("stick-hook", "Stick Hook", "/cache/data/image/game/stick-hook/stick-hook-m230x230.webp", "https://stickmangamespc.io/stick-hook", "IFRAME_HTML"); 
+ });
+
+ function insert_follow(slug_, name, image, url) {
+ const max_recents_saved = 18;
+ if (readFromLocalStorage('last_played')) {
+ let followed = readFromLocalStorage("last_played");
+ jQuery.each(followed, function(key, value) {
+ if (value) {
+ if (value.slug === slug_ && key > -1) {
+
+ followed.splice(key, 1);
+ }
+ }
+ });
+ followed.push({
+ "slug": slug_,
+ "name": name,
+ "image": image,
+ "url": url,
+
+ });
+ if (followed.length > max_recents_saved) {
+ followed.shift();
+ }
+ saveToLocalStorage('last_played', JSON.stringify(followed));
+ } else {
+ var data = [];
+ data.push({
+ "slug": slug_,
+ "name": name,
+ "image": image,
+ "url": url,
+
+ });
+ saveToLocalStorage('last_played', JSON.stringify(data));
+ }
+ }</script><div class="load-page"><div class="loading"><div class="loader"></div></div></div><div style="height: 98px; display: flex; align-items: center; justify-content: center;"><div class="btn-up BackToTop_buttonContainer__GQast BackToTop_center__l50Lu"><button class="MuiButton-root BackToTop_jumpingButton__MI8to BackToTop_hasLabel__e_GhC BackToTop_isDesktop__QrI6d BackToTop_playAnimation__lIo7n css-1ii02y2" type="button"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.25759 8.33007C4.88759 8.7401 4.92005 9.37243 5.33007 9.74243C5.7401 10.1124 6.37243 10.08 6.74243 9.66994L11 4.95172L11 21C11 21.5523 11.4477 22 12 22C12.5523 22 13 21.5523 13 21L13 4.95171L17.2576 9.66994C17.6276 10.08 18.2599 10.1124 18.6699 9.74243C19.08 9.37243 19.1124 8.7401 18.7424 8.33007L13.7424 2.7891C12.793 1.73698 11.207 1.73697 10.2576 2.7891L5.25759 8.33007Z"></path></svg>Back to game</button></div></div></div></main><div class="css-18ji4f7"></div><div id="panel-favorites" class="MuiDrawer-root MuiDrawer-docked css-5ts3i0"><div class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-5clig5"><div class="css-dtnrv7"><div class="css-1mnkucd"></div><div style="display: flex; width: 100%; padding-left: 8px; padding-right: 8px; z-index: 1; flex-direction: column; justify-content: center; align-items: center;"><div style="font-size: 16px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; text-align: center;line-height: 31px;font-weight:bold;">My games</div></div><div class="css-1mnkucd"><button id="close-favorites" class="MuiButton-root css-1td7p7w" type="button"><svg viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="css-6qu7l6"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L12 10.5858L18.2929 4.29289C18.6834 3.90237 19.3166 3.90237 19.7071 4.29289C20.0976 4.68342 20.0976 5.31658 19.7071 5.70711L13.4142 12L19.7071 18.2929C20.0976 18.6834 20.0976 19.3166 19.7071 19.7071C19.3166 20.0976 18.6834 20.0976 18.2929 19.7071L12 13.4142L5.70711 19.7071C5.31658 20.0976 4.68342 20.0976 4.29289 19.7071C3.90237 19.3166 3.90237 18.6834 4.29289 18.2929L10.5858 12L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z"></path></svg></button></div></div><div style="display: flex;"><div class="MuiTabs-root css-ir28tv" style="width: 100%;"><div class="MuiTabs-scroller MuiTabs-fixed css-1anid1y" style="overflow: hidden; margin-bottom: 0px;"><div class="MuiTabs-flexContainer MuiTabs-centered css-1l4w6pd" role="tablist"><button id="recent-button" class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-pu36t6" tabindex="0" type="button" role="tab" aria-selected="true" data-tab-target="recent">Recent<span class="MuiTouchRipple-root css-w0pj6f"></span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-pu36t6" tabindex="1" type="button" role="tab" aria-selected="false" data-tab-target="favorites">Favorites<span class="MuiTouchRipple-root css-w0pj6f"></span></button></div><span class="MuiTabs-indicator css-pdh0ev" style="left: 0px; width: 114px;"></span></div></div></div><div class="css-1t7u0ja"><div style="width: 100%;" id="recent-layout" class="tab-layout"><div class="css-b45qhy"><div class="css-1ckqyej" id="my_last_played"></div></div></div><div style="width: 100%;" id="favorites-layout" class="tab-layout" hidden><div class="css-b45qhy"><div class="css-1ckqyej" id="favoriteGames"></div></div></div><div style="width: 100%;" id="likes-layout" class="tab-layout" hidden></div></div></div></div><svg class="main-svg-sprite main-svg-sprite--icons" xmlns="http://www.w3.org/2000/svg" style="display: none;"
+ xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-filter" viewBox="0 0 20 20"><path d="M12 12l8-8v-4h-20v4l8 8v8l4-4v-4z"></path></symbol><symbol id="icon-sun" viewBox="0 0 24 24"><path d="M8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12Z" /><path d="M12 2C12.5523 2 13 2.44772 13 3V5C13 5.55228 12.5523 6 12 6C11.4477 6 11 5.55228 11 5V3C11 2.44772 11.4477 2 12 2Z" /><path d="M19.7071 4.29289C20.0976 4.68342 20.0976 5.31658 19.7071 5.70711L17.7071 7.70711C17.3166 8.09763 16.6834 8.09763 16.2929 7.70711C15.9024 7.31658 15.9024 6.68342 16.2929 6.29289L18.2929 4.29289C18.6834 3.90237 19.3166 3.90237 19.7071 4.29289Z" /><path d="M18 12C18 11.4477 18.4477 11 19 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H19C18.4477 13 18 12.5523 18 12Z" /><path d="M16.2929 16.2929C16.6834 15.9024 17.3166 15.9024 17.7071 16.2929L19.7071 18.2929C20.0976 18.6834 20.0976 19.3166 19.7071 19.7071C19.3166 20.0976 18.6834 20.0976 18.2929 19.7071L16.2929 17.7071C15.9024 17.3166 15.9024 16.6834 16.2929 16.2929Z" /><path d="M12 18C12.5523 18 13 18.4477 13 19V21C13 21.5523 12.5523 22 12 22C11.4477 22 11 21.5523 11 21V19C11 18.4477 11.4477 18 12 18Z" /><path d="M7.70711 16.2929C8.09763 16.6834 8.09763 17.3166 7.70711 17.7071L5.70711 19.7071C5.31658 20.0976 4.68342 20.0976 4.29289 19.7071C3.90237 19.3166 3.90237 18.6834 4.29289 18.2929L6.29289 16.2929C6.68342 15.9024 7.31658 15.9024 7.70711 16.2929Z" /><path d="M2 12C2 11.4477 2.44772 11 3 11H5C5.55228 11 6 11.4477 6 12C6 12.5523 5.55228 13 5 13H3C2.44772 13 2 12.5523 2 12Z" /><path d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L7.70711 6.29289C8.09763 6.68342 8.09763 7.31658 7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z" /></symbol><symbol id="icon-moon" viewBox="0 0 24 24"><path d="M8.23129 2.24048C9.24338 1.78695 10.1202 2.81145 9.80357 3.70098C8.72924 6.71928 9.38932 10.1474 11.6193 12.3765C13.8606 14.617 17.3114 15.2755 20.3395 14.1819C21.2206 13.8637 22.2173 14.7319 21.7817 15.7199C21.7688 15.7491 21.7558 15.7782 21.7427 15.8074C20.9674 17.5266 19.7272 19.1434 18.1227 20.2274C16.4125 21.3828 14.3957 22.0001 12.3316 22.0001H12.3306C9.93035 21.9975 7.6057 21.1603 5.75517 19.6321C3.90463 18.1039 2.64345 15.9797 2.18793 13.6237C1.73241 11.2677 2.11094 8.82672 3.2586 6.71917C4.34658 4.72121 6.17608 3.16858 8.20153 2.25386L8.23129 2.24048Z" /></symbol><symbol id="icon-menu-bar" viewBox="0 0 24 24"><path d="M19 4C19.5523 4 20 3.55229 20 3C20 2.44772 19.5523 2 19 2L3 2C2.44772 2 2 2.44772 2 3C2 3.55228 2.44772 4 3 4L19 4ZM20.47 7.95628L15.3568 11.152C14.7301 11.5437 14.7301 12.4564 15.3568 12.848L20.47 16.0438C21.136 16.4601 22 15.9812 22 15.1958V8.80427C22 8.01884 21.136 7.54 20.47 7.95628ZM11 13C11.5523 13 12 12.5523 12 12C12 11.4477 11.5523 11 11 11L3 11C2.44771 11 2 11.4477 2 12C2 12.5523 2.44771 13 3 13L11 13ZM20 21C20 21.5523 19.5523 22 19 22L3 22C2.44771 22 2 21.5523 2 21C2 20.4477 2.44771 20 3 20L19 20C19.5523 20 20 20.4477 20 21Z"></path></symbol><symbol id="icon-info" viewBox="0 0 32 32"><path d="M14 9.5c0-0.825 0.675-1.5 1.5-1.5h1c0.825 0 1.5 0.675 1.5 1.5v1c0 0.825-0.675 1.5-1.5 1.5h-1c-0.825 0-1.5-0.675-1.5-1.5v-1z"></path><path d="M20 24h-8v-2h2v-6h-2v-2h6v8h2z"></path><path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path></symbol><symbol id="icon-cancel" viewBox="0 0 32 32"><path d="M19.587 16.001l6.096 6.096c0.396 0.396 0.396 1.039 0 1.435l-2.151 2.151c-0.396 0.396-1.038 0.396-1.435 0l-6.097-6.096-6.097 6.096c-0.396 0.396-1.038 0.396-1.434 0l-2.152-2.151c-0.396-0.396-0.396-1.038 0-1.435l6.097-6.096-6.097-6.097c-0.396-0.396-0.396-1.039 0-1.435l2.153-2.151c0.396-0.396 1.038-0.396 1.434 0l6.096 6.097 6.097-6.097c0.396-0.396 1.038-0.396 1.435 0l2.151 2.152c0.396 0.396 0.396 1.038 0 1.435l-6.096 6.096z"></path></symbol><symbol id="icon-bars" viewBox="0 0 24 28"><path d="M24 21v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 13v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1zM24 5v2c0 0.547-0.453 1-1 1h-22c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h22c0.547 0 1 0.453 1 1z"></path></symbol><symbol id="icon-star-full" overflow="visible" viewBox="0 0 32 32"><path d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"></path></symbol><symbol id="icon-chevron-right" viewBox="0 0 19 28"><path d="M17.297 13.703l-11.594 11.594c-0.391 0.391-1.016 0.391-1.406 0l-2.594-2.594c-0.391-0.391-0.391-1.016 0-1.406l8.297-8.297-8.297-8.297c-0.391-0.391-0.391-1.016 0-1.406l2.594-2.594c0.391-0.391 1.016-0.391 1.406 0l11.594 11.594c0.391 0.391 0.391 1.016 0 1.406z"></path></symbol><symbol id="icon-chevron-left" viewBox="0 0 21 28"><path d="M18.297 4.703l-8.297 8.297 8.297 8.297c0.391 0.391 0.391 1.016 0 1.406l-2.594 2.594c-0.391 0.391-1.016 0.391-1.406 0l-11.594-11.594c-0.391-0.391-0.391-1.016 0-1.406l11.594-11.594c0.391-0.391 1.016-0.391 1.406 0l2.594 2.594c0.391 0.391 0.391 1.016 0 1.406z"></path></symbol><symbol id="icon-arrow-left" viewBox="0 0 452 452"><path d="M106.406 203.554L300.693 9.2735C313.052 -3.0915 333.09 -3.09149 345.443 9.27351C357.797 21.6275 357.797 41.6645 345.443 54.0175L173.529 225.926L345.438 397.829C357.792 410.188 357.792 430.224 345.438 442.578C333.084 454.937 313.047 454.936 300.688 442.577L106.401 248.293C100.224 242.113 97.1385 234.022 97.1385 225.927C97.1386 217.828 100.23 209.731 106.406 203.554Z" /></symbol><symbol id="icon-arrow-right" viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z" /></symbol><symbol id="icon-menu" overflow="visible" viewBox="0 0 45 36"><path d="M2.528 13.472v0h35.392q1.056 0 1.792 0.736t0.736 1.792q0 1.024-0.736 1.792-0.736 0.736-1.792 0.736v0h-35.392q-1.056 0-1.792-0.736-0.736-0.768-0.736-1.792 0-1.056 0.736-1.792t1.792-0.736zM2.528 26.944v0h35.392q0.672 0 1.28 0.32t0.96 0.928q0.352 0.576 0.352 1.28 0 0.672-0.352 1.28-0.352 0.576-0.96 0.928-0.608 0.32-1.28 0.32v0h-35.392q-1.024-0.032-1.76-0.768-0.704-0.736-0.704-1.76t0.704-1.76q0.736-0.736 1.76-0.768zM2.528 0v0h35.392q1.024 0.032 1.728 0.768 0.736 0.736 0.736 1.76t-0.736 1.76q-0.704 0.736-1.728 0.768v0h-35.392q-1.024-0.032-1.76-0.768-0.704-0.736-0.704-1.76t0.704-1.76q0.736-0.736 1.76-0.768z"></path></symbol><symbol id="icon-close" viewBox="0 0 32 32"><path d="M0.544 0.544v0q-0.32 0.32-0.416 0.576-0.096 0.224-0.096 0.704v0 0.768l13.312 13.408-6.208 6.272q-2.528 2.528-4.544 4.576v0q-1.952 1.984-2.144 2.208v0q-0.48 0.608-0.448 1.216 0.032 0.64 0.576 1.152 0.512 0.544 1.152 0.576 0.608 0.032 1.216-0.448v0q0.224-0.192 2.208-2.144v0q2.048-2.016 4.576-4.544v0l6.272-6.24 6.272 6.24q2.528 2.528 4.608 4.544v0q1.984 1.952 2.208 2.144v0q0.608 0.48 1.216 0.448 0.64-0.032 1.152-0.576 0.544-0.512 0.544-1.152 0.032-0.608-0.448-1.216v0q-0.384-0.48-6.656-6.816v0l-6.24-6.24 6.24-6.272q2.528-2.528 4.544-4.608v0q1.952-1.984 2.112-2.208v0q0.544-0.64 0.448-1.408-0.128-0.768-0.8-1.28v0q-0.096-0.096-0.416-0.16-0.288-0.064-0.608-0.064v0h-0.8l-13.376 13.344-13.376-13.344h-0.768q-0.544 0-0.768 0.096t-0.544 0.448z"></path></symbol><symbol id="icon-keyboard_arrow_down" viewBox="0 0 24 24"><path d="M7.406 8.578l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z"></path></symbol><symbol id="icon-keyboard_arrow_up" viewBox="0 0 24 24"><path d="M7.406 15.422l-1.406-1.406 6-6 6 6-1.406 1.406-4.594-4.594z"></path></symbol><symbol id="icon-shares" viewBox="0 0 24 24"><path d="M 18 2 C 16.35499 2 15 3.3549904 15 5 C 15 5.1909529 15.021791 5.3771224 15.056641 5.5585938 L 7.921875 9.7207031 C 7.3985399 9.2778539 6.7320771 9 6 9 C 4.3549904 9 3 10.35499 3 12 C 3 13.64501 4.3549904 15 6 15 C 6.7320771 15 7.3985399 14.722146 7.921875 14.279297 L 15.056641 18.439453 C 15.021555 18.621514 15 18.808386 15 19 C 15 20.64501 16.35499 22 18 22 C 19.64501 22 21 20.64501 21 19 C 21 17.35499 19.64501 16 18 16 C 17.26748 16 16.601593 16.279328 16.078125 16.722656 L 8.9433594 12.558594 C 8.9782095 12.377122 9 12.190953 9 12 C 9 11.809047 8.9782095 11.622878 8.9433594 11.441406 L 16.078125 7.2792969 C 16.60146 7.7221461 17.267923 8 18 8 C 19.64501 8 21 6.6450096 21 5 C 21 3.3549904 19.64501 2 18 2 z M 18 4 C 18.564129 4 19 4.4358706 19 5 C 19 5.5641294 18.564129 6 18 6 C 17.435871 6 17 5.5641294 17 5 C 17 4.4358706 17.435871 4 18 4 z M 6 11 C 6.5641294 11 7 11.435871 7 12 C 7 12.564129 6.5641294 13 6 13 C 5.4358706 13 5 12.564129 5 12 C 5 11.435871 5.4358706 11 6 11 z M 18 18 C 18.564129 18 19 18.435871 19 19 C 19 19.564129 18.564129 20 18 20 C 17.435871 20 17 19.564129 17 19 C 17 18.435871 17.435871 18 18 18 z" /></symbol><symbol id="icon-search" viewBox="0 0 20 20"><path d="M12.9 14.32c-1.34 1.049-3.050 1.682-4.908 1.682-4.418 0-8-3.582-8-8s3.582-8 8-8c4.418 0 8 3.582 8 8 0 1.858-0.633 3.567-1.695 4.925l0.013-0.018 5.35 5.33-1.42 1.42-5.33-5.34zM8 14c3.314 0 6-2.686 6-6s-2.686-6-6-6v0c-3.314 0-6 2.686-6 6s2.686 6 6 6v0z"></path></symbol><symbol id="icon-heart" viewBox="0 0 28 28"><path d="M14 26c-0.25 0-0.5-0.094-0.688-0.281l-9.75-9.406c-0.125-0.109-3.563-3.25-3.563-7 0-4.578 2.797-7.313 7.469-7.313 2.734 0 5.297 2.156 6.531 3.375 1.234-1.219 3.797-3.375 6.531-3.375 4.672 0 7.469 2.734 7.469 7.313 0 3.75-3.437 6.891-3.578 7.031l-9.734 9.375c-0.187 0.187-0.438 0.281-0.688 0.281z"></path></symbol><symbol id="icon-thumbs-down" viewBox="0 0 24 28"><path d="M4 7c0-0.547-0.453-1-1-1s-1 0.453-1 1 0.453 1 1 1 1-0.453 1-1zM22 16c0-0.578-0.438-1.984-1.172-2 0.328-0.375 0.547-1.109 0.547-1.609 0-0.734-0.297-1.359-0.828-1.859 0.187-0.328 0.281-0.703 0.281-1.078 0-0.719-0.359-1.609-1.016-1.969 0.047-0.281 0.078-0.578 0.078-0.875 0-1.828-1.156-2.609-2.891-2.609h-2c-1.844 0-3.625 0.547-5.344 1.141-0.844 0.297-2.281 0.859-3.156 0.859h-0.5v10h0.5c1.234 0 3.094 2.672 3.797 3.578 0.391 0.484 0.766 0.969 1.203 1.422 1.516 1.594 1 3.984 2 5 2.141 0 2.5-1.172 2.5-3 0-1.844-1.5-3.172-1.5-5h5.5c1.047 0 2-0.938 2-2zM24 16.016c0 2.156-1.844 3.984-4 3.984h-2.75c0.469 0.969 0.75 1.906 0.75 3 0 1.031-0.063 1.969-0.547 2.906-0.766 1.516-2.328 2.094-3.953 2.094-0.531 0-1.031-0.219-1.406-0.578-1.563-1.531-1.078-4-2-5.016-0.594-0.625-1.141-1.297-1.672-1.984-0.469-0.609-1.531-2.016-2.141-2.422h-4.281c-1.109 0-2-0.891-2-2v-10c0-1.109 0.891-2 2-2h4.5c0.438 0 1.703-0.469 2.156-0.625 2.25-0.781 4.203-1.375 6.609-1.375h1.75c2.844 0 4.891 1.687 4.875 4.609v0.078c0.609 0.781 0.938 1.781 0.938 2.781 0 0.219-0.016 0.453-0.047 0.672 0.391 0.688 0.594 1.469 0.594 2.25 0 0.359-0.047 0.734-0.141 1.078 0.5 0.75 0.766 1.641 0.766 2.547z"></path></symbol><symbol id="icon-thumbs-up" viewBox="0 0 24 28"><path d="M4 21c0-0.547-0.453-1-1-1s-1 0.453-1 1 0.453 1 1 1 1-0.453 1-1zM22 12c0-1.062-0.953-2-2-2h-5.5c0-1.828 1.5-3.156 1.5-5 0-1.828-0.359-3-2.5-3-1 1.016-0.484 3.406-2 5-0.438 0.453-0.812 0.938-1.203 1.422-0.703 0.906-2.562 3.578-3.797 3.578h-0.5v10h0.5c0.875 0 2.312 0.562 3.156 0.859 1.719 0.594 3.5 1.141 5.344 1.141h1.891c1.766 0 3-0.703 3-2.609 0-0.297-0.031-0.594-0.078-0.875 0.656-0.359 1.016-1.25 1.016-1.969 0-0.375-0.094-0.75-0.281-1.078 0.531-0.5 0.828-1.125 0.828-1.859 0-0.5-0.219-1.234-0.547-1.609 0.734-0.016 1.172-1.422 1.172-2zM24 11.984c0 0.906-0.266 1.797-0.766 2.547 0.094 0.344 0.141 0.719 0.141 1.078 0 0.781-0.203 1.563-0.594 2.25 0.031 0.219 0.047 0.453 0.047 0.672 0 1-0.328 2-0.938 2.781 0.031 2.953-1.984 4.688-4.875 4.688h-2.016c-2.219 0-4.281-0.656-6.344-1.375-0.453-0.156-1.719-0.625-2.156-0.625h-4.5c-1.109 0-2-0.891-2-2v-10c0-1.109 0.891-2 2-2h4.281c0.609-0.406 1.672-1.813 2.141-2.422 0.531-0.688 1.078-1.359 1.672-2 0.938-1 0.438-3.469 2-5 0.375-0.359 0.875-0.578 1.406-0.578 1.625 0 3.187 0.578 3.953 2.094 0.484 0.953 0.547 1.859 0.547 2.906 0 1.094-0.281 2.031-0.75 3h2.75c2.156 0 4 1.828 4 3.984z"></path></symbol><symbol id="icon-flag" viewBox="0 0 24 24"><path d="M5 13.397v-9.859c0.44-0.218 1.365-0.538 3-0.538 1.281 0 2.361 0.421 3.629 0.928 1.232 0.493 2.652 1.072 4.371 1.072 1.298 0 2.278-0.175 3-0.397v9.859c-0.44 0.218-1.365 0.538-3 0.538-1.281 0-2.361-0.421-3.629-0.928-1.232-0.493-2.652-1.072-4.371-1.072-1.298 0-2.278 0.175-3 0.397zM5 22v-6.462c0.44-0.218 1.365-0.538 3-0.538 1.281 0 2.361 0.421 3.629 0.928 1.232 0.493 2.652 1.072 4.371 1.072 3.247 0 4.507-1.093 4.707-1.293 0.195-0.195 0.293-0.451 0.293-0.707v-12c0-0.552-0.448-1-1-1-0.265 0-0.506 0.103-0.685 0.272-0.096 0.078-0.984 0.728-3.315 0.728-1.281 0-2.361-0.421-3.629-0.928-1.232-0.493-2.652-1.072-4.371-1.072-3.247 0-4.507 1.093-4.707 1.293-0.195 0.195-0.293 0.451-0.293 0.707v19c0 0.552 0.448 1 1 1s1-0.448 1-1z"></path></symbol><symbol id="icon-control" viewBox="0 0 32 32"><path d="m27 10.9658203h-3.1972656c-.765625 0-1.4941406.2880859-2.0512695.8105469l-2.1723633 2.0341797c-.6030274.5654297-.9487305 1.3632812-.9487305 2.1894531s.3457031 1.6240234.9492188 2.1894531l2.171875 2.0341797c.5571289.5224609 1.2856445.8105469 2.0512695.8105469h3.1972656c1.6542969 0 3-1.3457031 3-3v-4.0683594c0-1.6542969-1.3457031-3-3-3zm1 7.0683594c0 .5517578-.4487305 1-1 1h-3.1972656c-.2553711 0-.4980469-.0957031-.6835938-.2695312l-2.171875-2.0341797c-.2045898-.1914063-.3168945-.4511719-.3168945-.7304688s.1123047-.5390625.3164062-.7304688l2.1723633-2.0341797h.0004883c.1850586-.1738281.4277344-.2695312.6831055-.2695312h3.1972656c.5512695 0 1 .4482422 1 1z" /><path d="m5 21.0341797h3.1972656c.7651367 0 1.4936523-.2880859 2.0512695-.8105469l2.1723633-2.0341797c.6030274-.5654297.9487305-1.3632812.9487305-2.1894531s-.3457031-1.6240234-.9492188-2.1894531l-2.171875-2.0341797c-.5576172-.5224609-1.2861328-.8105469-2.0512695-.8105469h-3.1972656c-1.6542969 0-3 1.3457031-3 3v4.0683594c0 1.6542969 1.3457031 3 3 3zm-1-7.0683594c0-.5517578.4487305-1 1-1h3.1972656c.2553711 0 .4980469.0957031.684082.2695312l2.1713867 2.0341797c.2045899.1914063.3168946.4511719.3168946.7304688s-.1123047.5390625-.3164062.7304688l-2.171875 2.0341797c-.1860352.1738281-.4287109.2695312-.684082.2695312h-3.1972657c-.5512695 0-1-.4482422-1-1z" /><path d="m17.8725586 18.9208984c-1.1025391-.8808594-2.6425781-.8808594-3.7451172 0 0 0 0 0-.0004883 0l-2.034668 1.6259766c-.7163086.5732422-1.1269531 1.4267578-1.1269531 2.34375v4.109375c0 1.6542969 1.3457031 3 3 3h4.0693359c1.6542969 0 3-1.3457031 3-3v-4.109375c0-.9169922-.4106445-1.7705078-1.1269531-2.34375zm1.1621094 8.0791016c0 .5517578-.4487305 1-1 1h-4.069336c-.5512695 0-1-.4482422-1-1v-4.109375c0-.3056641.137207-.5908203.3759766-.78125l2.034668-1.6259766c.3671875-.2929688.8808594-.2929688 1.2480469 0l2.034668 1.6259766c.2387695.1904297.3759766.4755859.3759766.78125v4.109375z" /><path d="m21.034668 9.109375v-4.109375c0-1.6542969-1.3457031-3-3-3h-4.069336c-1.6542969 0-3 1.3457031-3 3v4.109375c0 .9169922.4106445 1.7705078 1.1269531 2.34375l2.0351562 1.6259766c.5512696.4404296 1.2119142.6601562 1.8725587.6601562s1.3212891-.2197266 1.8730469-.6601562l2.034668-1.6259766c.7163085-.5732422 1.1269531-1.4267578 1.1269531-2.34375zm-2 0c0 .3056641-.137207.5908203-.3759766.78125l-2.0341797 1.6259766c-.3681641.2929688-.8813477.2929688-1.2485352 0l-2.034668-1.6259766c-.2387695-.1904297-.3759766-.4755859-.3759766-.78125v-4.109375c0-.5517578.4487305-1 1-1h4.0693359c.5512695 0 1 .4482422 1 1v4.109375z" /></symbol><symbol id="icon-fullscreen" viewBox="0 0 24 24"><path d="M4 1.5C2.61929 1.5 1.5 2.61929 1.5 4V8.5C1.5 9.05228 1.94772 9.5 2.5 9.5H3.5C4.05228 9.5 4.5 9.05228 4.5 8.5V4.5H8.5C9.05228 4.5 9.5 4.05228 9.5 3.5V2.5C9.5 1.94772 9.05228 1.5 8.5 1.5H4Z" /><path d="M20 1.5C21.3807 1.5 22.5 2.61929 22.5 4V8.5C22.5 9.05228 22.0523 9.5 21.5 9.5H20.5C19.9477 9.5 19.5 9.05228 19.5 8.5V4.5H15.5C14.9477 4.5 14.5 4.05228 14.5 3.5V2.5C14.5 1.94772 14.9477 1.5 15.5 1.5H20Z" /><path d="M20 22.5C21.3807 22.5 22.5 21.3807 22.5 20V15.5C22.5 14.9477 22.0523 14.5 21.5 14.5H20.5C19.9477 14.5 19.5 14.9477 19.5 15.5V19.5H15.5C14.9477 19.5 14.5 19.9477 14.5 20.5V21.5C14.5 22.0523 14.9477 22.5 15.5 22.5H20Z" /><path d="M1.5 20C1.5 21.3807 2.61929 22.5 4 22.5H8.5C9.05228 22.5 9.5 22.0523 9.5 21.5V20.5C9.5 19.9477 9.05228 19.5 8.5 19.5H4.5V15.5C4.5 14.9477 4.05228 14.5 3.5 14.5H2.5C1.94772 14.5 1.5 14.9477 1.5 15.5V20Z" /></symbol><symbol id="icon-shrink" viewBox="0 0 32 32"><path d="M10,10H3v2h7a2,2,0,0,0,2-2V3H10Z" /><path d="M22,10V3H20v7a2,2,0,0,0,2,2h7V10Z" /><path d="M20,22v7h2V22h7V20H22A2,2,0,0,0,20,22Z" /><path d="M10,20H3v2h7v7h2V22A2,2,0,0,0,10,20Z" /></symbol><symbol id="icon-home" viewBox="0 0 26 28"><path d="M22 15.5v7.5c0 0.547-0.453 1-1 1h-6v-6h-4v6h-6c-0.547 0-1-0.453-1-1v-7.5c0-0.031 0.016-0.063 0.016-0.094l8.984-7.406 8.984 7.406c0.016 0.031 0.016 0.063 0.016 0.094zM25.484 14.422l-0.969 1.156c-0.078 0.094-0.203 0.156-0.328 0.172h-0.047c-0.125 0-0.234-0.031-0.328-0.109l-10.813-9.016-10.813 9.016c-0.109 0.078-0.234 0.125-0.375 0.109-0.125-0.016-0.25-0.078-0.328-0.172l-0.969-1.156c-0.172-0.203-0.141-0.531 0.063-0.703l11.234-9.359c0.656-0.547 1.719-0.547 2.375 0l3.813 3.187v-3.047c0-0.281 0.219-0.5 0.5-0.5h3c0.281 0 0.5 0.219 0.5 0.5v6.375l3.422 2.844c0.203 0.172 0.234 0.5 0.063 0.703z"></path></symbol><symbol id="icon-shrink" viewBox="0 0 32 32"><path d="M18 14h13l-5-5 6-6-3-3-6 6-5-5z"></path><path d="M18 18v13l5-5 6 6 3-3-6-6 5-5z"></path><path d="M14 18h-13l5 5-6 6 3 3 6-6 5 5z"></path><path d="M14 14v-13l-5 5-6-6-3 3 6 6-5 5z"></path></symbol><symbol id="icon-clock" viewBox="0 0 18 18"><path d="M9 1.5c4.148 0 7.5 3.36 7.5 7.5 0 4.148-3.352 7.5-7.5 7.5-4.14 0-7.5-3.352-7.5-7.5 0-4.14 3.36-7.5 7.5-7.5Zm-.262 3.697a.562.562 0 0 0-.563.563v3.787c0 .195.105.375.277.48l2.94 1.756a.556.556 0 0 0 .772-.195.565.565 0 0 0-.194-.773L9.3 9.225V5.76a.562.562 0 0 0-.563-.563Z"></path></symbol></svg><div class="blur_dialog" id="modalShare"><div class="popup-heading"><div class="icon_contact"><span class="svg-icon" aria-hidden="true"><svg class="svg-icon__link"><use
+ xlink:href="#icon-shares"></use></svg></span></div><div class="title_contact">SHARE WITH YOUR FRIENDS <br> <strong>Stick Hook</strong></div><span class="close_contact closeModalBtn"><span class="svg-icon" aria-hidden="true"><svg class="svg-icon__link"><use
+ xlink:href="#icon-close"></use></svg></span></span></div><div class="popup-content"><div class="popup-link_share TextField_textField__XUqJS"><input readonly class="popup-link-share--url" id="share_link_input" value="https://stickmangamespc.io/stick-hook"><div class="popup-link-share--copy" onclick="copyToClipboard('#share_link_input',this)">Copy link</div></div></div></div><div class="contact-popup" id="contact-popup"><div class="popup-heading"><div class="icon_contact"><span class="svg-icon" aria-hidden="true"><svg class="svg-icon__link"><use
+ xlink:href="#icon-flag"></use></svg></span></div><div class="title_contact">WHAT ISSUE DID YOU FIND IN </br> <strong>Stick Hook</strong></div><span class="close_contact" onclick="report_close();"><span class="svg-icon" aria-hidden="true"><svg class="svg-icon__link"><use
+ xlink:href="#icon-close"></use></svg></span></span></div><div class="popup-content"><form id="bugReportForm" class="contact-form"><label class="label-contact-select"><select class="contact-select TextField_textField__XUqJS" name="type_contact" required><option value="">What issue did you find?</option><option value="game-not-load">The game don't load</option><option value="game-not-working">The game is not working</option><option value="lost-progress">I lost my progress</option><option value="game-inappropriate">I saw something inappropriate</option><option value="help-in-game-purchase">I need help with an in-game purchase</option><option value="have-a-suggestion">I have a suggestion</option><option value="other">Other</option></select></label><input class="form_contact contact_input TextField_textField__XUqJS" name="email_contact" type="email"
+ placeholder="Your email (Option)" value=""><div class="error-message-email"></div><textarea name="content_contact" class="form_contact contact_textarea TextField_textField__XUqJS" id="content_contact"
+ placeholder="Describe the bug..."
+ required></textarea><div class="error_form_contact"></div><input type="hidden" name="game_report_name" id="game_report_name"><input type="hidden" name="game_report_url" id="game_report_url"><input type="file" name="screenshot" style="display: none;"><div class="form_bottom"><button type="submit" class="btn_add_contact">Send</button></div></form></div></div><script defer src="/themes/stickmangamespc.io/resources/js/jquery-3.6.0.min.js"></script> <script defer data-cfasync="false" src="/themes/stickmangamespc.io/resources/js/ga_tracking.js?v2"></script><script defer data-cfasync="false" src="/themes/stickmangamespc.io/resources/js/tracking_event.js?v1"></script><script defer src="/themes/stickmangamespc.io/resources/js/scripts.min.js?v2" type="text/javascript"></script><script>window._ga4TzOffsetMs = -28800000;</script></body></html>

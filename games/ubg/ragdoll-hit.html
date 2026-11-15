@@ -1,0 +1,111 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L7856P3VNT');
+</script><!DOCTYPE html>
+
+
+<!-- Ultimate Game Stash file--> 
+<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
+
+
+
+
+<html lang="en-us">
+  <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <style>
+    html, body {
+      touch-action: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #000 !important;
+    }
+    canvas {
+      touch-action: none !important;
+      display: block !important;
+    }
+    #unity-mobile-warning, .unity-mobile-warning {
+      display: none !important;
+    }
+  </style>
+  <script>
+    // Global iPad AudioContext Unlocker on first tap/touch
+    (function() {
+      function unlock() {
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) {
+            var ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+          }
+        } catch(e) {}
+      }
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+      window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+      window.addEventListener('click', unlock, { once: true, passive: true });
+      document.addEventListener('touchmove', function(e) {
+        if (e.cancelable && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
+
+    <base href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/ragdoll-hit/">
+	            <script>
+      window.fileMergerConfig = {
+        files: [
+          { name: '959bf1c60308f1c34bf072f43c3c17d4.data.unityweb', parts: 1 },
+          { name: 'f23c0f3f40a28f1adce731399dde22aa.wasm.unityweb', parts: 2 },
+          { name: '3276aa7c11496bcc48eb6908f112f0c3.js.unityweb', parts: 1 },
+        ],
+        basePath: 'Build/',
+        debug: true
+      };  
+  </script>
+  <script src="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/merge.js"></script>
+	<script>
+	window.config = {
+            devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.25),
+		loader: 'unity-2020',
+		debug: false,
+		maxRatio: 24 / 9,
+		minRatio: 9 / 24,
+
+		title: 'Ragdoll Hit',
+		thumbnail: 'thumbnail.png',
+		numScreenshots:  4 ,
+
+		unityVersion: '2022.3.6f1',
+		unityWebglBuildUrl: '',
+
+		fileSize:  9 ,
+		cachedDecompressedFileSizes: {
+			'3276aa7c11496bcc48eb6908f112f0c3.js.unityweb':  66682 ,
+			'959bf1c60308f1c34bf072f43c3c17d4.data.unityweb':  4377721 ,
+			'f23c0f3f40a28f1adce731399dde22aa.wasm.unityweb':  5105161 ,
+			'v84.loader.js':  114199 ,
+		},
+		"metadata": {"poki_template_version":1,"background_color":"#4D4D4D","code_filename":"f23c0f3f40a28f1adce731399dde22aa.wasm.unityweb","company_name":"Ericetto","data_filename":"959bf1c60308f1c34bf072f43c3c17d4.data.unityweb","decompression_fallback":"Brotli","development_player":"false","framework_filename":"3276aa7c11496bcc48eb6908f112f0c3.js.unityweb","height":"600","loader_filename":"v84.loader.js","product_name":"Ragdoll Hit","product_version":"0.1","splash_screen_style":"Dark","unity_version":"2022.3.6f1","use_data_caching":"true","use_threads":"false","use_wasm":"true","use_webgl_1_0":"true","use_webgl_2_0":"true","width":"960"}
+	};
+	</script>
+<script src="MobileDetect.js"></script>
+
+</head>
+<body>
+	<script src="master-loader.js"></script>
+
+
+</body>
+</html>

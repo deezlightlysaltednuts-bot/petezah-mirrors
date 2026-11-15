@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<!-- THIS IS NOT AN OFFICIAL MINECRAFT PRODUCT. IT IS NOT ENDORSED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT--> 
+<!-- THIS GAME IS NOT FOR SALE-->
+
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <style>
+    html, body {
+      touch-action: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #000 !important;
+    }
+    canvas {
+      touch-action: none !important;
+      display: block !important;
+    }
+    #unity-mobile-warning, .unity-mobile-warning {
+      display: none !important;
+    }
+  </style>
+  <script>
+    // Global iPad AudioContext Unlocker on first tap/touch
+    (function() {
+      function unlock() {
+        try {
+          var AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) {
+            var ctx = new AudioCtx();
+            if (ctx.state === 'suspended') ctx.resume();
+          }
+        } catch(e) {}
+      }
+      window.addEventListener('touchstart', unlock, { once: true, passive: true });
+      window.addEventListener('pointerdown', unlock, { once: true, passive: true });
+      window.addEventListener('click', unlock, { once: true, passive: true });
+      document.addEventListener('touchmove', function(e) {
+        if (e.cancelable && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
+
+  <meta charset="utf-8">
+  <title>Mike Ranch 26.2</title>
+</head>
+<body>
+  <script>
+    async function loadAndRun() {
+      const urls = [
+        "https://cdn.jsdelivr.net/gh/MartinMMCyt/minecraft@main/26.2/eaglercraft-26.2-0.5.html.part1",
+        "https://cdn.jsdelivr.net/gh/MartinMMCyt/minecraft@main/26.2/eaglercraft-26.2-0.5.html.part2",
+        "https://cdn.jsdelivr.net/gh/MartinMMCyt/minecraft@main/26.2/eaglercraft-26.2-0.5.html.part3",
+        "https://cdn.jsdelivr.net/gh/MartinMMCyt/minecraft@main/26.2/eaglercraft-26.2-0.5.html.part4"
+
+      ];
+      let fullHtml = "";
+      for (const u of urls) {
+        const res = await fetch(u);
+        fullHtml += await res.text();
+      }
+
+      document.open();
+      document.write(fullHtml);
+      document.close();
+    }
+
+    loadAndRun();
+  </script>
+</body>
+</html>

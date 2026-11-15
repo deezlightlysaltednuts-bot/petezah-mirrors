@@ -1,0 +1,52 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <base href="https://cdn.jsdelivr.net/gh/bubbls/youtube-playables@8c0add17e99e4cbe9eaf6bb9e7487c3ad08c915a/attack-hole/">
+    <link rel="stylesheet" type="text/css" href="styles.css" nonce="gVo7eYSnevGWGNC1xGCx9Q">
+    <link rel="manifest" href="manifest.json">
+    
+	<script nonce="gVo7eYSnevGWGNC1xGCx9Q">
+if (!window.ytgame) {
+  window.ytgame = {
+    SDK_VERSION: "standalone",
+    IN_PLAYABLES_ENV: false,
+    SdkError: function (t) { this.errorType = t; this.message = ""; },
+    SdkErrorType: { UNDEFINED: 0, GAMEAPI_UNDEFINED: 1 },
+    game: {
+      firstFrameReady: function () {},
+      gameReady: function () {},
+      loadData: function () { return Promise.resolve(localStorage.getItem("attack-hole-save") || ""); },
+      saveData: function (data) { localStorage.setItem("attack-hole-save", data); return Promise.resolve(); }
+    },
+    engagement: { sendScore: function () { return Promise.resolve(); } },
+    ads: {
+      requestAd: function () { return Promise.resolve(3); },
+      requestInterstitialAd: function () { return Promise.resolve(); },
+      AdResult: { UNKNOWN: 0, SHOWED: 1, REJECTED: 3, DISMISSED: 2 }
+    },
+    health: { logError: function () {}, logWarning: function () {} },
+    system: {
+      getLanguage: function () { return Promise.resolve("en"); },
+      isAudioEnabled: function () { return true; },
+      onAudioEnabledChange: function () { return function () {}; },
+      onPause: function () { return function () {}; },
+      onResume: function () { return function () {}; }
+    }
+  };
+  window.ytgamehelper = { myConsoleLog: function () {} };
+}
+</script>
+    <script src="playcanvas-stable.min.js" nonce="gVo7eYSnevGWGNC1xGCx9Q"></script>
+    <script src="__settings__.js" nonce="gVo7eYSnevGWGNC1xGCx9Q"></script>
+  <style>html,body{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;margin:0;padding:0;}#unity-mobile-warning,.unity-mobile-warning{display:none!important;}</style>
+</head>
+<body>
+    <script src="__start__.js" nonce="gVo7eYSnevGWGNC1xGCx9Q"></script>
+    <script src="__loading__.js" nonce="gVo7eYSnevGWGNC1xGCx9Q"></script>
+
+
+</body>
+</html>

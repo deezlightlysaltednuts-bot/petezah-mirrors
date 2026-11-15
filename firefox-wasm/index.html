@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PeteZah VM</title>
+    <script src="./coi-serviceworker.js"></script>
     <link id="favicon" rel="icon" type="image/png" href="/logo.png" />
     <link rel="stylesheet" href="./pete-vm.css" />
     <script type="module" crossorigin src="./assets/index-D39giZCc.js"></script>
@@ -13,8 +14,12 @@
     try {
       var k = "chrome-demo-opts";
       var o = JSON.parse(localStorage.getItem(k) || "{}");
-      var proto = location.protocol === "https:" ? "wss:" : "ws:";
-      o.wisp = proto + "//" + location.host + "/api/websocket-3/";
+      var defaultWisp = "wss://wisp.mercurywork.shop/";
+      try {
+        var custom = (localStorage.getItem("proxServer") || "").trim();
+        if (/^wss?:\/\//i.test(custom)) defaultWisp = custom;
+      } catch (e) {}
+      o.wisp = defaultWisp;
       if (o.gpu === undefined) o.gpu = true;
       if (o.jit === undefined) o.jit = false;
       localStorage.setItem(k, JSON.stringify(o));
@@ -48,9 +53,13 @@
       }
       window.addEventListener("pagehide", end);
       document.addEventListener("DOMContentLoaded", function () {
-        if (!self.crossOriginIsolated) {
-          var w = document.getElementById("pz-coi-warn");
-          if (w) w.style.display = "block";
+        var w = document.getElementById("pz-coi-warn");
+        if (self.crossOriginIsolated) {
+          if (w) w.style.display = "none";
+        } else {
+          setTimeout(function() {
+            if (!self.crossOriginIsolated && w) w.style.display = "block";
+          }, 1500);
         }
       });
     })();

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Studio 2</title>
+    <meta charset="UTF-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            overflow: hidden;
+            color: #ffffff;
+            font-family: sans-serif;
+        }
+        #loading-screen {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            z-index: 9999;
+        }
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.1);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            border-left-color: #09f;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #progress-wrap {
+            margin-top: 20px;
+            width: 260px;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            display: none;
+        }
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #09f;
+            transition: width 0.15s linear;
+        }
+        #status-text {
+            margin-top: 16px;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+        #sub-text {
+            margin-top: 6px;
+            font-size: 12px;
+            opacity: 0.5;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>html,body{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;overflow:hidden;width:100%;height:100%;margin:0;padding:0;}#unity-mobile-warning,.unity-mobile-warning{display:none!important;}</style>
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p id="status-text">Downloading dependencies...</p>
+        <div id="progress-wrap"><div id="progress-bar"></div></div>
+        <p id="sub-text"></p>
+    </div>
+
+    <script>
+    (async function() {
+        const ZIP_URL = 'https://quizizz.com/_media/uploadedFiles/b2be64a6-d490-4c65-a2ce-8620068810f3-v2';
+
+        const statusText = document.getElementById('status-text');
+        const subText = document.getElementById('sub-text');
+        const progressWrap = document.getElementById('progress-wrap');
+        const progressBar = document.getElementById('progress-bar');
+
+        function showProgress(show) {
+            progressWrap.style.display = show ? 'block' : 'none';
+        }
+
+        function setProgress(fraction) {
+            progressBar.style.width = Math.max(0, Math.min(1, fraction)) * 100 + '%';
+        }
+
+        function fmtMB(bytes) {
+            return (bytes / (1024 * 1024)).toFixed(2);
+        }
+
+        const CORE_ORDER = [
+            "libs/jshashtable.js", "logger.js", "gd.js", "libs/rbush.js",
+            "AsyncTasksManager.js", "inputmanager.js", "jsonmanager.js",
+            "Model3DManager.js", "ResourceLoader.js", "ResourceCache.js",
+            "timemanager.js", "polygon.js", "runtimeobject.js", "profiler.js",
+            "RuntimeInstanceContainer.js", "runtimescene.js", "scenestack.js",
+            "force.js", "RuntimeLayer.js", "layer.js", "RuntimeCustomObjectLayer.js",
+            "timer.js", "runtimewatermark.js", "runtimegame.js", "variable.js",
+            "variablescontainer.js", "oncetriggers.js", "runtimebehavior.js",
+            "SpriteAnimator.js", "spriteruntimeobject.js", "affinetransformation.js",
+            "CustomRuntimeObjectInstanceContainer.js", "CustomRuntimeObject.js",
+            "CustomRuntimeObject2D.js", "indexeddb.js",
+            "events-tools/commontools.js",
+            "events-tools/variabletools.js", "events-tools/runtimescenetools.js",
+            "events-tools/inputtools.js", "events-tools/objecttools.js",
+            "events-tools/cameratools.js", "events-tools/soundtools.js",
+            "events-tools/storagetools.js", "events-tools/stringtools.js",
+            "events-tools/windowtools.js", "events-tools/networktools.js",
+            "splash/gd-logo-dark.js", "splash/gd-logo-light.js",
+            "splash/gd-logo-light-colored.js",
+            "pixi-renderers/pixi.js", "pixi-renderers/pixi-filters-tools.js",
+            "pixi-renderers/runtimegame-pixi-renderer.js",
+            "pixi-renderers/runtimescene-pixi-renderer.js",
+            "pixi-renderers/layer-pixi-renderer.js",
+            "pixi-renderers/pixi-image-manager.js",
+            "pixi-renderers/pixi-bitmapfont-manager.js",
+            "pixi-renderers/spriteruntimeobject-pixi-renderer.js",
+            "pixi-renderers/CustomRuntimeObject2DPixiRenderer.js",
+            "pixi-renderers/DebuggerPixiRenderer.js",
+            "pixi-renderers/loadingscreen-pixi-renderer.js",
+            "pixi-renderers/pixi-effects-manager.js",
+            "howler-sound-manager/howler.min.js",
+            "howler-sound-manager/howler-sound-manager.js",
+            "fontfaceobserver-font-manager/fontfaceobserver.js",
+            "fontfaceobserver-font-manager/fontfaceobserver-font-manager.js",
+            "Extensions/TextObject/textruntimeobject-pixi-renderer.js",
+            "Extensions/TextObject/textruntimeobject.js",
+            "object-capabilities/AnimatableBehavior.js",
+            "object-capabilities/EffectBehavior.js",
+            "object-capabilities/FlippableBehavior.js",
+            "object-capabilities/OpacityBehavior.js",
+            "object-capabilities/ResizableBehavior.js",
+            "object-capabilities/ScalableBehavior.js",
+            "object-capabilities/TextContainerBehavior.js",
+            "Extensions/3D/HemisphereLight.js",
+            "Extensions/Effects/drop-shadow-pixi-filter.js",
+            "Extensions/Effects/pixi-filters/filter-drop-shadow.js",
+            "Extensions/Effects/pixi-filters/filter-kawase-blur.js"
+        ];
+
+        try {
+            const NativeURL = window.URL;
+            window.URL = function(url, base) {
+                if (base && typeof base === 'string' && base.startsWith('blob:')) {
+                    base = window.location.href;
+                }
+                return new NativeURL(url, base);
+            };
+            Object.assign(window.URL, NativeURL);
+
+            statusText.innerText = "Downloading game assets...";
+            showProgress(true);
+            setProgress(0);
+
+            const zipRes = await fetch(ZIP_URL);
+            if (!zipRes.ok) throw new Error(`HTTP error! status: ${zipRes.status}`);
+
+            const totalBytes = parseInt(zipRes.headers.get('Content-Length') || '0', 10);
+            const reader = zipRes.body.getReader();
+            const chunks = [];
+            let received = 0;
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                chunks.push(value);
+                received += value.length;
+
+                if (totalBytes > 0) {
+                    setProgress(received / totalBytes);
+                    subText.innerText = `${fmtMB(received)} MB / ${fmtMB(totalBytes)} MB`;
+                } else {
+                    subText.innerText = `${fmtMB(received)} MB`;
+                }
+            }
+
+            const arrayBuffer = new Uint8Array(received);
+            let offset = 0;
+            for (const c of chunks) {
+                arrayBuffer.set(c, offset);
+                offset += c.length;
+            }
+
+            statusText.innerText = "Extracting package...";
+            setProgress(0);
+            subText.innerText = '';
+
+            const zip = await JSZip.loadAsync(arrayBuffer.buffer);
+
+            let rootPrefix = '';
+            const zipFileKeys = Object.keys(zip.files);
+            const dataJsKey = zipFileKeys.find(k => k.endsWith('data.js'));
+            if (dataJsKey) {
+                rootPrefix = dataJsKey.substring(0, dataJsKey.indexOf('data.js'));
+            }
+
+            const fileMap = new Map();
+            const textContentMap = new Map();
+
+            const allEntries = Object.entries(zip.files).filter(([, f]) => !f.dir);
+            const totalEntries = allEntries.length;
+            let processed = 0;
+
+            for (const [relativePath, file] of allEntries) {
+                let cleanPath = relativePath;
+                if (rootPrefix && cleanPath.startsWith(rootPrefix)) {
+                    cleanPath = cleanPath.substring(rootPrefix.length);
+                }
+                cleanPath = cleanPath.replace(/^\//, '');
+
+                let mimeType = 'application/octet-stream';
+                if (cleanPath.endsWith('.mp4')) mimeType = 'video/mp4';
+                else if (cleanPath.endsWith('.webm')) mimeType = 'video/webm';
+                else if (cleanPath.endsWith('.ogv')) mimeType = 'video/ogg';
+                else if (cleanPath.endsWith('.png')) mimeType = 'image/png';
+                else if (cleanPath.endsWith('.jpg') || cleanPath.endsWith('.jpeg')) mimeType = 'image/jpeg';
+                else if (cleanPath.endsWith('.js')) mimeType = 'application/javascript';
+                else if (cleanPath.endsWith('.json')) mimeType = 'application/json';
+                else if (cleanPath.endsWith('.wasm')) mimeType = 'application/wasm';
+
+                const blob = await file.async('blob');
+                const typedBlob = new Blob([blob], { type: mimeType });
+                fileMap.set(cleanPath.toLowerCase(), typedBlob);
+
+                if (cleanPath.endsWith('.js') || cleanPath.endsWith('.json')) {
+                    textContentMap.set(cleanPath, await file.async('text'));
+                }
+
+                processed++;
+                setProgress(processed / totalEntries);
+                subText.innerText = `${processed} / ${totalEntries} files`;
+            }
+
+            const allJs = Array.from(textContentMap.keys()).filter(p => p.endsWith('.js'));
+            const used = new Set();
+            const finalOrder = [];
+
+            for (const p of CORE_ORDER) {
+                if (textContentMap.has(p) && !used.has(p)) {
+                    finalOrder.push(p);
+                    used.add(p);
+                }
+            }
+
+            const codeFiles = allJs
+                .filter(p => /(^|\/)code\d+\.js$/i.test(p))
+                .sort((a, b) => {
+                    const na = parseInt(a.match(/code(\d+)\.js$/i)[1], 10);
+                    const nb = parseInt(b.match(/code(\d+)\.js$/i)[1], 10);
+                    return na - nb;
+                });
+
+            const dataFiles = allJs.filter(p => /(^|\/)data\.js$/i.test(p));
+
+            for (const p of allJs) {
+                if (used.has(p)) continue;
+                if (codeFiles.includes(p)) continue;
+                if (dataFiles.includes(p)) continue;
+                finalOrder.push(p);
+                used.add(p);
+            }
+            for (const p of codeFiles) if (!used.has(p)) { finalOrder.push(p); used.add(p); }
+            for (const p of dataFiles) if (!used.has(p)) { finalOrder.push(p); used.add(p); }
+
+            function findFileBlob(target) {
+                if (!target || typeof target !== 'string') return null;
+
+                let clean = target.replace(/^blob:/, '')
+                                  .replace(window.location.origin, '')
+                                  .replace(/^https?:\/\/[^\/]+/, '')
+                                  .split('?')[0]
+                                  .replace(/^\.\//, '')
+                                  .replace(/^\//, '')
+                                  .toLowerCase();
+
+                if (fileMap.has(clean)) return fileMap.get(clean);
+
+                const filename = clean.split('/').pop();
+                for (const [key, blob] of fileMap.entries()) {
+                    if (key === filename || key.endsWith('/' + filename)) {
+                        return blob;
+                    }
+                }
+                return null;
+            }
+
+            const originalFetch = window.fetch;
+            window.fetch = async function(input, init) {
+                let urlStr = typeof input === 'string' ? input : (input && input.url ? input.url : '');
+
+                if (urlStr.includes('api.gdevelop-app.com/analytics')) {
+                    return new Response(JSON.stringify({ status: "blocked" }), {
+                        status: 200, statusText: 'OK',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                }
+
+                const blob = findFileBlob(urlStr);
+                if (blob) {
+                    return new Response(blob, {
+                        status: 200, statusText: 'OK',
+                        headers: {
+                            'Content-Type': blob.type || 'application/octet-stream',
+                            'Content-Length': blob.size.toString()
+                        }
+                    });
+                }
+                return originalFetch(input, init);
+            };
+
+            const originalXHR = window.XMLHttpRequest.prototype.open;
+            window.XMLHttpRequest.prototype.open = function(method, url, ...args) {
+                if (typeof url === 'string') {
+                    if (url.includes('api.gdevelop-app.com/analytics')) {
+                        url = 'data:application/json,{}';
+                    } else {
+                        const blob = findFileBlob(url);
+                        if (blob) url = URL.createObjectURL(blob);
+                    }
+                }
+                return originalXHR.call(this, method, url, ...args);
+            };
+
+            const patchSrc = (proto) => {
+                const descriptor = Object.getOwnPropertyDescriptor(proto, 'src');
+                if (!descriptor) return;
+                Object.defineProperty(proto, 'src', {
+                    get: function() { return descriptor.get.call(this); },
+                    set: function(val) {
+                        if (typeof val === 'string' && !val.startsWith('blob:')) {
+                            const blob = findFileBlob(val);
+                            if (blob) val = URL.createObjectURL(blob);
+                        }
+                        descriptor.set.call(this, val);
+                    }
+                });
+            };
+            patchSrc(HTMLMediaElement.prototype);
+            patchSrc(HTMLSourceElement.prototype);
+            patchSrc(HTMLImageElement.prototype);
+
+            const originalSetAttribute = Element.prototype.setAttribute;
+            Element.prototype.setAttribute = function(name, value) {
+                if (name.toLowerCase() === 'src' && typeof value === 'string' && !value.startsWith('blob:')) {
+                    const blob = findFileBlob(value);
+                    if (blob) value = URL.createObjectURL(blob);
+                }
+                return originalSetAttribute.call(this, name, value);
+            };
+
+            statusText.innerText = "Executing game runtime...";
+            setProgress(1);
+            subText.innerText = '';
+
+            for (const scriptPath of finalOrder) {
+                const scriptEl = document.createElement('script');
+                scriptEl.text = textContentMap.get(scriptPath);
+                document.head.appendChild(scriptEl);
+            }
+
+            document.getElementById('loading-screen').style.display = 'none';
+
+            if (typeof gdjs !== 'undefined' && gdjs.projectData) {
+                const game = new gdjs.RuntimeGame(gdjs.projectData, {});
+                game.getRenderer().createStandardCanvas(document.body);
+                game.getRenderer().bindStandardEvents(game.getInputManager(), window, document);
+                game.loadAllAssets(function() {
+                    game.startGameLoop();
+                });
+            } else {
+                throw new Error("GDevelop engine missing or projectData invalid.");
+            }
+
+        } catch (err) {
+            console.error("Game execution failed:", err);
+            statusText.innerText = "Execution failed: " + err.message;
+            showProgress(false);
+            subText.innerText = '';
+        }
+    })();
+    </script>
+</body>
+</html>

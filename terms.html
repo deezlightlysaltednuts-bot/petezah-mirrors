@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#020810" />
+  <title>Terms of Service · PeteZah</title>
+  <style>
+    :root {
+      --bg0: #020810;
+      --line: hsla(210, 40%, 80%, 0.12);
+      --text: #e8f0fa;
+      --muted: hsla(210, 18%, 70%, 0.58);
+      --faint: hsla(210, 14%, 60%, 0.42);
+      --accent: #4d8dff;
+      --accent-soft: hsla(213, 70%, 55%, 0.16);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg0);
+      color: var(--text);
+      font-family: "Segoe UI", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #vanta-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      width: 100vw;
+      height: 100dvh;
+      background: #020810;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    #vanta-bg canvas {
+      display: block !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      max-width: none !important;
+      max-height: none !important;
+    }
+    .space-twinkle {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.42;
+      mix-blend-mode: screen;
+      background-image:
+        radial-gradient(1.2px 1.2px at 6% 12%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 14% 38%, rgba(160,210,255,0.45), transparent),
+        radial-gradient(1.4px 1.4px at 22% 18%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 80% 48%, rgba(255,255,255,0.28), transparent),
+        radial-gradient(1px 1px at 94% 18%, rgba(255,255,255,0.25), transparent);
+    }
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 20px;
+      background: hsla(216, 30%, 7%, 0.88);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .pz-exit {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 9px;
+      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      color: #9ec5ff;
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .pz-exit:hover { filter: brightness(1.1); }
+    .nav-brand img {
+      display: block;
+      height: 28px;
+      width: auto;
+      border-radius: 7px;
+    }
+    .nav-brand-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .labs-badge {
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: hsla(213, 50%, 45%, 0.2);
+      border: 1px solid hsla(213, 40%, 50%, 0.25);
+      color: #9ec5ff;
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-link.active { color: #9ec5ff; }
+    .stage {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 20px 48px;
+    }
+    .panel {
+      width: 100%;
+      max-width: 640px;
+      max-height: calc(100dvh - 136px);
+      display: flex;
+      flex-direction: column;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: hsla(216, 28%, 9%, 0.96);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+    .panel-head {
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .logo-tile {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, hsla(216, 28%, 14%, 0.95), hsla(216, 32%, 9%, 0.98));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: #9ec5ff;
+    }
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(1.25rem, 3vw, 1.45rem);
+      font-weight: 750;
+      letter-spacing: -0.03em;
+    }
+    .meta {
+      margin: 0;
+      color: var(--faint);
+      font-size: 12px;
+    }
+    .panel-body {
+      padding: 18px 22px 24px;
+      overflow-y: auto;
+      flex: 1;
+      min-height: 0;
+      text-align: left;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: inherit;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: hsla(210, 30%, 88%, 0.88);
+    }
+    @media (max-width: 640px) {
+      .nav-brand-label { display: none; }
+      .panel { max-height: none; }
+      .stage { align-items: flex-start; padding-top: 76px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="vanta-bg" aria-hidden="true"></div>
+  <div class="space-twinkle" aria-hidden="true"></div>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a class="pz-exit" href="javascript:void(0)" onclick="if(window.history.length>1){window.history.back();}else{window.location.href='./';}">← Back to PeteZah</a>
+      <a class="nav-brand" href="./" aria-label="PeteZah">
+        <img src="/logo.png" alt="PeteZah" height="28" onerror="this.style.display='none'" />
+      </a>
+      <a class="nav-brand-label" href="./">
+        PeteZah <span class="labs-badge">Legal</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a class="nav-link active" href="/terms">Terms</a>
+      <a class="nav-link" href="/privacy-policy">Privacy</a>
+      <a class="nav-link" href="/dmca">DMCA</a>
+    </nav>
+  </header>
+  <main class="stage">
+    <article class="panel">
+      <div class="panel-head">
+        <div class="logo-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <p class="eyebrow">PeteZah Legal</p>
+        <h1>Terms of Service</h1>
+        <p class="meta">Effective November 15, 2026 · Version 2026-11-15</p>
+      </div>
+      <div class="panel-body"><pre>Last Updated / Effective Date: November 15, 2026
+Document Version: 2026-11-15
+
+IMPORTANT — PLEASE READ CAREFULLY
+
+These Terms of Service (the &quot;Terms&quot;) are a binding agreement between you (&quot;you,&quot; &quot;your,&quot; or &quot;User&quot;) and the operators of PeteZah and related domains, mirrors, embeds, and services (collectively, the &quot;Service,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
+
+BY ACCESSING OR USING THE SERVICE — INCLUDING COMPLETING VERIFICATION, CLICKING &quot;I AGREE,&quot; CHECKING AN ACCEPTANCE BOX, OR CONTINUING AFTER NOTICE OF UPDATED TERMS — YOU AGREE TO THESE TERMS, OUR PRIVACY POLICY, AND OUR DMCA / COPYRIGHT POLICY. IF YOU DO NOT AGREE, DO NOT USE THE SERVICE.
+
+These Terms allocate risk clearly. They are not permission to break the law, violate institutional policies, or harm others.
+
+
+1. Mission and Nature of the Service
+
+1.1 PeteZah is offered as an anti-censorship and privacy-oriented access tool: a browser-like interface, optional proxy/relay networking, optional account features, optional educational and entertainment catalogs, community features, and advertising-supported free access. Our stated purpose is to help people reach information and tools when ordinary paths are restricted by network filters, geographic blocks, or similar technical barriers — not to promote crime.
+
+1.2 Alternative URLs, mirrors, embeds, and link-sharing tools exist so people can find the Service when mainstream routes are filtered. THAT DOES NOT MEAN WE CONDONE, ENCOURAGE, AUTHORIZE, OR ASSUME RESPONSIBILITY FOR VIOLATING SCHOOL, EMPLOYER, LIBRARY, GOVERNMENT, ISP, PARENTAL, OR OTHER ACCEPTABLE-USE POLICIES. You remain solely responsible for complying with every rule that binds you.
+
+1.3 We do not guarantee anonymity, undetectability, or that any filter, firewall, MDM, endpoint agent, or monitoring system will fail to notice your use. Optional title, favicon, about:blank / blob:, focus-cloak, or similar appearance tools are cosmetic session helpers only. They do not hide network activity from administrators.
+
+1.4 Optional in-browser Chrome extension support (including uBlock Origin via our Rivet runtime) and user scripts run only inside our proxied browsing surface. They are not installed as device-level Chrome Web Store extensions on your Chromebook or computer. Enabling them does not authorize violating school, employer, or network policies.
+
+
+2. Eligibility; Accounts; Age
+
+2.1 You must be legally able to form a binding contract where you live. If you are under the age of majority, you may use the Service only with verifiable parental/guardian consent where required, and only if permitted by applicable law.
+
+2.2 The Service is not directed to children under 13 (or under 16 where a higher digital-consent age applies). Do not create an account or submit personal data if you are below the applicable age.
+
+2.3 You are responsible for account accuracy, safeguarding credentials and session cookies, and activity under your account or device. Notify us promptly of unauthorized access.
+
+2.4 We may refuse, suspend, rate-limit, or terminate access or accounts at any time for abuse, fraud, ToS breach, legal risk, or operational need.
+
+2.5 Account Storage, Cloud Sync, and Cross-Device Save Data:
+When you create or sign in to a PeteZah account, the Service securely stores and synchronizes your account profile, preferences, configurations, bookmarks, and game save data across our database infrastructure. Subject to our standard account policies and reasonable operational limits, your account data and game progress are preserved and automatically synchronized so that your gameplay progress, high scores, levels, and user settings remain accessible and intact even when you switch devices, change browsers, clear local storage, or log in from a new machine.
+
+
+3. Acceptable Use
+
+You agree you will NOT, and will not assist others to:
+
+(a) violate any applicable law or regulation;
+(b) infringe intellectual property, privacy, publicity, or other rights;
+(c) access, transmit, store, or solicit illegal content (including child sexual abuse material, non-consensual intimate imagery, or content that facilitates violent crime);
+(d) harass, threaten, stalk, defraud, dox, or harm others;
+(e) distribute malware, phishing, scam pages, credential theft, or social-engineering kits;
+(f) attack, scan, probe, overload, disrupt, or attempt unauthorized access to the Service or third-party systems;
+(g) bypass, disable, or interfere with our security, CAPTCHA/proof-of-work, rate limits, bans, verification gates, or anti-abuse controls;
+(h) use bots or scrapers except where we expressly allow it;
+(i) resell or commercially exploit the Service without written permission;
+(j) misrepresent affiliation with us;
+(k) use the Service for academic dishonesty or unauthorized testing interference where prohibited;
+(l) use the Service in any way that creates unlawful legal, security, or reputational harm for us or others.
+
+We may investigate and cooperate with schools, employers, ISPs, platforms, payment providers, and law enforcement as required or permitted by law.
+
+
+4. Network Policies; Mirrors; Managed Devices
+
+4.1 Link Features (alternate domains, embeds, QR codes, invites) exist for access continuity when ordinary routes are blocked. They are provided AS IS.
+
+4.2 We do not warrant that any link will remain online, unblocked, or free of third-party interference.
+
+4.3 You alone decide how you obtain, share, or use links. Sharing or using links in violation of institutional rules or law is your responsibility.
+
+4.4 On managed devices (school Chromebooks, corporate laptops, etc.), monitoring software may still log activity. You accept that risk.
+
+
+5. Proxy, Relay, and Third-Party Sites
+
+5.1 When you browse through our proxy/relay, you request third-party content. We are not the publisher of that content. Third-party sites have their own terms and privacy practices.
+
+5.2 We do not endorse third-party sites. Content may be inaccurate, offensive, malicious, or illegal. You interact with third parties at your own risk.
+
+5.3 Proxying does not grant you rights in third-party content. Do not use the Service to traffic stolen credentials, commit fraud, or engage in clear copyright piracy.
+
+5.4 We may block destinations, strip headers, rewrite URLs, terminate connections, or refuse proxying for safety, legal, or abuse reasons.
+
+
+6. Catalogs, Embeds, Games, and Third-Party Media (Transparency)
+
+6.1 The Service may offer catalogs of games, apps, embeds, and links to third-party sites. Copyright and trademarks belong to their respective owners unless we expressly state otherwise.
+
+6.2 Catalog availability is not a representation that we own the underlying works, that distribution is authorized in every jurisdiction, or that a title will remain available.
+
+6.3 MOVIES, TV, ANIME STREAMING, AND SIMILAR AUDIOVISUAL CONTENT: Where the Service surfaces players, embeds, deep links, or indexes pointing to film/TV/anime or other audiovisual works, those works are typically hosted or streamed by THIRD PARTIES we do not control. We do not claim to license Hollywood studios, distributors, or other rightsholders for such titles. Availability is a technical conduit / discovery feature, not a warranty of lawful authorization in your location. If you are a rightsholder, use our DMCA Policy. Users must not treat the Service as a licensed movie storefront.
+
+6.4 We may remove, geo-restrict, or disable catalog items, embeds, or players when we receive valid notices or when we determine continued availability creates unacceptable legal risk — without admitting liability.
+
+6.5 Virtual machine, remote browser, or sandboxed tools are experimental. Do not store secrets or illegal material in them.
+
+
+7. Advertising
+
+7.1 The Service may display ads from third-party networks (&quot;Ad Partners&quot;), including networks such as Adsterra, ExoClick, and others we choose from time to time.
+
+7.2 Ad Partners often select and serve creatives outside our day-to-day editorial control. Ads may include pop-ups, interstitials, or download prompts.
+
+7.3 YOU ACKNOWLEDGE THAT AD PARTNERS SOMETIMES SERVE AGGRESSIVE, MISLEADING, OR MALWARE-LIKE CREATIVES. DO NOT CLICK SUSPICIOUS &quot;VIRUS,&quot; FAKE UPDATE, CRYPTO SCAM, OR PHISHING ADS. Close the tab and report if possible. Such incidents are the responsibility of the relevant Ad Partner and/or advertiser — not a warranty failure by us.
+
+7.4 We may enable, disable, or replace Ad Partners at any time. You may use an ad blocker or our optional in-app extension tools at your discretion, understanding blockers may affect funding or features.
+
+
+8. Logging and Anti-Abuse (Summary)
+
+We process technical and account data as described in the Privacy Policy, including for security and anti-abuse. You consent to reasonable logging and automated enforcement needed to keep the Service usable.
+
+
+9. Intellectual Property; License; Feedback
+
+9.1 Our original branding, UI, and code we own are protected by IP laws. We grant you a limited, revocable, non-exclusive, non-transferable license to use the Service for personal, lawful purposes consistent with these Terms.
+
+9.2 You may not copy or reverse engineer the Service except to the limited extent allowed by law.
+
+9.3 Feedback you submit may be used by us without obligation or compensation.
+
+9.4 Parts of the Service incorporate third-party open-source software (including AGPL-licensed components such as Rivet-related extension runtime code). Those components remain under their respective licenses.
+
+
+10. Community Features; User Content
+
+If you post comments, profiles, avatars, or other content (&quot;User Content&quot;), you grant us a worldwide, royalty-free license to host, display, moderate, and remove it in connection with the Service. You represent you have rights to that content. We may remove User Content without notice.
+
+
+11. Disclaimers
+
+THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, OR UNINTERRUPTED / ERROR-FREE / SECURE OPERATION. WE DO NOT WARRANT THAT THE SERVICE WILL REMAIN UNBLOCKED, PRIVATE, OR AVAILABLE IN YOUR LOCATION, OR THAT ANY THIRD-PARTY MEDIA IS LICENSED FOR YOUR USE.
+
+
+12. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE AND OUR OPERATORS, AFFILIATES, CONTRACTORS, AND SUPPLIERS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES; LOSS OF PROFITS, DATA, GOODWILL, OR OPPORTUNITY; DEVICE DAMAGE; SCHOOL/EMPLOYMENT DISCIPLINE; ACCOUNT BANS ON THIRD-PARTY SITES; OR AD-RELATED HARM — WHETHER BASED IN CONTRACT, TORT, STRICT LIABILITY, OR OTHERWISE — EVEN IF ADVISED OF THE POSSIBILITY.
+
+OUR TOTAL LIABILITY FOR ANY CLAIM ARISING OUT OF THE SERVICE SHALL NOT EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID US FOR THE SERVICE IN THE THREE (3) MONTHS BEFORE THE CLAIM OR (B) USD $50. IF YOU PAY NOTHING, YOUR SOLE REMEDY IS TO STOP USING THE SERVICE.
+
+Some jurisdictions do not allow certain limitations; in those places, our liability is limited to the fullest extent permitted.
+
+
+13. Indemnification
+
+You will defend, indemnify, and hold harmless us and our operators from claims, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of: (a) your use or misuse of the Service; (b) your User Content; (c) your violation of these Terms or law; (d) your violation of school/employer/network policies; (e) your infringement of third-party rights; or (f) disputes between you and third parties accessed via the Service.
+
+
+14. Suspension; Termination; Survival
+
+We may suspend or terminate the Service or your access immediately. Upon termination, your license ends. Sections that by nature should survive (including disclaimers, limitations, indemnity, IP, and dispute terms) survive termination.
+
+
+15. Changes
+
+We may update these Terms by posting a new version and updating the effective date / version identifier. When the legal version changes, users who already passed verification will be asked to re-agree through an in-app notice — they are not required to re-complete captcha verification solely because policies changed. Continued use after acceptance (or after the effective date where acceptance is not separately collected) constitutes agreement. If you disagree, stop using the Service.
+
+
+16. Governing Law; Disputes; Informal Resolution
+
+To the extent permitted by law, these Terms are governed by the laws applicable to the operators' principal place of business, without regard to conflict-of-law rules. Before filing a formal claim, you agree to attempt informal resolution by emailing support@petezah.org with a description of the dispute and allowing thirty (30) days for a response. Nothing here waives rights that cannot be waived under mandatory consumer-protection law where you reside.
+
+
+17. Miscellaneous
+
+If any provision is unenforceable, the remainder stays in effect. Our failure to enforce a provision is not a waiver. These Terms, the Privacy Policy, and the DMCA / Copyright Policy are the entire agreement regarding the Service. You may not assign these Terms without our consent; we may assign them in connection with a reorganization. Headings are for convenience only. &quot;Including&quot; means &quot;including without limitation.&quot;
+
+
+18. Contact
+
+Email: support@petezah.org
+DMCA / copyright: dmca@petezah.org
+Community: https://discord.gg/zq8HvCeCU
+
+By checking the agreement box on verification or the policy-update notice, or by continuing to use the Service after accepting, you confirm acceptance of these Terms, the Privacy Policy, and the DMCA / Copyright Policy (version 2026-11-15).</pre></div>
+    </article>
+  </main>
+  <script type="module" src="/pz-vanta.js"></script>
+</body>
+</html>

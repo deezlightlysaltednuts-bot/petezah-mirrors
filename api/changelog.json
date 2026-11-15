@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cl_20261115_catalog_overhaul",
+    "title": "Major Catalog Expansion, Multi-CDN Fast Mirrors & Performance Patch",
+    "username": "PeteZah Team",
+    "created_at": 1794777000000,
+    "likes": 42,
+    "content": "### What's New:\n\n#### 1. Catalog Expansion & Dedicated Art Assets\n- Added official Subway Surfers World Tour destinations: Barcelona, Monaco, San Francisco, St. Petersburg, Winter Holiday, and London with native touch swipe gestures.\n- Added highly requested community titles: Grand Theft Auto: Vice City, Totally Accurate Battle Simulator (TABS), Getting Over It with Bennett Foddy, Garten of Banban, Doge Miner 2, Cookie Clicker (Mod Menu), Growmi, Chess Classic, Baldi's Basics CaseOh Edition, and CS:GO Clicker.\n- Hand-crafted 33 high-resolution vector artwork cards for all new additions, bringing catalog coverage to 100%.\n- Pruned 26 duplicate and broken placeholder entries to keep the library fast, verified, and clutter-free.\n\n#### 2. Network & Filter Resilience\n- Upgraded our Multi-CDN deployment to jsDelivr, GitHack, and Statically with direct immutable releases (`v2.6.0`).\n- Added background environment verification to prevent automated crawler bots and school network filters from scanning game catalogs, keeping mirrors accessible longer.\n\n#### 3. Bug Fixes & Device Optimizations\n- Resolved an issue on SVG mirror shells where external verification widgets failed to resolve, eliminating infinite loading screens.\n- Replaced hardcoded exit URLs on legal pages with dynamic session history navigation so you return directly to your active session.\n- Removed obtrusive on-screen touch gamepad overlays in favor of native full-screen responsive layouts on iPads and tablets.\n- Clamped Retina device pixel ratio across all 3D titles to prevent WebGL memory crashes on entry-level iPads.\n- Updated official legal documents and community contact channels to support@petezah.org and discord.gg/zq8HvCeCU."
+  },
+  {
+    "id": "cl_20260925_v240",
+    "title": "v2.4.0 — Multi-CDN Vector Core, Virtual Currency & Cloud Sync",
+    "username": "PeteZah Team",
+    "created_at": 1758807146584,
+    "likes": 29,
+    "content": "- Deployed Multi-CDN Vector Core architecture for mirror distribution.\n- Integrated PeteCoins virtual balance engine with achievement rewards.\n- Dual-layer game save persistence across LocalStorage and IndexedDB."
+  }
+]

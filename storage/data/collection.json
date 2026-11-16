@@ -4,7 +4,7 @@
       "id": "vicecity",
       "label": "Vicecity",
       "url": "/games/ubg/vicecity.html",
-      "imageUrl": "/storage/images/games/vicecity.svg",
+      "imageUrl": "/storage/images/games/grand-theft-auto-vice-city.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -16,7 +16,7 @@
       "id": "totally-accurate-battle-simulator-tabs",
       "label": "Totally Accurate Battle Simulator (TABS)",
       "url": "/games/ubg/totally-accurate-battle-simulator-tabs.html",
-      "imageUrl": "/storage/images/games/totally-accurate-battle-simulator-tabs.svg",
+      "imageUrl": "/storage/images/games/tabs.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -28,7 +28,7 @@
       "id": "reflex-0-0-2-1-8-wasm-gc-offline-download",
       "label": "Reflex 0.0.2 1.8 WASM GC Offline Download",
       "url": "/games/ubg/reflex-0-0-2-1-8-wasm-gc-offline-download.html",
-      "imageUrl": "/storage/images/games/reflex-0-0-2-1-8-wasm-gc-offline-download.svg",
+      "imageUrl": "/storage/images/games/reflex-0-0-2-1-8-wasm.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -40,7 +40,7 @@
       "id": "newesthk",
       "label": "Newesthk",
       "url": "/games/ubg/newesthk.html",
-      "imageUrl": "/storage/images/games/newesthk.svg",
+      "imageUrl": "/storage/images/games/newesthk.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -76,7 +76,7 @@
       "id": "getting-over-it-with-bennett-foddy",
       "label": "Getting Over It With Bennett Foddy",
       "url": "/games/ubg/getting-over-it-with-bennett-foddy.html",
-      "imageUrl": "/storage/images/games/getting-over-it-with-bennett-foddy.svg",
+      "imageUrl": "/storage/images/games/getting-over-it.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -88,7 +88,7 @@
       "id": "garten-of-banban-1",
       "label": "Garten Of Banban 1",
       "url": "/games/ubg/garten-of-banban-1.html",
-      "imageUrl": "/storage/images/games/garten-of-banban-1.svg",
+      "imageUrl": "/storage/images/games/garten-of-banban.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -100,7 +100,7 @@
       "id": "friday-night-funkin-vs-henry-stickmin-v4",
       "label": "Friday Night Funkin'  VS. Henry Stickmin V4",
       "url": "/games/ubg/friday-night-funkin-vs-henry-stickmin-v4.html",
-      "imageUrl": "/storage/images/games/friday-night-funkin-vs-henry-stickmin-v4.svg",
+      "imageUrl": "/storage/images/games/fnf-vs-henry-stickmin-v4.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -112,7 +112,7 @@
       "id": "five-nights-at-freddy-s-into-the-pit",
       "label": "Five Nights At Freddy'S  Into The Pit",
       "url": "/games/ubg/five-nights-at-freddy-s-into-the-pit.html",
-      "imageUrl": "/storage/images/games/five-nights-at-freddy-s-into-the-pit.svg",
+      "imageUrl": "/storage/images/games/five-nights-at-freddy-s-into-the-pit.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -136,7 +136,7 @@
       "id": "subway-surfers-london",
       "label": "Subway Surfers London",
       "url": "/games/ubg/subway-surfers-london.html",
-      "imageUrl": "/storage/images/games/subway-surfers-london.svg",
+      "imageUrl": "/storage/images/games/subway-surfers-base.png",
       "categories": [
         "Action",
         "Arcade",
@@ -160,7 +160,7 @@
       "id": "intellisphere",
       "label": "Intellisphere",
       "url": "/games/ubg/intellisphere.html",
-      "imageUrl": "/storage/images/games/intellisphere.svg",
+      "imageUrl": "/storage/images/games/intellisphere.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -172,7 +172,7 @@
       "id": "growmi",
       "label": "Growmi",
       "url": "/games/ubg/growmi.html",
-      "imageUrl": "/storage/images/games/growmi.svg",
+      "imageUrl": "/storage/images/games/growmi.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -184,7 +184,7 @@
       "id": "geometry-dash-scratch-edition",
       "label": "Geometry Dash (Scratch Edition)",
       "url": "/games/ubg/geometry-dash-scratch-edition.html",
-      "imageUrl": "/storage/images/games/geometry-dash-scratch-edition.svg",
+      "imageUrl": "/storage/images/games/geometry-dash-scratch-edition.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -208,7 +208,7 @@
       "id": "five-nights-at-freddy-s-2",
       "label": "Five Nights At Freddy'S 2",
       "url": "/games/ubg/five-nights-at-freddy-s-2.html",
-      "imageUrl": "/storage/images/games/five-nights-at-freddy-s-2.svg",
+      "imageUrl": "/storage/images/games/five-nights-at-freddy-s-2.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -220,7 +220,7 @@
       "id": "doge-miner-2",
       "label": "Doge Miner 2",
       "url": "/games/ubg/doge-miner-2.html",
-      "imageUrl": "/storage/images/games/doge-miner-2.svg",
+      "imageUrl": "/storage/images/games/doge-miner.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -244,7 +244,7 @@
       "id": "dragon-ball-sniper",
       "label": "Dragon Ball Sniper",
       "url": "/games/ubg/dragon-ball-sniper.html",
-      "imageUrl": "/storage/images/games/dragon-ball-sniper.svg",
+      "imageUrl": "/storage/images/games/dragon-ball-sniper.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -268,7 +268,7 @@
       "id": "crazy-plane-landing",
       "label": "Crazy Plane Landing",
       "url": "/games/ubg/crazy-plane-landing.html",
-      "imageUrl": "/storage/images/games/crazy-plane-landing.svg",
+      "imageUrl": "/storage/images/games/crazy-plane-landing.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -280,7 +280,7 @@
       "id": "count-masters-stickman",
       "label": "Count Masters Stickman",
       "url": "/games/ubg/count-masters-stickman.html",
-      "imageUrl": "/storage/images/games/count-masters-stickman.svg",
+      "imageUrl": "/storage/images/games/count-masters-stickman.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -292,7 +292,7 @@
       "id": "cookie-clicker-mod-menu",
       "label": "Cookie Clicker (Mod Menu)",
       "url": "/games/ubg/cookie-clicker-mod-menu.html",
-      "imageUrl": "/storage/images/games/cookie-clicker-mod-menu.svg",
+      "imageUrl": "/storage/images/games/cookie-clicker.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -304,7 +304,7 @@
       "id": "chess-classic",
       "label": "Chess Classic",
       "url": "/games/ubg/chess-classic.html",
-      "imageUrl": "/storage/images/games/chess-classic.svg",
+      "imageUrl": "/storage/images/games/chess-classic.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -328,7 +328,7 @@
       "id": "baldi-s-basics-caseoh",
       "label": "Baldi'S Basics CaseOh",
       "url": "/games/ubg/baldi-s-basics-caseoh.html",
-      "imageUrl": "/storage/images/games/baldi-s-basics-caseoh.svg",
+      "imageUrl": "/storage/images/games/baldi-s-basics-caseoh.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -340,7 +340,7 @@
       "id": "caseoh-s-basics-in-eating-and-fast-food",
       "label": "CaseOh'S Basics In Eating And Fast Food",
       "url": "/games/ubg/caseoh-s-basics-in-eating-and-fast-food.html",
-      "imageUrl": "/storage/images/games/caseoh-s-basics-in-eating-and-fast-food.svg",
+      "imageUrl": "/storage/images/games/caseoh-s-basics-in-eating-and-fast-food.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -352,7 +352,7 @@
       "id": "adventure-capatalist",
       "label": "Adventure Capatalist",
       "url": "/games/ubg/adventure-capatalist.html",
-      "imageUrl": "/storage/images/games/adventure-capatalist.svg",
+      "imageUrl": "/storage/images/games/adventure-capitalist.jpg",
       "categories": [
         "Action",
         "Arcade",
@@ -364,7 +364,7 @@
       "id": "subway-surfers-winter-holiday",
       "label": "Subway Surfers: Winter Holiday",
       "url": "/games/ubg/subway-surfers-winter-holiday.html",
-      "imageUrl": "/storage/images/games/subway-surfers-winter-holiday.svg",
+      "imageUrl": "/storage/images/games/subway-surfers-base.png",
       "categories": [
         "Runner",
         "Action",
@@ -376,7 +376,7 @@
       "id": "subway-surfers-st-petersburg",
       "label": "Subway Surfers: St. Petersburg",
       "url": "/games/ubg/subway-surfers-st-petersburg.html",
-      "imageUrl": "/storage/images/games/subway-surfers-st-petersburg.svg",
+      "imageUrl": "/storage/images/games/subway-surfers-base.png",
       "categories": [
         "Runner",
         "Action",
@@ -388,7 +388,7 @@
       "id": "subway-surfers-san-francisco",
       "label": "Subway Surfers: San Francisco",
       "url": "/games/ubg/subway-surfers-san-francisco.html",
-      "imageUrl": "/storage/images/games/subway-surfers-san-francisco.svg",
+      "imageUrl": "/storage/images/games/subway-surfers-base.png",
       "categories": [
         "Runner",
         "Action",
@@ -400,7 +400,7 @@
       "id": "subway-surfers-monaco",
       "label": "Subway Surfers: Monaco",
       "url": "/games/ubg/subway-surfers-monaco.html",
-      "imageUrl": "/storage/images/games/subway-surfers-monaco.svg",
+      "imageUrl": "/storage/images/games/subway-surfers-base.png",
       "categories": [
         "Runner",
         "Action",
@@ -412,7 +412,7 @@
       "id": "subway-surfers-barcelona",
       "label": "Subway Surfers: Barcelona",
       "url": "/games/ubg/subway-surfers-barcelona.html",
-      "imageUrl": "/storage/images/games/subway-surfers-barcelona.svg",
+      "imageUrl": "/storage/images/games/subway-surfers-base.png",
       "categories": [
         "Runner",
         "Action",

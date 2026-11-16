@@ -49,7 +49,7 @@ var cdnBase = (function() {
   b.href = cdnBase;
   document.head.appendChild(b);
 var l=document.createElement('link');l.rel='stylesheet';l.crossOrigin='';l.href=cdnBase + "assets/index-_cONUt-2.css?v=16-11-2026";document.head.appendChild(l);
-var s=document.createElement('script');s.type='module';s.crossOrigin='';s.src=cdnBase + "assets/index-DUZ8bdvm.js?v=16-11-2026";document.body.appendChild(s);
+var s=document.createElement('script');s.type='module';s.crossOrigin='';s.src=cdnBase + "assets/index-B5subFjZ.js?v=16-11-2026";document.body.appendChild(s);
 var m=document.createElement('script');m.src=cdnBase + "m4thx/index.js?v=16-11-2026";document.body.appendChild(m);
 var c=document.createElement('script');c.src=cdnBase + "q9vx/sj.all.js?v=16-11-2026";document.body.appendChild(c);
       ]]></script>

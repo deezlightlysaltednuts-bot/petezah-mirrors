@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#020810" />
+  <title>Privacy Policy · PeteZah</title>
+  <style>
+    :root {
+      --bg0: #020810;
+      --line: hsla(210, 40%, 80%, 0.12);
+      --text: #e8f0fa;
+      --muted: hsla(210, 18%, 70%, 0.58);
+      --faint: hsla(210, 14%, 60%, 0.42);
+      --accent: #4d8dff;
+      --accent-soft: hsla(213, 70%, 55%, 0.16);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg0);
+      color: var(--text);
+      font-family: "Segoe UI", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    #vanta-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      width: 100vw;
+      height: 100dvh;
+      background: #020810;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    #vanta-bg canvas {
+      display: block !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      max-width: none !important;
+      max-height: none !important;
+    }
+    .space-twinkle {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.42;
+      mix-blend-mode: screen;
+      background-image:
+        radial-gradient(1.2px 1.2px at 6% 12%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 14% 38%, rgba(160,210,255,0.45), transparent),
+        radial-gradient(1.4px 1.4px at 22% 18%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 80% 48%, rgba(255,255,255,0.28), transparent),
+        radial-gradient(1px 1px at 94% 18%, rgba(255,255,255,0.25), transparent);
+    }
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 20px;
+      background: hsla(216, 30%, 7%, 0.88);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .pz-exit {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 9px;
+      border: 1px solid var(--line);
+      background: var(--accent-soft);
+      color: #9ec5ff;
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .pz-exit:hover { filter: brightness(1.1); }
+    .nav-brand img {
+      display: block;
+      height: 28px;
+      width: auto;
+      border-radius: 7px;
+    }
+    .nav-brand-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .labs-badge {
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: hsla(213, 50%, 45%, 0.2);
+      border: 1px solid hsla(213, 40%, 50%, 0.25);
+      color: #9ec5ff;
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-link.active { color: #9ec5ff; }
+    .stage {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 88px 20px 48px;
+    }
+    .panel {
+      width: 100%;
+      max-width: 640px;
+      max-height: calc(100dvh - 136px);
+      display: flex;
+      flex-direction: column;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: hsla(216, 28%, 9%, 0.96);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+    .panel-head {
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .logo-tile {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, hsla(216, 28%, 14%, 0.95), hsla(216, 32%, 9%, 0.98));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: #9ec5ff;
+    }
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(1.25rem, 3vw, 1.45rem);
+      font-weight: 750;
+      letter-spacing: -0.03em;
+    }
+    .meta {
+      margin: 0;
+      color: var(--faint);
+      font-size: 12px;
+    }
+    .panel-body {
+      padding: 18px 22px 24px;
+      overflow-y: auto;
+      flex: 1;
+      min-height: 0;
+      text-align: left;
+    }
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: inherit;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: hsla(210, 30%, 88%, 0.88);
+    }
+    @media (max-width: 640px) {
+      .nav-brand-label { display: none; }
+      .panel { max-height: none; }
+      .stage { align-items: flex-start; padding-top: 76px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="vanta-bg" aria-hidden="true"></div>
+  <div class="space-twinkle" aria-hidden="true"></div>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a class="pz-exit" href="javascript:void(0)" onclick="if(window.history.length>1){window.history.back();}else{window.location.href='./';}">← Back to PeteZah</a>
+      <a class="nav-brand" href="./" aria-label="PeteZah">
+        <img src="/logo.png" alt="PeteZah" height="28" onerror="this.style.display='none'" />
+      </a>
+      <a class="nav-brand-label" href="./">
+        PeteZah <span class="labs-badge">Legal</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a class="nav-link" href="/terms">Terms</a>
+      <a class="nav-link active" href="/privacy-policy">Privacy</a>
+      <a class="nav-link" href="/dmca">DMCA</a>
+    </nav>
+  </header>
+  <main class="stage">
+    <article class="panel">
+      <div class="panel-head">
+        <div class="logo-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="eyebrow">PeteZah Legal</p>
+        <h1>Privacy Policy</h1>
+        <p class="meta">Effective November 16, 2026 · Version 2026-11-16</p>
+      </div>
+      <div class="panel-body"><pre>Last Updated / Effective Date: November 16, 2026
+Document Version: 2026-11-16
+
+This Privacy Policy explains what information PeteZah (the &quot;Service,&quot; &quot;we,&quot; &quot;us&quot;) collects, how we use it, and the choices you have. Read it with our Terms of Service and DMCA / Copyright Policy.
+
+
+1. Scope
+
+This Policy covers data processed when you visit our sites, pass verification, create an account, use proxy/relay features, claim links, use catalogs, view ads, or interact with community features. It does not control third-party websites you visit through the proxy.
+
+
+2. Categories of Information We Collect
+
+2.1 Account and profile data (if you register): email; password hash; optional username, bio, avatar/banner, and similar fields; verification status; optional 2FA metadata; role flags for operators.
+
+2.2 Security, session, and anti-abuse data: IP addresses (and derived geolocation/ASN where available); user-agent and basic device signals; timestamps; session identifiers and cookies (including verification and legal-acceptance cookies); CAPTCHA / proof-of-work metadata; rate-limit counters; ban signals; presence signals for capacity features.
+
+2.3 Service usage (operational): settings sync payloads you choose to save; link-claim events; feedback you submit; admin audit actions. We aim not to build a commercial advertising profile of your private browsing destinations, but technical logs for reliability and abuse prevention may include request metadata.
+
+2.4 Proxy / technical transmission: while proxying, systems necessarily process URLs, headers, and content bytes in transit to fulfill your request. We do not sell your browsing history. Retention of detailed destination logs, if any, is limited to security, debugging, capacity, and legal compliance needs.
+
+2.5 Advertising technology: Ad Partners may set cookies, use pixels, or collect device/IP/user-agent data under THEIR policies.
+
+2.6 Analytics: first-party or third-party analytics may be used for aggregate traffic and reliability.
+
+2.7 Communications: emails you send us; transactional emails we send you.
+
+
+3. How We Use Information
+
+We use information to provide the Service; authenticate users; enforce Terms; detect bots, fraud, and abuse; improve performance; communicate notices; comply with law; and protect users and operators.
+
+
+4. Anti-Abuse
+
+We keep friction low for legitimate users while operating verification gates, signed cookies, rate limits, IP reputation, challenges, session binding, automated blocks, and staff review as needed. Circumventing those controls is prohibited.
+
+
+5. Legal Bases (Where Applicable)
+
+Where GDPR/UK GDPR or similar frameworks apply, we rely on: contract performance; legitimate interests (security, anti-abuse, improvement); consent (including legal-document acceptance); and legal obligation.
+
+
+6. Sharing
+
+We do not sell raw email lists. We may share data with infrastructure and email providers; Ad Partners and analytics vendors as needed; advisors; and authorities when required by law or necessary to protect rights/safety. Business transfers may include user data under continued confidentiality commitments where feasible.
+
+
+7. Cookies
+
+Essential cookies/tokens support sessions, security gates, and recording that you accepted current legal documents. Disabling them may prevent access. Advertising and analytics cookies may be set by partners.
+
+
+8. Retention
+
+Account data is kept while active and for a reasonable period afterward. Security logs are kept for rolling windows appropriate to abuse investigation. You may request account deletion subject to backups and legal holds.
+
+
+9. Security
+
+We use password hashing, HTTPS where configured, httpOnly cookies for sensitive tokens, rate limiting, and related controls. No method is perfectly secure.
+
+
+10. International Transfers
+
+Servers and vendors may be in multiple countries. By using the Service you understand information may be processed outside your home country.
+
+
+11. Your Choices and Rights
+
+Depending on your location, you may have rights to access, correct, delete, export, or restrict certain personal data. Contact sophia.richerson@outlook.com. We may verify identity before fulfilling requests.
+
+
+12. Children
+
+We do not knowingly collect personal information from children under 13 (or the applicable higher age). Contact us if you believe we have.
+
+
+13. Do Not Track
+
+There is no uniform DNT standard we can promise across Ad Partners. Essential security tooling continues if you use the Service.
+
+
+14. Third-Party Links and Proxied Sites
+
+We are not responsible for privacy practices of third-party sites, apps, ad landing pages, or destinations you open through the Service.
+
+
+15. Changes
+
+We may update this Policy by posting a new version. When the legal version changes, previously verified users are prompted to re-agree in-app without redoing captcha solely for that reason.
+
+
+16. Contact
+
+Privacy questions: sophia.richerson@outlook.com
+Community: https://discord.gg/zq8HvCeCU</pre></div>
+    </article>
+  </main>
+  <script type="module" src="/pz-vanta.js"></script>
+</body>
+</html>
